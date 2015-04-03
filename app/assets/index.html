@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="orodarius">
+<head>
+  <meta charset="UTF-8">
+  <title>Orodarius</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+  <div class="container" ng-controller="imageCtrl as image">
+    <div class="row">
+      <h2 class="hero text-center">OROdarius</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-xs-10 col-xs-push-1 image-container">
+        <img ng-src="{{image.imageUrl}}" alt="" class="visible-image">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-10 col-xs-push-1 range-container">
+        <div class="text-center">{{image.currentDateString}}</div>
+        <input type="range" min="0" max="46" value="{{image.currentStep}}" ng-model="image.currentStep" ng-input-change="image.changeImageAt(image.currentStep)">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-10 col-xs-push-1 controls-container">
+        <div class="weathertype-btn-container">
+          <div class="weathertype-btn" ng-repeat="type in image.weatherTypes">
+            <button class="btn btn-md btn-info btn-full" ng-click="image.changeWeatherType(type)">{{type}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/vendor.js"></script>
+  <script src="/js/app.js"></script>
+
+</body>
+</html>
