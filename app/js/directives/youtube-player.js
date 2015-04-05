@@ -11,26 +11,53 @@
 
           var tag = $('<script>').attr({
             src: 'https://www.youtube.com/iframe_api',
-            // async: true
+            async: true
           });
+
+          // this is suggested here:
+          // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
+          // not sure if it really needs to be first
           $('script').eq(0).before(tag);
 
           $window.onYouTubeIframeAPIReady = function() {
-            console.log('ho');
+            // TODO: move player to service
             player = new YT.Player('main-video-player', {
-              width: 640, // TODO: change to viewport values
-              height: 480,
-              videoId: 'M7lc1UVf-VE',
+              width: $window.innerWidth,
+              height: $window.innerHeight,
+              videoId: 'DT2oAtQtFrg',
+              playerVars: {
+                autohide: 1,
+                autoplay: 1,
+                // controls: 0,
+                disablekb: 0,
+                enablejsapi: 1
+              },
               events: {
-                onReady() {
-                  console.log('onPlayerReady');
+                onReady: function() {
+                  console.log('onReady');
+                  player.playVideo();
                 },
-                onStatechange() {
-                  console.log('onStateChange');
+                onStateChange: function(event) {
+                  // event.data holds event type, one of the following:
+                  // -1 (unstarted)
+                  // 0 (ended)
+                  // 1 (playing)
+                  // 2 (paused)
+                  // 3 (buffering)
+                  // 5 (video cued).
+
+                  // if event is 0 (ended), play another video.
+                  if (event.data ===  0) {
+                    player.loadVideoById({
+                      videoId: '1DC2xc_Zul8',
+                      startSeconds: 0,
+                      // endSeconds,
+                      suggestedQuality: 'large'
+                    });
+                  }
                 }
               }
             });
-            console.log(player);
           };
         }
       };

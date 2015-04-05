@@ -10,7 +10,8 @@ describe('Directive: youtube-player', function() {
     element = _$compile_('<div youtube-player></div>')(scope);
     $window = _$window_;
 
-    spyOn($window, 'onYouTubeIframeAPIReady');
+    spyOn(YT, 'Player'); // YT comes from test/mocks/YT.js
+    $window.onYouTubeIframeAPIReady();
   }));
 
   it('should compile successfully', function() {
@@ -18,6 +19,6 @@ describe('Directive: youtube-player', function() {
   });
 
   it('should call onYouTubeIframeAPIReady once created', function() {
-    expect($window.onYouTubeIframeAPIReady).toHaveBeenCalled();
+    expect(YT.Player).toHaveBeenCalled();
   });
 });
