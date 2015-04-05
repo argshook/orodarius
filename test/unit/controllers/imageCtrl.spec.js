@@ -1,6 +1,6 @@
 describe("Controller: imageCtrl", function() {
   var ctrl;
-  var apiRootUrlMock = "http://www.meteo.lt/dokumentai/operatyvi_inf/skaitmenine_prog/";
+  var apiRootUrlMock = "";
   var weatherTypesMock = ['temp', 'lietus', 'vejas', 'gusiai', 'debesys', 'mat'];
   var dateFormat = 'YYYYMMDDHH';
 

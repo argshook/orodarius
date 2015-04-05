@@ -4,7 +4,7 @@
   function imageCtrl() {
     var dateStringFormat = 'YY MMMM DD HH';
 
-    this.apiRootUrl = "http://www.meteo.lt/dokumentai/operatyvi_inf/skaitmenine_prog/";
+    this.apiRootUrl = "";
     this.weatherTypes = ['temp', 'lietus', 'vejas', 'gusiai', 'debesys', 'mat'];
     this.imageUrl = '';
     this.currentStep = 0;
