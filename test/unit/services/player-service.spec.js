@@ -9,13 +9,10 @@ describe('Service: PlayerService', function() {
     service = _PlayerService_;
   }));
 
-  it('should exist', function() {
-    expect(service).toBeTruthy();
-  });
-
-
-  it('new method should create new player instance', function() {
-    var player = service.newPlayer('main-video-player');
-    expect(service.players.length).toBe(1);
+  it('createNewPlayer method should create new player instance', function() {
+    var player = service.createNewPlayer('main-video-player');
+    expect(player).toBeTruthy();
+    expect(service.player).toBeTruthy();
+    expect(player).toEqual(service.player);
   });
 });

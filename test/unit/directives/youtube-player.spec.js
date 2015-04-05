@@ -12,7 +12,7 @@ describe('Directive: youtube-player', function() {
     $window = _$window_;
     PlayerService = _PlayerService_;
 
-    spyOn(PlayerService, 'newPlayer');
+    spyOn(PlayerService, 'createNewPlayer');
 
   }));
 
@@ -29,13 +29,13 @@ describe('Directive: youtube-player', function() {
     expect(element.find('[youtube-player]')).toBeTruthy();
   });
 
-  it('should call PlayerService.newPlayer with default selector ID, once directive is compiled', function() {
+  it('should call PlayerService.createNewPlayer with default selector ID, once directive is compiled', function() {
     compileWith();
-    expect(PlayerService.newPlayer).toHaveBeenCalledWith('main-video-player');
+    expect(PlayerService.createNewPlayer).toHaveBeenCalledWith('main-video-player');
   });
 
-  it('should call PlayerService.newPlayer with id selector, if its passed to youtube-player directive', function() {
+  it('should call PlayerService.createNewPlayer with id selector, if its passed to youtube-player directive', function() {
     compileWith('tinky-winky');
-    expect(PlayerService.newPlayer).toHaveBeenCalledWith('tinky-winky');
+    expect(PlayerService.createNewPlayer).toHaveBeenCalledWith('tinky-winky');
   });
 });

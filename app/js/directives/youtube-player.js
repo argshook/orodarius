@@ -18,7 +18,7 @@
           $('script').eq(0).before(tag);
 
           $window.onYouTubeIframeAPIReady = function() {
-            PlayerService.newPlayer(attrs.youtubePlayer || 'main-video-player');
+            PlayerService.createNewPlayer(attrs.youtubePlayer || 'main-video-player');
           };
         }
       };
