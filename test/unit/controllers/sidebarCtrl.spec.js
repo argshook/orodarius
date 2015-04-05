@@ -12,4 +12,12 @@ describe('Controller: sidebarCtrl', function() {
   it('should expose isOpen flag and be set to false initially', function() {
     expect(ctrl.isOpen).toBe(false);
   });
+
+  it('toggleSidebar should toggle isOpen flag', function() {
+    ctrl.toggleSidebar();
+    expect(ctrl.isOpen).toBe(true);
+
+    ctrl.toggleSidebar();
+    expect(ctrl.isOpen).toBe(false);
+  });
 });

@@ -15,8 +15,12 @@
     </div>
   </div>
 
-  <div class="container-sidebar" ng-controller="sidebarCtrl as sidebar">
+  <div
+    class="container-sidebar"
+    ng-class="{'container-sidebar--open': sidebar.isOpen}"
+    ng-controller="sidebarCtrl as sidebar">
 
+    <div class="container-sidebar-toggle" ng-click="sidebar.toggleSidebar()">&laquo;</div>
   </div>
 
   <script src="js/vendor.js"></script>
