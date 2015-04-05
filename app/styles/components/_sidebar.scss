@@ -1,0 +1,13 @@
+.container-sidebar {
+  display: none; /* for now */
+  $width: 250px;
+  $gap-from-edge: 10px;
+
+  position: fixed;
+  top: $gap-from-edge;
+  left: calc(100% - #{$width});
+  right: $gap-from-edge;
+  bottom: $gap-from-edge;
+
+  background: blue;
+}

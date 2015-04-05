@@ -1,6 +1,8 @@
 @import "../../node_modules/node-bourbon/assets/stylesheets/bourbon";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap"; // Boostrap 3
 
+@import "variables";
+
 *, *:before, *:after { box-sizing: border-box; }
 
 body {
@@ -10,34 +12,12 @@ body {
   }
 }
 
-.btn-full {
-  height: 100%;
-  font-weight: 300;
-}
+// Components
 
-.weathertype-btn-container {
-  margin: 1em 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
+@import "components/video-player";
+@import "components/sidebar";
 
-.weathertype-btn {
-  flex-basis: 33%;
-  display: flex;
-  margin-bottom: 1em;
-  justify-content: center;
-  min-height: 2em;
-}
-
-.range-container {
-  margin: 1em 0;
-}
-
-.image-container {
-  .visible-image {
-    max-width: 100%;
-    height: auto;
-  }
+.container-full {
+  width: 100vw;
+  height: 100vh;
 }
