@@ -33,7 +33,7 @@
       <div class="form-group">
         <div class="input-group input-group-sm">
           <div class="input-group-addon">r/</div>
-          <input type="text" class="form-control" placeholder="videos" ng-model="sidebar.subredditQuery" />
+          <input type="text" class="form-control" placeholder="videos" ng-model="sidebar.subredditQuery" ng-enter="sidebar.fillPlaylistWith(sidebar.subredditQuery)" />
           <div class="input-group-addon btn" ng-click="sidebar.fillPlaylistWith(sidebar.subredditQuery)">
             <span class="glyphicon glyphicon-search"></span>
           </div>
