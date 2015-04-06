@@ -29,11 +29,12 @@
       function subredditResultsFilter(data) {
         return _(data)
                   .filter((item) => item.kind === 't3' && item.data.domain === 'youtube.com') // t3 - link posts
-                  .map(function(item) {
+                  .map((item) => {
                     return {
                       title: item.data.title,
                       url: item.data.url,
-                      videoId: getVideoIdFromUrl(item.data.url)
+                      videoId: getVideoIdFromUrl(item.data.url),
+                      thumbnailUrl: item.data.thumbnail
                     };
                   })
                   .value();

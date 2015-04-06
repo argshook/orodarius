@@ -19,14 +19,18 @@
     class="container-sidebar"
     ng-class="{'container-sidebar--open': sidebar.isOpen}"
     ng-controller="sidebarCtrl as sidebar">
-    <div class="container-sidebar-toggle" ng-click="sidebar.toggleSidebar()">&laquo;</div>
+    <div class="sidebar-toggle" ng-click="sidebar.toggleSidebar()">&laquo;</div>
 
     <button class="btn btn-default" ng-click="sidebar.reloadPlaylist()">Reload playlist</button>
-    <ul class="sidebar-playlist list-group">
-      <li class="list-group-item" ng-repeat="item in sidebar.list" ng-click="sidebar.playVideo(item)">
-        {{item | json}}
-      </li>
-    </ul>
+
+    <div class="sidebar-playlist-container">
+      <ul class="sidebar-playlist list-group">
+        <li class="list-group-item" ng-repeat="item in sidebar.list" ng-click="sidebar.playVideo(item)">
+          <img ng-src="{{item.thumbnailUrl}}" alt="">
+          <h5>{{item.title}}</h5>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <script src="js/vendor.js"></script>

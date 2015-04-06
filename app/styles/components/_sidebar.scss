@@ -1,5 +1,5 @@
 .container-sidebar {
-  $width: 250px;
+  $width: 350px;
   $gap-from-edge: 10px;
 
   position: fixed;
@@ -18,7 +18,7 @@
   }
 }
 
-.container-sidebar-toggle {
+.sidebar-toggle {
   position: absolute;
   top: 0;
   left: -40px;
@@ -29,4 +29,30 @@
   color: #fff;
   border-radius: 5px 0 0 5px;
   font-family: monospace;
+}
+
+.sidebar {
+  &-playlist-container {
+    margin-top: 20px;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  &-playlist {
+    li {
+      min-height: 70px;
+    }
+
+    img {
+      float: left;
+      max-width: 90px;
+      margin-right: 10px;
+      height: auto;
+    }
+
+    h5 {
+      padding: 0;
+      margin: 0;
+    }
+  }
 }
