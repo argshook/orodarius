@@ -32,7 +32,7 @@ describe('Service: PlaylistService', function() {
 
   it('fetchSubreddit should return a promise', function() {
     var result,
-        promise = service.fetchSubreddit();
+        promise = service.fetchSubreddit('videos');
 
     expect(promise).toBeDefined();
 

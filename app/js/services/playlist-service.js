@@ -41,6 +41,8 @@
       }
 
       function getVideoIdFromUrl(url) {
+        // TODO: Couldn't find video ID for this url: http://www.youtube.com/attribution_link?a=h9bhZZ-vW4Q&amp;u=%2Fwatch%3Fv%3Dil1L14hyWSE%26feature%3Dshare
+        // TODO: doesn't work with trailing slash
         var videoIdRegExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
         var match = url.match(videoIdRegExp);
         if (match && match[2].length == 11) {
@@ -65,7 +67,7 @@
                   .value();
       }
 
-      function fetchSubreddit(subredditName = 'videos', after) {
+      function fetchSubreddit(subredditName, after) {
         var deferred = $q.defer();
         currentSubreddit = subredditName;
 
@@ -74,7 +76,11 @@
         $http.get(apiUrl)
           .then(function(data) {
             afterTag = data.data.data.after;
-            playlist = playlist.concat(subredditResultsFilter(data.data.data.children));
+            if(after) {
+              playlist = playlist.concat(subredditResultsFilter(data.data.data.children));
+            } else {
+              playlist = subredditResultsFilter(data.data.data.children);
+            }
             deferred.resolve(playlist);
           }, function(error) {
             deferred.reject(error);
