@@ -20,17 +20,14 @@ exports.config = {
           /^vendor/,
 
           // external libs
-          'bower_components/modernizr/modernizr.js',
           'bower_components/jquery/dist/jquery.js',
           'bower_components/lodash/dist/lodash.js',
-          'bower_components/moment/moment.js',
           'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
 
           // angular
           'bower_components/angular/angular.js',
           'bower_components/angular-resource/angular-resource.js',
           'bower_components/angular-sanitize/angular-sanitize.js',
-          'bower_components/angular-ui-router/release/angular-ui-router.js',
         ],
         'test/scenarios.js': /^test(\/|\\)e2e/
       },
