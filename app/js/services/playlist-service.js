@@ -42,7 +42,7 @@
       function fetchSubreddit(subredditName = 'videos') {
         var deferred = $q.defer();
 
-        $http.get(`${redditAPIBaseUrl}${subredditName}/hot.json?limit=1`)
+        $http.get(`${redditAPIBaseUrl}${subredditName}/hot.json`)
           .then(function(data) {
             playlist = subredditResultsFilter(data.data.data.children);
             deferred.resolve(playlist);
