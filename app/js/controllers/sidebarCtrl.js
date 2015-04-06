@@ -2,8 +2,9 @@
   'use strict';
 
   angular.module('orodarius')
-    .controller('sidebarCtrl', function(PlaylistService, PlayerService) {
+    .controller('sidebarCtrl', function(PlaylistService, PlayerService, $q) {
       this.isOpen = false;
+      this.currentSubreddit = 'videos';
 
       this.toggleSidebar = function() {
         this.isOpen = !this.isOpen;
@@ -23,6 +24,10 @@
           }, (error) => {
             console.error(error);
           });
+      };
+
+      this.fillPlaylistWith = function(subreddit = "videos") {
+        PlaylistService.fetchSubreddit(subreddit).then(data => this.list = data);
       };
 
       this.isListItemCurrentlyPlayed = function(item) {
