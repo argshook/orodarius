@@ -62,14 +62,8 @@
 
       function playVideo(item) {
         if(item) {
-          // player.loadVideoById({
-          //   videoId: item.videoId,
-          //   startSeconds: 0,
-          //   // endSeconds: 0,
-          //   suggestedQuality: 'large'
-          // });
-          player.loadVideoByUrl({
-            mediaContentUrl: item.url,
+          player.loadVideoById({
+            videoId: item.videoId,
             startSeconds: 0,
             // endSeconds: 0,
             suggestedQuality: 'large'

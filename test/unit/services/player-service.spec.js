@@ -9,7 +9,7 @@ describe('Service: PlayerService', function() {
     service = _PlayerService_;
 
     player = service.createNewPlayer('main-video-player');
-    spyOn(player, 'loadVideoByUrl');
+    spyOn(player, 'loadVideoById');
   }));
 
   it('createNewPlayer method should create new player instance', function() {
@@ -20,6 +20,6 @@ describe('Service: PlayerService', function() {
 
   it('playVideo should start playing a new video', function() {
     service.playVideo(mockVideoItem);
-    expect(player.loadVideoByUrl).toHaveBeenCalled();
+    expect(player.loadVideoById).toHaveBeenCalled();
   });
 });
