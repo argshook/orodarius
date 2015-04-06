@@ -1,3 +1,9 @@
+'use strict';
+
 var YT = {
-  Player: angular.noop
+  Player: function() {
+    return {
+      loadVideoById: angular.noop
+    };
+  }
 };

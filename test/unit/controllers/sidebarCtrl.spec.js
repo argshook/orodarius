@@ -1,12 +1,19 @@
 'use strict';
 
 describe('Controller: sidebarCtrl', function() {
-  var ctrl;
+  var ctrl, PlaylistService, PlayerService;
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_$controller_) {
-    ctrl = _$controller_('sidebarCtrl', {});
+  beforeEach(inject(function(_$controller_, _PlaylistService_, _PlayerService_) {
+    ctrl = _$controller_('sidebarCtrl', { PlaylistService: _PlaylistService_ });
+    PlaylistService = _PlaylistService_;
+    PlayerService = _PlayerService_;
+
+    spyOn(PlayerService, 'playVideo');
+
+    PlaylistService.add(mockVideoItem);
+    PlaylistService.add(mockVideoItem);
   }));
 
   it('should expose isOpen flag and be set to false initially', function() {
@@ -19,5 +26,14 @@ describe('Controller: sidebarCtrl', function() {
 
     ctrl.toggleSidebar();
     expect(ctrl.isOpen).toBe(false);
+  });
+
+  it('list should contain items from PlaylistService.playlist', function() {
+    expect(ctrl.list).toEqual([mockVideoItem, mockVideoItem]);
+  });
+
+  it('playVideo method should tell PlayerService to play video', function() {
+    ctrl.playVideo(mockVideoItem);
+    expect(PlayerService.playVideo).toHaveBeenCalledWith(mockVideoItem);
   });
 });

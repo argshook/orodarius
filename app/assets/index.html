@@ -19,8 +19,14 @@
     class="container-sidebar"
     ng-class="{'container-sidebar--open': sidebar.isOpen}"
     ng-controller="sidebarCtrl as sidebar">
-
     <div class="container-sidebar-toggle" ng-click="sidebar.toggleSidebar()">&laquo;</div>
+
+    <ul class="sidebar-playlist">
+      <li ng-repeat="item in sidebar.list" ng-click="sidebar.playVideo(item)">
+        {{item.name}} <br>
+        {{item.description}}
+      </li>
+    </ul>
   </div>
 
   <script src="js/vendor.js"></script>

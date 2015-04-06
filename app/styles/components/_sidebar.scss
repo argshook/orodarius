@@ -9,7 +9,7 @@
   bottom: $gap-from-edge;
   width: $width;
 
-  background: blue;
+  background: rgba(68, 68, 68, 0.75);
 
   transition: .25s ease all;
 
@@ -23,10 +23,10 @@
   top: 0;
   left: -40px;
   width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: green;
+  text-align: center;
+  background: rgba(68, 68, 68, 0.75);
   font-size: 2em;
   color: #fff;
+  border-radius: 5px 0 0 5px;
+  font-family: monospace;
 }

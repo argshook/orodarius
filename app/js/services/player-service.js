@@ -2,75 +2,82 @@
   'use strict';
 
   angular.module('orodarius')
-  .service('PlayerService', function($window) {
-    var player;
+    .service('PlayerService', function($window, PlaylistService) {
+      var player;
 
-    Object.defineProperty(this, 'player', {
-      enumerable: true,
-      configurable: true,
-      get: function() {
-        return player;
-      },
-      set: function(value) {
-        player = value;
-      }
-    });
-
-    function onPlayerReady() {
-      player.playVideo();
-    }
-
-    function onPlayerStateChange(event) {
-      // event.data holds event type, one of the following:
-      // -1 (unstarted)
-      // 0 (ended)
-      // 1 (playing)
-      // 2 (paused)
-      // 3 (buffering)
-      // 5 (video cued).
-
-      // if event is 0 (ended), play another video.
-      if (event.data === 0) {
-        // TODO: check for enqued item and play if it exists
-        player.loadVideoById({
-          videoId: '1DC2xc_Zul8',
-          startSeconds: 0,
-          // endSeconds,
-          suggestedQuality: 'large'
-        });
-      }
-    }
-
-    function createNewPlayer(elementId, options) {
-      var defaultPlayerOptions = {
-        width: $window.innerWidth, // TODO: perhaps move to settings value
-        height: $window.innerHeight,
-        videoId: 'DT2oAtQtFrg',
-        playerVars: {
-          autohide: 1,
-          autoplay: 1,
-          controls: 0,
-          disablekb: 0,
-          enablejsapi: 1
+      Object.defineProperty(this, 'player', {
+        enumerable: true,
+        configurable: true,
+        get: function() {
+          return player;
         },
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange
+        set: function(value) {
+          player = value;
         }
-      };
+      });
 
-      angular.extend(defaultPlayerOptions, options);
+      function onPlayerReady() {
+        player.playVideo();
+      }
 
-      // YT should be available since it comes from iframe_api
-      player = new YT.Player(elementId || 'main-video-player', defaultPlayerOptions);
-      return player;
-    }
+      function onPlayerStateChange(event) {
+        // event.data holds event type, one of the following:
+        // -1 (unstarted)
+        // 0 (ended)
+        // 1 (playing)
+        // 2 (paused)
+        // 3 (buffering)
+        // 5 (video cued).
 
-    this.createNewPlayer = createNewPlayer;
+        // if event is 0 (ended), play another video.
+        if (event.data === 0) {
+          playVideo(PlaylistService.playlist.shift());
+        }
+      }
 
-    // Exposed API is:
-    // createNewPlayer
-    // player
-  });
+      function createNewPlayer(elementId, options) {
+        var defaultPlayerOptions = {
+          width: $window.innerWidth, // TODO: perhaps move to settings value
+          height: $window.innerHeight,
+          videoId: 'DT2oAtQtFrg',
+          playerVars: {
+            autohide: 1,
+            autoplay: 1,
+            controls: 0,
+            disablekb: 0,
+            enablejsapi: 1
+          },
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange
+          }
+        };
+
+        angular.extend(defaultPlayerOptions, options);
+
+        // YT should be available since it comes from iframe_api
+        player = new YT.Player(elementId || 'main-video-player', defaultPlayerOptions);
+        return player;
+      }
+
+      function playVideo(item) {
+        if(item) {
+          player.loadVideoById({
+            videoId: item.videoId,
+            startSeconds: 0,
+            // endSeconds: 0,
+            suggestedQuality: 'large'
+          });
+        }
+      }
+
+      this.createNewPlayer = createNewPlayer;
+      this.playVideo = playVideo;
+
+      // Exposed API is:
+      // createNewPlayer
+      // player
+      // playVide
+    });
 
 })();
