@@ -96,6 +96,12 @@
     min-height: 100px;
     text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
     color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: .2s ease all;
+
+    &:hover {
+      background: rgba(100, 100, 100, .4);
+    }
 
     &.current {
       background: rgba(100, 100, 100, .6);
@@ -105,15 +111,20 @@
     }
   }
 
-  li {
-    min-height: 70px;
+  .list-group-thumbnail {
+    float: left;
+    width: 100px;
+    height: 75px;
+    margin-right: 15px;
+    background: {
+      position: 50% 50%;
+      size: cover;
+      repeat: no-repeat;
+    }
   }
 
-  img {
-    float: left;
-    max-width: 90px;
-    margin-right: 10px;
-    height: auto;
+  li {
+    min-height: 70px;
   }
 
   h5 {

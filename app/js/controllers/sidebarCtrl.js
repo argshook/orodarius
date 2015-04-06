@@ -34,5 +34,11 @@
       this.isListItemCurrentlyPlayed = function(item) {
         return item.videoId === PlayerService.currentVideoId;
       };
+
+      function init() {
+        this.fillPlaylistWith('videos');
+      }
+
+      init.call(this);
     });
 })();

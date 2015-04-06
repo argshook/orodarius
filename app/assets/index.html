@@ -51,8 +51,8 @@
           ng-repeat="item in sidebar.list"
           ng-class="{current: sidebar.isListItemCurrentlyPlayed(item)}"
           ng-click="sidebar.playVideo(item)">
-          <img ng-src="{{item.thumbnailUrl}}" alt="{{item.title}}">
-          <h5>{{item.title}}</h5>
+          <div class="list-group-thumbnail" style="background-image: url({{item.thumbnailUrl}});"></div>
+          <div class="list-group-title">{{item.title}}</div>
         </li>
       </ul>
     </div>
