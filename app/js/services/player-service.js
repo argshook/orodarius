@@ -17,7 +17,7 @@
       });
 
       function onPlayerReady() {
-        player.playVideo();
+        // player.playVideo();
       }
 
       function onPlayerStateChange(event) {
@@ -62,8 +62,14 @@
 
       function playVideo(item) {
         if(item) {
-          player.loadVideoById({
-            videoId: item.videoId,
+          // player.loadVideoById({
+          //   videoId: item.videoId,
+          //   startSeconds: 0,
+          //   // endSeconds: 0,
+          //   suggestedQuality: 'large'
+          // });
+          player.loadVideoByUrl({
+            mediaContentUrl: item.url,
             startSeconds: 0,
             // endSeconds: 0,
             suggestedQuality: 'large'
@@ -71,13 +77,14 @@
         }
       }
 
+      // TODO: not nice, refactor
       this.createNewPlayer = createNewPlayer;
       this.playVideo = playVideo;
 
       // Exposed API is:
       // createNewPlayer
       // player
-      // playVide
+      // playVideo
     });
 
 })();

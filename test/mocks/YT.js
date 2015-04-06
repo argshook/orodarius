@@ -3,7 +3,8 @@
 var YT = {
   Player: function() {
     return {
-      loadVideoById: angular.noop
+      loadVideoById: angular.noop,
+      loadVideoByUrl: angular.noop
     };
   }
 };
