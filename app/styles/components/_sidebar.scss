@@ -83,6 +83,10 @@
 }
 
 .sidebar-playlist {
+  position: absolute;
+  padding-left: 0;
+  top: 210px; bottom: 0; left: 14px; right: 15px;
+  overflow-y: auto;
 
   .list-group-item {
     background: rgba(0, 0, 0, 0.34);
