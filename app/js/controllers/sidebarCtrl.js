@@ -13,6 +13,7 @@
 
       this.playVideo = function(item) {
         PlayerService.playVideo(item);
+        this.isOpen = false;
       };
 
       this.reloadPlaylist = function() {

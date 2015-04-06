@@ -37,6 +37,12 @@ describe('Controller: sidebarCtrl', function() {
     expect(PlayerService.playVideo).toHaveBeenCalledWith(mockVideoItem);
   });
 
+  it('isOpen should be false after playVideo has been invoked', function() {
+    ctrl.toggleSidebar();
+    ctrl.playVideo(mockVideoItem);
+    expect(ctrl.isOpen).toBe(false);
+  });
+
   it('reloadPlaylist should call PlaylistService.fetchSubreddit', function() {
     ctrl.reloadPlaylist();
     expect(ctrl.list).toEqual(PlaylistService.playlist);
