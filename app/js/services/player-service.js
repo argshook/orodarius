@@ -62,10 +62,7 @@
 
       function onPlayerError(event) {
         // https://developers.google.com/youtube/iframe_api_reference#Events
-        // 101 – The owner of the requested video does not allow it to be played in embedded players.
-        // 150 – This error is the same as 101. It's just a 101 error in disguise!
-        if(event.data === 101 || event.data === 150) {
-          // TODO: play next video in playlist
+        if([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
           playNext();
         }
       }
@@ -98,6 +95,12 @@
 
       function playVideo(item) {
         if(item) {
+          // TODO: skip misunderstood urls for now
+          if(item.url === false) {
+            playNext();
+            return;
+          }
+
           player.loadVideoById({
             videoId: item.videoId,
             startSeconds: 0,
