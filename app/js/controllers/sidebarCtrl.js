@@ -28,6 +28,7 @@
 
       this.fillPlaylistWith = function(subreddit = "videos") {
         PlaylistService.fetchSubreddit(subreddit).then(data => this.list = data);
+        this.currentSubreddit = subreddit;
       };
 
       this.isListItemCurrentlyPlayed = function(item) {

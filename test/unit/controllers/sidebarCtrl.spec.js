@@ -53,4 +53,9 @@ describe('Controller: sidebarCtrl', function() {
     ctrl.fillPlaylistWith('artisanvideos');
     expect(PlaylistService.fetchSubreddit).toHaveBeenCalledWith('artisanvideos');
   });
+
+  it("fillPlaylistWith should update currentSubreddit when invoked", function() {
+    ctrl.fillPlaylistWith('artisanvideos');
+    expect(ctrl.currentSubreddit).toBe('artisanvideos');
+  });
 });
