@@ -15,18 +15,36 @@
         return playlist;
       }
 
+      function getVideoIdFromUrl(url) {
+        var videoIdRegExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = url.match(videoIdRegExp);
+        if (match && match[2].length == 11) {
+          return match[2];
+        } else {
+          console.warn("Couldn't find video ID for this url:", url);
+          return false;
+        }
+      }
+
+      function subredditResultsFilter(data) {
+        return _(data)
+                  .filter((item) => item.kind === 't3' && item.data.domain === 'youtube.com') // t3 - link posts
+                  .map(function(item) {
+                    return {
+                      title: item.data.title,
+                      url: item.data.url,
+                      videoId: getVideoIdFromUrl(item.data.url)
+                    };
+                  })
+                  .value();
+      }
+
       function fetchSubreddit(subredditName = 'videos') {
         var deferred = $q.defer();
 
         $http.get(`${redditAPIBaseUrl}${subredditName}/hot.json?limit=1`)
           .then(function(data) {
-            playlist = data.data.data.children;
-            playlist = _.map(playlist, function(item) {
-              return {
-                title: item.data.title,
-                url: item.data.url
-              };
-            });
+            playlist = subredditResultsFilter(data.data.data.children);
             deferred.resolve(playlist);
           }, function(error) {
             deferred.reject(error);
