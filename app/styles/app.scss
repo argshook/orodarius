@@ -1,9 +1,8 @@
-@import "../../node_modules/node-bourbon/assets/stylesheets/bourbon";
+// @import "../../node_modules/node-bourbon/assets/stylesheets/bourbon";
+@import "variables";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap"; // Boostrap 3
 
-@import "variables";
-
-*, *:before, *:after { box-sizing: border-box; }
+@import url("http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
 
 body {
   font: {

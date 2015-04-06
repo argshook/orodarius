@@ -1,1 +1,9 @@
 $body-background: rgb(34, 34, 34);
+
+$input-bg: rgba(0, 0, 0, .2);
+$input-border: rgba(255, 255, 255, .1);
+$input-color: rgba(255, 255, 255, .4);
+$input-color-placeholder: fade-out($input-color, .8);
+$input-border-focus: rgba(255, 255, 255, .1);
+$input-group-addon-bg: transparent;
+$input-group-addon-border-color: $input-border;
