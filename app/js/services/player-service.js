@@ -45,7 +45,7 @@
         // if event is 0 (ended), play another video.
         if (event.data === 0) {
           // TODO: play next video in playlist
-          playVideo(PlaylistService.playlist.shift());
+          playNext();
         }
       }
 
@@ -55,7 +55,7 @@
         // 150 – This error is the same as 101. It's just a 101 error in disguise!
         if(event.data === 101 || event.data === 150) {
           // TODO: play next video in playlist
-          playVideo(PlaylistService.playlist.shift());
+          playNext();
         }
       }
 
@@ -97,15 +97,25 @@
         }
       }
 
+      function playNext() {
+        var nextVideoItem = _.findIndex(PlaylistService.playlist, function(item) {
+          return item.videoId === currentVideoId;
+        });
+
+        playVideo(PlaylistService.playlist[nextVideoItem + 1]);
+      }
+
       // TODO: not nice, refactor
       this.createNewPlayer = createNewPlayer;
       this.playVideo = playVideo;
+      this.playNext = playNext;
 
       // Exposed API is:
       // createNewPlayer
       // player
       // currentVideoId
       // playVideo
+      // playNext
     });
 
 })();
