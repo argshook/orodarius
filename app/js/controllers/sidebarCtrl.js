@@ -5,6 +5,7 @@
     .controller('sidebarCtrl', function(PlaylistService, PlayerService, $q) {
       this.isOpen = false;
       this.currentSubreddit = 'videos';
+      this.isListLoading = false;
 
       this.toggleSidebar = function() {
         this.isOpen = !this.isOpen;
@@ -17,17 +18,12 @@
         this.isOpen = false;
       };
 
-      this.reloadPlaylist = function() {
-        PlaylistService.fetchSubreddit()
-          .then((data) => {
-            this.list = data;
-          }, (error) => {
-            console.error(error);
-          });
-      };
-
       this.fillPlaylistWith = function(subreddit = "videos") {
-        PlaylistService.fetchSubreddit(subreddit).then(data => this.list = data);
+        this.isListLoading = true;
+        PlaylistService.fetchSubreddit(subreddit).then(data => {
+          this.isListLoading = false;
+          this.list = data;
+        });
         this.currentSubreddit = subreddit;
       };
 
@@ -37,8 +33,9 @@
 
       function init() {
         this.fillPlaylistWith('videos');
+        this.subredditQuery = 'videos';
       }
 
-      init.call(this);
+      // init.call(this);
     });
 })();

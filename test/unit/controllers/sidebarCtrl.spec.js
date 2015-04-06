@@ -43,11 +43,6 @@ describe('Controller: sidebarCtrl', function() {
     expect(ctrl.isOpen).toBe(false);
   });
 
-  it('reloadPlaylist should call PlaylistService.fetchSubreddit', function() {
-    ctrl.reloadPlaylist();
-    expect(ctrl.list).toEqual(PlaylistService.playlist);
-  });
-
   it("fillPlaylistWith should fill sidebar.list with fetched items from reddit", function() {
     spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({then: angular.noop});
     ctrl.fillPlaylistWith('artisanvideos');

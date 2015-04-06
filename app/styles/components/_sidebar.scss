@@ -60,9 +60,9 @@
     padding: 0.2em;
     color: rgba(255, 255, 255, 0.57);
     text-align: center;
-    font-family: Roboto;
+    font-family: $font-roboto;
     font-size: 3em;
-    font-weight: 300;
+    font-weight: 700;
     text-transform: uppercase;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.97);
   }
@@ -79,6 +79,16 @@
   .btn:hover {
     // overriding boostrap
     color: rgba(255, 255, 255, .9);
+  }
+
+  .glyphicon-search.loading {
+    animation: sidebarSearchIconLoadingSpin 2s linear infinite;
+  }
+}
+
+@keyframes sidebarSearchIconLoadingSpin {
+  100% {
+    transform: rotateZ(360deg);
   }
 }
 
@@ -97,7 +107,7 @@
     text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
     color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
-    transition: .2s ease all;
+    transition: .05s ease all;
 
     &:hover {
       background: rgba(100, 100, 100, .4);
@@ -120,6 +130,17 @@
       position: 50% 50%;
       size: cover;
       repeat: no-repeat;
+    }
+  }
+
+  .list-group-empty {
+    text-align: center;
+    padding: 3em 0;
+    font-weight: 100;
+    color: rgba(255, 255, 255, .6);
+
+    h2 {
+      font-weight: 100;
     }
   }
 

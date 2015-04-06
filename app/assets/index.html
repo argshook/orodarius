@@ -35,10 +35,7 @@
           <div class="input-group-addon">r/</div>
           <input type="text" class="form-control" placeholder="videos" ng-model="sidebar.subredditQuery" ng-enter="sidebar.fillPlaylistWith(sidebar.subredditQuery)" />
           <div class="input-group-addon btn" ng-click="sidebar.fillPlaylistWith(sidebar.subredditQuery)">
-            <span class="glyphicon glyphicon-search"></span>
-          </div>
-          <div class="input-group-addon btn" ng-click="sidebar.reloadPlaylist()">
-            <span class="glyphicon glyphicon-refresh"></span>
+            <span class="glyphicon glyphicon-search" ng-class="{loading: sidebar.isListLoading}"></span>
           </div>
         </div>
       </div>
@@ -53,6 +50,10 @@
           ng-click="sidebar.playVideo(item)">
           <div class="list-group-thumbnail" style="background-image: url({{item.thumbnailUrl}});"></div>
           <div class="list-group-title">{{item.title}}</div>
+        </li>
+        <li class="list-group-empty" ng-show="sidebar.list.length === 0">
+          <h2>Playlist empty...</h2>
+          <p>Try some subreddits, like <em>videos</em> or <em>artisanvideos</em></p>
         </li>
       </ul>
     </div>
