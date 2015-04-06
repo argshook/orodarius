@@ -23,5 +23,9 @@
             console.error(error);
           });
       };
+
+      this.isListItemCurrentlyPlayed = function(item) {
+        return item.videoId === PlayerService.currentVideoId;
+      };
     });
 })();

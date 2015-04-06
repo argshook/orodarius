@@ -25,8 +25,12 @@
 
     <div class="sidebar-playlist-container">
       <ul class="sidebar-playlist list-group">
-        <li class="list-group-item" ng-repeat="item in sidebar.list" ng-click="sidebar.playVideo(item)">
-          <img ng-src="{{item.thumbnailUrl}}" alt="">
+        <li
+          class="list-group-item"
+          ng-repeat="item in sidebar.list"
+          ng-class="{current: sidebar.isListItemCurrentlyPlayed(item)}"
+          ng-click="sidebar.playVideo(item)">
+          <img ng-src="{{item.thumbnailUrl}}" alt="{{item.title}}">
           <h5>{{item.title}}</h5>
         </li>
       </ul>

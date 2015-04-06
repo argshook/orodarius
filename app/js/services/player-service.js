@@ -3,16 +3,29 @@
 
   angular.module('orodarius')
     .service('PlayerService', function($window, PlaylistService) {
-      var player;
+      var player,
+          currentVideoId;
 
-      Object.defineProperty(this, 'player', {
-        enumerable: true,
-        configurable: true,
-        get: function() {
-          return player;
+      Object.defineProperties(this, {
+        player: {
+          enumerable: true,
+          configurable: true,
+          get: function() {
+            return player;
+          },
+          set: function(value) {
+            player = value;
+          }
         },
-        set: function(value) {
-          player = value;
+        currentVideoId: {
+          enumerable: true,
+          configurable: true,
+          get: function() {
+            return currentVideoId;
+          },
+          set: function(value) {
+            currentVideoId = value;
+          }
         }
       });
 
@@ -30,7 +43,6 @@
         // 5 (video cued).
 
         // if event is 0 (ended), play another video.
-        console.log(event.data);
         if (event.data === 0) {
           // TODO: play next video in playlist
           playVideo(PlaylistService.playlist.shift());
@@ -43,6 +55,7 @@
         // 150 – This error is the same as 101. It's just a 101 error in disguise!
         if(event.data === 101 || event.data === 150) {
           // TODO: play next video in playlist
+          playVideo(PlaylistService.playlist.shift());
         }
       }
 
@@ -80,6 +93,7 @@
             // endSeconds: 0,
             suggestedQuality: 'large'
           });
+          currentVideoId = item.videoId;
         }
       }
 
@@ -90,6 +104,7 @@
       // Exposed API is:
       // createNewPlayer
       // player
+      // currentVideoId
       // playVideo
     });
 

@@ -8,6 +8,7 @@
   right: -$width;
   bottom: $gap-from-edge;
   width: $width;
+  overflow: hidden;
 
   background: rgba(68, 68, 68, 0.75);
 
@@ -31,28 +32,30 @@
   font-family: monospace;
 }
 
-.sidebar {
-  &-playlist-container {
-    margin-top: 20px;
-    height: 100%;
-    overflow-y: auto;
+.sidebar-playlist-container {
+  margin-top: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar-playlist {
+  li {
+    min-height: 70px;
   }
 
-  &-playlist {
-    li {
-      min-height: 70px;
-    }
+  img {
+    float: left;
+    max-width: 90px;
+    margin-right: 10px;
+    height: auto;
+  }
 
-    img {
-      float: left;
-      max-width: 90px;
-      margin-right: 10px;
-      height: auto;
-    }
+  h5 {
+    padding: 0;
+    margin: 0;
+  }
 
-    h5 {
-      padding: 0;
-      margin: 0;
-    }
+  .current {
+    background: rgb(218, 218, 218);
   }
 }
