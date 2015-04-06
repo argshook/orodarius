@@ -1,13 +1,14 @@
 'use strict';
 
 describe('Service: PlayerService', function() {
-  var service, player, PlaylistService;
+  var service, player, PlaylistService, $q;
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_PlayerService_, _PlaylistService_) {
+  beforeEach(inject(function(_PlayerService_, _PlaylistService_, _$q_) {
     service = _PlayerService_;
     PlaylistService = _PlaylistService_;
+    $q = _$q_;
 
     player = service.createNewPlayer('main-video-player');
 
@@ -35,6 +36,16 @@ describe('Service: PlayerService', function() {
 
     service.playNext();
     expect(service.currentVideoId).toBe('nextId');
+  });
+
+  it('playNext method should call PlaylistService.fetchSubreddit when last item reached', function() {
+    PlaylistService.playlist = [
+      { videoId: 'currentId' }
+    ];
+    spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({ then: angular.noop });
+    service.currentVideoId = PlaylistService.playlist[0].videoId;
+    service.playNext();
+    expect(PlaylistService.fetchSubreddit).toHaveBeenCalled();
   });
 
   it('playPrevious should play previous video in row', function() {

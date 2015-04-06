@@ -9,6 +9,7 @@
 
       this.toggleSidebar = function() {
         this.isOpen = !this.isOpen;
+        this.list = PlaylistService.playlist;
       };
 
       this.list = PlaylistService.playlist;

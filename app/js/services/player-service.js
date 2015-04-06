@@ -112,18 +112,26 @@
       function playNext() {
         var nextVideoItemIndex = _.findIndex(PlaylistService.playlist, function(item) {
           return item.videoId === currentVideoId;
-        });
+        }) + 1;
 
-        // TODO: fetch more video items when asking to play last item
-        playVideo(PlaylistService.playlist[nextVideoItemIndex + 1 === PlaylistService.playlist.length ? 0 : nextVideoItemIndex + 1]);
+        if(nextVideoItemIndex === PlaylistService.playlist.length) {
+          PlaylistService.fetchSubreddit(
+            PlaylistService.currentSubreddit,
+            PlaylistService.afterTag
+          ).then(function(data) {
+            playVideo(PlaylistService.playlist[nextVideoItemIndex]);
+          });
+        } else {
+          playVideo(PlaylistService.playlist[nextVideoItemIndex]);
+        }
       }
 
       function playPrevious() {
         var previousVideoItemIndex = _.findIndex(PlaylistService.playlist, function(item) {
           return item.videoId === currentVideoId;
-        });
+        }) - 1;
 
-        playVideo(PlaylistService.playlist[previousVideoItemIndex - 1 < 0 ? 0 : previousVideoItemIndex - 1]);
+        playVideo(PlaylistService.playlist[previousVideoItemIndex < 0 ? 0 : previousVideoItemIndex]);
       }
 
       function playOrPause() {

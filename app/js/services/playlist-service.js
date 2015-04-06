@@ -8,16 +8,30 @@
       // http://www.reddit.com/r/videos/hot.json?limit=1
 
       var playlist = [],
-          redditAPIBaseUrl = 'http://www.reddit.com/r/';
+          redditAPIBaseUrl = 'http://www.reddit.com/r/',
+          currentSubreddit,
+          afterTag;
 
-      Object.defineProperty(this, 'playlist', {
-        enumerable: true,
-        configurable: true,
-        get: function() {
-          return playlist;
+      Object.defineProperties(this, {
+        playlist: {
+          enumerable: true,
+          configurable: true,
+          get: function() {
+            return playlist;
+          },
+          set: function(value) {
+            playlist = value;
+          }
         },
-        set: function(value) {
-          playlist = value;
+        afterTag: {
+          enumerable: true,
+          configurable: true,
+          get: function() {
+            return afterTag;
+          },
+          set: function(value) {
+            afterTag = value;
+          }
         }
       });
 
@@ -51,12 +65,16 @@
                   .value();
       }
 
-      function fetchSubreddit(subredditName = 'videos') {
+      function fetchSubreddit(subredditName = 'videos', after) {
         var deferred = $q.defer();
+        currentSubreddit = subredditName;
 
-        $http.get(`${redditAPIBaseUrl}${subredditName}/hot.json`)
+        var apiUrl = `${redditAPIBaseUrl}${subredditName}/hot.json?limit=25` + (after ? `&after=${after}` : '');
+
+        $http.get(apiUrl)
           .then(function(data) {
-            playlist = subredditResultsFilter(data.data.data.children);
+            afterTag = data.data.data.after;
+            playlist = playlist.concat(subredditResultsFilter(data.data.data.children));
             deferred.resolve(playlist);
           }, function(error) {
             deferred.reject(error);
@@ -67,5 +85,7 @@
 
       this.add = add;
       this.fetchSubreddit = fetchSubreddit;
+      this.currentSubreddit = currentSubreddit;
+      this.afterTag = afterTag;
     });
 })();

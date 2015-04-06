@@ -15,7 +15,7 @@ describe('Service: PlaylistService', function() {
 
   beforeEach(function() {
     spyOn(service, 'add');
-    $httpBackend.whenGET('http://www.reddit.com/r/videos/hot.json').respond(200, REDDIT);
+    $httpBackend.whenGET('http://www.reddit.com/r/videos/hot.json?limit=25').respond(200, REDDIT);
   });
 
   it('should expose playlist array', function() {
