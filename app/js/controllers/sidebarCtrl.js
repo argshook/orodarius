@@ -14,5 +14,15 @@
       this.playVideo = function(item) {
         PlayerService.playVideo(item);
       };
+
+      this.reloadPlaylist = function() {
+        PlaylistService.fetchSubreddit()
+          .then((data) => {
+            this.list = data;
+            console.log(this.list);
+          }, (error) => {
+            console.error(error);
+          });
+      };
     });
 })();

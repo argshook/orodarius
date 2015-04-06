@@ -21,10 +21,10 @@
     ng-controller="sidebarCtrl as sidebar">
     <div class="container-sidebar-toggle" ng-click="sidebar.toggleSidebar()">&laquo;</div>
 
+    <button class="btn btn-default" ng-click="sidebar.reloadPlaylist()">Reload playlist</button>
     <ul class="sidebar-playlist">
       <li ng-repeat="item in sidebar.list" ng-click="sidebar.playVideo(item)">
-        {{item.name}} <br>
-        {{item.description}}
+        {{item | json}}
       </li>
     </ul>
   </div>

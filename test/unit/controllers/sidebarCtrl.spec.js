@@ -36,4 +36,9 @@ describe('Controller: sidebarCtrl', function() {
     ctrl.playVideo(mockVideoItem);
     expect(PlayerService.playVideo).toHaveBeenCalledWith(mockVideoItem);
   });
+
+  it('reloadPlaylist should call PlaylistService.fetchSubreddit', function() {
+    ctrl.reloadPlaylist();
+    expect(ctrl.list).toEqual(PlaylistService.playlist);
+  });
 });
