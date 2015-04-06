@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="orodarius">
+<html lang="en" ng-app="orodarius" ng-controller="baseCtrl as base">
 <head>
   <meta charset="UTF-8">
   <title>Orodarius</title>
@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/app.css">
 </head>
-<body>
+<body ng-bind-keys="base.keyboardEventsOptions">
 
   <div class="container-full">
     <div class="video-player-container">

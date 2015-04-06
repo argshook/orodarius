@@ -2,8 +2,8 @@
   'use strict';
 
   angular.module('orodarius')
-    .controller('sidebarCtrl', function(PlaylistService, PlayerService, $q) {
-      this.isOpen = false;
+    .controller('sidebarCtrl', function(PlaylistService, PlayerService) {
+      this.isOpen = true;
       this.currentSubreddit = 'videos';
       this.isListLoading = false;
 
@@ -36,6 +36,6 @@
         this.subredditQuery = 'videos';
       }
 
-      // init.call(this);
+      init.call(this);
     });
 })();

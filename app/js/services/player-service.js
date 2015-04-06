@@ -4,7 +4,8 @@
   angular.module('orodarius')
     .service('PlayerService', function($window, PlaylistService) {
       var player,
-          currentVideoId;
+          currentVideoId,
+          isPlaying = false;
 
       Object.defineProperties(this, {
         player: {
@@ -26,7 +27,17 @@
           set: function(value) {
             currentVideoId = value;
           }
-        }
+        },
+        isPlaying: {
+          enumerable: true,
+          configurable: true,
+          get: function() {
+            return isPlaying;
+          },
+          set: function(value) {
+            isPlaying = value;
+          }
+        },
       });
 
       function onPlayerReady() {
@@ -94,27 +105,51 @@
             suggestedQuality: 'large'
           });
           currentVideoId = item.videoId;
+          isPlaying = true;
         }
       }
 
       function playNext() {
-        var nextVideoItem = _.findIndex(PlaylistService.playlist, function(item) {
+        var nextVideoItemIndex = _.findIndex(PlaylistService.playlist, function(item) {
           return item.videoId === currentVideoId;
         });
 
-        playVideo(PlaylistService.playlist[nextVideoItem + 1]);
+        // TODO: fetch more video items when asking to play last item
+        playVideo(PlaylistService.playlist[nextVideoItemIndex + 1 === PlaylistService.playlist.length ? 0 : nextVideoItemIndex + 1]);
+      }
+
+      function playPrevious() {
+        var previousVideoItemIndex = _.findIndex(PlaylistService.playlist, function(item) {
+          return item.videoId === currentVideoId;
+        });
+
+        playVideo(PlaylistService.playlist[previousVideoItemIndex - 1 < 0 ? 0 : previousVideoItemIndex - 1]);
+      }
+
+      function playOrPause() {
+        if(isPlaying) {
+          player.pauseVideo();
+          isPlaying = false;
+        } else {
+          player.playVideo();
+          isPlaying = true;
+        }
       }
 
       // TODO: not nice, refactor
       this.createNewPlayer = createNewPlayer;
       this.playVideo = playVideo;
       this.playNext = playNext;
+      this.playPrevious = playPrevious;
+      this.playOrPause = playOrPause;
 
       // Exposed API is:
       // createNewPlayer
       // player
       // currentVideoId
+      // isPlaying
       // playVideo
+      // playPrevious
       // playNext
     });
 

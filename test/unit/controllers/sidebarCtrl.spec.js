@@ -16,16 +16,16 @@ describe('Controller: sidebarCtrl', function() {
     PlaylistService.add(mockVideoItem);
   }));
 
-  it('should expose isOpen flag and be set to false initially', function() {
-    expect(ctrl.isOpen).toBe(false);
+  it('should expose isOpen flag and be set to true initially', function() {
+    expect(ctrl.isOpen).toBe(true);
   });
 
   it('toggleSidebar should toggle isOpen flag', function() {
     ctrl.toggleSidebar();
-    expect(ctrl.isOpen).toBe(true);
+    expect(ctrl.isOpen).toBe(false);
 
     ctrl.toggleSidebar();
-    expect(ctrl.isOpen).toBe(false);
+    expect(ctrl.isOpen).toBe(true);
   });
 
   it('list should contain items from PlaylistService.playlist', function() {
