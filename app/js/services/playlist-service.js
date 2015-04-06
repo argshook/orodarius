@@ -10,6 +10,17 @@
       var playlist = [],
           redditAPIBaseUrl = 'http://www.reddit.com/r/';
 
+      Object.defineProperty(this, 'playlist', {
+        enumerable: true,
+        configurable: true,
+        get: function() {
+          return playlist;
+        },
+        set: function(value) {
+          playlist = value;
+        }
+      });
+
       function add(item) {
         playlist.push(item);
         return playlist;
@@ -54,10 +65,7 @@
         return deferred.promise;
       }
 
-      return {
-        playlist,
-        add,
-        fetchSubreddit
-      };
+      this.add = add;
+      this.fetchSubreddit = fetchSubreddit;
     });
 })();

@@ -30,8 +30,19 @@
         // 5 (video cued).
 
         // if event is 0 (ended), play another video.
+        console.log(event.data);
         if (event.data === 0) {
+          // TODO: play next video in playlist
           playVideo(PlaylistService.playlist.shift());
+        }
+      }
+
+      function onPlayerError(event) {
+        // https://developers.google.com/youtube/iframe_api_reference#Events
+        // 101 – The owner of the requested video does not allow it to be played in embedded players.
+        // 150 – This error is the same as 101. It's just a 101 error in disguise!
+        if(event.data === 101 || event.data === 150) {
+          // TODO: play next video in playlist
         }
       }
 
@@ -42,13 +53,14 @@
           videoId: 'DT2oAtQtFrg',
           playerVars: {
             autohide: 1,
-            autoplay: 1,
-            controls: 0,
+            autoplay: 0,
+            controls: 1,
             disablekb: 0,
             enablejsapi: 1
           },
           events: {
             onReady: onPlayerReady,
+            onError: onPlayerError,
             onStateChange: onPlayerStateChange
           }
         };

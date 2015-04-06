@@ -30,6 +30,10 @@ describe('Service: PlaylistService', function() {
     // expect(service.playlist).toEqual([mockVideoItem]);
   });
 
+  // it('get method should return current playlist', function() {
+
+  // });
+
   it('fetchSubreddit should return a promise', function() {
     var result,
         promise = service.fetchSubreddit();
