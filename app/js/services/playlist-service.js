@@ -46,15 +46,50 @@
         return playlist;
       }
 
-      function getVideoIdFromUrl(url) {
-        // TODO: Couldn't find video ID for this url: http://www.youtube.com/attribution_link?a=h9bhZZ-vW4Q&amp;u=%2Fwatch%3Fv%3Dil1L14hyWSE%26feature%3Dshare
-        // TODO: doesn't work with trailing slash
-        var videoIdRegExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        var match = url.match(videoIdRegExp);
-        if (match && match[2].length == 11) {
-          return match[2];
+      function getVideoInfoFromUrl(elem) {
+        var hashRe = /^https?:\/\/(?:www\.|m\.)?youtube\.com\/watch\?.*v=([\w\-]+)/i,
+            altHashRe = /^https?:\/\/(?:www\.)?youtu\.be\/([\w\-]+)/i;
+
+        var groups = hashRe.exec(elem.href);
+        if(!groups) {
+          groups = altHashRe.exec(elem.href);
+        }
+
+        if(groups) {
+          // Check url for timecode e.g t=1h23m15s
+          var timecodeRe = /t=(.*?)&|t=(.*?)$/i,
+              starttime = 0,
+              timecodeResult = timecodeRe.exec(elem.href);
+
+          if(timecodeResult !== null) {
+            var time_blocks = {'h':3600, 'm':60, 's':1},
+                timeRE = /[0-9]+[h|m|s]/ig;
+
+            // Get each segment e.g. 8m and calculate its value in seconds
+            var timeMatch = timecodeResult[0].match(timeRE);
+
+            if(timeMatch) {
+              timeMatch.forEach(function(ts){
+                var unit = time_blocks[ts.charAt(ts.length-1)],
+                    amount = parseInt(ts.slice(0, - 1), 10);
+
+                // Add each unit to starttime
+                starttime += unit * amount;
+              });
+            } else {
+              // support direct timestamp e.g. t=200
+              starttime = parseInt(timecodeResult[0].replace('t=',''), 10);
+              if (isNaN(starttime)) {
+                starttime = 0;
+              }
+            }
+          }
+
+          return {
+            id: groups[1],
+            starttime: starttime
+          };
         } else {
-          console.warn("Couldn't find video ID for this url:", url);
           return false;
         }
       }
@@ -63,10 +98,15 @@
         return _(data)
                   .filter((item) => item.kind === 't3' && item.data.domain === 'youtube.com') // t3 - link posts
                   .map((item) => {
+                    var videoInfo = getVideoInfoFromUrl(item.data.url);
+
+                    // this is where playlist
+                    // item is built
                     return {
                       title: item.data.title,
                       url: item.data.url,
-                      videoId: getVideoIdFromUrl(item.data.url),
+                      videoId: videoInfo.id,
+                      starttime: videoInfo.starttime,
                       thumbnailUrl: item.data.thumbnail
                     };
                   })
