@@ -53,4 +53,8 @@ describe('Service: PlaylistService', function() {
     $httpBackend.flush();
     expect(service.currentSubreddit).toBe('birbir');
   });
+
+  it('should expose subscribe method', function() {
+    expect(typeof service.subscribe).toBe('function');
+  });
 });

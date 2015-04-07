@@ -19,7 +19,10 @@
     class="container-sidebar"
     ng-class="{'container-sidebar--open': sidebar.isOpen}"
     ng-controller="sidebarCtrl as sidebar">
-    <div class="sidebar-toggle" ng-click="sidebar.toggleSidebar()">
+    <div
+      class="sidebar-toggle"
+      ng-click="sidebar.toggleSidebar()"
+      ng-bind-keys="sidebar.keyBindOptions">
       <span class="glyphicon glyphicon-circle-arrow-{{sidebar.isOpen ? 'right' : 'left'}}"></span>
     </div>
 

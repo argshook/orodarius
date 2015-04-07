@@ -137,6 +137,21 @@
         return deferred.promise;
       }
 
+      this.subscribe = function(name, fn) {
+
+      };
+
+      var callbackFnArray = [];
+      function publish(name, data) {
+        if(callbackFnArray.length) {
+          _(callbackFnArray)
+            .where(item => item.name === name)
+            .map(item => {
+              item.fn.call(null, data);
+            });
+        }
+      }
+
       this.add = add;
       this.fetchSubreddit = fetchSubreddit;
       this.afterTag = afterTag;

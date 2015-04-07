@@ -1,14 +1,17 @@
 'use strict';
 
 describe('Controller: sidebarCtrl', function() {
-  var ctrl, PlaylistService, PlayerService;
+  var ctrl, scope, PlaylistService, PlayerService, $httpBackend;
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_$controller_, _PlaylistService_, _PlayerService_) {
-    ctrl = _$controller_('sidebarCtrl', { PlaylistService: _PlaylistService_ });
+  beforeEach(inject(function(_$rootScope_, _$controller_, _PlaylistService_, _PlayerService_, _$httpBackend_) {
+    scope = _$rootScope_.$new();
+    ctrl = _$controller_('sidebarCtrl', { $scope: scope, PlaylistService: _PlaylistService_, PlayerService: _PlayerService_ });
+
     PlaylistService = _PlaylistService_;
     PlayerService = _PlayerService_;
+    $httpBackend = _$httpBackend_;
 
     spyOn(PlayerService, 'playVideo');
 
@@ -21,6 +24,8 @@ describe('Controller: sidebarCtrl', function() {
   });
 
   it('toggleSidebar should toggle isOpen flag', function() {
+    // TODO: temporary!
+    $httpBackend.whenGET(/hot\.json\?limit=25/).respond(200, REDDIT);
     ctrl.toggleSidebar();
     expect(ctrl.isOpen).toBe(false);
 
@@ -38,7 +43,7 @@ describe('Controller: sidebarCtrl', function() {
   });
 
   it('isOpen should be false after playVideo has been invoked', function() {
-    ctrl.toggleSidebar();
+    ctrl.isOpen = true;
     ctrl.playVideo(mockVideoItem);
     expect(ctrl.isOpen).toBe(false);
   });

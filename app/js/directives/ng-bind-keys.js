@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .directive('ngBindKeys', function() {
+    .directive('ngBindKeys', function($document) {
       return {
         restrict: 'A',
         scope: {
@@ -11,7 +11,7 @@
         link: function(scope, element, attr) {
           var keyCodes = _(scope.ngBindKeysOptions).map((fn, keyCode) => keyCode).value();
 
-          element.on('keydown', function(event) {
+          $document.on('keydown', function(event) {
             var currentKeyCode = event.which || event.keyCode;
 
             if(scope.ngBindKeysOptions[currentKeyCode]) {

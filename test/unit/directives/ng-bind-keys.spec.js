@@ -1,12 +1,13 @@
 'use strict';
 
 describe('Directive: ngBindKeys', function() {
-  var element, scope, $compile;
+  var element, scope, $compile, $document;
 
   beforeEach(module('orodarius'));
-  beforeEach(inject(function(_$compile_, _$rootScope_) {
+  beforeEach(inject(function(_$compile_, _$rootScope_, _$document_) {
     $compile = _$compile_;
     scope = _$rootScope_.$new();
+    $document = _$document_;
 
     scope.ngBindKeysOptions = {
       37: angular.noop, // left
@@ -31,7 +32,7 @@ describe('Directive: ngBindKeys', function() {
   function triggerEventWithKeyCode(keyCode) {
     var event = $.Event('keydown');
     event.which = keyCode;
-    element.triggerHandler(event);
+    $document.triggerHandler(event);
   }
 
   it('should compile successfully', function() {

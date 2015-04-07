@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .controller('sidebarCtrl', function(PlaylistService, PlayerService) {
+    .controller('sidebarCtrl', function($scope, PlaylistService, PlayerService) {
       this.isOpen = true;
       this.currentSubreddit = 'videos';
       this.isListLoading = false;
@@ -10,6 +10,7 @@
       this.toggleSidebar = function() {
         this.isOpen = !this.isOpen;
         this.list = PlaylistService.playlist;
+        $scope.$apply();
       };
 
       this.list = PlaylistService.playlist;
@@ -30,6 +31,12 @@
 
       this.isListItemCurrentlyPlayed = function(item) {
         return item.videoId === PlayerService.currentVideoId;
+      };
+
+      this.keyBindOptions = {
+        16: event => {
+          this.toggleSidebar();
+        }
       };
 
       function init() {
