@@ -8,14 +8,11 @@ describe('Service: PlaylistService', function() {
   beforeEach(inject(function(_PlaylistService_, _$httpBackend_) {
     service = _PlaylistService_;
     $httpBackend = _$httpBackend_;
-
-    // var deferred = _$q_.defer();
-    // spyOn(service, 'fetchSubreddit').and.returnValue(deferred.promise);
   }));
 
   beforeEach(function() {
     spyOn(service, 'add');
-    $httpBackend.whenGET('http://www.reddit.com/r/videos/hot.json?limit=25').respond(200, REDDIT);
+    $httpBackend.whenGET(/hot\.json\?limit=25/).respond(200, REDDIT);
   });
 
   it('should expose playlist array', function() {
@@ -42,5 +39,18 @@ describe('Service: PlaylistService', function() {
 
     $httpBackend.flush();
     expect(result).toBe(true);
+  });
+
+  it('fetchSubreddit should change current subreddit on successful promise resolve', function() {
+    service.fetchSubreddit('videos').then(function(playlist) {
+      expect(service.currentSubreddit).toBe('videos');
+    });
+
+    service.fetchSubreddit('birbir').then(function(playlist) {
+      expect(service.currentSubreddit).toBe('birbir');
+    });
+
+    $httpBackend.flush();
+    expect(service.currentSubreddit).toBe('birbir');
   });
 });

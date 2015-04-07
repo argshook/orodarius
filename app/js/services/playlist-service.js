@@ -32,6 +32,12 @@
           set: function(value) {
             afterTag = value;
           }
+        },
+        currentSubreddit: {
+          enumerable: true,
+          configurable: true,
+          get: () => currentSubreddit,
+          set: (value) => { currentSubreddit = value; }
         }
       });
 
@@ -69,14 +75,14 @@
 
       function fetchSubreddit(subredditName, after) {
         var deferred = $q.defer();
-        currentSubreddit = subredditName;
 
         var apiUrl = `${redditAPIBaseUrl}${subredditName}/hot.json?limit=25` + (after ? `&after=${after}` : '');
 
         $http.get(apiUrl)
           .then(function(data) {
             afterTag = data.data.data.after;
-            if(after) {
+            currentSubreddit = subredditName;
+            if(after) { // after is a key for next paginated list, with it we concat playlists
               playlist = playlist.concat(subredditResultsFilter(data.data.data.children));
             } else {
               playlist = subredditResultsFilter(data.data.data.children);
@@ -91,7 +97,6 @@
 
       this.add = add;
       this.fetchSubreddit = fetchSubreddit;
-      this.currentSubreddit = currentSubreddit;
       this.afterTag = afterTag;
     });
 })();
