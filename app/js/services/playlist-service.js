@@ -46,20 +46,22 @@
         return playlist;
       }
 
-      function getVideoInfoFromUrl(elem) {
+      function getVideoInfoFromUrl(url) {
+        // inspiration or, basically, stealing from:
+        // https://github.com/honestbleeps/Reddit-Enhancement-Suite/blob/ebf015e5b78780f7c86e0c9ae5fde45af2c68fff/lib/modules/hosts/youtube.js#L11
         var hashRe = /^https?:\/\/(?:www\.|m\.)?youtube\.com\/watch\?.*v=([\w\-]+)/i,
             altHashRe = /^https?:\/\/(?:www\.)?youtu\.be\/([\w\-]+)/i;
 
-        var groups = hashRe.exec(elem.href);
+        var groups = hashRe.exec(url);
         if(!groups) {
-          groups = altHashRe.exec(elem.href);
+          groups = altHashRe.exec(url);
         }
 
         if(groups) {
           // Check url for timecode e.g t=1h23m15s
           var timecodeRe = /t=(.*?)&|t=(.*?)$/i,
               starttime = 0,
-              timecodeResult = timecodeRe.exec(elem.href);
+              timecodeResult = timecodeRe.exec(url);
 
           if(timecodeResult !== null) {
             var time_blocks = {'h':3600, 'm':60, 's':1},

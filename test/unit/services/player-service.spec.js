@@ -26,6 +26,17 @@ describe('Service: PlayerService', function() {
     expect(player.loadVideoById).toHaveBeenCalled();
   });
 
+  it('playVideo should start playing a new video at certain time if one has been passed', function() {
+    service.playVideo(mockVideoItem);
+
+    expect(player.loadVideoById)
+      .toHaveBeenCalledWith({
+        videoId: mockVideoItem.videoId,
+        startSeconds: mockVideoItem.starttime,
+        suggestedQuality: 'large'
+      });
+  });
+
   it('playNext should call playVideo with next videoId in row', function() {
     PlaylistService.playlist = [
       { videoId: 'currentId' },

@@ -63,6 +63,7 @@
       function onPlayerError(event) {
         // https://developers.google.com/youtube/iframe_api_reference#Events
         if([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
+          // TODO: stop trying after n tries
           playNext();
         }
       }
@@ -103,7 +104,7 @@
 
           player.loadVideoById({
             videoId: item.videoId,
-            startSeconds: 0,
+            startSeconds: item.starttime || 0,
             // endSeconds: 0,
             suggestedQuality: 'large'
           });
