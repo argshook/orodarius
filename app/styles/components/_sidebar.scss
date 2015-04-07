@@ -23,14 +23,15 @@
 
 .sidebar-toggle {
   position: absolute;
-  top: 0;
+  top: 100px;
   left: -60px;
-  bottom: 0;
+  bottom: 100px;
   width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(90deg, transparent 10%, rgba(20, 20, 20, 0.3) 90%);
+  border-radius: 100% 0 0 100%;
   font-size: 1.5em;
   font-weight: 100;
   color: rgba(255, 255, 255, 0.32);
