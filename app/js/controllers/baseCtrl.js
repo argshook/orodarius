@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .controller('baseCtrl', function(PlayerService) {
+    .controller('baseCtrl', function($scope, PlayerService, SidebarService) {
       this.keyboardEventsOptions = {
         37: function(event) {
           console.log('left!');
@@ -15,6 +15,11 @@
         32: function(event) {
           console.log('space!');
           PlayerService.playOrPause();
+        },
+        16: event => {
+          console.log('shift');
+          SidebarService.toggle();
+          $scope.$digest();
         }
       };
     });

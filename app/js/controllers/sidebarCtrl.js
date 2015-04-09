@@ -2,22 +2,30 @@
   'use strict';
 
   angular.module('orodarius')
-    .controller('sidebarCtrl', function($scope, PlaylistService, PlayerService) {
-      this.isOpen = true;
+    // TODO: move to directive with template
+    .controller('sidebarCtrl', function($scope, PlaylistService, PlayerService, SidebarService) {
+      $scope.isOpen = SidebarService.isOpen;
       this.currentSubreddit = 'videos';
       this.isListLoading = false;
 
+      $scope.$watch(
+        () => SidebarService.isOpen,
+        (isOpen) => {
+          $scope.isOpen = isOpen;
+        }
+      );
+
       this.toggleSidebar = function() {
-        this.isOpen = !this.isOpen;
+        SidebarService.toggle();
+        $scope.$digest();
         this.list = PlaylistService.playlist;
-        $scope.$apply();
       };
 
       this.list = PlaylistService.playlist;
 
       this.playVideo = function(item) {
         PlayerService.playVideo(item);
-        this.isOpen = false;
+        SidebarService.toggle();
       };
 
       this.fillPlaylistWith = function(subreddit = "videos") {
@@ -33,17 +41,11 @@
         return item.videoId === PlayerService.currentVideoId;
       };
 
-      this.keyBindOptions = {
-        16: event => {
-          this.toggleSidebar();
-        }
-      };
-
       function init() {
         this.fillPlaylistWith('videos');
         this.subredditQuery = 'videos';
       }
 
-      init.call(this);
+      // init.call(this);
     });
 })();

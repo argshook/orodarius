@@ -20,17 +20,17 @@ describe('Controller: sidebarCtrl', function() {
   }));
 
   it('should expose isOpen flag and be set to true initially', function() {
-    expect(ctrl.isOpen).toBe(true);
+    expect(scope.isOpen).toBe(true);
   });
 
   it('toggleSidebar should toggle isOpen flag', function() {
-    // TODO: temporary!
-    $httpBackend.whenGET(/hot\.json\?limit=25/).respond(200, REDDIT);
     ctrl.toggleSidebar();
-    expect(ctrl.isOpen).toBe(false);
+    scope.$digest(); // TODO: i don't like so many digests
+    expect(scope.isOpen).toBe(false);
 
     ctrl.toggleSidebar();
-    expect(ctrl.isOpen).toBe(true);
+    scope.$digest();
+    expect(scope.isOpen).toBe(true);
   });
 
   it('list should contain items from PlaylistService.playlist', function() {
@@ -43,9 +43,10 @@ describe('Controller: sidebarCtrl', function() {
   });
 
   it('isOpen should be false after playVideo has been invoked', function() {
-    ctrl.isOpen = true;
+    scope.isOpen = true;
     ctrl.playVideo(mockVideoItem);
-    expect(ctrl.isOpen).toBe(false);
+    scope.$digest();
+    expect(scope.isOpen).toBe(false);
   });
 
   it("fillPlaylistWith should fill sidebar.list with fetched items from reddit", function() {
