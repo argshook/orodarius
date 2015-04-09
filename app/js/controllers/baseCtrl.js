@@ -19,7 +19,7 @@
         16: event => {
           console.log('shift');
           SidebarService.toggle();
-          $scope.$digest();
+          $scope.$apply();
         }
       };
     });

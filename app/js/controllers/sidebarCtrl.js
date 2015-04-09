@@ -17,7 +17,6 @@
 
       this.toggleSidebar = function() {
         SidebarService.toggle();
-        $scope.$digest();
         this.list = PlaylistService.playlist;
       };
 
