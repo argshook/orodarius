@@ -4,47 +4,31 @@
   angular.module('orodarius')
     // TODO: move to directive with template
     .controller('sidebarCtrl', function($scope, PlaylistService, PlayerService, SidebarService) {
-      $scope.isOpen = SidebarService.isOpen;
-      this.currentSubreddit = 'videos';
+      $scope.sidebarService = SidebarService;
+      $scope.playlistService = PlaylistService;
+      $scope.playerService = PlayerService;
       this.isListLoading = false;
 
-      $scope.$watch(
-        () => SidebarService.isOpen,
-        (isOpen) => {
-          $scope.isOpen = isOpen;
-        }
-      );
-
       this.toggleSidebar = function() {
-        SidebarService.toggle();
-        this.list = PlaylistService.playlist;
+        $scope.sidebarService.toggle();
       };
 
-      this.list = PlaylistService.playlist;
-
       this.playVideo = function(item) {
-        PlayerService.playVideo(item);
-        SidebarService.toggle();
+        $scope.playerService.playVideo(item);
+        $scope.sidebarService.toggle();
       };
 
       this.fillPlaylistWith = function(subreddit = "videos") {
         this.isListLoading = true;
-        PlaylistService.fetchSubreddit(subreddit).then(data => {
+        $scope.playlistService.fetchSubreddit(subreddit).then(data => {
           this.isListLoading = false;
-          this.list = data;
         });
-        this.currentSubreddit = subreddit;
       };
 
-      this.isListItemCurrentlyPlayed = function(item) {
-        return item.videoId === PlayerService.currentVideoId;
+      $scope.isListItemCurrentlyPlayed = function(item) {
+        return item.videoId === $scope.playerService.currentVideoItem.videoId;
       };
 
-      function init() {
-        this.fillPlaylistWith('videos');
-        this.subredditQuery = 'videos';
-      }
-
-      // init.call(this);
+      this.fillPlaylistWith('videos');
     });
 })();

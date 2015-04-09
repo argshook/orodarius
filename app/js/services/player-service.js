@@ -4,8 +4,8 @@
   angular.module('orodarius')
     .service('PlayerService', function($window, PlaylistService) {
       var player,
-          currentVideoId,
-          isPlaying = false;
+          currentVideoItem = {},
+          self = this; // :(
 
       Object.defineProperties(this, {
         player: {
@@ -18,26 +18,16 @@
             player = value;
           }
         },
-        currentVideoId: {
+        currentVideoItem: {
           enumerable: true,
           configurable: true,
           get: function() {
-            return currentVideoId;
+            return currentVideoItem;
           },
           set: function(value) {
-            currentVideoId = value;
+            currentVideoItem = value;
           }
-        },
-        isPlaying: {
-          enumerable: true,
-          configurable: true,
-          get: function() {
-            return isPlaying;
-          },
-          set: function(value) {
-            isPlaying = value;
-          }
-        },
+        }
       });
 
       function onPlayerReady() {
@@ -56,7 +46,7 @@
         // if event is 0 (ended), play another video.
         if (event.data === 0) {
           // TODO: play next video in playlist
-          playNext();
+          self.playNext();
         }
       }
 
@@ -64,11 +54,18 @@
         // https://developers.google.com/youtube/iframe_api_reference#Events
         if([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
           // TODO: stop trying after n tries
-          playNext();
+          self.playNext();
         }
       }
 
-      function createNewPlayer(elementId, options) {
+      function currentItemMatcher(item) {
+        return item.videoId === currentVideoItem.videoId &&
+               item.name === currentVideoItem.name;
+      }
+
+      this.isPlaying = false;
+
+      this.createNewPlayer = function(elementId, options) {
         var defaultPlayerOptions = {
           width: $window.innerWidth, // TODO: perhaps move to settings value
           height: $window.innerHeight,
@@ -92,13 +89,13 @@
         // YT should be available since it comes from iframe_api
         player = new YT.Player(elementId || 'main-video-player', defaultPlayerOptions);
         return player;
-      }
+      };
 
-      function playVideo(item) {
+      this.playVideo = function(item) {
         if(item) {
           // TODO: skip misunderstood urls for now
           if(item.url === false) {
-            playNext();
+            this.playNext();
             return;
           }
 
@@ -108,61 +105,40 @@
             // endSeconds: 0,
             suggestedQuality: 'large'
           });
-          currentVideoId = item.videoId;
-          isPlaying = true;
+          currentVideoItem = item;
+          this.isPlaying = true;
         }
-      }
+      };
 
-      function playNext() {
-        var nextVideoItemIndex = _.findIndex(PlaylistService.playlist, function(item) {
-          return item.videoId === currentVideoId;
-        }) + 1;
+      this.playNext = function() {
+        var nextVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher) + 1;
 
         if(nextVideoItemIndex === PlaylistService.playlist.length) {
           PlaylistService.fetchSubreddit(
             PlaylistService.currentSubreddit,
             PlaylistService.afterTag
           ).then(function(data) {
-            playVideo(PlaylistService.playlist[nextVideoItemIndex]);
+            this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
           });
         } else {
-          playVideo(PlaylistService.playlist[nextVideoItemIndex]);
+          this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
         }
-      }
+      };
 
-      function playPrevious() {
-        var previousVideoItemIndex = _.findIndex(PlaylistService.playlist, function(item) {
-          return item.videoId === currentVideoId;
-        }) - 1;
+      this.playPrevious = function() {
+        var previousVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher) - 1;
+        this.playVideo(PlaylistService.playlist[previousVideoItemIndex < 0 ? 0 : previousVideoItemIndex]);
+      };
 
-        playVideo(PlaylistService.playlist[previousVideoItemIndex < 0 ? 0 : previousVideoItemIndex]);
-      }
-
-      function playOrPause() {
-        if(isPlaying) {
+      this.playOrPause = function() {
+        if(this.isPlaying) {
           player.pauseVideo();
-          isPlaying = false;
+          this.isPlaying = false;
         } else {
           player.playVideo();
-          isPlaying = true;
+          this.isPlaying = true;
         }
-      }
-
-      // TODO: not nice, refactor
-      this.createNewPlayer = createNewPlayer;
-      this.playVideo = playVideo;
-      this.playNext = playNext;
-      this.playPrevious = playPrevious;
-      this.playOrPause = playOrPause;
-
-      // Exposed API is:
-      // createNewPlayer
-      // player
-      // currentVideoId
-      // isPlaying
-      // playVideo
-      // playPrevious
-      // playNext
+      };
     });
 
 })();

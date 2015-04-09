@@ -43,10 +43,10 @@ describe('Service: PlayerService', function() {
       { videoId: 'nextId' }
     ];
 
-    service.currentVideoId = PlaylistService.playlist[0].videoId;
+    service.currentVideoItem.videoId = PlaylistService.playlist[0].videoId;
 
     service.playNext();
-    expect(service.currentVideoId).toBe('nextId');
+    expect(service.currentVideoItem.videoId).toBe('nextId');
   });
 
   it('playNext method should call PlaylistService.fetchSubreddit when last item reached', function() {
@@ -54,7 +54,7 @@ describe('Service: PlayerService', function() {
       { videoId: 'currentId' }
     ];
     spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({ then: angular.noop });
-    service.currentVideoId = PlaylistService.playlist[0].videoId;
+    service.currentVideoItem.videoId = PlaylistService.playlist[0].videoId;
     service.playNext();
     expect(PlaylistService.fetchSubreddit).toHaveBeenCalled();
   });
@@ -65,10 +65,10 @@ describe('Service: PlayerService', function() {
       { videoId: 'currentId' }
     ];
 
-    service.currentVideoId = PlaylistService.playlist[1].videoId;
+    service.currentVideoItem.videoId = PlaylistService.playlist[1].videoId;
 
     service.playPrevious();
-    expect(service.currentVideoId).toBe('previousId');
+    expect(service.currentVideoItem.videoId).toBe('previousId');
   });
 
   it('playOrPauseVideo method should do what it says', function() {

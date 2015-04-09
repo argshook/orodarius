@@ -19,22 +19,20 @@ describe('Controller: sidebarCtrl', function() {
     PlaylistService.add(mockVideoItem);
   }));
 
-  it('should expose isOpen flag and be set to true initially', function() {
-    expect(scope.isOpen).toBe(true);
+  it('should get sidebarService.isOpen flag as false', function() {
+    expect(scope.sidebarService.isOpen).toBe(true);
   });
 
   it('toggleSidebar should toggle isOpen flag', function() {
     ctrl.toggleSidebar();
-    scope.$digest(); // TODO: i don't like so many digests
-    expect(scope.isOpen).toBe(false);
+    expect(scope.sidebarService.isOpen).toBe(false);
 
     ctrl.toggleSidebar();
-    scope.$digest();
-    expect(scope.isOpen).toBe(true);
+    expect(scope.sidebarService.isOpen).toBe(true);
   });
 
-  it('list should contain items from PlaylistService.playlist', function() {
-    expect(ctrl.list).toEqual([mockVideoItem, mockVideoItem]);
+  it('playlistService should contain items from PlaylistService.playlist', function() {
+    expect(scope.playlistService.playlist).toEqual([mockVideoItem, mockVideoItem]);
   });
 
   it('playVideo method should tell PlayerService to play video', function() {
@@ -43,20 +41,14 @@ describe('Controller: sidebarCtrl', function() {
   });
 
   it('isOpen should be false after playVideo has been invoked', function() {
-    scope.isOpen = true;
+    scope.sidebarService.isOpen = true;
     ctrl.playVideo(mockVideoItem);
-    scope.$digest();
-    expect(scope.isOpen).toBe(false);
+    expect(scope.sidebarService.isOpen).toBe(false);
   });
 
   it("fillPlaylistWith should fill sidebar.list with fetched items from reddit", function() {
     spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({then: angular.noop});
     ctrl.fillPlaylistWith('artisanvideos');
     expect(PlaylistService.fetchSubreddit).toHaveBeenCalledWith('artisanvideos');
-  });
-
-  it("fillPlaylistWith should update currentSubreddit when invoked", function() {
-    ctrl.fillPlaylistWith('artisanvideos');
-    expect(ctrl.currentSubreddit).toBe('artisanvideos');
   });
 });

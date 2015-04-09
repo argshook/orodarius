@@ -7,10 +7,12 @@
         37: function(event) {
           console.log('left!');
           PlayerService.playPrevious();
+          $scope.$apply();
         },
         39: function(event) {
           console.log('right!');
           PlayerService.playNext();
+          $scope.$apply();
         },
         32: function(event) {
           console.log('space!');
