@@ -17,27 +17,26 @@
 
   <div
     class="container-sidebar"
-    ng-class="{'container-sidebar--open': sidebar.isOpen}"
+    ng-class="{'container-sidebar--open': sidebarService.isOpen}"
     ng-controller="sidebarCtrl as sidebar">
     <div
       class="sidebar-toggle"
-      ng-click="sidebar.toggleSidebar()"
-      ng-bind-keys="sidebar.keyBindOptions">
-      <span class="glyphicon glyphicon-circle-arrow-{{sidebar.isOpen ? 'right' : 'left'}}"></span>
+      ng-click="sidebarService.toggle()">
+      <span class="glyphicon glyphicon-circle-arrow-{{sidebarService.isOpen ? 'right' : 'left'}}"></span>
     </div>
 
     <div class="sidebar-heading">
       <h1>Subreddit TV</h1>
 
-      <div class="sidebar-now-playing">Now playing: <span>/r/{{sidebar.currentSubreddit}}</span></div>
+      <div class="sidebar-now-playing">Now playing: <span>/r/{{playlistService.currentSubreddit}}</span></div>
     </div>
 
     <div class="sidebar-controls">
       <div class="form-group">
         <div class="input-group input-group-sm">
           <div class="input-group-addon">r/</div>
-          <input type="text" class="form-control" placeholder="videos" ng-model="sidebar.subredditQuery" ng-enter="sidebar.fillPlaylistWith(sidebar.subredditQuery)" />
-          <div class="input-group-addon btn" ng-click="sidebar.fillPlaylistWith(sidebar.subredditQuery)">
+          <input type="text" class="form-control" placeholder="videos" ng-model="playlistService.currentSubreddit" ng-enter="sidebar.fillPlaylistWith(playlistService.currentSubreddit)" />
+          <div class="input-group-addon btn" ng-click="sidebar.fillPlaylistWith(playlistService.currentSubreddit)">
             <span class="glyphicon glyphicon-search" ng-class="{loading: sidebar.isListLoading}"></span>
           </div>
         </div>
@@ -48,8 +47,8 @@
       <ul class="sidebar-playlist list-group">
         <li
           class="list-group-item"
-          ng-repeat="item in sidebar.list"
-          ng-class="{current: sidebar.isListItemCurrentlyPlayed(item)}"
+          ng-repeat="item in playlistService.playlist"
+          ng-class="{current: isListItemCurrentlyPlayed(item)}"
           ng-click="sidebar.playVideo(item)">
           <div class="list-group-thumbnail" style="background-image: url({{item.thumbnailUrl}});"></div>
           <div class="list-group-title">{{item.title}}</div>
