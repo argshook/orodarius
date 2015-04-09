@@ -54,7 +54,10 @@ describe('Service: PlaylistService', function() {
     expect(service.currentSubreddit).toBe('birbir');
   });
 
-  it('should expose subscribe method', function() {
-    expect(typeof service.subscribe).toBe('function');
+  it("expandPlaylist should fetch more items and concat playlist with new items", function() {
+    service.afterTag = REDDIT.data.after;
+    spyOn(service, 'fetchSubreddit');
+    service.expandPlaylist();
+    expect(service.fetchSubreddit).toHaveBeenCalled();
   });
 });

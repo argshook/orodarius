@@ -117,7 +117,7 @@
     &.current {
       background: rgba(100, 100, 100, .6);
       color: rgba(255, 255, 255, .8);
-      border-bottom: 2px solid darken(orange, 20);
+      border-bottom: 2px solid darken($color-primary, 20);
       box-shadow: 0 10px 10px -10px rgba(0, 0, 0, .3) inset;
     }
   }
@@ -145,8 +145,23 @@
     }
   }
 
-  li {
-    min-height: 70px;
+  .list-group-more {
+    text-align: center;
+    font-size: 1em;
+    color: #999999;
+    text-transform: uppercase;
+    background: rgba(200, 200, 200, .1);
+    min-height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    transition: .2s ease all;
+
+    &:hover {
+      font-size: 1.2em;
+      background: darken($color-primary, 30);
+    }
   }
 
   h5 {

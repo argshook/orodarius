@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlaylistService', function($http, $q) {
+    .service('PlaylistService', function($http, $q, $log) {
       // Reddit APIs:
       // http://www.reddit.com/r/videos/about.json
       // http://www.reddit.com/r/videos/hot.json?limit=1
@@ -115,7 +115,7 @@
                   .value();
       }
 
-      function fetchSubreddit(subredditName, after) {
+      this.fetchSubreddit = function(subredditName, after) {
         var deferred = $q.defer();
 
         var apiUrl = `${redditAPIBaseUrl}${subredditName}/hot.json?limit=25` + (after ? `&after=${after}` : '');
@@ -135,25 +135,17 @@
           });
 
         return deferred.promise;
-      }
-
-      this.subscribe = function(name, fn) {
-
       };
 
-      var callbackFnArray = [];
-      function publish(name, data) {
-        if(callbackFnArray.length) {
-          _(callbackFnArray)
-            .where(item => item.name === name)
-            .map(item => {
-              item.fn.call(null, data);
-            });
+      this.expandPlaylist = function() {
+        if(afterTag) {
+          this.fetchSubreddit(currentSubreddit, afterTag);
+        } else {
+          $log.warn('cant expand playlist, no afterTag found!');
         }
-      }
+      };
 
       this.add = add;
-      this.fetchSubreddit = fetchSubreddit;
       this.afterTag = afterTag;
     });
 })();
