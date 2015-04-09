@@ -52,6 +52,7 @@
           ng-click="sidebar.playVideo(item)">
           <div class="list-group-thumbnail" style="background-image: url({{item.thumbnailUrl}});"></div>
           <div class="list-group-title">{{item.title}}</div>
+          <div class="list-group-index">{{$index + 1}}</div>
         </li>
         <li
           class="list-group-more"

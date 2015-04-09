@@ -105,9 +105,8 @@
     border: 0;
     border-radius: 0;
     min-height: 100px;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
-    color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
+    overflow: hidden;
     transition: .05s ease all;
 
     &:hover {
@@ -132,6 +131,11 @@
       size: cover;
       repeat: no-repeat;
     }
+  }
+
+  .list-group-title {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+    color: rgba(255, 255, 255, 0.6);
   }
 
   .list-group-empty {
@@ -164,8 +168,13 @@
     }
   }
 
-  h5 {
-    padding: 0;
-    margin: 0;
+  .list-group-index {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    font-size: 7em;
+    font-weight: 700;
+    line-height: 1;
+    color: fade-out(orange, .92);
   }
 }
