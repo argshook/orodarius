@@ -139,6 +139,10 @@
           this.isPlaying = true;
         }
       };
+
+      this.resetCurrentVideoItem = function() {
+        currentVideoItem = undefined;
+      };
     });
 
 })();

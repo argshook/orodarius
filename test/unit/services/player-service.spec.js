@@ -96,4 +96,13 @@ describe('Service: PlayerService', function() {
     expect(player.playVideo).toHaveBeenCalled();
     expect(player.pauseVideo).toHaveBeenCalled();
   });
+
+  it("should expose resetCurrentVideoItem method", function() {
+    expect(service.resetCurrentVideoItem).toBeDefined();
+  });
+
+  it("resetCurrentVideoItem should reset currentVideoItem to undefined", function() {
+    service.resetCurrentVideoItem();
+    expect(service.currentVideoItem).toBeUndefined();
+  });
 });
