@@ -45,7 +45,6 @@
 
         // if event is 0 (ended), play another video.
         if (event.data === 0) {
-          // TODO: play next video in playlist
           self.playNext();
         }
       }
@@ -60,7 +59,8 @@
 
       function currentItemMatcher(item) {
         return item.videoId === currentVideoItem.videoId &&
-               item.name === currentVideoItem.name;
+               item.name === currentVideoItem.name &&
+               item.created === currentVideoItem.created;
       }
 
       this.isPlaying = false;

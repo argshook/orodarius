@@ -109,7 +109,8 @@
                       url: item.data.url,
                       videoId: videoInfo.id,
                       starttime: videoInfo.starttime,
-                      thumbnailUrl: item.data.thumbnail
+                      thumbnailUrl: item.data.thumbnail,
+                      created: item.data.created
                     };
                   })
                   .value();

@@ -59,6 +59,17 @@ describe('Service: PlayerService', function() {
     expect(PlaylistService.fetchSubreddit).toHaveBeenCalled();
   });
 
+  it('playNext method should determine next video by videoId, name and created properties', function() {
+    PlaylistService.playlist = [
+      { videoId: 'currentId', name: 'WHAAT', created: 1 },
+      { videoId: 'currentId', name: 'WHAAT', created: 2 }
+    ];
+
+    service.currentVideoItem = PlaylistService.playlist[0];
+    service.playNext();
+    expect(service.currentVideoItem).toEqual(PlaylistService.playlist[1]);
+  });
+
   it('playPrevious should play previous video in row', function() {
     PlaylistService.playlist = [
       { videoId: 'previousId' },
