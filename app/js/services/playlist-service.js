@@ -96,6 +96,10 @@
         }
       }
 
+      function checkThumbnailValidity(thumbnailUrl) {
+        return thumbnailUrl === 'nsfw' ? 'images/nsfw-thumbnail.jpg' : thumbnailUrl;
+      }
+
       function subredditResultsFilter(data) {
         return _(data)
                   .filter((item) => item.kind === 't3' && item.data.domain === 'youtube.com') // t3 - link posts
@@ -109,7 +113,7 @@
                       url: item.data.url,
                       videoId: videoInfo.id,
                       starttime: videoInfo.starttime,
-                      thumbnailUrl: item.data.thumbnail,
+                      thumbnailUrl: checkThumbnailValidity(item.data.thumbnail),
                       created: item.data.created
                     };
                   })

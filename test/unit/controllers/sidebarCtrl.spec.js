@@ -1,11 +1,12 @@
 'use strict';
 
 describe('Controller: sidebarCtrl', function() {
-  var ctrl, scope, PlaylistService, PlayerService, $httpBackend;
+  var ctrl, scope, PlaylistService, PlayerService, $httpBackend, $q, deferred;
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_$rootScope_, _$controller_, _PlaylistService_, _PlayerService_, _$httpBackend_) {
+  beforeEach(inject(function(_$rootScope_, _$controller_, _PlaylistService_, _PlayerService_, _$httpBackend_, _$q_) {
+    $q = _$q_;
     scope = _$rootScope_.$new();
     ctrl = _$controller_('sidebarCtrl', { $scope: scope, PlaylistService: _PlaylistService_, PlayerService: _PlayerService_ });
 
