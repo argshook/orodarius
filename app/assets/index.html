@@ -28,18 +28,12 @@
     <div class="sidebar-heading">
       <h1>Subreddit TV</h1>
 
-      <div class="sidebar-now-playing">Now playing: <span>/r/{{playlistService.currentSubreddit}}</span></div>
-    </div>
-
-    <div class="sidebar-controls">
-      <div class="form-group">
-        <div class="input-group input-group-sm">
-          <div class="input-group-addon">r/</div>
-          <input type="text" class="form-control" placeholder="videos" ng-model="playlistService.currentSubreddit" ng-enter="sidebar.fillPlaylistWith(playlistService.currentSubreddit)" />
-          <div class="input-group-addon btn" ng-click="sidebar.fillPlaylistWith(playlistService.currentSubreddit)">
-            <span class="glyphicon glyphicon-search" ng-class="{loading: sidebar.isListLoading}"></span>
-          </div>
-        </div>
+      <div class="sidebar-now-playing">
+        <span class="sidebar-now-playing-label">Now playing:</span>
+        <input class="sidebar-now-playing-input" placeholder="{{playlistService.currentSubreddit}}" type="text" ng-enter="sidebar.fillPlaylistWith(playlistService.currentSubreddit)" />
+        <button class="sidebar-now-playing-btn" ng-click="sidebar.fillPlaylistWith(playlistService.currentSubreddit)">
+          <span class="glyphicon glyphicon-search" ng-class="{loading: sidebar.isListLoading}"></span>
+        </button>
       </div>
     </div>
 
@@ -66,6 +60,10 @@
           <p>Try some subreddits, like <em>videos</em> or <em>artisanvideos</em></p>
         </li>
       </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="http://github.com/argshook/orodarius">Github</a>
     </div>
   </div>
 
