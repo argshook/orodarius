@@ -30,7 +30,7 @@
 
       <div class="sidebar-now-playing">
         <span class="sidebar-now-playing-label">Now playing:</span>
-        <input class="sidebar-now-playing-input" placeholder="{{playlistService.currentSubreddit}}" type="text" ng-enter="sidebar.fillPlaylistWith(playlistService.currentSubreddit)" />
+        <input class="sidebar-now-playing-input" placeholder="{{playlistService.currentSubreddit}}" type="text" ng-enter="sidebar.fillPlaylistWith(playlistService.currentSubreddit)" ng-model="playlistService.currentSubreddit" />
         <button class="sidebar-now-playing-btn" ng-click="sidebar.fillPlaylistWith(playlistService.currentSubreddit)">
           <span class="glyphicon glyphicon-search" ng-class="{loading: sidebar.isListLoading}"></span>
         </button>
@@ -42,7 +42,7 @@
         <li
           class="list-group-item"
           ng-repeat="item in playlistService.playlist"
-          ng-class="{current: isListItemCurrentlyPlayed(item)}"
+          ng-class="{current: item.videoId === playerService.currentVideoItem.videoId}"
           ng-click="sidebar.playVideo(item)">
           <div class="list-group-thumbnail" style="background-image: url({{item.thumbnailUrl}});"></div>
           <div class="list-group-title">{{item.title}}</div>

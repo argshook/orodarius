@@ -3,11 +3,18 @@
 
   angular.module('orodarius')
     // TODO: move to directive with template
-    .controller('sidebarCtrl', function($scope, PlaylistService, PlayerService, SidebarService) {
+    .controller('sidebarCtrl', function($scope, $rootScope, $timeout, PlaylistService, PlayerService, SidebarService) {
       $scope.sidebarService = SidebarService;
       $scope.playlistService = PlaylistService;
       $scope.playerService = PlayerService;
       this.isListLoading = false;
+
+      // TODO: not nice
+      $rootScope.$on('videoPlay', function(currentVideoItem) {
+        $timeout(function() {
+          $scope.$apply();
+        });
+      });
 
       this.toggleSidebar = function() {
         $scope.sidebarService.toggle();

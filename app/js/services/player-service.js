@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlayerService', function($window, PlaylistService) {
+    .service('PlayerService', function($window, $rootScope, PlaylistService) {
       var player,
           currentVideoItem = {},
           self = this; // :(
@@ -107,6 +107,7 @@
           });
           currentVideoItem = item;
           this.isPlaying = true;
+          $rootScope.$emit('videoPlay', currentVideoItem);
         }
       };
 
