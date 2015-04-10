@@ -118,7 +118,7 @@
             PlaylistService.currentSubreddit,
             PlaylistService.afterTag
           ).then(function(data) {
-            this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
+            self.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
           });
         } else {
           this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
