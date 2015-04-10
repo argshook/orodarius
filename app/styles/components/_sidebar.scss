@@ -166,6 +166,14 @@
       size: cover;
       repeat: no-repeat;
     }
+
+    &.nsfw {
+      background-size: contain;
+      width: 75px;
+      margin-left: 15px;
+      box-shadow: 0 0 15px 0 fade-out(red, .5);
+      transform: rotateZ(5deg);
+    }
   }
 
   .list-group-title {

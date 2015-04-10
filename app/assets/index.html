@@ -44,7 +44,7 @@
           ng-repeat="item in playlistService.playlist"
           ng-class="{current: item.videoId === playerService.currentVideoItem.videoId}"
           ng-click="sidebar.playVideo(item)">
-          <div class="list-group-thumbnail" style="background-image: url({{item.thumbnailUrl}});"></div>
+          <div class="list-group-thumbnail" ng-class="{nsfw: item.thumbnailUrl === 'images/nsfw-thumbnail.jpg'}" style="background-image: url({{item.thumbnailUrl}});"></div>
           <div class="list-group-title">{{item.title}}</div>
           <div class="list-group-index">{{$index + 1}}</div>
         </li>
