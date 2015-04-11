@@ -26,21 +26,6 @@
                 });
               }
             });
-
-            //   var parentHeight = $(element).height(),
-            //       parentOffset = $(element).position(),
-            //       currentItemOffset = $currentItem.position().top - parentOffset.top,
-            //       currentItemHeight = $currentItem.height(),
-            //       offset;
-
-            //   if(currentItemHeight < parentHeight) {
-            //     offset = currentItemOffset - ((parentHeight / 2) - (currentItemHeight / 2));
-            //   } else {
-            //     offset = currentItemOffset;
-            //   }
-
-            //   console.log($currentItem, currentItemOffset);
-            //   $(element).scrollTop(offset);
           });
         }
       };
