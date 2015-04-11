@@ -38,8 +38,8 @@
     </div>
 
     <div class="sidebar-playlist-container">
-      <ul class="sidebar-playlist list-group">
-        <li
+      <div class="sidebar-playlist" ng-scroll-on="playerService.currentVideoItem">
+        <div
           class="list-group-item"
           ng-repeat="item in playlistService.playlist"
           ng-class="{current: item.videoId === playerService.currentVideoItem.videoId}"
@@ -47,23 +47,30 @@
           <div class="list-group-thumbnail" ng-class="{nsfw: item.thumbnailUrl === 'images/nsfw-thumbnail.jpg'}" style="background-image: url({{item.thumbnailUrl}});"></div>
           <div class="list-group-title">{{item.title}}</div>
           <div class="list-group-index">{{$index + 1}}</div>
-        </li>
-        <li
+        </div>
+        <div
           class="list-group-more"
           ng-show="playlistService.playlist.length > 0"
           ng-click="playlistService.expandPlaylist()"
         >
           <span class="glyphicon glyphicon-plus"></span>
-        </li>
-        <li class="list-group-empty" ng-show="playlistService.playlist.length === 0">
+        </div>
+        <div class="list-group-empty" ng-show="playlistService.playlist.length === 0">
           <h2>Playlist empty...</h2>
           <p>Try some subreddits, like <em>videos</em> or <em>artisanvideos</em></p>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="sidebar-footer">
-      <a href="http://github.com/argshook/orodarius">Github</a>
+    <div class="sidebar-footer container-fluid">
+      <div class="row">
+        <div class="col-xs-6">
+          <a href="http://github.com/argshook/orodarius">github</a>
+        </div>
+        <div class="col-xs-6 text-right">
+          early access v4.20
+        </div>
+      </div>
     </div>
   </div>
 

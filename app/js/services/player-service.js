@@ -128,7 +128,7 @@
 
       this.playPrevious = function() {
         var previousVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher) - 1;
-        this.playVideo(PlaylistService.playlist[previousVideoItemIndex < 0 ? 0 : previousVideoItemIndex]);
+        this.playVideo(PlaylistService.playlist[previousVideoItemIndex < 0 ? 0 : previousVideoItemIndex], 'previous');
       };
 
       this.playOrPause = function() {

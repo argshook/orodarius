@@ -9,7 +9,7 @@ exports.config = {
 
   paths: {
     "public": 'public',
-    "watched": ['app', 'vendor']
+    "watched": ['app', 'vendor', 'mocks']
   },
 
   files: {
@@ -29,7 +29,11 @@ exports.config = {
           'bower_components/angular-resource/angular-resource.js',
           'bower_components/angular-sanitize/angular-sanitize.js',
         ],
-        'test/scenarios.js': /^test(\/|\\)e2e/
+        // 'test/scenarios.js': /^test(\/|\\)e2e/,
+        'js/mocks.js': [
+          'bower_components/angular-mocks/angular-mocks.js', // this is not getting compiled and fuck knows why
+          'test/mocks/orodarius-mocks.js'
+        ]
       },
       order: {
         before: [
