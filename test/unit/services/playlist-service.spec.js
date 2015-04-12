@@ -12,7 +12,7 @@ describe('Service: PlaylistService', function() {
 
   beforeEach(function() {
     spyOn(service, 'add');
-    $httpBackend.whenGET(/hot\.json\?limit=25/).respond(200, REDDIT);
+    $httpBackend.whenGET(/.*\/(videos|birbir).*/).respond(200, REDDIT);
   });
 
   it('should expose playlist array', function() {
@@ -52,6 +52,24 @@ describe('Service: PlaylistService', function() {
 
     $httpBackend.flush();
     expect(service.currentSubreddit).toBe('birbir');
+  });
+
+  it("fetchSubreddit should uniquefy playlist it returns", function() {
+    $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=25').respond(200, {
+      data: {
+        children: [
+          { name: 'name1', videoId: 1, created: 1, kind: 't3', data: { domain: 'youtube.com' } },
+          { name: 'name1', videoId: 1, created: 1, kind: 't3', data: { domain: 'youtube.com' } },
+          { name: 'name1', videoId: 1, created: 1, kind: 't3', data: { domain: 'youtube.com' } },
+        ]
+      }
+    }
+    );
+
+    service.fetchSubreddit('duplicateVideosMock');
+
+    $httpBackend.flush();
+    expect(service.playlist.length).toBe(1);
   });
 
   it("expandPlaylist should fetch more items and concat playlist with new items", function() {

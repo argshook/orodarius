@@ -120,6 +120,12 @@
                   .value();
       }
 
+      function uniquefyPlaylist(playlist) {
+        var stringifiedPlaylist = _(playlist).map(item => JSON.stringify(item)).value();
+
+        return _(_.uniq(stringifiedPlaylist)).map(item => JSON.parse(item)).value();
+      }
+
       this.fetchSubreddit = function(subredditName, after) {
         var deferred = $q.defer();
 
@@ -130,9 +136,9 @@
             afterTag = data.data.data.after;
             currentSubreddit = subredditName;
             if(after) { // after is a key for next paginated list, with it we concat playlists
-              playlist = playlist.concat(subredditResultsFilter(data.data.data.children));
+              playlist = uniquefyPlaylist(playlist.concat(subredditResultsFilter(data.data.data.children)));
             } else {
-              playlist = subredditResultsFilter(data.data.data.children);
+              playlist = uniquefyPlaylist(subredditResultsFilter(data.data.data.children));
             }
             deferred.resolve(playlist);
           }, function(error) {
