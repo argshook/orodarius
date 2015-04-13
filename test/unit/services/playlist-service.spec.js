@@ -54,20 +54,42 @@ describe('Service: PlaylistService', function() {
     expect(service.currentSubreddit).toBe('birbir');
   });
 
-  it("fetchSubreddit should uniquefy playlist it returns", function() {
+  it("fetchSubreddit should compare new items to old ones and return unique only", function() {
+    service.playlist = [
+      { name: 'name1', videoId: 'VSNuZEdYrH0', created: 1 },
+      { name: 'name4', videoId: 'VSNuZEdYrH0', created: 4 },
+    ];
+
     $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=25').respond(200, {
       data: {
         children: [
-          { name: 'name1', videoId: 1, created: 1, kind: 't3', data: { domain: 'youtube.com' } },
-          { name: 'name1', videoId: 1, created: 1, kind: 't3', data: { domain: 'youtube.com' } },
-          { name: 'name1', videoId: 1, created: 1, kind: 't3', data: { domain: 'youtube.com' } },
-        ]
+          { kind: 't3', data: { domain: 'youtube.com', name: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+          { kind: 't3', data: { domain: 'youtube.com', name: 'name2', created: 2, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH1' } },
+          { kind: 't3', data: { domain: 'youtube.com', name: 'name3', created: 3, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+        ],
+        after: 'asd'
       }
-    }
-    );
+    });
 
     service.fetchSubreddit('duplicateVideosMock');
 
+    $httpBackend.flush();
+    expect(service.playlist.length).toBe(3);
+  });
+
+  it("fetchSubreddit method should uniquefy fetched items", function() {
+    $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=25').respond(200, {
+      data: {
+        children: [
+          { kind: 't3', data: { domain: 'youtube.com', name: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+          { kind: 't3', data: { domain: 'youtube.com', name: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+          { kind: 't3', data: { domain: 'youtube.com', name: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+        ],
+        after: 'asd'
+      }
+    });
+
+    service.fetchSubreddit('duplicateVideosMock');
     $httpBackend.flush();
     expect(service.playlist.length).toBe(1);
   });

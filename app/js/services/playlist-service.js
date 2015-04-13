@@ -120,10 +120,15 @@
                   .value();
       }
 
-      function uniquefyPlaylist(playlist) {
-        var stringifiedPlaylist = _(playlist).map(item => JSON.stringify(item)).value();
+      function uniquefyArray(array) {
+        var stringifiedArray = _(array).map(item => JSON.stringify(item)).value();
 
-        return _(_.uniq(stringifiedPlaylist)).map(item => JSON.parse(item)).value();
+        return _(_.uniq(stringifiedArray)).map(item => JSON.parse(item)).value();
+      }
+
+      function compareOldTo(newItem) {
+        var duplicateItems = _(playlist).filter(item => item.videoId === newItem.videoId).value().length;
+        return duplicateItems > 0 ? false : true;
       }
 
       this.fetchSubreddit = function(subredditName, after) {
@@ -135,11 +140,9 @@
           .then(function(data) {
             afterTag = data.data.data.after;
             currentSubreddit = subredditName;
-            if(after) { // after is a key for next paginated list, with it we concat playlists
-              playlist = uniquefyPlaylist(playlist.concat(subredditResultsFilter(data.data.data.children)));
-            } else {
-              playlist = uniquefyPlaylist(subredditResultsFilter(data.data.data.children));
-            }
+            var newItems = uniquefyArray(subredditResultsFilter(data.data.data.children));
+            playlist = playlist.concat(_(newItems).filter(item => compareOldTo(item)).value());
+
             deferred.resolve(playlist);
           }, function(error) {
             deferred.reject(error);
