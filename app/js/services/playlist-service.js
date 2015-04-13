@@ -141,7 +141,11 @@
             afterTag = data.data.data.after;
             currentSubreddit = subredditName;
             var newItems = uniquefyArray(subredditResultsFilter(data.data.data.children));
-            playlist = playlist.concat(_(newItems).filter(item => compareOldTo(item)).value());
+            if(after) {
+              playlist = playlist.concat(_(newItems).filter(item => compareOldTo(item)).value());
+            } else {
+              playlist = newItems;
+            }
 
             deferred.resolve(playlist);
           }, function(error) {

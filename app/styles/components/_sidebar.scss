@@ -102,11 +102,14 @@
   }
 }
 
+.sidebar-playlist-container {
+  flex: 1 1 auto;
+  overflow: auto;
+  box-shadow: 0 20px 20px -10px rgb(65, 65, 65) inset
+}
+
 .sidebar-playlist {
-  margin-bottom: 0;
-  padding-left: 0;
   overflow-y: auto;
-  flex: 0 1 auto;
 
   .list-group-item {
     padding: 1.4em 1em;
@@ -207,8 +210,8 @@
   .list-group-index {
     position: absolute;
     right: 10px;
-    bottom: 0px;
-    font-size: 7em;
+    bottom: 40px;
+    font-size: 3em;
     font-weight: 700;
     line-height: 1;
     color: fade-out(orange, .94);
@@ -219,7 +222,8 @@
 .sidebar-footer {
   padding: .8em 1.2em;
   font-size: .8em;
-  flex: 1 0 auto;
+  flex: 0 1 auto;
+  min-height: 30px;
   color: rgba(200, 200, 200, .5);
 
   a { color: rgba(200, 200, 200, .5); }
