@@ -102,8 +102,7 @@
           player.loadVideoById({
             videoId: item.videoId,
             startSeconds: item.starttime || 0,
-            // endSeconds: 0,
-            suggestedQuality: 'large'
+            suggestedQuality: 'default'
           });
           currentVideoItem = item;
           this.isPlaying = true;

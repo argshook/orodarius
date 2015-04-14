@@ -33,7 +33,7 @@ describe('Service: PlayerService', function() {
       .toHaveBeenCalledWith({
         videoId: mockVideoItem.videoId,
         startSeconds: mockVideoItem.starttime,
-        suggestedQuality: 'large'
+        suggestedQuality: 'default'
       });
   });
 
