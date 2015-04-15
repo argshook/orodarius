@@ -2,7 +2,6 @@
   position: absolute;
   display: flex;
   align-items: center;
-  // justify-content: center;
   top: 3vh;
   left: 3vh;
   width: 50vw;
@@ -16,9 +15,9 @@
     justify-content: center;
     font-size: 1.9em;
     font-weight: 700;
-    color: rgba(245, 245, 245, .1);
+    color: rgba(245, 245, 245, .2);
     font-family: $font-muli;
-    flex-basis: 100px;
+    flex-basis: 200px;
     transition: .2s ease all;
 
     &:hover {
@@ -31,37 +30,42 @@
     &:after {
       position: absolute;
       left: 50%;
+      font-weight: 900;
+      font-family: monospace;
       transform: scaleY(.5) translateX(-50%);
     }
 
     &:before {
-      top: -20px;
+      top: -25px;
       color: rgba(243, 70, 5, .3);
       content: '\2191'; // up arrow
     }
 
     &:after {
-      bottom: -20px;
+      bottom: -25px;
       color: rgba(132, 164, 211, .3);
       content: '\2193'; // down arrow
     }
   }
 
   .video-title {
-    padding: 1em;
-
     a {
       color: rgba(245, 245, 245, .3);
       font-size: 1.4em;
       text-shadow: 0 0 5px transparent;
       font-family: $font-oswald;
       font-weight: 400;
-      line-height: 2;
+      line-height: 2.1;
+      padding: .3em .2em;
       box-shadow: -10px 0 0 0 transparent, 10px 0 0 0 transparent;
       text-transform: uppercase;
       background: transparent;
       transition: .3s ease-out all;
       opacity: .3;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     &--huge,
