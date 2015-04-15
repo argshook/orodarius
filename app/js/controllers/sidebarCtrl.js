@@ -29,13 +29,12 @@
         this.isListLoading = true;
         $scope.playlistService.fetchSubreddit(subreddit).then(data => {
           this.isListLoading = false;
+          $scope.playerService.playVideo($scope.playlistService.playlist[0]);
         });
       };
 
       $scope.isListItemCurrentlyPlayed = function(item) {
         return item.videoId === $scope.playerService.currentVideoItem.videoId;
       };
-
-      this.fillPlaylistWith('videos');
     });
 })();

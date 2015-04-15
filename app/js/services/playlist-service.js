@@ -3,10 +3,6 @@
 
   angular.module('orodarius')
     .service('PlaylistService', function($http, $q, $log) {
-      // Reddit APIs:
-      // http://www.reddit.com/r/videos/about.json
-      // http://www.reddit.com/r/videos/hot.json?limit=1
-
       var playlist = [],
           redditAPIBaseUrl = 'http://www.reddit.com/r/',
           currentSubreddit,
