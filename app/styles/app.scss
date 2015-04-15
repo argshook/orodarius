@@ -7,7 +7,7 @@
 
 body {
   font: {
-    family: $font-roboto;
+    family: $font-muli;
     size: 14px;
   }
 }
@@ -16,8 +16,11 @@ body {
 
 @import "components/video-player";
 @import "components/sidebar";
+@import "components/player-overlay";
 
 .container-full {
   width: 100vw;
   height: 100vh;
 }
+
+@import url(http://fonts.googleapis.com/css?family=Muli|Oswald:400,700&subset=latin,latin-ext);

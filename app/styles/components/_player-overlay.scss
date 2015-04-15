@@ -1,0 +1,32 @@
+.player-overlay {
+  position: absolute;
+  top: 3vh;
+  left: 3vh;
+  width: 50vw;
+  z-index: $zindex-player-overlay;
+  padding: 1em;
+
+  .video-title {
+    display: inline-block;
+    padding: .3em .5em;
+    color: rgba(245, 245, 245, .5);
+    font-size: 1.3em;
+    text-shadow: 0 0 5px transparent;
+    font-family: $font-oswald;
+    font-weight: 400;
+    line-height: 1.7;
+    text-transform: uppercase;
+    background: transparent;
+    transition: .3s ease-out all;
+    opacity: .3;
+
+    &--huge,
+    &:hover {
+      transform: scale(1.1) translateX(30px);
+      color: rgba(245, 245, 245, 1);
+      background: fade-out(black, .8);
+      text-shadow: 0 0 5px black;
+      opacity: 1;
+    }
+  }
+}

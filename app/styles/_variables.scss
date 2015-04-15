@@ -8,6 +8,10 @@ $input-border-focus: rgba(255, 255, 255, .1);
 $input-group-addon-bg: transparent;
 $input-group-addon-border-color: $input-border;
 
-$font-roboto: 'Roboto Condensed', sans-serif;
+$font-muli: 'Muli', sans-serif;
+$font-oswald: 'Oswald', sans-serif;
 
 $color-primary: orange;
+
+$zindex-player-overlay: 1000;
+$zindex-sidebar: 1010;

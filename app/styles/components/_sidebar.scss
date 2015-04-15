@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   background: rgba(20, 20, 20, 0.7);
-
+  z-index: $zindex-sidebar;
   transition: .25s ease all;
 
   &--open {
@@ -52,7 +52,7 @@
     padding: 0.2em;
     color: rgba(255, 255, 255, 0.57);
     text-align: center;
-    font-family: $font-roboto;
+    font-family: $font-oswald;
     font-size: 3em;
     font-weight: 700;
     text-transform: uppercase;
