@@ -6,7 +6,13 @@ describe("Controller: playerOverlayCtrl", function() {
   beforeEach(module('orodarius'));
   beforeEach(inject(function($controller, $rootScope, PlayerService, PlaylistService) {
     scope = $rootScope.$new();
-    ctrl = $controller('playerOverlayCtrl', { $scope: scope });
+    PlaylistService = PlaylistService;
+    PlayerService = PlayerService;
+    ctrl = $controller('playerOverlayCtrl', {
+      $scope: scope,
+      PlaylistService: PlaylistService,
+      PlayerService: PlayerService
+    });
   }));
 
   it("should be defined", function() {
