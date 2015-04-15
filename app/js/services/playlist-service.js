@@ -93,7 +93,16 @@
       }
 
       function checkThumbnailValidity(thumbnailUrl) {
-        return thumbnailUrl === 'nsfw' ? 'images/nsfw-thumbnail.jpg' : thumbnailUrl;
+        switch(thumbnailUrl) {
+          case 'nsfw':
+            thumbnailUrl = 'images/nsfw-thumbnail.jpg';
+            break;
+          case 'default':
+            thumbnailUrl = 'images/default-thumbnail.png';
+            break;
+        }
+
+        return thumbnailUrl;
       }
 
       function subredditResultsFilter(data) {
