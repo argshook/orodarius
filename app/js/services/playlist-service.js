@@ -119,7 +119,9 @@
                       videoId: videoInfo.id,
                       starttime: videoInfo.starttime,
                       thumbnailUrl: checkThumbnailValidity(item.data.thumbnail),
-                      created: item.data.created
+                      created: item.data.created,
+                      redditUrl: `http://reddit.com${item.data.permalink}`,
+                      redditScore: item.data.score,
                     };
                   })
                   .value();

@@ -75,10 +75,9 @@
     </div>
   </div>
 
-  <div class="player-overlay" ng-controller="playerOverlayCtrl as playerOverlay">
-    <div class="video-title">
-      {{playerService.currentVideoItem.title}}
-    </div>
+  <div class="player-overlay" ng-show="playerService.currentVideoItem.videoId" ng-controller="playerOverlayCtrl as playerOverlay">
+    <div class="video-score">{{playerService.currentVideoItem.redditScore}}</div>
+    <div class="video-title"><a ng-href="{{playerService.currentVideoItem.redditUrl}}" target="_blank">{{playerService.currentVideoItem.title}}</a></div>
   </div>
 
   <script src="js/vendor.js"></script>
