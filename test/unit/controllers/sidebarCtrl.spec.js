@@ -47,9 +47,13 @@ describe('Controller: sidebarCtrl', function() {
     expect(scope.sidebarService.isOpen).toBe(false);
   });
 
-  it("fillPlaylistWith should fill sidebar.list with fetched items from reddit", function() {
+  it('fillPlaylistWith should fill sidebar.list with fetched items from reddit', function() {
     spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({then: angular.noop});
     ctrl.fillPlaylistWith('artisanvideos');
     expect(PlaylistService.fetchSubreddit).toHaveBeenCalledWith('artisanvideos');
+  });
+
+  it('should contain currentSubreddit property on scope', function() {
+    expect(typeof scope.currentSubreddit).toBe('string');
   });
 });

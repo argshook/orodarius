@@ -7,6 +7,8 @@
       $scope.sidebarService = SidebarService;
       $scope.playlistService = PlaylistService;
       $scope.playerService = PlayerService;
+
+      $scope.currentSubreddit = '';
       this.isListLoading = false;
 
       // TODO: not nice
@@ -29,6 +31,7 @@
         this.isListLoading = true;
         $scope.playlistService.fetchSubreddit(subreddit).then(data => {
           this.isListLoading = false;
+          $scope.currentSubreddit = subreddit;
           $scope.playerService.playVideo($scope.playlistService.playlist[0]);
         });
       };
