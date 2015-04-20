@@ -202,8 +202,16 @@
     cursor: pointer;
     transition: .2s ease all;
 
-    &:hover {
-      background: rgba(255, 255, 255, .1);
+    &:hover { background-color: rgba(255, 255, 255, .1); }
+
+    &__loading {
+      background-image: repeating-linear-gradient(
+                          -20deg,
+                          rgba(0, 0, 0, 0.2) 0,
+                          fade-out(orange, .9) 3%);
+      background-position-x: 100%;
+      background-size: 300%;
+      animation: animateSidebarExpandBtnGradient 10s linear infinite;
     }
   }
 
@@ -227,4 +235,10 @@
   color: rgba(200, 200, 200, .5);
 
   a { color: rgba(200, 200, 200, .5); }
+}
+
+@keyframes animateSidebarExpandBtnGradient {
+  to {
+    background-position-x: 0;
+  }
 }

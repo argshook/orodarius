@@ -1,11 +1,12 @@
 'use strict';
 
 describe('Service: PlaylistService', function() {
-  var service, $httpBackend;
+  var service, $httpBackend, $q;
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_PlaylistService_, _$httpBackend_) {
+  beforeEach(inject(function(_PlaylistService_, _$httpBackend_, _$q_) {
+    $q = _$q_;
     service = _PlaylistService_;
     $httpBackend = _$httpBackend_;
   }));
@@ -94,10 +95,19 @@ describe('Service: PlaylistService', function() {
     expect(service.playlist.length).toBe(1);
   });
 
-  it("expandPlaylist should fetch more items and concat playlist with new items", function() {
+  it("expandPlaylist should fetch more items", function() {
+    $httpBackend.whenGET(/.*hot\.json/).respond(200, {
+      data: { after: 'asd' }
+    });
     service.afterTag = REDDIT.data.after;
-    spyOn(service, 'fetchSubreddit');
-    service.expandPlaylist();
-    expect(service.fetchSubreddit).toHaveBeenCalled();
+
+    var resolved = false;
+
+    service.expandPlaylist().then(function() {
+      resolved = true;
+    });
+
+    $httpBackend.flush();
+    expect(resolved).toBe(true);
   });
 });

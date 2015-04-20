@@ -163,11 +163,19 @@
       };
 
       this.expandPlaylist = function() {
+        var deferred = $q.defer();
+
         if(afterTag) {
-          this.fetchSubreddit(currentSubreddit, afterTag);
+          this.fetchSubreddit(currentSubreddit, afterTag).then(
+            () => deferred.resolve(),
+            () => deferred.reject()
+          );
         } else {
           $log.warn('cant expand playlist, no afterTag found!');
+          deferred.reject();
         }
+
+        return deferred.promise;
       };
 
       this.add = add;

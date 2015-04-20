@@ -36,6 +36,13 @@
         });
       };
 
+      this.expandPlaylist = function() {
+        this.isListLoading = true;
+        $scope.playlistService.expandPlaylist().then(() => {
+          this.isListLoading = false;
+        });
+      };
+
       $scope.isListItemCurrentlyPlayed = function(item) {
         return item.videoId === $scope.playerService.currentVideoItem.videoId;
       };
