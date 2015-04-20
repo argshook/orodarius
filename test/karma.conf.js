@@ -26,7 +26,7 @@ module.exports = function(karma) {
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress', 'junit'],
+    reporters: ['progress', 'coverage'],
 
     // web server port
     port: 9005,
@@ -43,6 +43,10 @@ module.exports = function(karma) {
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
+
+    preprocessors: {
+      '**/public/**/!(vendor).js': 'coverage',
+    },
 
     // Start these browsers, currently available:
     // - Chrome
@@ -68,10 +72,11 @@ module.exports = function(karma) {
     },
 
     // urlRoot: '__karma__',
-    urlRoot: '',
+    urlRoot: 'something',
 
     plugins: [
     'karma-jasmine',
+    'karma-coverage',
     'karma-chrome-launcher',
     'karma-firefox-launcher',
     'karma-safari-launcher',

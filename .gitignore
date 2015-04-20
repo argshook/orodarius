@@ -71,5 +71,6 @@ docs
 vendor
 bower_components
 
+coverage
 test/test-results.xml
 test-results.xml
