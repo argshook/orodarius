@@ -11,11 +11,12 @@ describe('Directive: ngEnter', function() {
     scope.callback = angular.noop;
   }));
 
-  function compileWith(callback) {
-    var template = _.template('<input type="text" ng-enter="${callback}()" />', {
-      callback: callback
+  function compileWith(callback, options) {
+    options = options || {};
+    var template = _.template('<input type="text" ng-enter="${callback}()" ng-enter-options="${options}" />', {
+      callback: callback,
+      options: JSON.stringify(options).replace(/"/g, "'")
     });
-
     element = $compile(template)(scope);
     scope.$digest();
   }
@@ -28,5 +29,14 @@ describe('Directive: ngEnter', function() {
     event.keyCode = 13;
     element.triggerHandler(event);
     expect(scope.callback).toHaveBeenCalled();
+  });
+
+  it('should blur element if ng-enter-options have blurOnEnter set to true', function() {
+    compileWith('callback', { blurOnEnter: true });
+    spyOn(element[0], 'blur');
+    var event = $.Event('keypress');
+    event.which = 13;
+    element.triggerHandler(event);
+    expect(element[0].blur).toHaveBeenCalled();
   });
 });

@@ -7,12 +7,17 @@
         restrict: 'A',
         replace: false,
         scope: {
-          ngEnter: '&'
+          ngEnter: '&',
+          ngEnterOptions: '='
         },
         link: function(scope, element, attr) {
           element.on('keypress', function(event) {
             if(event.which === 13 || event.keyCode === 13) {
               scope.ngEnter.call();
+
+              if(scope.ngEnterOptions.blurOnEnter) {
+                $(element).blur();
+              }
             }
           });
         }
