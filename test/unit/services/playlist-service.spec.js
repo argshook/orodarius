@@ -110,4 +110,22 @@ describe('Service: PlaylistService', function() {
     $httpBackend.flush();
     expect(resolved).toBe(true);
   });
+
+  it("successful fetchSubreddit should populate playlist array with specific video item model", function() {
+    service.fetchSubreddit('videos').then(function(playlist) {
+      expect(playlist[0]).toEqual(jasmine.objectContaining({
+        title: 'Idiots body slamming hoods of random parked cars, receive instant karma at end',
+        url: 'https://www.youtube.com/watch?v=1f1wpHIpyKQ',
+        videoId: '1f1wpHIpyKQ',
+        starttime: 0,
+        thumbnailUrl: 'http://b.thumbs.redditmedia.com/i5o6X7Jcvht_uK3ZEHyv5Uai89pD-vmY4qrqepYM3pg.jpg',
+        created: 1428297419,
+        redditUrl: 'http://reddit.com/r/videos/comments/31lenf/idiots_body_slamming_hoods_of_random_parked_cars/',
+        redditScore: 4558,
+        subreddit: 'videos'
+      }));
+    });
+
+    $httpBackend.flush();
+  });
 });

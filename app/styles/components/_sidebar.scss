@@ -65,19 +65,19 @@
   color: #adadad;
   margin-bottom: 2em;
 
-  &-label {
-    margin: 0 1.5em;
-  }
+  &-label { margin: 0 1.5em; }
 
   &-input {
     padding: 1em 1em;
     background: transparent;
     border: 0;
-    border-bottom: 1px solid #adadad;
+    border-bottom: 1px solid fade-out(#adadad, .4);
     color: fade-out(orange, .4);
+    transition: .2s ease all;
 
-    &:focus {
-      outline: none;
+    &:focus,
+    &:hover {
+      box-shadow: 0 -10px 7px -3px fade-out(white, .96) inset;
     }
   }
 
@@ -105,15 +105,15 @@
 .sidebar-playlist-container {
   flex: 1 1 auto;
   overflow: auto;
-  box-shadow: 0 20px 20px -10px rgb(65, 65, 65) inset
+  box-shadow: 0 30px 20px -10px rgba(65, 65, 65, .3) inset
 }
 
 .sidebar-playlist {
   overflow-y: auto;
 
   .list-group-item {
-    padding: 1.4em 1em;
-    background: rgba(0, 0, 0, 0.34);
+    padding: 1em;
+    background: rgba(0, 0, 0, .34);
     border: 0;
     border-radius: 0;
     min-height: 100px;
@@ -126,57 +126,92 @@
       background: rgba(100, 100, 100, .4);
 
       .list-group-title {
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(255, 255, 255, .6);
       }
     }
 
     &.current {
       background: rgba(100, 100, 100, .6);
-      color: rgba(255, 255, 255, .8);
+      color: rgba(255, 255, 255, 1);
       border-bottom-color: darken($color-primary, 20);
       box-shadow: 0 10px 10px -10px rgba(0, 0, 0, .3) inset;
 
-      .list-group-thumbnail {
+      .list-group-item__thumbnail {
         box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .42);
       }
 
-      .list-group-title {
-        color: rgba(255, 255, 255, 0.8);
+      .list-group-item__title {
+        color: rgba(255, 255, 255, .8);
+        transform: translateY(-3px);
       }
 
-      .list-group-index {
-        color: fade-out(orange, .8);
+      .list-group-item__footer-subreddit,
+      .list-group-item__index {
+        color: fade-out(orange, .6);
       }
     }
-  }
 
-  .list-group-thumbnail {
-    float: left;
-    width: 100px;
-    height: 75px;
-    margin-right: 15px;
-    transition: .2s ease all;
-    background: {
-      position: 50% 50%;
-      size: cover;
-      repeat: no-repeat;
+    &__index {
+      float: left;
+      margin-right: 15px;
+      font-size: 1.3em;
+      text-align: center;
+      font-weight: 400;
+      padding-top: 1.3em;
+      color: fade-out(orange, .94);
+      transition: .2s ease all;
     }
 
-    &.nsfw {
-      background-size: contain;
-      width: 75px;
-      margin-left: 15px;
-      box-shadow: 0 0 15px 0 fade-out(red, .5);
-      transform: rotateZ(5deg);
-    }
-  }
+    &__thumbnail {
+      float: left;
+      width: 100px;
+      height: 75px;
+      margin-right: 15px;
+      transition: .2s ease all;
+      background: {
+        position: 50% 50%;
+        size: cover;
+        repeat: no-repeat;
+      }
 
-  .list-group-title {
-    transition: .2s ease all;
-    text-shadow: 0 2px 1px rgba(0, 0, 0, .5);
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 1.1em;
-    line-height: 1.4;
+      &.nsfw {
+        background-size: contain;
+        width: 75px;
+        margin-left: 15px;
+        margin-right: 22px;
+        box-shadow: 0 0 15px 0 fade-out(red, .5);
+        transform: rotateZ(5deg);
+      }
+    }
+
+    &__title {
+      transition: .2s ease all;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+      color: rgba(255, 255, 255, 0.4);
+      font-family: Roboto;
+      font-weight: 100;
+      font-size: 1.1em;
+      line-height: 1.4;
+    }
+
+    &__footer {
+      position: absolute;
+      bottom: 0; left: auto; right: 0;
+      height: 20px;
+      font-size: .8em;
+      line-height: 20px;
+      vertical-align: middle;
+      text-align: right;
+      background: rgba(0, 0, 0, .1);
+      color: #222;
+      padding: 0 1em;
+
+      &-subreddit {
+        &:before {
+          content: 'r/';
+        }
+      }
+    }
   }
 
   .list-group-empty {
@@ -213,17 +248,6 @@
       background-size: 300%;
       animation: animateSidebarExpandBtnGradient 10s linear infinite;
     }
-  }
-
-  .list-group-index {
-    position: absolute;
-    right: 10px;
-    bottom: 40px;
-    font-size: 3em;
-    font-weight: 700;
-    line-height: 1;
-    color: fade-out(orange, .94);
-    transition: .2s ease all;
   }
 }
 

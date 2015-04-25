@@ -122,6 +122,7 @@
                       created: item.data.created,
                       redditUrl: `http://reddit.com${item.data.permalink}`,
                       redditScore: item.data.score,
+                      subreddit: item.data.subreddit
                     };
                   })
                   .value();
