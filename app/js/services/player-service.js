@@ -4,8 +4,7 @@
   angular.module('orodarius')
     .service('PlayerService', function($window, $rootScope, PlaylistService) {
       var player,
-          currentVideoItem = {},
-          self = this; // :(
+          currentVideoItem = {};
 
       Object.defineProperties(this, {
         player: {
@@ -45,16 +44,16 @@
 
         // if event is 0 (ended), play another video.
         if (event.data === 0) {
-          self.playNext();
+          this.playNext();
         }
       }
 
       function onPlayerError(event) {
-        console.log(event);
+        console.warn('ERROR', event);
         // https://developers.google.com/youtube/iframe_api_reference#Events
         if([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
           // TODO: stop trying after n tries
-          self.playNext();
+          this.playNext();
         }
       }
 
@@ -79,9 +78,9 @@
             enablejsapi: 1
           },
           events: {
-            onReady: onPlayerReady,
-            onError: onPlayerError,
-            onStateChange: onPlayerStateChange
+            onReady: onPlayerReady.bind(this),
+            onError: onPlayerError.bind(this),
+            onStateChange: onPlayerStateChange.bind(this)
           }
         };
 
@@ -119,7 +118,7 @@
             PlaylistService.currentSubreddit,
             PlaylistService.afterTag
           ).then(function(data) {
-            self.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
+            this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
           });
         } else {
           this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
