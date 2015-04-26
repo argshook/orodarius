@@ -47,6 +47,13 @@ describe('Controller: sidebarCtrl', function() {
     expect(scope.sidebarService.isOpen).toBe(false);
   });
 
+  it('isOpen should be true after playVideo has been invoked when isSidebarSticky is true', function() {
+    scope.sidebarService.isOpen = true;
+    scope.isSidebarSticky = true;
+    ctrl.playVideo(mockVideoItem);
+    expect(scope.sidebarService.isOpen).toBe(true);
+  });
+
   it('fillPlaylistWith should fill sidebar.list with fetched items from reddit', function() {
     spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({then: angular.noop});
     ctrl.fillPlaylistWith('artisanvideos');
@@ -61,5 +68,9 @@ describe('Controller: sidebarCtrl', function() {
 
   it('should contain currentSubreddit property on scope', function() {
     expect(typeof scope.currentSubreddit).toBe('string');
+  });
+
+  it('should keep isSidebarSticky value on scope and be set to false initially', function() {
+    expect(scope.isSidebarSticky).toBe(false);
   });
 });

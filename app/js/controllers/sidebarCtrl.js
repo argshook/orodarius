@@ -8,6 +8,7 @@
       $scope.playlistService = PlaylistService;
       $scope.playerService = PlayerService;
 
+      $scope.isSidebarSticky = false;
       $scope.currentSubreddit = '';
 
       // TODO: not nice
@@ -23,7 +24,10 @@
 
       this.playVideo = function(item) {
         $scope.playerService.playVideo(item);
-        $scope.sidebarService.toggle();
+
+        if(!$scope.isSidebarSticky) {
+          $scope.sidebarService.toggle();
+        }
       };
 
       this.fillPlaylistWith = function(subreddit = "videos") {
