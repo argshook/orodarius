@@ -134,6 +134,8 @@
       .list-group-item__title {
         color: rgba(255, 255, 255, .6);
       }
+
+      .list-group-item__thumbnail { opacity: 1; }
     }
 
     &.current {
@@ -148,6 +150,7 @@
 
       .list-group-item__thumbnail {
         box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .42);
+        opacity: 1;
       }
 
       .list-group-item__title {
@@ -159,6 +162,13 @@
       .list-group-item__index {
         color: fade-out(orange, .6);
       }
+    }
+
+    &.erroneous {
+      background-image: repeating-linear-gradient(
+                          -45deg,
+                          rgba(0, 0, 0, 0.2) 0,
+                          fade-out(orange, .9) 15%);
     }
 
     &__score {
@@ -206,6 +216,7 @@
         size: cover;
         repeat: no-repeat;
       }
+      opacity: .6;
 
       &.nsfw {
         background-size: contain;
@@ -255,11 +266,12 @@
       background: rgba(0, 0, 0, .1);
       color: #555;
 
-      &-subreddit {
-        &:before {
-          content: 'r/';
-        }
+      &-error {
+        color: darken(#fff, 50);
+        padding: 0 1em;
       }
+
+      &-subreddit {}
     }
   }
 

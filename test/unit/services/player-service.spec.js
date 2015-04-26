@@ -105,4 +105,51 @@ describe('Service: PlayerService', function() {
     service.resetCurrentVideoItem();
     expect(service.currentVideoItem).toBeUndefined();
   });
+
+  describe('markCurrentVideoItemWithError method', function() {
+    // possible error codes: 2, 5, 100, 101, 150
+    // see https://developers.google.com/youtube/iframe_api_reference#onError
+
+    beforeEach(function() {
+      PlaylistService.playlist = [
+        { videoId: 'currentId', ownId: '1' },
+        { videoId: 'nextId', ownId: '2' }
+      ];
+      service.currentVideoItem = PlaylistService.playlist[0];
+    });
+
+    it('should mark invalid id error', function() {
+      service.markCurrentVideoItemWithError(2);
+      expect(PlaylistService.playlist[0].error).toEqual({
+        code: 2,
+        message: "can't parse video ID"
+      });
+    });
+
+    it('should mark html5 player error', function() {
+      service.markCurrentVideoItemWithError(5);
+      expect(PlaylistService.playlist[0].error).toEqual({
+        code: 5,
+        message: "problem with HTML5 Youtube player"
+      });
+    });
+
+    it('should mark html5 player error', function() {
+      service.markCurrentVideoItemWithError(100);
+      expect(PlaylistService.playlist[0].error).toEqual({
+        code: 100,
+        message: "video is private or removed"
+      });
+    });
+
+    it('should mark html5 player error', function() {
+      var err101and150msg = "uploader does not allow embedded playback";
+
+      service.markCurrentVideoItemWithError(101);
+      expect(PlaylistService.playlist[0].error).toEqual({ code: 101, message: err101and150msg });
+
+      service.markCurrentVideoItemWithError(150);
+      expect(PlaylistService.playlist[0].error).toEqual({ code: 150, message: err101and150msg });
+    });
+  });
 });

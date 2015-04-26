@@ -49,21 +49,42 @@
       }
 
       function onPlayerError(event) {
-        console.warn('ERROR', event);
-        // https://developers.google.com/youtube/iframe_api_reference#Events
+        // https://developers.google.com/youtube/iframe_api_reference#onError
         if([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
+          this.markCurrentVideoItemWithError(event.data);
           // TODO: stop trying after n tries
           this.playNext();
         }
       }
 
       function currentItemMatcher(item) {
-        return item.videoId === currentVideoItem.videoId &&
-               item.name === currentVideoItem.name &&
-               item.created === currentVideoItem.created;
+        return item.ownId === currentVideoItem.ownId;
       }
 
       this.isPlaying = false;
+
+      this.markCurrentVideoItemWithError = function(errorCode) {
+        var currentItemIndex = _.findIndex(PlaylistService.playlist, item => item.ownId === currentVideoItem.ownId);
+
+        PlaylistService.playlist[currentItemIndex].error = {
+          code: errorCode,
+          message: errorMessage()
+        };
+
+        function errorMessage() {
+          switch (errorCode) {
+            case 2:
+              return "can't parse video ID";
+            case 5:
+              return "problem with HTML5 Youtube player";
+            case 100:
+              return "video is private or removed";
+            case 101:
+            case 150:
+              return "uploader does not allow embedded playback";
+          }
+        }
+      };
 
       this.createNewPlayer = function(elementId, options) {
         var defaultPlayerOptions = {
@@ -78,9 +99,9 @@
             enablejsapi: 1
           },
           events: {
-            onReady: onPlayerReady,
-            onError: onPlayerError,
-            onStateChange: onPlayerStateChange
+            onReady: onPlayerReady.bind(this),
+            onError: onPlayerError.bind(this),
+            onStateChange: onPlayerStateChange.bind(this)
           }
         };
 
@@ -117,7 +138,7 @@
           PlaylistService.fetchSubreddit(
             PlaylistService.currentSubreddit,
             PlaylistService.afterTag
-          ).then(function(data) {
+          ).then(data => {
             this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
           });
         } else {
