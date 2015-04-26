@@ -6,7 +6,9 @@
       var playlist = [],
           redditAPIBaseUrl = 'http://www.reddit.com/r/',
           currentSubreddit,
-          afterTag;
+          afterTag,
+          fetchRetries = 0,
+          maxFetchRetries = 3; // how many times should I retry GETting from reddit api?
 
       Object.defineProperties(this, {
         playlist: {
@@ -139,47 +141,64 @@
         return duplicateItems > 0 ? false : true;
       }
 
-      this.fetchSubreddit = function(subredditName, after) {
-        var deferred = $q.defer();
-
-        var apiUrl = `${redditAPIBaseUrl}${subredditName}/hot.json?limit=25` + (after ? `&after=${after}` : '');
+      this.fetchSubreddit = function(subredditName, after, deferred = $q.defer()) {
+        var apiUrl = `${redditAPIBaseUrl}${subredditName}/hot.json?limit=50` + (after ? `&after=${after}` : '');
+        this.isLoading = true;
 
         $http.get(apiUrl)
-          .then(function(data) {
+          .then(data => {
             afterTag = data.data.data.after;
             currentSubreddit = subredditName;
-            var newItems = uniquefyArray(subredditResultsFilter(data.data.data.children));
-            if(after) {
-              playlist = playlist.concat(_(newItems).filter(item => compareOldTo(item)).value());
-            } else {
-              playlist = newItems;
-            }
+            fetchRetries++;
 
-            deferred.resolve(playlist);
-          }, function(error) {
-            deferred.reject(error);
-          });
+            var newItems = uniquefyArray(subredditResultsFilter(data.data.data.children));
+
+            if(newItems.length === 0 && fetchRetries <= maxFetchRetries) {
+              this.fetchSubreddit(currentSubreddit, afterTag, deferred);
+            } else {
+              this.isLoading = false;
+              playlist = after ?
+                          playlist
+                            .concat(_(newItems)
+                            .filter(item => compareOldTo(item)).value()) :
+                          newItems;
+
+              fetchRetries = 0;
+              deferred.resolve(playlist);
+
+              return deferred.promise;
+            }
+          }, error => deferred.reject(error));
 
         return deferred.promise;
       };
 
       this.expandPlaylist = function() {
-        var deferred = $q.defer();
+        if(!this.isLoading) {
+          var deferred = $q.defer();
 
-        if(afterTag) {
-          this.fetchSubreddit(currentSubreddit, afterTag).then(
-            () => deferred.resolve(),
-            () => deferred.reject()
-          );
-        } else {
-          $log.warn('cant expand playlist, no afterTag found!');
-          deferred.reject();
+          if(afterTag) {
+            this.fetchSubreddit(currentSubreddit, afterTag).then(
+              () => deferred.resolve(),
+              () => deferred.reject()
+            );
+          } else {
+            $log.warn('cant expand playlist, no afterTag found!');
+            deferred.reject();
+          }
+
+          return deferred.promise;
         }
 
-        return deferred.promise;
+        return false;
+      };
+
+      this.clear = function() {
+        playlist = [];
       };
 
       this.add = add;
       this.afterTag = afterTag;
+      this.isLoading = false;
     });
 })();

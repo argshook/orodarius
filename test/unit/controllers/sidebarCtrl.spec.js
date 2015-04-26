@@ -53,6 +53,12 @@ describe('Controller: sidebarCtrl', function() {
     expect(PlaylistService.fetchSubreddit).toHaveBeenCalledWith('artisanvideos');
   });
 
+  it('fillPlaylistWith should clear playlist', function() {
+    spyOn(PlaylistService, 'clear');
+    ctrl.fillPlaylistWith('videos');
+    expect(PlaylistService.clear).toHaveBeenCalled();
+  });
+
   it('should contain currentSubreddit property on scope', function() {
     expect(typeof scope.currentSubreddit).toBe('string');
   });

@@ -9,7 +9,6 @@
       $scope.playerService = PlayerService;
 
       $scope.currentSubreddit = '';
-      this.isListLoading = false;
 
       // TODO: not nice
       $rootScope.$on('videoPlay', function(currentVideoItem) {
@@ -28,19 +27,17 @@
       };
 
       this.fillPlaylistWith = function(subreddit = "videos") {
-        this.isListLoading = true;
-        $scope.playlistService.fetchSubreddit(subreddit).then(data => {
-          this.isListLoading = false;
-          $scope.currentSubreddit = subreddit;
-          $scope.playerService.playVideo($scope.playlistService.playlist[0]);
-        });
+        if(!$scope.playlistService.isLoading) {
+          $scope.playlistService.clear();
+          $scope.playlistService.fetchSubreddit(subreddit).then(data => {
+            $scope.currentSubreddit = subreddit;
+            $scope.playerService.playVideo($scope.playlistService.playlist[0]);
+          });
+        }
       };
 
       this.expandPlaylist = function() {
-        this.isListLoading = true;
-        $scope.playlistService.expandPlaylist().then(() => {
-          this.isListLoading = false;
-        });
+        $scope.playlistService.expandPlaylist();
       };
 
       $scope.isListItemCurrentlyPlayed = function(item) {

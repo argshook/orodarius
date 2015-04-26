@@ -6,7 +6,7 @@
       this.isOpen = true;
 
       this.toggle = function(toggleValue) {
-        this.isOpen = toggleValue ? toggleValue : !this.isOpen;
+        this.isOpen = toggleValue || !this.isOpen;
       };
     });
 })();

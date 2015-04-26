@@ -61,7 +61,7 @@ describe('Service: PlaylistService', function() {
       { name: 'name4', videoId: 'VSNuZEdYrH0', created: 4 },
     ];
 
-    $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=25').respond(200, {
+    $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=50').respond(200, {
       data: {
         children: [
           { kind: 't3', data: { domain: 'youtube.com', name: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
@@ -79,7 +79,7 @@ describe('Service: PlaylistService', function() {
   });
 
   it("fetchSubreddit method should uniquefy fetched items", function() {
-    $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=25').respond(200, {
+    $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=50').respond(200, {
       data: {
         children: [
           { kind: 't3', data: { domain: 'youtube.com', name: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
@@ -128,4 +128,32 @@ describe('Service: PlaylistService', function() {
 
     $httpBackend.flush();
   });
+
+  describe("clear method", function() {
+    it("should be exposed", function () {
+      expect(service.clear).toBeDefined();
+    });
+
+    it("should reset playlist to empty array", function() {
+      service.playlist = [1, 2, 3];
+      service.clear();
+      expect(service.playlist.length).toBe(0);
+    });
+  });
+
+  describe("isLoading value", function() {
+    it("should be exposed and set to false initially", function() {
+      expect(service.isLoading).toBe(false);
+    });
+
+    it("calling fetchSubreddit should set isLoading to true and then to false on promise resolve", function() {
+      service.fetchSubreddit('videos').then(function() {
+        expect(service.isLoading).toBe(false);
+      });
+
+      expect(service.isLoading).toBe(true);
+      $httpBackend.flush();
+    });
+  });
+
 });

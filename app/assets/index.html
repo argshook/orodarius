@@ -32,7 +32,7 @@
         <span class="sidebar-now-playing-label">Now playing:</span>
         <input class="sidebar-now-playing-input" placeholder="{{currentSubreddit}}" type="text" ng-enter="sidebar.fillPlaylistWith(currentSubreddit)" ng-enter-options="{blurOnEnter: true}" ng-model="currentSubreddit" />
         <button class="sidebar-now-playing-btn" ng-click="sidebar.fillPlaylistWith(playlistService.currentSubreddit)">
-          <span class="glyphicon glyphicon-search" ng-class="{loading: sidebar.isListLoading}"></span>
+          <span class="glyphicon glyphicon-search" ng-class="{loading: playlistService.isLoading}"></span>
         </button>
       </div>
     </div>
@@ -55,7 +55,7 @@
         <div
           class="list-group-more"
           ng-show="playlistService.playlist.length > 0"
-          ng-class="{'list-group-more__loading': sidebar.isListLoading}"
+          ng-class="{'list-group-more__loading': playlistService.isLoading}"
           ng-click="sidebar.expandPlaylist()"
         >
           <span class="glyphicon glyphicon-plus"></span>
