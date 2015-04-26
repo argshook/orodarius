@@ -42,7 +42,7 @@
         <div
           class="list-group-item"
           ng-repeat="item in playlistService.playlist"
-          ng-class="{current: item.videoId === playerService.currentVideoItem.videoId}"
+          ng-class="{current: item.ownId === playerService.currentVideoItem.ownId}"
           ng-click="sidebar.playVideo(item)"
         >
           <div class="list-group-item__index">{{$index + 1}}</div>
