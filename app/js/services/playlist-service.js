@@ -132,8 +132,8 @@
                   .value();
       }
 
-      function uniquefyArray(array) {
-        var stringifiedArray = _(array).map(item => JSON.stringify(item)).value();
+      function uniquefyVideoItems(videoItems) {
+        var stringifiedArray = _(videoItems).map(item => JSON.stringify(item)).value();
 
         return _(_.uniq(stringifiedArray)).map(item => JSON.parse(item)).value();
       }
@@ -141,6 +141,15 @@
       function compareOldTo(newItem) {
         var duplicateItems = _(playlist).filter(item => item.videoId === newItem.videoId).value().length;
         return duplicateItems > 0 ? false : true;
+      }
+
+      function postProcessFor(newItems) {
+        return _(newItems)
+                .map(item => {
+                  item.ownId =_.uniqueId('orodarius_video-item_');
+                  return item;
+                })
+                .value();
       }
 
       this.fetchSubreddit = function(subredditName, after, deferred = $q.defer()) {
@@ -153,12 +162,14 @@
             currentSubreddit = subredditName;
             fetchRetries++;
 
-            var newItems = uniquefyArray(subredditResultsFilter(data.data.data.children));
+            var newItems = uniquefyVideoItems(subredditResultsFilter(data.data.data.children));
 
             if(newItems.length === 0 && fetchRetries <= maxFetchRetries) {
               this.fetchSubreddit(currentSubreddit, afterTag, deferred);
             } else {
               this.isLoading = false;
+              newItems = postProcessFor(newItems);
+
               playlist = after ?
                           playlist
                             .concat(_(newItems)
@@ -170,7 +181,10 @@
 
               return deferred.promise;
             }
-          }, error => deferred.reject(error));
+          }, error => {
+            this.isLoading = false;
+            deferred.reject(error);
+          });
 
         return deferred.promise;
       };

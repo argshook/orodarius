@@ -125,6 +125,8 @@ describe('Service: PlaylistService', function() {
         subreddit: 'videos',
         error: null
       }));
+
+      expect(playlist[0].ownId).toMatch(/orodarius_video-item_\d/);
     });
 
     $httpBackend.flush();
