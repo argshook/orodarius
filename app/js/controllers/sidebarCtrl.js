@@ -27,13 +27,11 @@
       };
 
       this.fillPlaylistWith = function(subreddit = "videos") {
-        if(!$scope.playlistService.isLoading) {
-          $scope.playlistService.clear();
-          $scope.playlistService.fetchSubreddit(subreddit).then(data => {
-            $scope.currentSubreddit = subreddit;
-            $scope.playerService.playVideo($scope.playlistService.playlist[0]);
-          });
-        }
+        $scope.playlistService.clear();
+        $scope.playlistService.fetchSubreddit(subreddit).then(data => {
+          $scope.currentSubreddit = subreddit;
+          $scope.playerService.playVideo($scope.playlistService.playlist[0]);
+        });
       };
 
       this.expandPlaylist = function() {
