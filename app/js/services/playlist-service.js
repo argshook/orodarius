@@ -100,6 +100,7 @@
             thumbnailUrl = 'images/nsfw-thumbnail.jpg';
             break;
           case 'default':
+          case '':
             thumbnailUrl = 'images/default-thumbnail.png';
             break;
         }
@@ -124,7 +125,8 @@
                       created: item.data.created,
                       redditUrl: `http://reddit.com${item.data.permalink}`,
                       redditScore: item.data.score,
-                      subreddit: item.data.subreddit
+                      subreddit: item.data.subreddit,
+                      error: null
                     };
                   })
                   .value();

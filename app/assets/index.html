@@ -46,9 +46,11 @@
           ng-click="sidebar.playVideo(item)"
         >
           <div class="list-group-item__index">{{$index + 1}}</div>
+          <div class="list-group-item__score">{{item.redditScore}}</div>
           <div class="list-group-item__thumbnail" ng-class="{nsfw: item.thumbnailUrl === 'images/nsfw-thumbnail.jpg'}" style="background-image: url({{item.thumbnailUrl}});"></div>
           <div class="list-group-item__title">{{item.title}}</div>
           <div class="list-group-item__footer">
+            <span class="list-group-item__footer-error" ng-show="item.error.msg">{{item.error.msg}}</span>
             <span class="list-group-item__footer-subreddit">{{item.subreddit}}</span>
           </div>
         </div>

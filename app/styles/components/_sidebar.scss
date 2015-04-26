@@ -47,13 +47,19 @@
 
 .sidebar-heading {
   flex: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: $zindex-sidebar + 1;
+  height: $sidebar-heading-height;
+  background: fade-out(black, .2);
 
   h1 {
     padding: 0.2em;
     color: rgba(255, 255, 255, 0.57);
     text-align: center;
     font-family: $font-oswald;
-    font-size: 3em;
+    font-size: 1.5em;
     font-weight: 700;
     text-transform: uppercase;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.97);
@@ -105,11 +111,11 @@
 .sidebar-playlist-container {
   flex: 1 1 auto;
   overflow: auto;
-  box-shadow: 0 30px 20px -10px rgba(65, 65, 65, .3) inset
 }
 
 .sidebar-playlist {
   overflow-y: auto;
+  margin-top: $sidebar-heading-height;
 
   .list-group-item {
     padding: 1em;
@@ -120,12 +126,12 @@
     cursor: pointer;
     overflow: hidden;
     transition: .2s ease all;
-    border-bottom: 2px solid transparent;
+    border-bottom: 1px solid transparent;
 
     &:hover {
       background: rgba(100, 100, 100, .4);
 
-      .list-group-title {
+      .list-group-item__title {
         color: rgba(255, 255, 255, .6);
       }
     }
@@ -133,8 +139,12 @@
     &.current {
       background: rgba(100, 100, 100, .6);
       color: rgba(255, 255, 255, 1);
-      border-bottom-color: darken($color-primary, 20);
+      border-bottom-color: $color-primary;
       box-shadow: 0 10px 10px -10px rgba(0, 0, 0, .3) inset;
+
+      .list-group-item__score {
+        color: fade-out(orange, .5);
+      }
 
       .list-group-item__thumbnail {
         box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .42);
@@ -151,15 +161,38 @@
       }
     }
 
-    &__index {
+    &__score {
       float: left;
+      position: relative;
+      min-width: 40px;
       margin-right: 15px;
       font-size: 1.3em;
       text-align: center;
       font-weight: 400;
       padding-top: 1.3em;
-      color: fade-out(orange, .94);
+      color: fade-out(#555, .3);
       transition: .2s ease all;
+
+      &:before,
+      &:after {
+        position: absolute;
+        left: 50%;
+        font-weight: 900;
+        font-family: monospace;
+        transform: translateX(-50%);
+      }
+
+      &:before {
+        top: 0;
+        color: fade-out(rgba(243, 70, 5, .7), .5);
+        content: '\2191'; // up arrow
+      }
+
+      &:after {
+        bottom: -20px;
+        color: fade-out(rgba(132, 164, 211, .7), .5);
+        content: '\2193'; // down arrow
+      }
     }
 
     &__thumbnail {
@@ -194,17 +227,33 @@
       line-height: 1.4;
     }
 
+    &__index {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0 .7em;
+      color: #555;
+      font-size: .6em;
+      line-height: 20px;
+      vertical-align: middle;
+      background: rgba(0, 0, 0, .1);
+
+      &:before {
+        content: '#';
+      }
+    }
+
     &__footer {
       position: absolute;
-      bottom: 0; left: auto; right: 0;
+      bottom: -1px; left: auto; right: 0;
       height: 20px;
+      padding: 0 1em;
       font-size: .8em;
       line-height: 20px;
       vertical-align: middle;
       text-align: right;
       background: rgba(0, 0, 0, .1);
       color: #555;
-      padding: 0 1em;
 
       &-subreddit {
         &:before {

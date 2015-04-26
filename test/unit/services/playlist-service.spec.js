@@ -122,7 +122,8 @@ describe('Service: PlaylistService', function() {
         created: 1428297419,
         redditUrl: 'http://reddit.com/r/videos/comments/31lenf/idiots_body_slamming_hoods_of_random_parked_cars/',
         redditScore: 4558,
-        subreddit: 'videos'
+        subreddit: 'videos',
+        error: null
       }));
     });
 
