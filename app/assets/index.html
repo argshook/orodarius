@@ -66,9 +66,13 @@
         >
           <span class="glyphicon glyphicon-plus"></span>
         </div>
-        <div class="list-group-empty" ng-show="playlistService.playlist.length === 0">
-          <h2>Playlist empty...</h2>
-          <p>Try some subreddits, like <em>videos</em> or <em>artisanvideos</em></p>
+        <div class="sidebar-empty" ng-class="{loading: playlistService.isLoading}" ng-show="playlistService.playlist.length === 0">
+          <h2>What would you like to watch?</h2>
+          <div class="sidebar-empty__btns">
+            <div ng-repeat="subreddit in sidebar.suggestedSubreddits" ng-click="sidebar.fillPlaylistWith(subreddit.name)">
+              r/{{subreddit.name}}
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,35 @@
+.sidebar-now-playing {
+  text-align: center;
+  color: #adadad;
+  margin-bottom: 2em;
+
+  &-label { margin: 0 1.5em; }
+
+  &-input {
+    padding: 1em 1em;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid fade-out(#adadad, .4);
+    color: fade-out(orange, .4);
+    transition: .2s ease all;
+
+    &:focus,
+    &:hover {
+      box-shadow: 0 -10px 7px -3px fade-out(white, .96) inset;
+    }
+  }
+
+  &-btn {
+    width: 30px;
+    height: 30px;
+    margin: 0 1em;
+    border: 0;
+    font-size: 1.2em;
+    background: transparent;
+    transform: translateY(5px);
+  }
+
+  .glyphicon-search.loading {
+    animation: sidebarSearchIconLoadingSpin 2s linear infinite;
+  }
+}

@@ -113,7 +113,7 @@
       };
 
       this.playVideo = function(item) {
-        if(item) {
+        if(player && player.loadVideoById && item) {
           // TODO: skip misunderstood urls for now
           if(item.url === false) {
             this.playNext();

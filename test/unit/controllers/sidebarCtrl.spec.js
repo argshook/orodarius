@@ -73,4 +73,17 @@ describe('Controller: sidebarCtrl', function() {
   it('should keep isSidebarSticky value on scope and be set to false initially', function() {
     expect(scope.isSidebarSticky).toBe(false);
   });
+
+  describe('suggested subreddits', function() {
+    it('should be exposed', function() {
+      expect(ctrl.suggestedSubreddits).toBeDefined();
+    });
+
+    it('should contain at least 4 items of certain structure', function() {
+      expect(ctrl.suggestedSubreddits.length).toBeGreaterThan(3);
+      expect(ctrl.suggestedSubreddits[0]).toEqual(jasmine.objectContaining({
+        name: 'videos'
+      }));
+    });
+  });
 });

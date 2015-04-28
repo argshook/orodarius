@@ -1,0 +1,197 @@
+.sidebar-playlist-container {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.sidebar-playlist {
+  overflow-y: auto;
+  margin-top: $sidebar-heading-height;
+
+  .list-group-item {
+    padding: 1em;
+    background: rgba(0, 0, 0, .34);
+    border: 0;
+    border-radius: 0;
+    min-height: 100px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .2s ease all;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      background: rgba(100, 100, 100, .1);
+
+      .list-group-item__title {
+        color: rgba(255, 255, 255, .6);
+      }
+
+      .list-group-item__thumbnail { opacity: 1; }
+    }
+
+    &.current {
+      background: rgba(30, 30, 30, .6);
+      color: rgba(255, 255, 255, 1);
+      border-bottom-color: $color-primary;
+
+      .list-group-item__score {
+        color: fade-out(orange, .5);
+      }
+
+      .list-group-item__thumbnail {
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .42);
+        opacity: 1;
+      }
+
+      .list-group-item__title {
+        color: rgba(255, 255, 255, .8);
+      }
+
+      .list-group-item__footer-subreddit,
+      .list-group-item__index {
+        color: fade-out(orange, .6);
+      }
+    }
+
+    &.erroneous {
+      background-image: repeating-linear-gradient(
+                          -45deg,
+                          rgba(0, 0, 0, 0.2) 0,
+                          fade-out(orange, .9) 15%);
+    }
+
+    &__score {
+      float: left;
+      position: relative;
+      min-width: 40px;
+      margin-right: 15px;
+      font-size: 1.3em;
+      text-align: center;
+      font-weight: 400;
+      padding-top: 1.3em;
+      color: rgba(161, 161, 161, 0.5);
+      transition: .2s ease all;
+
+      &:before,
+      &:after {
+        position: absolute;
+        left: 50%;
+        font-weight: 900;
+        font-family: monospace;
+        transform: translateX(-50%);
+      }
+
+      &:before {
+        top: 0;
+        color: fade-out(rgba(243, 70, 5, .7), .5);
+        content: '\2191'; // up arrow
+      }
+
+      &:after {
+        bottom: -20px;
+        color: fade-out(rgba(132, 164, 211, .7), .5);
+        content: '\2193'; // down arrow
+      }
+    }
+
+    &__thumbnail {
+      float: left;
+      width: 100px;
+      height: 75px;
+      margin-right: 15px;
+      transition: .2s ease all;
+      background: {
+        position: 50% 50%;
+        size: cover;
+        repeat: no-repeat;
+      }
+      opacity: .6;
+
+      &.nsfw {
+        background-size: contain;
+        width: 75px;
+        margin-left: 15px;
+        margin-right: 22px;
+        box-shadow: 0 0 15px 0 fade-out(red, .5);
+        transform: rotateZ(5deg);
+      }
+    }
+
+    &__title {
+      transition: .2s ease all;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+      color: rgba(255, 255, 255, 0.4);
+      font-family: Roboto;
+      font-weight: 100;
+      font-size: 1.1em;
+      line-height: 1.4;
+      transform: translateY(-3px);
+    }
+
+    &__index {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0 .7em;
+      color: #555;
+      font-size: .6em;
+      line-height: 20px;
+      vertical-align: middle;
+      background: rgba(0, 0, 0, .1);
+
+      &:before {
+        content: '#';
+      }
+    }
+
+    &__footer {
+      position: absolute;
+      bottom: -1px; left: auto; right: 0;
+      height: 20px;
+      padding: 0 1em;
+      font-size: .8em;
+      line-height: 20px;
+      vertical-align: middle;
+      text-align: right;
+      background: rgba(0, 0, 0, .1);
+      color: #555;
+
+      &-error {
+        color: darken(#fff, 50);
+        padding: 0 1em;
+      }
+
+      &-subreddit {}
+    }
+  }
+
+  .list-group-more {
+    text-align: center;
+    font-size: 1.4em;
+    color: #999;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, .05);
+    min-height: 50px;
+    line-height: 50px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: .2s ease all;
+
+    &:hover { background-color: rgba(255, 255, 255, .1); }
+
+    &__loading {
+      background-image: repeating-linear-gradient(
+                          -20deg,
+                          rgba(0, 0, 0, 0.2) 0,
+                          fade-out(orange, .9) 3%);
+      background-position-x: 100%;
+      background-size: 300%;
+      animation: animateSidebarExpandBtnGradient 10s linear infinite;
+    }
+  }
+}
+
+@keyframes animateSidebarExpandBtnGradient {
+  to {
+    background-position-x: 0;
+  }
+}
