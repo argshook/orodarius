@@ -144,9 +144,16 @@
       }
 
       function postProcess(newItems) {
+        var sanitizers = {
+          '&amp;': '&',
+          '&copy;': '©',
+          '&reg;': '®'
+        };
+
         return _(newItems)
                 .map(item => {
-                  item.ownId =_.uniqueId('orodarius_video-item_');
+                  item.title = item.title.replace(/(&amp;|&copy;|&reg;)/g, match => sanitizers[match]),
+                  item.ownId = _.uniqueId('orodarius_video-item_');
                   return item;
                 })
                 .value();

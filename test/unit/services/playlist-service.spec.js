@@ -13,7 +13,7 @@ describe('Service: PlaylistService', function() {
 
   beforeEach(function() {
     spyOn(service, 'add');
-    $httpBackend.whenGET(/.*\/(videos|birbir).*/).respond(200, REDDIT);
+    $httpBackend.whenGET(/.*\/(videos|birbir)\/.*/).respond(200, REDDIT);
   });
 
   it('should expose playlist array', function() {
@@ -58,16 +58,16 @@ describe('Service: PlaylistService', function() {
 
     it("should compare new items to old ones and return unique only", function() {
       service.playlist = [
-        { name: 'name1', videoId: 'VSNuZEdYrH0', created: 1 },
-        { name: 'name4', videoId: 'VSNuZEdYrH0', created: 4 },
+        { title: 'name1', videoId: 'VSNuZEdYrH0', created: 1 },
+        { title: 'name4', videoId: 'VSNuZEdYrH0', created: 4 },
       ];
 
       $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=50').respond(200, {
         data: {
           children: [
-            { kind: 't3', data: { domain: 'youtube.com', name: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
-            { kind: 't3', data: { domain: 'youtube.com', name: 'name2', created: 2, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH1' } },
-            { kind: 't3', data: { domain: 'youtube.com', name: 'name3', created: 3, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+            { kind: 't3', data: { domain: 'youtube.com', title: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+            { kind: 't3', data: { domain: 'youtube.com', title: 'name2', created: 2, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH1' } },
+            { kind: 't3', data: { domain: 'youtube.com', title: 'name3', created: 3, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
           ],
           after: 'asd'
         }
@@ -83,9 +83,9 @@ describe('Service: PlaylistService', function() {
       $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=50').respond(200, {
         data: {
           children: [
-            { kind: 't3', data: { domain: 'youtube.com', name: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
-            { kind: 't3', data: { domain: 'youtube.com', name: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
-            { kind: 't3', data: { domain: 'youtube.com', name: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+            { kind: 't3', data: { domain: 'youtube.com', title: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+            { kind: 't3', data: { domain: 'youtube.com', title: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+            { kind: 't3', data: { domain: 'youtube.com', title: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
           ],
           after: 'asd'
         }
@@ -95,6 +95,27 @@ describe('Service: PlaylistService', function() {
       $httpBackend.flush();
       expect(service.playlist.length).toBe(1);
     });
+
+    /* jshint ignore:start */
+    it("should normalize each video item title", function() {
+      $httpBackend.whenGET('http://www.reddit.com/r/shitheads/hot.json?limit=50').respond(200, {
+        data: {
+          children: [
+            { kind: 't3', data: { domain: 'youtube.com', title: '&amp;&reg;&copy;', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+            { kind: 't3', data: { domain: 'youtube.com', title: '&reg;lalala&copy;$&amp;', created: 2, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+            { kind: 't3', data: { domain: 'youtube.com', title: 'http://shitheads.com/?hai&reg;=what', created: 3, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+          ]
+        }
+      });
+
+      service.fetchSubreddit('shitheads');
+      $httpBackend.flush();
+
+      expect(service.playlist[0].title).toBe('&®©');
+      expect(service.playlist[1].title).toBe('®lalala©$&');
+      expect(service.playlist[2].title).toBe('http://shitheads.com/?hai®=what');
+    });
+    /* jshint ignore:end */
   });
 
   it("expandPlaylist should fetch more items", function() {
