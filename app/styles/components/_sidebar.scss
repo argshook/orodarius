@@ -151,7 +151,7 @@
     border-bottom: 1px solid transparent;
 
     &:hover {
-      background: rgba(100, 100, 100, .4);
+      background: rgba(100, 100, 100, .1);
 
       .list-group-item__title {
         color: rgba(255, 255, 255, .6);
@@ -161,10 +161,9 @@
     }
 
     &.current {
-      background: rgba(100, 100, 100, .6);
+      background: rgba(30, 30, 30, .6);
       color: rgba(255, 255, 255, 1);
       border-bottom-color: $color-primary;
-      box-shadow: 0 10px 10px -10px rgba(0, 0, 0, .3) inset;
 
       .list-group-item__score {
         color: fade-out(orange, .5);
@@ -177,7 +176,6 @@
 
       .list-group-item__title {
         color: rgba(255, 255, 255, .8);
-        transform: translateY(-3px);
       }
 
       .list-group-item__footer-subreddit,
@@ -202,7 +200,7 @@
       text-align: center;
       font-weight: 400;
       padding-top: 1.3em;
-      color: fade-out(#555, .3);
+      color: rgba(161, 161, 161, 0.5);
       transition: .2s ease all;
 
       &:before,
@@ -258,6 +256,7 @@
       font-weight: 100;
       font-size: 1.1em;
       line-height: 1.4;
+      transform: translateY(-3px);
     }
 
     &__index {
