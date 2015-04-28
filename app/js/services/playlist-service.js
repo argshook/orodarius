@@ -143,7 +143,7 @@
         return duplicateItems > 0 ? false : true;
       }
 
-      function postProcessFor(newItems) {
+      function postProcess(newItems) {
         return _(newItems)
                 .map(item => {
                   item.ownId =_.uniqueId('orodarius_video-item_');
@@ -168,7 +168,7 @@
               this.fetchSubreddit(currentSubreddit, afterTag, deferred);
             } else {
               this.isLoading = false;
-              newItems = postProcessFor(newItems);
+              newItems = postProcess(newItems);
 
               playlist = after ?
                           playlist
