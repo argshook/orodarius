@@ -13,6 +13,7 @@
 
           $document.on('keydown', function(event) {
             if(event.target.nodeName !== 'INPUT') {
+              event.preventDefault();
               var currentKeyCode = event.which || event.keyCode;
 
               if(scope.ngBindKeysOptions[currentKeyCode]) {
