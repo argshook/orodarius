@@ -55,7 +55,7 @@
           <div class="list-group-item__title">{{item.title}}</div>
           <div class="list-group-item__footer">
             <span class="list-group-item__footer-error" ng-show="item.error.message">Unable to play: <strong>{{item.error.message}}</strong></span>
-            <span class="list-group-item__footer-subreddit">r/{{item.subreddit}}</span>
+            <span ng-show="playlistService.currentSubreddit.indexOf('+') > 0" class="list-group-item__footer-subreddit">r/{{item.subreddit}}</span>
           </div>
         </div>
         <div
