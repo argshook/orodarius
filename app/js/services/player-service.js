@@ -99,9 +99,9 @@
             enablejsapi: 1
           },
           events: {
-            onReady: onPlayerReady.bind(this),
-            onError: onPlayerError.bind(this),
-            onStateChange: onPlayerStateChange.bind(this)
+            onReady: () => onPlayerReady.bind(this),
+            onError: () => onPlayerError.bind(this),
+            onStateChange: () => onPlayerStateChange.bind(this)
           }
         };
 

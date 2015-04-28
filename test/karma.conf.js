@@ -56,7 +56,7 @@ module.exports = function(karma) {
     // - PhantomJS
     // - IE (only Windows)
     // - iOS (only Mac)
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,

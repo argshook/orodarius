@@ -13,7 +13,7 @@ describe("Directive: ngScrollOn", function() {
         name: 'best video man ever dude'
       }
     };
-    element = $compile(`<ul ng-scroll-on="playerService.currentVideoItem"></ul>`)(scope);
+    element = $compile('<ul ng-scroll-on="playerService.currentVideoItem"></ul>')(scope);
     scope.$digest();
   }));
 

@@ -1,12 +1,12 @@
 {
-  "author": "Olivier Combe <olivier.combe@gmail.com>",
-  "name": "angular-brunch-seed-no-fuss",
-  "description": "AngularJS + Brunch + SCSS",
-  "version": "0.7.0",
-  "homepage": "https://github.com/ocombe/angular-brunch-seed-no-fuss",
+  "author": "Arijus Šukys <argshook@gmail.com>",
+  "name": "orodarius",
+  "description": "Youtube player for Reddit",
+  "version": "0.0.1",
+  "homepage": "https://github.com/argshook/orodarius",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ocombe/angular-brunch-seed-no-fuss"
+    "url": "https://github.com/argshook/orodarius"
   },
   "engines": {
     "node": "~0.8 || ~0.9 || ~0.10"
@@ -22,21 +22,18 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "autoprefixer-brunch": "1.8.3",
+    "babel-brunch": "^5.0.1",
     "bower": "~1.3.12",
+    "browser-sync-brunch": "~0.0.8",
     "brunch": "~1.7.20",
-	"browser-sync-brunch": "~0.0.8",
-	"traceur-brunch": "ocombe/traceur-brunch.git",
-	"sass-brunch": "~1.8.8",
-	"autoprefixer-brunch": "1.8.3",
-	"css-brunch": "~1.7.0",
     "clean-css-brunch": "~1.7.1",
-	"ng-annotate-brunch": "~1.7.2",
-	"javascript-brunch": "~1.7.1",
-	"uglify-js-brunch": "~1.7.7",
+    "css-brunch": "~1.7.0",
+    "javascript-brunch": "~1.7.1",
     "karma": "~0.12.31",
     "karma-chrome-launcher": "0.1.7",
-    "karma-coverage": "^0.2.7",
     "karma-cli": "0.0.4",
+    "karma-coverage": "^0.2.7",
     "karma-firefox-launcher": "~0.1.4",
     "karma-html2js-preprocessor": "~0.1.0",
     "karma-jasmine": "0.3.4",
@@ -45,8 +42,11 @@
     "karma-requirejs": "~0.2.2",
     "karma-safari-launcher": "0.1.1",
     "karma-script-launcher": "~0.1.0",
+    "ng-annotate-brunch": "~1.7.2",
     "node-bourbon": "~1.2.3",
     "protractor": "~1.6.0",
-    "selenium-webdriver": "~2.44.0"
+    "sass-brunch": "~1.8.8",
+    "selenium-webdriver": "~2.44.0",
+    "uglify-js-brunch": "~1.7.7"
   }
 }

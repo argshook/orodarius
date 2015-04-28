@@ -59,11 +59,8 @@ exports.config = {
     ng_annotate: {
       pattern: /^app/
     },
-    traceur: {
-      paths: /^app/,
-      options: {
-        experimental: true
-      }
+    ES6to5: {
+
     },
     autoprefixer: {
       browsers: [
