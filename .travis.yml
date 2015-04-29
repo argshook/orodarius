@@ -4,3 +4,6 @@ node_js:
 script:
   - npm run prod
   - karma start test/karma.conf.js --single-run
+notifications:
+  email:
+    - argshook@gmail.com
