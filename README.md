@@ -11,6 +11,8 @@ A youtube video player for reddit
 * `npm run prod` to minify javascript and css files for production deployment
 * `npm test` to run unit tests with [karma](http://karma-runner.github.io)
 
+You can deploy to `gh-pages` using `npm run deploy`.
+
 Notes:
 
 - Karma will run tests on save. To insure that changes are saved be sure to have `npm start` or `npm run dev` running in the console
