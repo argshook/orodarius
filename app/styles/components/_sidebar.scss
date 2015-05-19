@@ -62,7 +62,7 @@
     padding: 0.2em;
     color: rgba(255, 255, 255, 0.57);
     text-align: center;
-    font-family: $font-oswald;
+    font-family: $font-roboto;
     font-size: 1.5em;
     font-weight: 700;
     text-transform: uppercase;
@@ -78,6 +78,7 @@
     width: 17px;
     height: 17px;
     overflow: hidden;
+    cursor: pointer;
 
     > input[type="checkbox"] {
       position: absolute;

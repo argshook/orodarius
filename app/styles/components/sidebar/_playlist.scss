@@ -29,12 +29,11 @@
     }
 
     &.current {
-      background: rgba(30, 30, 30, .6);
+      background: fade-out(orange, .7);
       color: rgba(255, 255, 255, 1);
-      border-bottom-color: $color-primary;
 
       .list-group-item__score {
-        color: fade-out(orange, .5);
+        color: fade-out(orange, .2);
       }
 
       .list-group-item__thumbnail {
@@ -48,7 +47,7 @@
 
       .list-group-item__footer-subreddit,
       .list-group-item__index {
-        color: fade-out(orange, .6);
+        color: fade-out(orange, .3);
       }
     }
 
@@ -82,13 +81,13 @@
 
       &:before {
         top: 0;
-        color: fade-out(rgba(243, 70, 5, .7), .5);
+        color: fade-out(rgba(243, 70, 5, .7), .3);
         content: '\2191'; // up arrow
       }
 
       &:after {
         bottom: -20px;
-        color: fade-out(rgba(132, 164, 211, .7), .5);
+        color: fade-out(rgba(132, 164, 211, .7), .3);
         content: '\2193'; // down arrow
       }
     }
@@ -120,7 +119,7 @@
       transition: .2s ease all;
       text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
       color: rgba(255, 255, 255, 0.4);
-      font-family: Roboto;
+      font-family: $font-roboto;
       font-weight: 100;
       font-size: 1.1em;
       line-height: 1.4;
@@ -131,12 +130,9 @@
       position: absolute;
       top: 0;
       right: 0;
-      padding: 0 .7em;
+      padding: .2em 0 .7em;
       color: #555;
-      font-size: .6em;
-      line-height: 20px;
-      vertical-align: middle;
-      background: rgba(0, 0, 0, .1);
+      font-size: .7em;
 
       &:before {
         content: '#';
