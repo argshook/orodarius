@@ -97,11 +97,6 @@
             controls: 1,
             disablekb: 1,
             enablejsapi: 1
-          },
-          events: {
-            onReady: () => onPlayerReady.bind(this),
-            onError: () => onPlayerError.bind(this),
-            onStateChange: () => onPlayerStateChange.bind(this)
           }
         };
 
@@ -109,6 +104,11 @@
 
         // YT should be available since it comes from iframe_api
         player = new YT.Player(elementId || 'main-video-player', defaultPlayerOptions);
+
+        player.addEventListener('onReady', onPlayerReady.bind(this));
+        player.addEventListener('onError', onPlayerError.bind(this));
+        player.addEventListener('onStateChange', onPlayerStateChange.bind(this));
+
         return player;
       };
 
