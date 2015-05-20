@@ -6,7 +6,8 @@ var YT = {
       loadVideoById: angular.noop,
       loadVideoByUrl: angular.noop,
       playVideo: angular.noop,
-      pauseVideo: angular.noop
+      pauseVideo: angular.noop,
+      addEventListener: angular.noop
     };
   }
 };
