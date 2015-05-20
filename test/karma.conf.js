@@ -73,7 +73,7 @@ module.exports = function(karma) {
     },
 
     // urlRoot: '__karma__',
-    urlRoot: 'something',
+    urlRoot: '',
 
     plugins: [
     'karma-jasmine',
