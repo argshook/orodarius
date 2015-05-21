@@ -1,14 +1,15 @@
 'use strict';
 
 describe('Controller: sidebarCtrl', function() {
-  var ctrl, scope, PlaylistService, PlayerService, $httpBackend, $q, deferred;
+  var ctrl, scope, PlaylistService, PlayerService, $httpBackend, $q, deferred, $window;
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_$rootScope_, _$controller_, _PlaylistService_, _PlayerService_, _$httpBackend_, _$q_) {
+  beforeEach(inject(function(_$rootScope_, _$controller_, _PlaylistService_, _PlayerService_, _$httpBackend_, _$q_, _$window_) {
     $q = _$q_;
     scope = _$rootScope_.$new();
     ctrl = _$controller_('sidebarCtrl', { $scope: scope, PlaylistService: _PlaylistService_, PlayerService: _PlayerService_ });
+    $window = _$window_;
 
     PlaylistService = _PlaylistService_;
     PlayerService = _PlayerService_;
@@ -84,6 +85,37 @@ describe('Controller: sidebarCtrl', function() {
       expect(ctrl.suggestedSubreddits[0]).toEqual(jasmine.objectContaining({
         name: 'videos'
       }));
+    });
+  });
+
+  it('should keep isFocusForced value on scope and be set to false initially', function() {
+    expect(scope.isFocusForced).toBe(false);
+  });
+
+  describe('focusForceToggle method', function() {
+    it('should be defined', function() {
+      expect(ctrl.forceFocusToggle).toBeDefined();
+    });
+
+    it('should toggle $scope.isFocusForced when called', function() {
+      ctrl.forceFocusToggle();
+      expect(scope.isFocusForced).toBe(true);
+      ctrl.forceFocusToggle();
+      expect(scope.isFocusForced).toBe(false);
+    });
+
+    it('should attach blur event listener on window when isFocusForced is false', function() {
+      spyOn($window, 'addEventListener');
+      scope.isFocusForced = false;
+      ctrl.forceFocusToggle();
+      expect($window.addEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
+    });
+
+    it('should remove blur event listener from window when isFocusForced is true', function() {
+      spyOn($window, 'removeEventListener');
+      scope.isFocusForced = true;
+      ctrl.forceFocusToggle();
+      expect($window.removeEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
     });
   });
 });

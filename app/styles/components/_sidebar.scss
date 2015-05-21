@@ -69,26 +69,32 @@
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.97);
   }
 
-  &__sticky-checkbox {
+  &__checkbox-container {
     @extend .unselectable;
 
     position: absolute;
     top: 15px;
     left: 15px;
-    width: 17px;
+    width: 100px;
     height: 17px;
     overflow: hidden;
     cursor: pointer;
 
-    > input[type="checkbox"] {
+    label {
+      margin-bottom: 0;
+
+    }
+
+    label,
+    span {
+      &.active { color: orange; }
+    }
+
+    input[type="checkbox"] {
       position: absolute;
       opacity: 0;
       margin: 0; padding: 0;
       width: 0; height: 0;
-    }
-
-    &.locked {
-      color: orange;
     }
   }
 }

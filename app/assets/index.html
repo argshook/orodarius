@@ -28,10 +28,16 @@
     <div class="sidebar-heading">
       <h1>Subreddit TV</h1>
 
-      <label class="sidebar-heading__sticky-checkbox" ng-class="{locked: isSidebarSticky}">
-        <span class="glyphicon glyphicon-lock"></span>
-        <input type="checkbox" ng-model="isSidebarSticky"></input>
-      </label>
+      <div class="sidebar-heading__checkbox-container">
+        <label ng-class="{active: isSidebarSticky}">
+          <span class="glyphicon glyphicon-lock"></span>
+          <input type="checkbox" ng-model="isSidebarSticky"></input>
+        </label>
+        <span ng-class="{active: isFocusForced}" ng-click="sidebar.forceFocusToggle($event)">
+          <span class="glyphicon glyphicon-magnet"></span>
+          <input type="checkbox" ng-model="isFocusForced"></input>
+        </span>
+      </div>
       <div class="sidebar-now-playing">
         <span class="sidebar-now-playing-label">Now playing:</span>
         <input class="sidebar-now-playing-input" placeholder="{{currentSubreddit}}" type="text" ng-enter="sidebar.fillPlaylistWith(currentSubreddit)" ng-enter-options="{blurOnEnter: true}" ng-model="currentSubreddit" />

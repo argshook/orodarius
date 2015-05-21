@@ -3,7 +3,8 @@
 
   angular.module('orodarius')
     // TODO: move to directive with template
-    .controller('sidebarCtrl', function($scope, $rootScope, $timeout, PlaylistService, PlayerService, SidebarService) {
+    .controller('sidebarCtrl', function($scope, $rootScope, $timeout, $window, PlaylistService, PlayerService, SidebarService) {
+      // TODO: shouldn't expose the whole service just the parts needed.
       $scope.sidebarService = SidebarService;
       $scope.playlistService = PlaylistService;
       $scope.playerService = PlayerService;
@@ -55,5 +56,18 @@
       $scope.isListItemCurrentlyPlayed = function(item) {
         return item.videoId === $scope.playerService.currentVideoItem.videoId;
       };
+
+      $scope.isFocusForced = false;
+
+      this.forceFocusToggle = function() {
+        $scope.isFocusForced = !$scope.isFocusForced;
+        $window[($scope.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
+      };
+
+      function windowBlurHanlder() {
+        $timeout(function() {
+          $window.focus();
+        }, 100);
+      }
     });
 })();
