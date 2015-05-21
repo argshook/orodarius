@@ -95,7 +95,7 @@
             autohide: 1,
             autoplay: 0,
             controls: 1,
-            disablekb: 1,
+            disablekb: 0, // 1 - enables keyboard, 0 - disables it. Funny, huh?
             enablejsapi: 1
           }
         };
