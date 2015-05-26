@@ -70,6 +70,7 @@
       background: transparent;
       text-shadow: none;
       transition: .2s ease all;
+      word-break: break-all;
 
       &:hover { text-decoration: none; }
     }
