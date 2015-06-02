@@ -16,7 +16,6 @@ module.exports = function(karma) {
       'public/js/vendor.js',
       'public/js/app.js',
 
-      'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'test/mocks/**/*.js',
       'test/unit/**/*.spec.js'
