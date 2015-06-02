@@ -2,7 +2,6 @@
   'use strict';
 
   angular.module('orodarius')
-    // TODO: move to directive with template
     .controller('sidebarCtrl', function($scope, $rootScope, $http, $timeout, $window, PlaylistService, PlayerService, SidebarService) {
       // TODO: shouldn't expose the whole service just the parts needed.
       $scope.sidebarService = SidebarService;

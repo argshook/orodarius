@@ -18,7 +18,10 @@ module.exports = function(karma) {
 
       'bower_components/angular-mocks/angular-mocks.js',
       'test/mocks/**/*.js',
-      'test/unit/**/*.spec.js'
+      'test/unit/**/*.spec.js',
+
+      // if you wanna load template files in nested directories, you must use this
+      'assets/views/**/*.html'
       ],
 
     // list of files to exclude
@@ -46,6 +49,11 @@ module.exports = function(karma) {
 
     preprocessors: {
       '**/public/**/!(vendor).js': 'coverage',
+      '**/*.html': ['ng-html2js']
+    },
+
+    ngHtml2JsPreprocessor: {
+      moduleName: 'orodarius'
     },
 
     // Start these browsers, currently available:
@@ -81,7 +89,8 @@ module.exports = function(karma) {
     'karma-firefox-launcher',
     'karma-safari-launcher',
     'karma-phantomjs-launcher',
-    'karma-junit-reporter'
+    'karma-junit-reporter',
+    'karma-html2js-preprocessor'
     ]
   });
 };
