@@ -1,6 +1,6 @@
 # Orodarius
 
-<img src="https://travis-ci.org/argshook/orodarius.svg?branch=master" alt="">
+<a href="https://travis-ci.org/argshook/orodarius" target="_blank"><img src="https://travis-ci.org/argshook/orodarius.svg?branch=master" alt=""></a>
 
 A youtube video player for reddit
 
