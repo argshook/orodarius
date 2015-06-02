@@ -68,12 +68,6 @@ describe('Controller: sidebarCtrl', function() {
     expect(PlaylistService.clear).toHaveBeenCalled();
   });
 
-  it('fillPlaylistWith should call LastSubredditsService', function() {
-    spyOn(LastSubredditsService, 'add');
-    ctrl.fillPlaylistWith('videos');
-    expect(LastSubredditsService.add).toHaveBeenCalledWith({ name: 'videos' });
-  });
-
   it('should contain currentSubreddit property on scope', function() {
     expect(typeof scope.currentSubreddit).toBe('string');
   });

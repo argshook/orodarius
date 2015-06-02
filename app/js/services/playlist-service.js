@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlaylistService', function($http, $q, $log) {
+    .service('PlaylistService', function($http, $q, $log, LastSubredditsService) {
       var playlist = [],
           redditAPIBaseUrl = 'http://www.reddit.com/r/',
           currentSubreddit,
@@ -170,6 +170,10 @@
             fetchRetries++;
 
             var newItems = uniquefyVideoItems(subredditResultsFilter(data.data.data.children));
+
+            if(newItems.length !== 0) {
+              LastSubredditsService.add({ name: subredditName });
+            }
 
             if(newItems.length === 0 && fetchRetries <= maxFetchRetries) {
               this.fetchSubreddit(currentSubreddit, afterTag, deferred);

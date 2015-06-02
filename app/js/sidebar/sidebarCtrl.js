@@ -36,11 +36,6 @@
       this.fillPlaylistWith = function(subreddit = "videos") {
         $scope.playlistService.clear();
         $scope.currentSubreddit = subreddit;
-
-        if(subreddit.length) {
-          LastSubredditsService.add({ name: subreddit });
-        }
-
         $scope.playlistService.fetchSubreddit(subreddit).then(data => {
           $scope.playerService.playVideo($scope.playlistService.playlist[0]);
         });

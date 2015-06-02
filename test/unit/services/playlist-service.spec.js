@@ -1,13 +1,15 @@
 'use strict';
 
 describe('Service: PlaylistService', function() {
-  var service, $httpBackend, $q;
+  var service, LastSubredditsService, localStorageService, $httpBackend, $q;
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_PlaylistService_, _$httpBackend_, _$q_) {
+  beforeEach(inject(function(_PlaylistService_, _LastSubredditsService_, _localStorageService_, _$httpBackend_, _$q_) {
     $q = _$q_;
     service = _PlaylistService_;
+    LastSubredditsService = _LastSubredditsService_;
+    localStorageService = _localStorageService_;
     $httpBackend = _$httpBackend_;
   }));
 
@@ -29,6 +31,10 @@ describe('Service: PlaylistService', function() {
   });
 
   describe('fetchSubreddit method', function() {
+    beforeEach(function() {
+      localStorageService.clearAll();
+    });
+
     it('should return a promise', function() {
       var result,
           promise = service.fetchSubreddit('videos');
@@ -116,6 +122,13 @@ describe('Service: PlaylistService', function() {
       expect(service.playlist[2].title).toBe('http://shitheads.com/?hai®=what');
     });
     /* jshint ignore:end */
+
+    it('should call LastSubreddits service on successful first call', function() {
+      service.fetchSubreddit('videos');
+
+      $httpBackend.flush();
+      expect(LastSubredditsService.list[0].name).toBe('videos');
+    });
   });
 
   it("expandPlaylist should fetch more items", function() {
