@@ -23,6 +23,7 @@ exports.config = {
           'bower_components/jquery/dist/jquery.js',
           'bower_components/lodash/dist/lodash.js',
           'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+          'bower_components/angular-local-storage/dist/angular-local-storage.js',
 
           // angular
           'bower_components/angular/angular.js',

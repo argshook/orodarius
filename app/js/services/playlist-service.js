@@ -178,10 +178,8 @@
               newItems = postProcess(newItems);
 
               playlist = after ?
-                          playlist
-                            .concat(_(newItems)
-                            .filter(item => compareOldTo(item)).value()) :
-                          newItems;
+                        playlist.concat(_(newItems).filter(item => compareOldTo(item)).value()) :
+                        newItems;
 
               fetchRetries = 0;
               deferred.resolve(playlist);

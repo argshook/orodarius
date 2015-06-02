@@ -21,7 +21,6 @@
     "test": "karma start test/karma.conf.js",
     "test-e2e": "protractor test/protractor-conf.js"
   },
-  "dependencies": {},
   "devDependencies": {
     "autoprefixer-brunch": "1.8.3",
     "babel-brunch": "^5.0.1",

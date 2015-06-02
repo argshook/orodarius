@@ -2,11 +2,12 @@
   'use strict';
 
   angular.module('orodarius')
-    .controller('sidebarCtrl', function($scope, $rootScope, $http, $timeout, $window, PlaylistService, PlayerService, SidebarService) {
+    .controller('sidebarCtrl', function($scope, $rootScope, $http, $timeout, $window, PlaylistService, PlayerService, SidebarService, LastSubredditsService) {
       // TODO: shouldn't expose the whole service just the parts needed.
       $scope.sidebarService = SidebarService;
       $scope.playlistService = PlaylistService;
       $scope.playerService = PlayerService;
+      $scope.lastSubreddits = LastSubredditsService.list;
 
       $scope.isSidebarSticky = false;
       $scope.currentSubreddit = '';
@@ -35,6 +36,11 @@
       this.fillPlaylistWith = function(subreddit = "videos") {
         $scope.playlistService.clear();
         $scope.currentSubreddit = subreddit;
+
+        if(subreddit.length) {
+          LastSubredditsService.add({ name: subreddit });
+        }
+
         $scope.playlistService.fetchSubreddit(subreddit).then(data => {
           $scope.playerService.playVideo($scope.playlistService.playlist[0]);
         });

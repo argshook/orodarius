@@ -1,11 +1,11 @@
 'use strict';
 
 describe('Controller: sidebarCtrl', function() {
-  var ctrl, scope, PlaylistService, PlayerService, $httpBackend, $q, deferred, $window;
+  var ctrl, scope, PlaylistService, PlayerService, LastSubredditsService, $httpBackend, $q, deferred, $window;
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_$rootScope_, _$controller_, _PlaylistService_, _PlayerService_, _$httpBackend_, _$q_, _$window_) {
+  beforeEach(inject(function(_$rootScope_, _$controller_, _PlaylistService_, _PlayerService_, _LastSubredditsService_, _$httpBackend_, _$q_, _$window_) {
     $q = _$q_;
     scope = _$rootScope_.$new();
     ctrl = _$controller_('sidebarCtrl', { $scope: scope, PlaylistService: _PlaylistService_, PlayerService: _PlayerService_ });
@@ -13,6 +13,7 @@ describe('Controller: sidebarCtrl', function() {
 
     PlaylistService = _PlaylistService_;
     PlayerService = _PlayerService_;
+    LastSubredditsService = _LastSubredditsService_;
     $httpBackend = _$httpBackend_;
 
     spyOn(PlayerService, 'playVideo');
@@ -65,6 +66,12 @@ describe('Controller: sidebarCtrl', function() {
     spyOn(PlaylistService, 'clear');
     ctrl.fillPlaylistWith('videos');
     expect(PlaylistService.clear).toHaveBeenCalled();
+  });
+
+  it('fillPlaylistWith should call LastSubredditsService', function() {
+    spyOn(LastSubredditsService, 'add');
+    ctrl.fillPlaylistWith('videos');
+    expect(LastSubredditsService.add).toHaveBeenCalledWith({ name: 'videos' });
   });
 
   it('should contain currentSubreddit property on scope', function() {
@@ -136,6 +143,12 @@ describe('Controller: sidebarCtrl', function() {
         date: "123",
         message: "hello"
       });
+    });
+  });
+
+  describe('lastSubreddits property', function() {
+    it('should be defined', function() {
+      expect(angular.isArray(scope.lastSubreddits)).toBe(true);
     });
   });
 });
