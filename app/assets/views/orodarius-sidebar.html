@@ -29,7 +29,7 @@
     <div class="sidebar-playlist" ng-scroll-on="playerService.currentVideoItem">
       <div
         class="list-group-item"
-        ng-repeat="item in playlistService.playlist"
+        ng-repeat="item in playlistService.playlist track by item.ownId"
         ng-class="{current: item.ownId === playerService.currentVideoItem.ownId, erroneous: item.error}"
         ng-click="sidebar.playVideo(item)"
       >
