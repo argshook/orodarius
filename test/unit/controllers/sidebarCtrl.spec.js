@@ -118,4 +118,24 @@ describe('Controller: sidebarCtrl', function() {
       expect($window.removeEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
     });
   });
+
+  describe('getLastUpdated method', function() {
+    it('should be defined', function() {
+      expect(ctrl.getLastUpdated).toBeDefined();
+    });
+
+    it('should return string from github API call', function() {
+      var githubMock = '{"html_url": "htmlUrl.com", "commit": { "author": { "date": "123" }, "message": "hello" }}';
+      $httpBackend.expectGET('https://api.github.com/repos/argshook/orodarius/commits/master')
+        .respond(200, githubMock);
+
+      $httpBackend.flush();
+
+      expect(ctrl.lastUpdatedData).toEqual({
+        url: "htmlUrl.com",
+        date: "123",
+        message: "hello"
+      });
+    });
+  });
 });

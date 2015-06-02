@@ -3,7 +3,7 @@
 
   angular.module('orodarius')
     // TODO: move to directive with template
-    .controller('sidebarCtrl', function($scope, $rootScope, $timeout, $window, PlaylistService, PlayerService, SidebarService) {
+    .controller('sidebarCtrl', function($scope, $rootScope, $http, $timeout, $window, PlaylistService, PlayerService, SidebarService) {
       // TODO: shouldn't expose the whole service just the parts needed.
       $scope.sidebarService = SidebarService;
       $scope.playlistService = PlaylistService;
@@ -11,6 +11,8 @@
 
       $scope.isSidebarSticky = false;
       $scope.currentSubreddit = '';
+
+      this.lastUpdatedData = {};
 
       // TODO: not nice
       $rootScope.$on('videoPlay', function(currentVideoItem) {
@@ -58,6 +60,17 @@
       };
 
       $scope.isFocusForced = false;
+
+      this.getLastUpdated = function() {
+        $http.get('https://api.github.com/repos/argshook/orodarius/commits/master')
+          .then(data => this.lastUpdatedData = {
+              url: data.data.html_url,
+              date: data.data.commit.author.date,
+              message: data.data.commit.message
+            });
+      };
+
+      this.getLastUpdated();
 
       this.forceFocusToggle = function() {
         $scope.isFocusForced = !$scope.isFocusForced;

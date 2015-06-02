@@ -41,7 +41,7 @@
       <div class="sidebar-now-playing">
         <span class="sidebar-now-playing-label">Now playing:</span>
         <input class="sidebar-now-playing-input" placeholder="{{currentSubreddit}}" type="text" ng-enter="sidebar.fillPlaylistWith(currentSubreddit)" ng-enter-options="{blurOnEnter: true}" ng-model="currentSubreddit" />
-        <button class="sidebar-now-playing-btn" ng-click="sidebar.fillPlaylistWith(playlistService.currentSubreddit)">
+        <button class="sidebar-now-playing-btn" ng-click="sidebar.fillPlaylistWith(currentSubreddit)">
           <span class="glyphicon glyphicon-search" ng-class="{loading: playlistService.isLoading}"></span>
         </button>
       </div>
@@ -89,7 +89,7 @@
           <a href="http://github.com/argshook/orodarius">github</a>
         </div>
         <div class="col-xs-6 text-right">
-          early access v4.20
+          last updated <a href="{{sidebar.lastUpdatedData.url}}" title="{{sidebar.lastUpdatedData.message}}" target="_blank">{{sidebar.lastUpdatedData.date | date: 'medium'}}</a>
         </div>
       </div>
     </div>
