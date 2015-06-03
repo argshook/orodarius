@@ -69,6 +69,10 @@
         return item.videoId === $scope.playerService.currentVideoItem.videoId;
       };
 
+      if(SettingsService.list.isFocusForced) {
+        $window.addEventListener('blur', windowBlurHanlder);
+      }
+
       this.getLastUpdated = function() {
         $http.get('https://api.github.com/repos/argshook/orodarius/commits/gh-pages')
           .then(data => this.lastUpdatedData = {
