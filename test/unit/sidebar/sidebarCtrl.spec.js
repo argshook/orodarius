@@ -131,7 +131,7 @@ describe('Controller: sidebarCtrl', function() {
 
     it('should return string from github API call', function() {
       var githubMock = '{"html_url": "htmlUrl.com", "commit": { "author": { "date": "123" }, "message": "hello" }}';
-      $httpBackend.expectGET('https://api.github.com/repos/argshook/orodarius/commits/master')
+      $httpBackend.expectGET('https://api.github.com/repos/argshook/orodarius/commits/gh-pages')
         .respond(200, githubMock);
 
       $httpBackend.flush();
