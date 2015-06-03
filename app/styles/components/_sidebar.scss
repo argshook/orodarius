@@ -77,24 +77,10 @@
     left: 15px;
     width: 100px;
     height: 17px;
-    overflow: hidden;
     cursor: pointer;
 
-    label {
-      margin-bottom: 0;
-
-    }
-
-    label,
     span {
       &.active { color: orange; }
-    }
-
-    input[type="checkbox"] {
-      position: absolute;
-      opacity: 0;
-      margin: 0; padding: 0;
-      width: 0; height: 0;
     }
   }
 }

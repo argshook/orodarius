@@ -4,6 +4,10 @@ describe('Directive: youtube-player', function() {
   var element, scope, $compile,
       $window, PlayerService;
 
+  var mockScope = {
+    isDisabled: true
+  }
+
   beforeEach(module('orodarius'));
 
   beforeEach(inject(function(_$compile_, _$rootScope_, _$window_, _PlayerService_) {
@@ -11,7 +15,7 @@ describe('Directive: youtube-player', function() {
     $compile = _$compile_;
     $window = _$window_;
     PlayerService = _PlayerService_;
-
+    angular.extend(scope, mockScope);
     spyOn(PlayerService, 'createNewPlayer');
 
   }));

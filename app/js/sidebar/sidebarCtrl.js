@@ -2,15 +2,20 @@
   'use strict';
 
   angular.module('orodarius')
-    .controller('sidebarCtrl', function($scope, $rootScope, $http, $timeout, $window, PlaylistService, PlayerService, SidebarService, LastSubredditsService) {
+    .controller('sidebarCtrl', function(
+      $scope, $rootScope, $http, $timeout, $window,
+      PlaylistService, PlayerService, SidebarService, LastSubredditsService,
+      SettingsService
+    ) {
       // TODO: shouldn't expose the whole service just the parts needed.
       $scope.sidebarService = SidebarService;
       $scope.playlistService = PlaylistService;
       $scope.playerService = PlayerService;
       $scope.lastSubreddits = LastSubredditsService.list;
 
-      $scope.isSidebarSticky = false;
       $scope.currentSubreddit = '';
+
+      $scope.settings = SettingsService;
 
       this.lastUpdatedData = {};
 
@@ -25,10 +30,15 @@
         $scope.sidebarService.toggle();
       };
 
+      this.toggleForceFocus = function() {
+        SettingsService.toggle('isFocusForced');
+        $window[(SettingsService.list.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
+      };
+
       this.playVideo = function(item) {
         $scope.playerService.playVideo(item);
 
-        if(!$scope.isSidebarSticky) {
+        if(!SettingsService.list.isSidebarSticky) {
           $scope.sidebarService.toggle();
         }
       };
@@ -59,8 +69,6 @@
         return item.videoId === $scope.playerService.currentVideoItem.videoId;
       };
 
-      $scope.isFocusForced = false;
-
       this.getLastUpdated = function() {
         $http.get('https://api.github.com/repos/argshook/orodarius/commits/master')
           .then(data => this.lastUpdatedData = {
@@ -71,11 +79,6 @@
       };
 
       this.getLastUpdated();
-
-      this.forceFocusToggle = function() {
-        $scope.isFocusForced = !$scope.isFocusForced;
-        $window[($scope.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
-      };
 
       function windowBlurHanlder() {
         $timeout(function() {
