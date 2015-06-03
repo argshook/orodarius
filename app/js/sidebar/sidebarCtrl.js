@@ -4,7 +4,8 @@
   angular.module('orodarius')
     .controller('sidebarCtrl', function(
       $scope, $rootScope, $http, $timeout, $window,
-      PlaylistService, PlayerService, SidebarService, LastSubredditsService
+      PlaylistService, PlayerService, SidebarService, LastSubredditsService,
+      SettingsService
     ) {
       // TODO: shouldn't expose the whole service just the parts needed.
       $scope.sidebarService = SidebarService;
@@ -14,8 +15,7 @@
 
       $scope.currentSubreddit = '';
 
-      $scope.isSidebarSticky = false;
-      $scope.isFocusForced = false;
+      $scope.settings = SettingsService;
 
       this.lastUpdatedData = {};
 
@@ -31,14 +31,14 @@
       };
 
       this.toggleForceFocus = function() {
-        $scope.isFocusForced = !$scope.isFocusForced;
-        $window[($scope.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
+        SettingsService.toggle('isFocusForced');
+        $window[(SettingsService.list.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
       };
 
       this.playVideo = function(item) {
         $scope.playerService.playVideo(item);
 
-        if(!$scope.isSidebarSticky) {
+        if(!SettingsService.list.isSidebarSticky) {
           $scope.sidebarService.toggle();
         }
       };

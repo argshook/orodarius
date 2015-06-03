@@ -52,7 +52,7 @@ describe('Controller: sidebarCtrl', function() {
 
   it('isOpen should be true after playVideo has been invoked when isSidebarSticky is true', function() {
     scope.sidebarService.isOpen = true;
-    scope.isSidebarSticky = true;
+    scope.settings.list.isSidebarSticky = true;
     ctrl.playVideo(mockVideoItem);
     expect(scope.sidebarService.isOpen).toBe(true);
   });
@@ -73,10 +73,6 @@ describe('Controller: sidebarCtrl', function() {
     expect(typeof scope.currentSubreddit).toBe('string');
   });
 
-  it('should keep isSidebarSticky value on scope and be set to false initially', function() {
-    expect(scope.isSidebarSticky).toBe(false);
-  });
-
   describe('suggested subreddits', function() {
     it('should be exposed', function() {
       expect(ctrl.suggestedSubreddits).toBeDefined();
@@ -90,8 +86,15 @@ describe('Controller: sidebarCtrl', function() {
     });
   });
 
-  it('should keep isFocusForced value on scope and be set to false initially', function() {
-    expect(scope.isFocusForced).toBe(false);
+  describe('settings', function() {
+    it('should be defined', function() {
+      expect(scope.settings).toBeDefined();
+    });
+
+    it('should contain default values', function() {
+      expect(scope.settings.list.isSidebarSticky).toBe(false);
+      expect(scope.settings.list.isFocusForced).toBe(false);
+    });
   });
 
   describe('toggleForceFocus method', function() {
@@ -101,21 +104,21 @@ describe('Controller: sidebarCtrl', function() {
 
     it('should toggle $scope.isFocusForced when called', function() {
       ctrl.toggleForceFocus();
-      expect(scope.isFocusForced).toBe(true);
+      expect(scope.settings.list.isFocusForced).toBe(true);
       ctrl.toggleForceFocus();
-      expect(scope.isFocusForced).toBe(false);
+      expect(scope.settings.list.isFocusForced).toBe(false);
     });
 
     it('should attach blur event listener on window when isFocusForced is false', function() {
       spyOn($window, 'addEventListener');
-      scope.isFocusForced = false;
+      scope.settings.list.isFocusForced = false;
       ctrl.toggleForceFocus();
       expect($window.addEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
     });
 
     it('should remove blur event listener from window when isFocusForced is true', function() {
       spyOn($window, 'removeEventListener');
-      scope.isFocusForced = true;
+      scope.settings.list.isFocusForced = true;
       ctrl.toggleForceFocus();
       expect($window.removeEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
     });

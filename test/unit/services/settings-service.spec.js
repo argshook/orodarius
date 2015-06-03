@@ -43,4 +43,17 @@ describe('Service: SettingsService', function() {
       expect(localStorageService.set).toHaveBeenCalledWith('settings', jasmine.any(Object));
     });
   });
+
+  describe('toggle()', function() {
+    it('should be defined', function() {
+      expect(service.toggle).toBeDefined();
+    });
+
+    it('should toggle boolean setting value', function() {
+      service.toggle('isSidebarSticky');
+      expect(service.list.isSidebarSticky).toBe(true);
+      service.toggle('isSidebarSticky');
+      expect(service.list.isSidebarSticky).toBe(false);
+    });
+  });
 });
