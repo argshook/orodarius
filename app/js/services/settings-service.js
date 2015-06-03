@@ -11,6 +11,8 @@
           isSidebarSticky: false,
           isFocusForced: false
         };
+        console.log('ha');
+        updateStorage();
       }
 
       function add(name, setting) {
