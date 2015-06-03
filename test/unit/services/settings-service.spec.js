@@ -55,5 +55,10 @@ describe('Service: SettingsService', function() {
       service.toggle('isSidebarSticky');
       expect(service.list.isSidebarSticky).toBe(false);
     });
+
+    it('should add new item if its not defined yet and set it to true', function() {
+      service.toggle('shitheads');
+      expect(service.list.shitheads).toBe(true);
+    });
   });
 });
