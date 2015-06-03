@@ -97,29 +97,29 @@ describe('Controller: sidebarCtrl', function() {
     });
   });
 
-  describe('toggleForceFocus method', function() {
+  describe('toggleFocusForced method', function() {
     it('should be defined', function() {
-      expect(ctrl.toggleForceFocus).toBeDefined();
+      expect(ctrl.toggleFocusForced).toBeDefined();
     });
 
     it('should toggle $scope.isFocusForced when called', function() {
-      ctrl.toggleForceFocus();
+      ctrl.toggleFocusForced();
       expect(scope.settings.list.isFocusForced).toBe(true);
-      ctrl.toggleForceFocus();
+      ctrl.toggleFocusForced();
       expect(scope.settings.list.isFocusForced).toBe(false);
     });
 
     it('should attach blur event listener on window when isFocusForced is false', function() {
       spyOn($window, 'addEventListener');
       scope.settings.list.isFocusForced = false;
-      ctrl.toggleForceFocus();
+      ctrl.toggleFocusForced();
       expect($window.addEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
     });
 
     it('should remove blur event listener from window when isFocusForced is true', function() {
       spyOn($window, 'removeEventListener');
       scope.settings.list.isFocusForced = true;
-      ctrl.toggleForceFocus();
+      ctrl.toggleFocusForced();
       expect($window.removeEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
     });
   });

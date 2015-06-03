@@ -8,7 +8,7 @@
 
     <div class="sidebar-heading__checkbox-container">
       <span ng-class="{active: settings.list.isSidebarSticky}" class="glyphicon glyphicon-lock" ng-click="settings.toggle('isSidebarSticky')"></span>
-      <span ng-class="{active: settings.list.isFocusForced}" class="glyphicon glyphicon-magnet" ng-click="settings.toggle('isFocusForced')"></span>
+      <span ng-class="{active: settings.list.isFocusForced}" class="glyphicon glyphicon-magnet" ng-click="sidebar.toggleFocusForced()"></span>
     </div>
     <div class="sidebar-now-playing">
       <span class="sidebar-now-playing-label">Now playing:</span>

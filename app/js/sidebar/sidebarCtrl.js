@@ -30,7 +30,7 @@
         $scope.sidebarService.toggle();
       };
 
-      this.toggleForceFocus = function() {
+      this.toggleFocusForced = function() {
         SettingsService.toggle('isFocusForced');
         $window[(SettingsService.list.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
       };
