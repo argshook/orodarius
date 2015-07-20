@@ -7,28 +7,21 @@
           fetchRetries = 0,
           maxFetchRetries = 3; // how many times should I retry GETting from reddit api?
 
+      // Public values
       this.playlist = [];
       this.afterTag = '';
       this.currentSubreddit = '';
+      this.isLoading = false;
+
+      // Public methods
+      this.add = add;
+      this.clear = clear;
+      this.fetchSubreddit = fetchSubreddit;
+      this.expandPlaylist = expandPlaylist;
 
       function add(item) {
         this.playlist.push(item);
         return this.playlist;
-      }
-
-      // TODO: refactor to filter?
-      function checkThumbnailValidity(thumbnailUrl) {
-        switch(thumbnailUrl) {
-          case 'nsfw':
-            thumbnailUrl = 'images/nsfw-thumbnail.jpg';
-            break;
-          case 'default':
-          case '':
-            thumbnailUrl = 'images/default-thumbnail.png';
-            break;
-        }
-
-        return thumbnailUrl;
       }
 
       function subredditResultsFilter(data) {
@@ -56,37 +49,13 @@
                   .value();
       }
 
-      // TODO: refactor to filter?
-      function uniquefyVideoItems(videoItems) {
-        var stringifiedArray = _(videoItems).map(item => JSON.stringify(item)).value();
-
-        return _(_.uniq(stringifiedArray)).map(item => JSON.parse(item)).value();
-      }
-
       function compareOldTo(newItem) {
         var duplicateItems = _(this.playlist).filter(item => item.videoId === newItem.videoId).value().length;
         return duplicateItems > 0 ? false : true;
       }
 
-      // TODO: refactor to filter?
-      function postProcess(newItems) {
-        var sanitizers = {
-          '&amp;': '&',
-          '&copy;': '©',
-          '&reg;': '®'
-        };
-
-        return _(newItems)
-                .map(item => {
-                  item.title = item.title.replace(/(&amp;|&copy;|&reg;)/g, match => sanitizers[match]),
-                  item.ownId = _.uniqueId('orodarius_video-item_');
-                  return item;
-                })
-                .value();
-      }
-
       // TODO: refactor, make this smaller
-      this.fetchSubreddit = function(subredditName, after, deferred = $q.defer()) {
+      function fetchSubreddit(subredditName, after, deferred = $q.defer()) {
         // TODO: extract URL to be configurable in order to allow different sources
         var apiUrl = `${redditAPIBaseUrl}${subredditName}/hot.json?limit=50` + (after ? `&after=${after}` : '');
         this.isLoading = true;
@@ -124,9 +93,9 @@
           });
 
         return deferred.promise;
-      };
+      }
 
-      this.expandPlaylist = function() {
+      function expandPlaylist() {
         if(!this.isLoading) {
           var deferred = $q.defer();
 
@@ -144,13 +113,49 @@
         }
 
         return false;
-      };
+      }
 
-      this.clear = function() {
+      function clear() {
         this.playlist = [];
-      };
+      }
 
-      this.add = add;
-      this.isLoading = false;
+      // TODO: refactor to filter?
+      function checkThumbnailValidity(thumbnailUrl) {
+        switch(thumbnailUrl) {
+          case 'nsfw':
+            thumbnailUrl = 'images/nsfw-thumbnail.jpg';
+            break;
+          case 'default':
+          case '':
+            thumbnailUrl = 'images/default-thumbnail.png';
+            break;
+        }
+
+        return thumbnailUrl;
+      }
+
+      // TODO: refactor to filter?
+      function uniquefyVideoItems(videoItems) {
+        var stringifiedArray = _(videoItems).map(item => JSON.stringify(item)).value();
+
+        return _(_.uniq(stringifiedArray)).map(item => JSON.parse(item)).value();
+      }
+
+      // TODO: refactor to filter?
+      function postProcess(newItems) {
+        var sanitizers = {
+          '&amp;': '&',
+          '&copy;': '©',
+          '&reg;': '®'
+        };
+
+        return _(newItems)
+                .map(item => {
+                  item.title = item.title.replace(/(&amp;|&copy;|&reg;)/g, match => sanitizers[match]),
+                  item.ownId = _.uniqueId('orodarius_video-item_');
+                  return item;
+                })
+                .value();
+      }
     });
 })();
