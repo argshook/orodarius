@@ -18,6 +18,8 @@
     "start": "brunch w -s",
     "dev": "brunch w",
     "prod": "brunch b -P",
+    "coveralls": "istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+",
     "test": "karma start test/karma.conf.js",
     "test-e2e": "protractor test/protractor-conf.js"
   },
@@ -28,6 +30,7 @@
     "browser-sync-brunch": "~0.0.8",
     "brunch": "~1.7.20",
     "clean-css-brunch": "~1.7.1",
+    "coveralls": "^2.11.3",
     "css-brunch": "~1.7.0",
     "es5-shim": "^4.1.9",
     "gh-pages-deploy": "^0.3.0",
