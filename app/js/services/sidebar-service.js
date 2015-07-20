@@ -8,5 +8,9 @@
       this.toggle = function(toggleValue) {
         this.isOpen = toggleValue || !this.isOpen;
       };
+
+      this.close = function() {
+        this.isOpen = false;
+      };
     });
 })();

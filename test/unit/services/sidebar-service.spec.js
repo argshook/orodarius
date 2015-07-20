@@ -7,24 +7,29 @@ describe("Service: SidebarService", function() {
     module('orodarius');
     inject(function (SidebarService) {
       service = SidebarService;
-    })
+    });
   });
 
   it('should expose isOpen value set to true initially', function() {
     expect(service.isOpen).toBe(true);
   });
 
-  it('should expose toggle method', function() {
-    expect(service.toggle).toBeDefined();
-    expect(typeof service.toggle).toBe('function');
+  describe('toggle()', function() {
+    it('should toggle isOpen value', function() {
+      service.toggle();
+      expect(service.isOpen).toBe(false);
+
+      service.toggle();
+      expect(service.isOpen).toBe(true);
+    });
   });
 
-  it('toggle method should toggle isOpen value', function() {
-    service.toggle();
-    expect(service.isOpen).toBe(false);
-
-    service.toggle();
-    expect(service.isOpen).toBe(true);
+  describe('close()', function() {
+    it('should set isOpen value to false', function() {
+      service.isOpen = true;
+      service.close();
+      expect(service.isOpen).toBe(false);
+    });
   });
 
 });
