@@ -3,45 +3,17 @@
 
   angular.module('orodarius')
     .service('PlaylistService', function($http, $q, $log, LastSubredditsService) {
-      var playlist = [],
-          redditAPIBaseUrl = 'http://www.reddit.com/r/',
-          currentSubreddit,
-          afterTag,
+      var redditAPIBaseUrl = 'http://www.reddit.com/r/',
           fetchRetries = 0,
           maxFetchRetries = 3; // how many times should I retry GETting from reddit api?
 
-      Object.defineProperties(this, {
-        playlist: {
-          enumerable: true,
-          configurable: true,
-          get: function() {
-            return playlist;
-          },
-          set: function(value) {
-            playlist = value;
-          }
-        },
-        afterTag: {
-          enumerable: true,
-          configurable: true,
-          get: function() {
-            return afterTag;
-          },
-          set: function(value) {
-            afterTag = value;
-          }
-        },
-        currentSubreddit: {
-          enumerable: true,
-          configurable: true,
-          get: () => currentSubreddit,
-          set: (value) => { currentSubreddit = value; }
-        }
-      });
+      this.playlist = [];
+      this.afterTag = '';
+      this.currentSubreddit = '';
 
       function add(item) {
-        playlist.push(item);
-        return playlist;
+        this.playlist.push(item);
+        return this.playlist;
       }
 
       function getVideoInfoFromUrl(url) {
@@ -139,7 +111,7 @@
       }
 
       function compareOldTo(newItem) {
-        var duplicateItems = _(playlist).filter(item => item.videoId === newItem.videoId).value().length;
+        var duplicateItems = _(this.playlist).filter(item => item.videoId === newItem.videoId).value().length;
         return duplicateItems > 0 ? false : true;
       }
 
@@ -165,8 +137,8 @@
 
         $http.get(apiUrl)
           .then(data => {
-            afterTag = data.data.data.after;
-            currentSubreddit = subredditName;
+            this.afterTag = data.data.data.after;
+            this.currentSubreddit = subredditName;
             fetchRetries++;
 
             var newItems = uniquefyVideoItems(subredditResultsFilter(data.data.data.children));
@@ -176,17 +148,17 @@
             }
 
             if(newItems.length === 0 && fetchRetries <= maxFetchRetries) {
-              this.fetchSubreddit(currentSubreddit, afterTag, deferred);
+              this.fetchSubreddit(this.currentSubreddit, this.afterTag, deferred);
             } else {
               this.isLoading = false;
               newItems = postProcess(newItems);
 
-              playlist = after ?
-                        playlist.concat(_(newItems).filter(item => compareOldTo(item)).value()) :
-                        newItems;
+              this.playlist = after ?
+                              this.playlist.concat(_(newItems).filter(item => compareOldTo(item)).value()) :
+                              newItems;
 
               fetchRetries = 0;
-              deferred.resolve(playlist);
+              deferred.resolve(this.playlist);
 
               return deferred.promise;
             }
@@ -202,8 +174,8 @@
         if(!this.isLoading) {
           var deferred = $q.defer();
 
-          if(afterTag) {
-            this.fetchSubreddit(currentSubreddit, afterTag).then(
+          if(this.afterTag) {
+            this.fetchSubreddit(this.currentSubreddit, this.afterTag).then(
               () => deferred.resolve(),
               () => deferred.reject()
             );
@@ -219,11 +191,10 @@
       };
 
       this.clear = function() {
-        playlist = [];
+        this.playlist = [];
       };
 
       this.add = add;
-      this.afterTag = afterTag;
       this.isLoading = false;
     });
 })();

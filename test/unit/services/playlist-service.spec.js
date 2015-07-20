@@ -1,5 +1,7 @@
 'use strict';
 
+/* global REDDIT */
+
 describe('Service: PlaylistService', function() {
   var service, LastSubredditsService, localStorageService, $httpBackend, $q;
 
@@ -30,7 +32,7 @@ describe('Service: PlaylistService', function() {
     // expect(service.playlist).toEqual([mockVideoItem]);
   });
 
-  describe('fetchSubreddit method', function() {
+  describe('fetchSubreddit()', function() {
     beforeEach(function() {
       localStorageService.clearAll();
     });
