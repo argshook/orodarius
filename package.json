@@ -18,8 +18,6 @@
     "start": "brunch w -s",
     "dev": "brunch w",
     "prod": "brunch b -P",
-    "coveralls": "istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-",
     "test": "karma start test/karma.conf.js",
     "test-e2e": "protractor test/protractor-conf.js"
   },

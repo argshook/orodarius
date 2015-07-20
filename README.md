@@ -1,6 +1,7 @@
 # Orodarius
 
-<a href="https://travis-ci.org/argshook/orodarius" target="_blank"><img src="https://travis-ci.org/argshook/orodarius.svg?branch=master" alt=""></a>
+[![Build Status](https://travis-ci.org/argshook/orodarius.svg?branch=master)](https://travis-ci.org/argshook/orodarius)
+[![Coverage Status](https://coveralls.io/repos/argshook/orodarius/badge.svg?branch=master&service=github)](https://coveralls.io/github/argshook/orodarius?branch=master)
 
 A youtube video player for reddit
 

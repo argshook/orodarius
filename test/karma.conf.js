@@ -54,6 +54,11 @@ module.exports = function(karma) {
       '**/*.html': ['ng-html2js']
     },
 
+    coverageReporter: {
+      type : 'lcov',
+      dir : 'coverage/'
+    },
+
     ngHtml2JsPreprocessor: {
       moduleName: 'orodarius'
     },
@@ -85,14 +90,14 @@ module.exports = function(karma) {
     urlRoot: '',
 
     plugins: [
-    'karma-jasmine',
-    'karma-coverage',
-    'karma-chrome-launcher',
-    'karma-firefox-launcher',
-    'karma-safari-launcher',
-    'karma-phantomjs-launcher',
-    'karma-junit-reporter',
-    'karma-html2js-preprocessor'
+      'karma-jasmine',
+      'karma-coverage',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-safari-launcher',
+      'karma-phantomjs-launcher',
+      'karma-junit-reporter',
+      'karma-html2js-preprocessor'
     ]
   });
 };
