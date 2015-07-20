@@ -61,7 +61,7 @@ exports.config = {
       pattern: /^app/
     },
     ES6to5: {
-
+      blacklist: ["useStrict"]
     },
     autoprefixer: {
       browsers: [
