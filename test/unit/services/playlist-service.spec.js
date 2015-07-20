@@ -133,21 +133,24 @@ describe('Service: PlaylistService', function() {
     });
   });
 
-  it("expandPlaylist should fetch more items", function() {
-    $httpBackend.whenGET(/.*hot\.json/).respond(200, {
-      data: { after: 'asd' }
+  describe('expandPlaylist()', function() {
+    it("expandPlaylist should fetch more items", function() {
+      $httpBackend.whenGET(/.*hot\.json/).respond(200, {
+        data: { after: 'asd' }
+      });
+      service.afterTag = REDDIT.data.after;
+
+      var resolved = false;
+
+      service.expandPlaylist().then(function() {
+        resolved = true;
+      });
+
+      $httpBackend.flush();
+      expect(resolved).toBe(true);
     });
-    service.afterTag = REDDIT.data.after;
-
-    var resolved = false;
-
-    service.expandPlaylist().then(function() {
-      resolved = true;
-    });
-
-    $httpBackend.flush();
-    expect(resolved).toBe(true);
   });
+
 
   it("successful fetchSubreddit should populate playlist array with specific video item model", function() {
     service.fetchSubreddit('videos').then(function(playlist) {
