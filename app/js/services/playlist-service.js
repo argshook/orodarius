@@ -2,7 +2,9 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlaylistService', function($http, $q, $log, LastSubredditsService, youtubeUrlParser) {
+    .service('PlaylistService', function($http, $q, $log, LastSubredditsService,
+                                         youtubeUrlParser, $filter) {
+
       var redditAPIBaseUrl = 'http://www.reddit.com/r/',
           fetchRetries = 0,
           maxFetchRetries = 3; // how many times should I retry GETting from reddit api?
@@ -38,7 +40,7 @@
                       url: item.data.url,
                       videoId: videoInfo.id,
                       starttime: videoInfo.starttime,
-                      thumbnailUrl: checkThumbnailValidity(item.data.thumbnail),
+                      thumbnailUrl: $filter('thumbnailUrlFilter')(item.data.thumbnail),
                       created: item.data.created,
                       redditUrl: `http://reddit.com${item.data.permalink}`,
                       redditScore: item.data.score,
@@ -117,21 +119,6 @@
 
       function clear() {
         this.playlist = [];
-      }
-
-      // TODO: refactor to filter?
-      function checkThumbnailValidity(thumbnailUrl) {
-        switch(thumbnailUrl) {
-          case 'nsfw':
-            thumbnailUrl = 'images/nsfw-thumbnail.jpg';
-            break;
-          case 'default':
-          case '':
-            thumbnailUrl = 'images/default-thumbnail.png';
-            break;
-        }
-
-        return thumbnailUrl;
       }
 
       // TODO: refactor to filter?
