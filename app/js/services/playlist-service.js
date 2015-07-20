@@ -53,46 +53,54 @@
 
       function compareOldTo(newItem) {
         var duplicateItems = _(this.playlist).filter(item => item.videoId === newItem.videoId).value().length;
+
         return duplicateItems > 0 ? false : true;
       }
 
-      // TODO: refactor, make this smaller
-      function fetchSubreddit(subredditName, after, deferred = $q.defer()) {
-        // TODO: extract URL to be configurable in order to allow different sources
-        var apiUrl = `${redditAPIBaseUrl}${subredditName}/hot.json?limit=50` + (after ? `&after=${after}` : '');
+      function fetchSubreddit(subredditName, afterTag, deferred = $q.defer()) {
         this.isLoading = true;
 
+        // TODO: extract URL to be configurable in order to allow different sources
+        let apiUrl = `${redditAPIBaseUrl}${subredditName}/hot.json?limit=50` + (afterTag ? `&after=${afterTag}` : '');
+
         $http.get(apiUrl)
-          .then(data => {
-            this.afterTag = data.data.data.after;
-            this.currentSubreddit = subredditName;
-            fetchRetries++;
+          .then(
+            onFetchSuccess.bind(this),
+            onFetchError.bind(this)
+          );
 
-            var newItems = uniquefyVideoItems(subredditResultsFilter(data.data.data.children));
+        function onFetchSuccess(data) {
+          const fetchedData = data.data.data;
+          fetchRetries++;
 
-            if(newItems.length !== 0) {
-              LastSubredditsService.add({ name: subredditName });
-            }
+          this.afterTag = fetchedData.after;
+          this.currentSubreddit = subredditName;
 
-            if(newItems.length === 0 && fetchRetries <= maxFetchRetries) {
-              this.fetchSubreddit(this.currentSubreddit, this.afterTag, deferred);
-            } else {
-              this.isLoading = false;
-              newItems = postProcess(newItems);
+          let newItems = uniquefyVideoItems(subredditResultsFilter(fetchedData.children));
 
-              this.playlist = after ?
-                              this.playlist.concat(_(newItems).filter(item => compareOldTo(item)).value()) :
-                              newItems;
+          if(newItems.length) {
+            LastSubredditsService.add({ name: subredditName });
+          }
 
-              fetchRetries = 0;
-              deferred.resolve(this.playlist);
+          if(newItems.length === 0 && fetchRetries <= maxFetchRetries) {
+            this.fetchSubreddit(this.currentSubreddit, this.afterTag, deferred);
+          } else {
+            let processNewItems = postProcess(newItems),
+                uniqueNewItems = _.filter(newItems, item => compareOldTo.call(this, item));
 
-              return deferred.promise;
-            }
-          }, error => {
+            this.playlist = this.playlist.concat(uniqueNewItems);
+
+            fetchRetries = 0;
             this.isLoading = false;
-            deferred.reject(error);
-          });
+            deferred.resolve(this.playlist);
+          }
+        }
+
+        function onFetchError(error) {
+          this.isLoading = false;
+          deferred.reject(error);
+          $log.warn(`Error, couldn't fetch ${subredditName} from the following URL: ${apiUrl}`);
+        }
 
         return deferred.promise;
       }

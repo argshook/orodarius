@@ -149,6 +149,18 @@ describe('Service: PlaylistService', function() {
       $httpBackend.flush();
       expect(resolved).toBe(true);
     });
+
+    it('should keep existing playlist if no more items where fetched', function() {
+      $httpBackend.whenGET(/.*hot\.json/).respond(200, {
+        data: {}
+      });
+      service.afterTag = REDDIT.data.after;
+      service.playlist = ['hello this is me'];
+
+      service.expandPlaylist();
+      $httpBackend.flush();
+      expect(service.playlist).toEqual(['hello this is me']);
+    });
   });
 
 
