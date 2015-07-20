@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlaylistService', function($http, $q, $log, LastSubredditsService) {
+    .service('PlaylistService', function($http, $q, $log, LastSubredditsService, youtubeUrlParser) {
       var redditAPIBaseUrl = 'http://www.reddit.com/r/',
           fetchRetries = 0,
           maxFetchRetries = 3; // how many times should I retry GETting from reddit api?
@@ -66,6 +66,7 @@
         }
       }
 
+      // TODO: refactor to filter?
       function checkThumbnailValidity(thumbnailUrl) {
         switch(thumbnailUrl) {
           case 'nsfw':
@@ -81,6 +82,7 @@
       }
 
       function subredditResultsFilter(data) {
+        // TODO: refactor to allow different sources but output same structure as now
         return _(data)
                   .filter((item) => item.kind === 't3' && item.data.domain === 'youtube.com') // t3 - link posts
                   .map((item) => {
@@ -104,6 +106,7 @@
                   .value();
       }
 
+      // TODO: refactor to filter?
       function uniquefyVideoItems(videoItems) {
         var stringifiedArray = _(videoItems).map(item => JSON.stringify(item)).value();
 
@@ -115,6 +118,7 @@
         return duplicateItems > 0 ? false : true;
       }
 
+      // TODO: refactor to filter?
       function postProcess(newItems) {
         var sanitizers = {
           '&amp;': '&',
@@ -131,7 +135,9 @@
                 .value();
       }
 
+      // TODO: refactor, make this smaller
       this.fetchSubreddit = function(subredditName, after, deferred = $q.defer()) {
+        // TODO: extract URL to be configurable in order to allow different sources
         var apiUrl = `${redditAPIBaseUrl}${subredditName}/hot.json?limit=50` + (after ? `&after=${after}` : '');
         this.isLoading = true;
 
