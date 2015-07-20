@@ -30,7 +30,7 @@ describe('Directive: youtube-player', function() {
 
   it('should compile successfully', function() {
     compileWith();
-    expect(element.find('[youtube-player]')).toBeTruthy();
+    expect(element.find('[youtube-player]')).toBeTruthy(); // TODO: this is always truthy
   });
 
   it('should call PlayerService.createNewPlayer with default selector ID, once directive is compiled', function() {

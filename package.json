@@ -29,6 +29,7 @@
     "brunch": "~1.7.20",
     "clean-css-brunch": "~1.7.1",
     "css-brunch": "~1.7.0",
+    "es5-shim": "^4.1.9",
     "gh-pages-deploy": "^0.3.0",
     "javascript-brunch": "~1.7.1",
     "karma": "~0.12.31",
