@@ -25,9 +25,18 @@ describe("Directive: ngInputChange", function() {
 
   it("should execute passed function on value change", function() {
     compile();
-    element.val(10);
-    element.triggerHandler({ type: 'change' }); // TODO: this should not be within test IMO
+    $(element).val(10);
+    $(element).triggerHandler('change');
     expect(scope.changeFunction).toHaveBeenCalled();
     expect(element.val()).toBe('10');
+  });
+
+  it('should detach event listeners on $destroy', function() {
+    compile();
+    spyOn($.fn, 'off').and.callThrough();
+    scope.$broadcast('$destroy');
+    scope.$digest();
+    //$.fn.off.calls.allArgs()[0]
+    expect($.fn.off).toHaveBeenCalledWith('change input');
   });
 });

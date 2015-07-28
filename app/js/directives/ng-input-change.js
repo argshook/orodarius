@@ -10,12 +10,12 @@
         },
         replace: false,
         link: function(scope, element, attrs) {
-          element.on('change input', function() {
+          $(element).on('change input', function() {
             scope.ngInputChange.call(null);
-         });
+          });
 
           scope.$on('$destroy', function() {
-            element.off('change input');
+            $(element).off('change input');
           });
         }
       };
