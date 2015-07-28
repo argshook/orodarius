@@ -17,6 +17,7 @@ module.exports = function(karma) {
       'public/js/app.js',
 
       'node_modules/es5-shim/es5-shim.js',
+      'bower_components/jquery/dist/jquery.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'test/mocks/**/*.js',
