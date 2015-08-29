@@ -163,7 +163,6 @@ describe('Service: PlaylistService', function() {
     });
   });
 
-
   it("successful fetchSubreddit should populate playlist array with specific video item model", function() {
     service.fetchSubreddit('videos').then(function(playlist) {
       expect(playlist[0]).toEqual(jasmine.objectContaining({

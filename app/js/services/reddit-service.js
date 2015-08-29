@@ -34,6 +34,8 @@
         let newItems = uniquefyVideoItems(subredditResultsFilter(fetchedData.children));
 
         if(newItems.length) {
+          // TODO: move out of reddit service, this is will not be reddit specific in the
+          // future when more sources will be available
           LastSubredditsService.add({ name: subredditName });
         }
 

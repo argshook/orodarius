@@ -1,6 +1,7 @@
 ;(function() {
   'use strict';
 
+  // TODO: this will eventually be lastQueriesService or something
   angular.module('orodarius')
     .service('LastSubredditsService', function(localStorageService) {
       var lastSubredditsStorageName = 'lastSubreddits',
