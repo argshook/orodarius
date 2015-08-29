@@ -1,13 +1,16 @@
 ;() => {
   'use strict';
 
-  angular.module('orodarius').service('RedditService', function($http, $q, youtubeUrlParser, $filter, LastSubredditsService) {
+  angular.module('orodarius').service('RedditService', function($http, $q, youtubeUrlParser, $filter, LastSubredditsService, $log) {
     let NUM_FETCH_RETRIES = 0,
         NUM_MAX_FETCH_RETRIES = 3, // means there might be at most 4 consecutive GETs until proper data received
-        AFTER_TAG = '';
+        AFTER_TAG = '',
+        IS_LOADING = false,
+        CURRENT_SUBREDDIT = '';
 
     this.fetch = fetch;
     this.items = [];
+    this.getNext = getNext;
 
     const API_ROOT_URL = 'http://www.reddit.com/r/';
 
@@ -16,14 +19,17 @@
             apiUrl = `${API_ROOT_URL}${subredditName}/hot.json?limit=50` + (afterTag ? `&after=${afterTag}` : '');
 
       AFTER_TAG = afterTag;
+      CURRENT_SUBREDDIT = subredditName;
+      IS_LOADING = true;
 
       $http.get(apiUrl).success(onFetchSuccess.bind(this)).error(onFetchFailure.bind(this));
 
       function onFetchSuccess(data, status, headers, config) {
         const fetchedData = data.data;
-        NUM_FETCH_RETRIES++;
 
+        NUM_FETCH_RETRIES++;
         AFTER_TAG = fetchedData.after;
+        IS_LOADING = false;
 
         let newItems = uniquefyVideoItems(subredditResultsFilter(fetchedData.children));
 
@@ -40,12 +46,13 @@
           this.items = this.items.concat(uniqueNewItems);
 
           NUM_FETCH_RETRIES = 0;
-          this.isLoading = false;
+
           deferred.resolve(this.items);
         }
       }
 
       function onFetchFailure(data, status, headers, config) {
+        IS_LOADING = false;
         deferred.reject(data);
       }
 
@@ -107,6 +114,24 @@
       var duplicateItems = _(this.items).filter(item => item.videoId === newItem.videoId).value().length;
 
       return duplicateItems > 0 ? false : true;
+    }
+
+    function getNext() {
+      let deferred = $q.defer();
+
+      if(!IS_LOADING) {
+        if(AFTER_TAG) {
+          this.fetch(CURRENT_SUBREDDIT, AFTER_TAG).then(
+            () => deferred.resolve(),
+            () => deferred.reject()
+          );
+        } else {
+          $log.warn('cant expand playlist, no afterTag found!');
+          deferred.reject();
+        }
+      }
+
+      return deferred.promise;
     }
   });
 }();

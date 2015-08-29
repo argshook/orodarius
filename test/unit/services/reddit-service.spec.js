@@ -8,7 +8,7 @@ describe('Service: RedditService', function() {
   beforeEach(module('orodarius'));
   beforeEach(inject(function(_RedditService_, _$httpBackend_, _$http_, _LastSubredditsService_, _localStorageService_) {
     RedditService         = _RedditService_;
-    $http                 = _$httpBackend_;
+    $http                 = _$http_;
     $httpBackend          = _$httpBackend_;
     LastSubredditsService = _LastSubredditsService_;
     localStorageService   = _localStorageService_;
@@ -182,5 +182,72 @@ describe('Service: RedditService', function() {
       expect(Array.isArray(RedditService.items)).toBe(true);
       expect(RedditService.items.length).toBe(0);
     });
+  });
+
+  describe('getNext()', function() {
+    describe('when AFTER_TAG non empty', function() {
+      it("should fetch more items", function() {
+        $httpBackend.whenGET(/whatever/).respond(200, {
+          data: {
+            children: [
+              { kind: 't3', data: { domain: 'youtube.com', title: '&amp;&reg;&copy;', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+            ],
+            after: 'asd'
+          }
+        });
+
+        var resolved = false;
+
+        RedditService.fetch('whatever');
+        $httpBackend.flush();
+
+        RedditService.getNext().then(function() {
+          resolved = true;
+        });
+
+        $httpBackend.flush();
+        expect(resolved).toBe(true);
+      });
+
+      it('should keep existing items if no more items where fetched', function() {
+        $httpBackend.whenGET(/.*hot\.json/).respond(200, {
+          data: { children: [], after: 'asd' }
+        });
+
+        RedditService.items = ['hello this is me'];
+
+        RedditService.fetch('whatever');
+        RedditService.getNext();
+        $httpBackend.flush();
+        expect(RedditService.items).toEqual(['hello this is me']);
+      });
+    });
+
+    describe('when AFTER_TAG is empty', function() {
+      it('should reject promise', function() {
+        $httpBackend.whenGET(/whatever/).respond(200, {
+          data: {
+            children: [
+              { kind: 't3', data: { domain: 'youtube.com', title: '&amp;&reg;&copy;', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+            ],
+            after: ''
+          }
+        });
+
+
+        var rejected = false;
+        RedditService.fetch('whatever').then(function() {
+          // TODO: this is weird fixme
+          RedditService.getNext().then(angular.noop, function() {
+            rejected = true;
+          });
+        });
+        $httpBackend.flush();
+
+
+        expect(rejected).toBe(true);
+      });
+    });
+
   });
 });
