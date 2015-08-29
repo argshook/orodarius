@@ -175,6 +175,17 @@ describe('Service: RedditService', function() {
         expect(RedditService.items.length).toBeGreaterThan(0);
       });
     });
+
+    describe('when no subreddit name given', function() {
+      it('should reject promise and dont fetch anything', inject(function($timeout) {
+        var rejected = false;
+        RedditService.fetch().then(angular.noop, function() {
+          rejected = true;
+        });
+        $timeout.flush();
+        expect(rejected).toBe(true);
+      }));
+    });
   });
 
   describe('items', function() {
@@ -224,7 +235,7 @@ describe('Service: RedditService', function() {
     });
 
     describe('when AFTER_TAG is empty', function() {
-      it('should reject promise', function() {
+      it('should reject promise', inject(function($timeout) {
         $httpBackend.whenGET(/whatever/).respond(200, {
           data: {
             children: [
@@ -234,19 +245,17 @@ describe('Service: RedditService', function() {
           }
         });
 
-
         var rejected = false;
-        RedditService.fetch('whatever').then(function() {
-          // TODO: this is weird fixme
-          RedditService.getNext().then(angular.noop, function() {
-            rejected = true;
-          });
-        });
+        RedditService.fetch('whatever');
         $httpBackend.flush();
 
+        RedditService.getNext().then(angular.noop, function() {
+          rejected = true;
+        });
+        $timeout.flush();
 
         expect(rejected).toBe(true);
-      });
+      }));
     });
 
   });

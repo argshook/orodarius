@@ -14,6 +14,7 @@
       $scope.lastSubreddits = LastSubredditsService.list;
 
       $scope.currentSubreddit = '';
+      $scope.isLoading = false;
 
       $scope.settings = SettingsService;
 
@@ -46,13 +47,18 @@
       this.fillPlaylistWith = function(subreddit = "videos") {
         $scope.playlistService.clear();
         $scope.currentSubreddit = subreddit;
+        $scope.isLoading = true;
         $scope.playlistService.fetchSubreddit(subreddit).then(data => {
           $scope.playerService.playVideo($scope.playlistService.playlist[0]);
+          $scope.isLoading = false;
         });
       };
 
       this.expandPlaylist = function() {
-        $scope.playlistService.expandPlaylist();
+        $scope.isLoading = true;
+        $scope.playlistService.expandPlaylist().then(function() {
+          $scope.isLoading = false;
+        });
       };
 
       this.suggestedSubreddits = [

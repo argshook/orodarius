@@ -1,14 +1,21 @@
 'use strict';
 
 describe('Controller: sidebarCtrl', function() {
-  var ctrl, scope, PlaylistService, PlayerService, LastSubredditsService, SettingsService, $httpBackend, $q, deferred, $window;
+  var ctrl, scope, PlaylistService, PlayerService, LastSubredditsService,
+      SettingsService, $httpBackend, $q, deferred, $window;
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_$rootScope_, _$controller_, _PlaylistService_, _PlayerService_, _LastSubredditsService_, _SettingsService_, _$httpBackend_, _$q_, _$window_) {
+  beforeEach(inject(function(
+      _$rootScope_, _$controller_, _PlaylistService_, _PlayerService_,
+      _LastSubredditsService_, _SettingsService_, _$httpBackend_, _$q_, _$window_) {
     $q = _$q_;
     scope = _$rootScope_.$new();
-    ctrl = _$controller_('sidebarCtrl', { $scope: scope, PlaylistService: _PlaylistService_, PlayerService: _PlayerService_ });
+    ctrl = _$controller_('sidebarCtrl', {
+      $scope: scope,
+      PlaylistService: _PlaylistService_,
+      PlayerService: _PlayerService_
+    });
     $window = _$window_;
 
     PlaylistService = _PlaylistService_;
@@ -21,7 +28,48 @@ describe('Controller: sidebarCtrl', function() {
 
     PlaylistService.add(mockVideoItem);
     PlaylistService.add(mockVideoItem);
+
+    var githubMock = '{"html_url": "htmlUrl.com", "commit": { "author": { "date": "123" }, "message": "hello" }}';
+    $httpBackend.expectGET('https://api.github.com/repos/argshook/orodarius/commits/gh-pages')
+      .respond(200, githubMock);
   }));
+
+  describe('isLoading', function() {
+    it('should be exposed as scope variable and set to false', function() {
+      expect(scope.isLoading).toBe(false);
+    });
+  });
+
+  describe('expandPlaylist()', function() {
+    it('should be exposed as ctrl method', function() {
+      expect(typeof ctrl.expandPlaylist).toBe('function');
+    });
+
+    it('should call playlistService.expandPlaylist()', function() {
+      spyOn(scope.playlistService, 'expandPlaylist').and.callThrough();
+
+      ctrl.expandPlaylist();
+      expect(scope.isLoading).toBe(true);
+      $httpBackend.flush();
+      expect(scope.isLoading).toBe(false);
+    });
+  });
+
+  describe('isListItemCurrentlyPlayed()', function() {
+    describe('when passed videoId equals to currently played video id', function() {
+      it('should return true', function() {
+        PlayerService.currentVideoItem.videoId = 1;
+        expect(scope.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(true);
+      });
+    });
+
+    describe('when passed videoId does not equal to currently played video id', function() {
+      it('should return true', function() {
+        PlayerService.currentVideoItem.videoId = 2;
+        expect(scope.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(false);
+      });
+    });
+  });
 
   it('should get sidebarService.isOpen flag as false', function() {
     expect(scope.sidebarService.isOpen).toBe(true);
@@ -57,27 +105,37 @@ describe('Controller: sidebarCtrl', function() {
     expect(scope.sidebarService.isOpen).toBe(true);
   });
 
-  it('fillPlaylistWith should fill sidebar.list with fetched items from reddit', function() {
-    spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({then: angular.noop});
-    ctrl.fillPlaylistWith('artisanvideos');
-    expect(PlaylistService.fetchSubreddit).toHaveBeenCalledWith('artisanvideos');
+  describe('fillPlaylistWith()', function() {
+    it('should set isLoading to true and back to false after resolve', function() {
+      $httpBackend.whenGET(/whatever/).respond(200, REDDIT);
+      expect(scope.isLoading).toBe(false);
+
+      ctrl.fillPlaylistWith('whatever');
+      expect(scope.isLoading).toBe(true);
+
+      $httpBackend.flush();
+      expect(scope.isLoading).toBe(false);
+    });
+
+    it('should fill sidebar.list with fetched items from reddit', function() {
+      spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({then: angular.noop});
+      ctrl.fillPlaylistWith('artisanvideos');
+      expect(PlaylistService.fetchSubreddit).toHaveBeenCalledWith('artisanvideos');
+    });
+
+    it('should clear playlist', function() {
+      spyOn(PlaylistService, 'clear');
+      ctrl.fillPlaylistWith('videos');
+      expect(PlaylistService.clear).toHaveBeenCalled();
+    });
   });
 
-  it('fillPlaylistWith should clear playlist', function() {
-    spyOn(PlaylistService, 'clear');
-    ctrl.fillPlaylistWith('videos');
-    expect(PlaylistService.clear).toHaveBeenCalled();
-  });
 
   it('should contain currentSubreddit property on scope', function() {
     expect(typeof scope.currentSubreddit).toBe('string');
   });
 
   describe('suggested subreddits', function() {
-    it('should be exposed', function() {
-      expect(ctrl.suggestedSubreddits).toBeDefined();
-    });
-
     it('should contain at least 4 items of certain structure', function() {
       expect(ctrl.suggestedSubreddits.length).toBeGreaterThan(3);
       expect(ctrl.suggestedSubreddits[0]).toEqual(jasmine.objectContaining({
@@ -130,10 +188,7 @@ describe('Controller: sidebarCtrl', function() {
     });
 
     it('should return string from github API call', function() {
-      var githubMock = '{"html_url": "htmlUrl.com", "commit": { "author": { "date": "123" }, "message": "hello" }}';
-      $httpBackend.expectGET('https://api.github.com/repos/argshook/orodarius/commits/gh-pages')
-        .respond(200, githubMock);
-
+      // request mocked in before each somewhere at the top
       $httpBackend.flush();
 
       expect(ctrl.lastUpdatedData).toEqual({

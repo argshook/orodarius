@@ -135,10 +135,7 @@
         var nextVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher) + 1;
 
         if(nextVideoItemIndex === PlaylistService.playlist.length) {
-          PlaylistService.fetchSubreddit(
-            PlaylistService.currentSubreddit,
-            PlaylistService.afterTag
-          ).then(data => {
+          PlaylistService.expandPlaylist().then(data => {
             this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
           });
         } else {

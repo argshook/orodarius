@@ -22,7 +22,14 @@
       CURRENT_SUBREDDIT = subredditName;
       IS_LOADING = true;
 
-      $http.get(apiUrl).success(onFetchSuccess.bind(this)).error(onFetchFailure.bind(this));
+      if(_.isEmpty(subredditName)) {
+        deferred.reject();
+      } else {
+        $http
+          .get(apiUrl)
+          .success(onFetchSuccess.bind(this))
+          .error(onFetchFailure.bind(this));
+      }
 
       function onFetchSuccess(data, status, headers, config) {
         const fetchedData = data.data;
@@ -49,7 +56,7 @@
 
           NUM_FETCH_RETRIES = 0;
 
-          deferred.resolve(this.items);
+          deferred.resolve(uniqueNewItems);
         }
       }
 
@@ -120,11 +127,10 @@
 
     function getNext() {
       let deferred = $q.defer();
-
       if(!IS_LOADING) {
         if(AFTER_TAG) {
           this.fetch(CURRENT_SUBREDDIT, AFTER_TAG).then(
-            () => deferred.resolve(),
+            (newItems) => deferred.resolve(newItems),
             () => deferred.reject()
           );
         } else {

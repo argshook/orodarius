@@ -49,14 +49,14 @@ describe('Service: PlayerService', function() {
     expect(service.currentVideoItem.videoId).toBe('nextId');
   });
 
-  it('playNext method should call PlaylistService.fetchSubreddit when last item reached', function() {
+  it('playNext method should call PlaylistService.expandPlaylist when last item reached', function() {
     PlaylistService.playlist = [
       { videoId: 'currentId' }
     ];
-    spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({ then: angular.noop });
+    spyOn(PlaylistService, 'expandPlaylist').and.returnValue({ then: angular.noop });
     service.currentVideoItem.videoId = PlaylistService.playlist[0].videoId;
     service.playNext();
-    expect(PlaylistService.fetchSubreddit).toHaveBeenCalled();
+    expect(PlaylistService.expandPlaylist).toHaveBeenCalled();
   });
 
   it('playNext method should determine next video by videoId, name and created properties', function() {
