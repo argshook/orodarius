@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/argshook/orodarius.svg?branch=master)](https://travis-ci.org/argshook/orodarius)
 [![Coverage Status](https://coveralls.io/repos/argshook/orodarius/badge.svg?branch=master&service=github)](https://coveralls.io/github/argshook/orodarius?branch=master)
 
-A youtube video player for reddit
+A youtube video player for reddit. [arijus.net/orodarius](http://arijus.net/orodarius).
 
 ## Setting up
 
