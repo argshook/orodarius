@@ -3,26 +3,12 @@
 
   angular.module('orodarius')
     .service('PlayerService', function($window, $rootScope, PlaylistService) {
-      var currentVideoItem = {};
-
+      this.youtubePlayer = null; // youtube iframe api instance
       this.isPlaying = false;
-      this.youtubePlayer = null;
-
-      Object.defineProperties(this, {
-        currentVideoItem: {
-          enumerable: true,
-          configurable: true,
-          get: function() {
-            return currentVideoItem;
-          },
-          set: function(value) {
-            currentVideoItem = value;
-          }
-        }
-      });
+      this.currentVideoItem = {};
 
       this.markCurrentVideoItemWithError = function(errorCode) {
-        var currentItemIndex = _.findIndex(PlaylistService.playlist, item => item.ownId === currentVideoItem.ownId);
+        var currentItemIndex = _.findIndex(PlaylistService.playlist, item => item.ownId === this.currentVideoItem.ownId);
 
         PlaylistService.playlist[currentItemIndex].error = {
           code: errorCode,
@@ -84,13 +70,13 @@
             suggestedQuality: 'default'
           });
 
-          currentVideoItem = item;
+          this.currentVideoItem = item;
           this.isPlaying = true;
         }
       };
 
       this.playNext = function() {
-        var nextVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher) + 1;
+        var nextVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this)) + 1;
 
         if(nextVideoItemIndex === PlaylistService.playlist.length) {
           PlaylistService.expandPlaylist().then(data => {
@@ -102,7 +88,7 @@
       };
 
       this.playPrevious = function() {
-        var previousVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher) - 1;
+        var previousVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this)) - 1;
         this.playVideo(PlaylistService.playlist[previousVideoItemIndex < 0 ? 0 : previousVideoItemIndex], 'previous');
       };
 
@@ -117,7 +103,7 @@
       };
 
       this.resetCurrentVideoItem = function() {
-        currentVideoItem = undefined;
+        this.currentVideoItem = undefined;
       };
 
       function onPlayerReady() {
@@ -149,7 +135,7 @@
       }
 
       function currentItemMatcher(item) {
-        return item.ownId === currentVideoItem.ownId;
+        return item.ownId === this.currentVideoItem.ownId;
       }
     });
 })();
