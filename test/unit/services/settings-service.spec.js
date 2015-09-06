@@ -10,11 +10,25 @@ describe('Service: SettingsService', function() {
     localStorageService = _localStorageService_;
   }));
 
-  describe('list()', function() {
+  // TODO: maybe better to expose settings as direct service properties rather
+  // than nesting them under list? Who knows, maybe
+  describe('list', function() {
     it('should contain some default items', function() {
       expect(service.list.isSidebarSticky).toBeDefined();
       expect(service.list.isFocusForced).toBeDefined();
     });
+
+    describe('sources array', function() {
+      var mockSourceObject = {
+        name: 'reddit',
+        apiUrl: 'http://www.reddit.com/r/'
+      };
+
+      it('should contain at least one source object', function() {
+        expect(service.list.sources[0]).toEqual(mockSourceObject);
+      });
+    });
+
   });
 
   describe('add()', function() {

@@ -1,16 +1,22 @@
 ;(function() {
   'use strict';
 
+  var DEFAULT_SETTINGS = {
+    isSidebarSticky: false,
+    isFocusForced: false,
+    sources: [{
+      name: 'reddit',
+      apiUrl: 'http://www.reddit.com/r/'
+    }]
+  };
+
   angular.module('orodarius')
     .service('SettingsService', function(localStorageService) {
       var settingsStorageName = 'settings',
           settings = localStorageService.get(settingsStorageName);
 
       if(settings === null) {
-        settings = {
-          isSidebarSticky: false,
-          isFocusForced: false
-        };
+        settings = DEFAULT_SETTINGS;
         updateStorage();
       }
 
