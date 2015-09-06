@@ -59,14 +59,14 @@ describe('Controller: sidebarCtrl', function() {
     describe('when passed videoId equals to currently played video id', function() {
       it('should return true', function() {
         PlayerService.currentVideoItem.videoId = 1;
-        expect(scope.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(true);
+        expect(ctrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(true);
       });
     });
 
     describe('when passed videoId does not equal to currently played video id', function() {
       it('should return true', function() {
         PlayerService.currentVideoItem.videoId = 2;
-        expect(scope.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(false);
+        expect(ctrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(false);
       });
     });
   });
@@ -100,7 +100,7 @@ describe('Controller: sidebarCtrl', function() {
 
   it('isOpen should be true after playVideo has been invoked when isSidebarSticky is true', function() {
     scope.sidebarService.isOpen = true;
-    scope.settings.list.isSidebarSticky = true;
+    ctrl.settings.isSidebarSticky = true;
     ctrl.playVideo(mockVideoItem);
     expect(scope.sidebarService.isOpen).toBe(true);
   });
@@ -131,8 +131,8 @@ describe('Controller: sidebarCtrl', function() {
   });
 
 
-  it('should contain currentSubreddit property on scope', function() {
-    expect(typeof scope.currentSubreddit).toBe('string');
+  it('should contain currentSubreddit property on controller', function() {
+    expect(typeof ctrl.currentSubreddit).toBe('string');
   });
 
   describe('suggested subreddits', function() {
@@ -145,40 +145,44 @@ describe('Controller: sidebarCtrl', function() {
   });
 
   describe('settings', function() {
-    it('should be defined', function() {
-      expect(scope.settings).toBeDefined();
-    });
-
     it('should contain default values', function() {
-      expect(scope.settings.list.isSidebarSticky).toBe(false);
-      expect(scope.settings.list.isFocusForced).toBe(false);
+      expect(ctrl.settings.isSidebarSticky).toBe(false);
+      expect(ctrl.settings.isFocusForced).toBe(false);
     });
   });
 
   describe('toggleFocusForced method', function() {
-    it('should be defined', function() {
-      expect(ctrl.toggleFocusForced).toBeDefined();
-    });
-
     it('should toggle $scope.isFocusForced when called', function() {
       ctrl.toggleFocusForced();
-      expect(scope.settings.list.isFocusForced).toBe(true);
+      expect(ctrl.settings.isFocusForced).toBe(true);
       ctrl.toggleFocusForced();
-      expect(scope.settings.list.isFocusForced).toBe(false);
+      expect(ctrl.settings.isFocusForced).toBe(false);
     });
 
     it('should attach blur event listener on window when isFocusForced is false', function() {
       spyOn($window, 'addEventListener');
-      scope.settings.list.isFocusForced = false;
+      ctrl.settings.isFocusForced = false;
       ctrl.toggleFocusForced();
       expect($window.addEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
     });
 
     it('should remove blur event listener from window when isFocusForced is true', function() {
       spyOn($window, 'removeEventListener');
-      scope.settings.list.isFocusForced = true;
+      ctrl.settings.isFocusForced = true;
       ctrl.toggleFocusForced();
       expect($window.removeEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
+    });
+  });
+
+  describe('toggleStickySidebar()', function() {
+    it('should be defined on controller', function () {
+      expect(typeof ctrl.toggleStickySidebar).toBe('function');
+    });
+
+    it('should toggle isSidebarSticky property using SettingsService', function() {
+      spyOn(SettingsService, 'toggle').and.callThrough();
+      ctrl.toggleStickySidebar();
+      expect(SettingsService.toggle).toHaveBeenCalledWith('isSidebarSticky');
     });
   });
 

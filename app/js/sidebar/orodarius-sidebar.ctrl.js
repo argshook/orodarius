@@ -13,11 +13,9 @@
       $scope.playerService = PlayerService;
       $scope.lastSubreddits = LastSubredditsService.list;
 
-      $scope.currentSubreddit = '';
+      this.currentSubreddit = '';
       this.isLoading = false;
-
-      $scope.settings = SettingsService;
-
+      this.settings = SettingsService.list;
       this.lastUpdatedData = {};
 
       // TODO: not nice
@@ -36,6 +34,10 @@
         $window[(SettingsService.list.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
       };
 
+      this.toggleStickySidebar = function() {
+        SettingsService.toggle('isSidebarSticky');
+      };
+
       this.playVideo = function(item) {
         $scope.playerService.playVideo(item);
 
@@ -46,7 +48,7 @@
 
       this.fillPlaylistWith = function(subreddit = "videos") {
         $scope.playlistService.clear();
-        $scope.currentSubreddit = subreddit;
+        this.currentSubreddit = subreddit;
         this.isLoading = true;
 
         $scope.playlistService
@@ -75,7 +77,7 @@
         { name: 'videos+youtubehaiku' }
       ];
 
-      $scope.isListItemCurrentlyPlayed = function(item) {
+      this.isListItemCurrentlyPlayed = function(item) {
         return item.videoId === $scope.playerService.currentVideoItem.videoId;
       };
 
