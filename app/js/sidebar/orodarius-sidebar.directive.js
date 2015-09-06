@@ -8,7 +8,7 @@
         replace: true,
         templateUrl: 'views/orodarius-sidebar.html',
         controller: 'sidebarCtrl',
-        controllerAs: 'sidebar',
+        controllerAs: 'sidebarCtrl',
         bindToController: true
       };
     });

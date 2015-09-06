@@ -48,17 +48,21 @@
         $scope.playlistService.clear();
         $scope.currentSubreddit = subreddit;
         $scope.isLoading = true;
-        $scope.playlistService.fetchSubreddit(subreddit).then(data => {
-          $scope.playerService.playVideo($scope.playlistService.playlist[0]);
-          $scope.isLoading = false;
-        });
+
+        $scope.playlistService
+              .fetchSubreddit(subreddit)
+              .then(data => {
+                $scope.playerService.playVideo($scope.playlistService.playlist[0]);
+                $scope.isLoading = false;
+              });
       };
 
       this.expandPlaylist = function() {
         $scope.isLoading = true;
-        $scope.playlistService.expandPlaylist().then(function() {
-          $scope.isLoading = false;
-        });
+
+        $scope.playlistService
+              .expandPlaylist()
+              .then(() => $scope.isLoading = false);
       };
 
       this.suggestedSubreddits = [
@@ -90,6 +94,7 @@
 
       this.getLastUpdated();
 
+      // TODO: need better implementation for firefox. and maybe other browsers
       function windowBlurHanlder() {
         $timeout(function() {
           $window.focus();
