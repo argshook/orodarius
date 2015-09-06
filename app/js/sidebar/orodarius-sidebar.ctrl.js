@@ -26,7 +26,7 @@
       });
 
       this.toggleSidebar = function() {
-        $scope.sidebarService.toggle();
+        SidebarService.toggle();
       };
 
       this.toggleFocusForced = function() {
@@ -39,32 +39,32 @@
       };
 
       this.playVideo = function(item) {
-        $scope.playerService.playVideo(item);
+        PlayerService.playVideo(item);
 
         if(!SettingsService.list.isSidebarSticky) {
-          $scope.sidebarService.toggle();
+          SidebarService.toggle();
         }
       };
 
       this.fillPlaylistWith = function(subreddit = "videos") {
-        $scope.playlistService.clear();
+        PlaylistService.clear();
         this.currentSubreddit = subreddit;
         this.isLoading = true;
 
-        $scope.playlistService
-              .fetchSubreddit(subreddit)
-              .then(data => {
-                $scope.playerService.playVideo($scope.playlistService.playlist[0]);
-                this.isLoading = false;
-              });
+        PlaylistService
+          .fetchSubreddit(subreddit)
+          .then(data => {
+            PlayerService.playVideo(PlaylistService.playlist[0]);
+            this.isLoading = false;
+          });
       };
 
       this.expandPlaylist = function() {
         this.isLoading = true;
 
-        $scope.playlistService
-              .expandPlaylist()
-              .then(() => this.isLoading = false);
+        PlaylistService
+          .expandPlaylist()
+          .then(() => this.isLoading = false);
       };
 
       this.suggestedSubreddits = [
@@ -78,7 +78,7 @@
       ];
 
       this.isListItemCurrentlyPlayed = function(item) {
-        return item.videoId === $scope.playerService.currentVideoItem.videoId;
+        return item.videoId === PlayerService.currentVideoItem.videoId;
       };
 
       if(SettingsService.list.isFocusForced) {
