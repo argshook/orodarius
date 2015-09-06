@@ -3,22 +3,12 @@
 
   angular.module('orodarius')
     .service('PlayerService', function($window, $rootScope, PlaylistService) {
-      var player,
-          currentVideoItem = {};
+      var currentVideoItem = {};
 
       this.isPlaying = false;
+      this.youtubePlayer = null;
 
       Object.defineProperties(this, {
-        player: {
-          enumerable: true,
-          configurable: true,
-          get: function() {
-            return player;
-          },
-          set: function(value) {
-            player = value;
-          }
-        },
         currentVideoItem: {
           enumerable: true,
           configurable: true,
@@ -71,24 +61,24 @@
         angular.extend(defaultPlayerOptions, options);
 
         // YT should be available since it comes from iframe_api
-        player = new YT.Player(elementId || 'main-video-player', defaultPlayerOptions);
+        this.youtubePlayer = new YT.Player(elementId || 'main-video-player', defaultPlayerOptions);
 
-        player.addEventListener('onReady', onPlayerReady.bind(this));
-        player.addEventListener('onError', onPlayerError.bind(this));
-        player.addEventListener('onStateChange', onPlayerStateChange.bind(this));
+        this.youtubePlayer.addEventListener('onReady', onPlayerReady.bind(this));
+        this.youtubePlayer.addEventListener('onError', onPlayerError.bind(this));
+        this.youtubePlayer.addEventListener('onStateChange', onPlayerStateChange.bind(this));
 
-        return player;
+        return this.youtubePlayer;
       };
 
       this.playVideo = function(item) {
-        if(player && player.loadVideoById && item) {
+        if(this.youtubePlayer && this.youtubePlayer.loadVideoById && item) {
           // TODO: skip misunderstood urls for now
           if(item.url === false) {
             this.playNext();
             return;
           }
 
-          player.loadVideoById({
+          this.youtubePlayer.loadVideoById({
             videoId: item.videoId,
             startSeconds: item.starttime || 0,
             suggestedQuality: 'default'
@@ -118,10 +108,10 @@
 
       this.playOrPause = function() {
         if(this.isPlaying) {
-          player.pauseVideo();
+          this.youtubePlayer.pauseVideo();
           this.isPlaying = false;
         } else {
-          player.playVideo();
+          this.youtubePlayer.playVideo();
           this.isPlaying = true;
         }
       };

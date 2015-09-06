@@ -17,8 +17,8 @@ describe('Service: PlayerService', function() {
 
   it('createNewPlayer method should create new player instance', function() {
     expect(player).toBeTruthy();
-    expect(service.player).toBeTruthy();
-    expect(player).toEqual(service.player);
+    expect(service.youtubePlayer).toBeTruthy();
+    expect(player).toEqual(service.youtubePlayer);
   });
 
   it('playVideo should start playing a new video', function() {
