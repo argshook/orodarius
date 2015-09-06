@@ -10,15 +10,7 @@ describe('Service: SettingsService', function() {
     localStorageService = _localStorageService_;
   }));
 
-  it('should be defined', function() {
-    expect(!!service).toBeTruthy();
-  });
-
   describe('list()', function() {
-    it('should be defined', function() {
-      expect(service.list).toBeDefined();
-    });
-
     it('should contain some default items', function() {
       expect(service.list.isSidebarSticky).toBeDefined();
       expect(service.list.isFocusForced).toBeDefined();
@@ -27,10 +19,6 @@ describe('Service: SettingsService', function() {
 
   describe('add()', function() {
     var mockItemName = 'dummySetting';
-
-    it('should be defined', function() {
-      expect(service.add).toBeDefined();
-    });
 
     it('should add passed item to the list', function() {
       service.add(mockItemName, true);
@@ -45,10 +33,6 @@ describe('Service: SettingsService', function() {
   });
 
   describe('toggle()', function() {
-    it('should be defined', function() {
-      expect(service.toggle).toBeDefined();
-    });
-
     it('should toggle boolean setting value', function() {
       service.toggle('isSidebarSticky');
       expect(service.list.isSidebarSticky).toBe(true);
