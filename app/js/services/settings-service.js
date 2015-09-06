@@ -6,7 +6,8 @@
     isFocusForced: false,
     sources: [{
       name: 'reddit',
-      apiUrl: 'http://www.reddit.com/r/'
+      apiUrl: 'http://www.reddit.com/r/',
+      isEnabled: true
     }]
   };
 
@@ -17,6 +18,13 @@
 
       if(settings === null) {
         settings = DEFAULT_SETTINGS;
+        updateStorage();
+      }
+
+      // users prior to settings.sources implementation will have
+      // no such property, thus adding it here to avoid breaking code
+      if(_.isUndefined(settings.sources)) {
+        settings.sources = DEFAULT_SETTINGS.sources;
         updateStorage();
       }
 

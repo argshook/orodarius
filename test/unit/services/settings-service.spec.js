@@ -21,14 +21,14 @@ describe('Service: SettingsService', function() {
     describe('sources array', function() {
       var mockSourceObject = {
         name: 'reddit',
-        apiUrl: 'http://www.reddit.com/r/'
+        apiUrl: 'http://www.reddit.com/r/',
+        isEnabled: true
       };
 
       it('should contain at least one source object', function() {
         expect(service.list.sources[0]).toEqual(mockSourceObject);
       });
     });
-
   });
 
   describe('add()', function() {
