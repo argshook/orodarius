@@ -37,13 +37,10 @@
               if(newItems) {
                 this.playlist = this.playlist.concat(newItems);
               }
-
-              this.isLoading = false;
             },
-            () => {
-              this.isLoading = false;
-            }
-          );
+            angular.noop
+          )
+          .finally(() => this.isLoading = false);
       }
 
       function expandPlaylist() {

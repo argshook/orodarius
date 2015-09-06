@@ -73,6 +73,14 @@ describe('Service: PlaylistService', function() {
       expect(service.currentSubreddit).toBe('birbir');
     });
 
+    it('should set isLoading to false when successful', function() {
+      $httpBackend.whenGET(/whatever/).respond(200, REDDIT);
+      service.fetchSubreddit('whatever');
+      expect(service.isLoading).toBe(true);
+      $httpBackend.flush();
+      expect(service.isLoading).toBe(false);
+    });
+
     it('should set isLoading to false when unsuccessful', function() {
       $httpBackend.whenGET(/whatever/).respond(500);
       service.fetchSubreddit('whatever');
