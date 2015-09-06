@@ -5,7 +5,6 @@
     .service('PlaylistService', function(RedditService) {
       // Public values
       this.playlist = [];
-      this.currentSubreddit = '';
       this.isLoading = false;
 
       // Public methods
@@ -25,8 +24,6 @@
         return RedditService
           .fetch(subredditName)
           .then(newItems => {
-            this.currentSubreddit = subredditName;
-
             if(newItems) {
               this.playlist = this.playlist.concat(newItems);
             }

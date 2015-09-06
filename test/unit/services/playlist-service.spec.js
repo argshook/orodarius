@@ -60,18 +60,19 @@ describe('Service: PlaylistService', function() {
       expect(result).toBe(true);
     });
 
-    it('should change current subreddit on successful promise resolve', function() {
-      service.fetchSubreddit('videos').then(function(playlist) {
-        expect(service.currentSubreddit).toBe('videos');
-      });
+    // saving for upcoming fetchQuery() which will be similar
+    // it('should change current subreddit on successful promise resolve', function() {
+    //   service.fetchSubreddit('videos').then(function(playlist) {
+    //     expect(service.currentSubreddit).toBe('videos');
+    //   });
 
-      service.fetchSubreddit('birbir').then(function(playlist) {
-        expect(service.currentSubreddit).toBe('birbir');
-      });
+    //   service.fetchSubreddit('birbir').then(function(playlist) {
+    //     expect(service.currentSubreddit).toBe('birbir');
+    //   });
 
-      $httpBackend.flush();
-      expect(service.currentSubreddit).toBe('birbir');
-    });
+    //   $httpBackend.flush();
+    //   expect(service.currentSubreddit).toBe('birbir');
+    // });
 
     it('should set isLoading to false when successful', function() {
       $httpBackend.whenGET(/whatever/).respond(200, REDDIT);
