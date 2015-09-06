@@ -7,14 +7,14 @@
     <h1>Subreddit TV</h1>
 
     <div class="sidebar-heading__checkbox-container">
-      <span ng-class="{active: settings.list.isSidebarSticky}" class="glyphicon glyphicon-lock" ng-click="settings.toggle('isSidebarSticky')"></span>
-      <span ng-class="{active: settings.list.isFocusForced}" class="glyphicon glyphicon-magnet" ng-click="sidebar.toggleFocusForced()"></span>
+      <span ng-class="{active: sidebarCtrl.settings.isSidebarSticky}" class="glyphicon glyphicon-lock" ng-click="sidebarCtrl.toggleStickySidebar()"></span>
+      <span ng-class="{active: sidebarCtrl.settings.isFocusForced}" class="glyphicon glyphicon-magnet" ng-click="sidebarCtrl.toggleFocusForced()"></span>
     </div>
     <div class="sidebar-now-playing">
       <span class="sidebar-now-playing-label">Now playing:</span>
-      <input class="sidebar-now-playing-input" placeholder="{{currentSubreddit}}" type="text" ng-enter="sidebar.fillPlaylistWith(currentSubreddit)" ng-enter-options="{blurOnEnter: true}" ng-model="currentSubreddit" />
-      <button class="sidebar-now-playing-btn" ng-click="sidebar.fillPlaylistWith(currentSubreddit)">
-        <span class="glyphicon glyphicon-search" ng-class="{loading: isLoading}"></span>
+      <input class="sidebar-now-playing-input" placeholder="{{sidebarCtrl.currentSubreddit}}" type="text" ng-enter="sidebarCtrl.fillPlaylistWith(sidebarCtrl.currentSubreddit)" ng-enter-options="{blurOnEnter: true}" ng-model="sidebarCtrl.currentSubreddit" />
+      <button class="sidebar-now-playing-btn" ng-click="sidebarCtrl.fillPlaylistWith(sidebarCtrl.currentSubreddit)">
+        <span class="glyphicon glyphicon-search" ng-class="{loading: sidebarCtrl.isLoading}"></span>
       </button>
     </div>
   </div>
@@ -25,7 +25,7 @@
         class="list-group-item"
         ng-repeat="item in playlistService.playlist track by item.ownId"
         ng-class="{current: item.ownId === playerService.currentVideoItem.ownId, erroneous: item.error}"
-        ng-click="sidebar.playVideo(item)"
+        ng-click="sidebarCtrl.playVideo(item)"
       >
         <div class="list-group-item__index">{{$index + 1}}</div>
         <div class="list-group-item__score">{{item.redditScore}}</div>
@@ -33,28 +33,28 @@
         <div class="list-group-item__title">{{item.title}}</div>
         <div class="list-group-item__footer">
           <span class="list-group-item__footer-error" ng-show="item.error.message">Unable to play: <strong>{{item.error.message}}</strong></span>
-          <span ng-show="playlistService.currentSubreddit.indexOf('+') > 0" class="list-group-item__footer-subreddit">r/{{item.subreddit}}</span>
+          <span ng-show="sidebarCtrl.currentSubreddit.indexOf('+') > 0" class="list-group-item__footer-subreddit">r/{{item.subreddit}}</span>
         </div>
       </div>
       <div
         class="list-group-more"
         ng-show="playlistService.playlist.length > 0"
-        ng-class="{'list-group-more__loading': isLoading}"
-        ng-click="sidebar.expandPlaylist()"
+        ng-class="{'list-group-more__loading': sidebarCtrl.isLoading}"
+        ng-click="sidebarCtrl.expandPlaylist()"
       >
         <span class="glyphicon glyphicon-plus"></span>
       </div>
-      <div class="sidebar-empty" ng-class="{loading: isLoading}" ng-show="playlistService.playlist.length === 0">
+      <div class="sidebar-empty" ng-class="{loading: sidebarCtrl.isLoading}" ng-show="playlistService.playlist.length === 0">
         <div ng-if="lastSubreddits.length">
           <h2>Recent playlists:</h2>
           <div class="sidebar-empty__btns">
-            <div ng-repeat="subreddit in lastSubreddits" ng-click="sidebar.fillPlaylistWith(subreddit.name)">r/{{subreddit.name}}</div>
+            <div ng-repeat="subreddit in lastSubreddits" ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">r/{{subreddit.name}}</div>
           </div>
           <hr>
         </div>
         <h2>Suggestions:</h2>
         <div class="sidebar-empty__btns">
-          <div ng-repeat="subreddit in sidebar.suggestedSubreddits" ng-click="sidebar.fillPlaylistWith(subreddit.name)">
+          <div ng-repeat="subreddit in sidebarCtrl.suggestedSubreddits" ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">
             r/{{subreddit.name}}
           </div>
         </div>
@@ -68,7 +68,7 @@
         <a href="http://github.com/argshook/orodarius">github</a>
       </div>
       <div class="col-xs-6 text-right">
-        last updated <a href="{{sidebar.lastUpdatedData.url}}" title="{{sidebar.lastUpdatedData.message}}" target="_blank">{{sidebar.lastUpdatedData.date | date: 'medium'}}</a>
+        last updated <a href="{{sidebarCtrl.lastUpdatedData.url}}" title="{{sidebarCtrl.lastUpdatedData.message}}" target="_blank">{{sidebarCtrl.lastUpdatedData.date | date: 'medium'}}</a>
       </div>
     </div>
   </div>

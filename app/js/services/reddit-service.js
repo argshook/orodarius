@@ -130,7 +130,7 @@
       if(!IS_LOADING) {
         if(AFTER_TAG) {
           this.fetch(CURRENT_SUBREDDIT, AFTER_TAG).then(
-            (newItems) => deferred.resolve(newItems),
+            newItems => deferred.resolve(newItems),
             () => deferred.reject()
           );
         } else {

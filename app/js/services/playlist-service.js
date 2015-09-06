@@ -24,28 +24,26 @@
 
         return RedditService
           .fetch(subredditName)
-          .then(
-            (newItems) => {
-              this.currentSubreddit = subredditName;
+          .then(newItems => {
+            this.currentSubreddit = subredditName;
 
-              if(newItems) {
-                this.playlist = this.playlist.concat(newItems);
-              }
-            },
-            angular.noop
-          )
+            if(newItems) {
+              this.playlist = this.playlist.concat(newItems);
+            }
+          }, angular.noop)
           .finally(() => this.isLoading = false);
       }
 
       function expandPlaylist() {
         this.isLoading = true;
-        return RedditService.getNext().
-          then(newItems => {
+
+        return RedditService
+          .getNext()
+          .then(newItems => {
             if(newItems) {
               this.playlist = this.playlist.concat(newItems);
             }
-          },
-          angular.noop)
+          }, angular.noop)
           .finally(() => this.isLoading = false);
       }
 
