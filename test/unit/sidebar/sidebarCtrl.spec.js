@@ -35,8 +35,8 @@ describe('Controller: sidebarCtrl', function() {
   }));
 
   describe('isLoading', function() {
-    it('should be exposed as scope variable and set to false', function() {
-      expect(scope.isLoading).toBe(false);
+    it('should be exposed as controller variable and set to false', function() {
+      expect(ctrl.isLoading).toBe(false);
     });
   });
 
@@ -49,9 +49,9 @@ describe('Controller: sidebarCtrl', function() {
       spyOn(scope.playlistService, 'expandPlaylist').and.callThrough();
 
       ctrl.expandPlaylist();
-      expect(scope.isLoading).toBe(true);
+      expect(ctrl.isLoading).toBe(true);
       $httpBackend.flush();
-      expect(scope.isLoading).toBe(false);
+      expect(ctrl.isLoading).toBe(false);
     });
   });
 
@@ -108,13 +108,13 @@ describe('Controller: sidebarCtrl', function() {
   describe('fillPlaylistWith()', function() {
     it('should set isLoading to true and back to false after resolve', function() {
       $httpBackend.whenGET(/whatever/).respond(200, REDDIT);
-      expect(scope.isLoading).toBe(false);
+      expect(ctrl.isLoading).toBe(false);
 
       ctrl.fillPlaylistWith('whatever');
-      expect(scope.isLoading).toBe(true);
+      expect(ctrl.isLoading).toBe(true);
 
       $httpBackend.flush();
-      expect(scope.isLoading).toBe(false);
+      expect(ctrl.isLoading).toBe(false);
     });
 
     it('should fill sidebar.list with fetched items from reddit', function() {
