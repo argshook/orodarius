@@ -24,7 +24,7 @@ module.exports = function(karma) {
       'test/unit/**/*.spec.js',
 
       // if you wanna load template files in nested directories, you must use this
-      'assets/views/**/*.html'
+      '**/assets/views/**/*.html'
       ],
 
     // list of files to exclude
@@ -52,7 +52,8 @@ module.exports = function(karma) {
 
     preprocessors: {
       '**/public/**/!(vendor).js': 'coverage',
-      '**/*.html': ['ng-html2js']
+      // '**/public/**/views/**/*.html': ['ng-html2js'],
+      '**/*.html': ['ng-html2js'],
     },
 
     coverageReporter: {
@@ -98,7 +99,8 @@ module.exports = function(karma) {
       'karma-safari-launcher',
       'karma-phantomjs-launcher',
       'karma-junit-reporter',
-      'karma-html2js-preprocessor'
+      'karma-html2js-preprocessor',
+      'karma-ng-html2js-preprocessor'
     ]
   });
 };
