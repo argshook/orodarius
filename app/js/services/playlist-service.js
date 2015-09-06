@@ -2,13 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlaylistService', function($http, $q, $log, LastSubredditsService,
-                                         youtubeUrlParser, $filter, RedditService) {
-
-      var redditAPIBaseUrl = 'http://www.reddit.com/r/',
-          fetchRetries = 0,
-          maxFetchRetries = 3; // how many times should I retry GETting from reddit api?
-
+    .service('PlaylistService', function(RedditService) {
       // Public values
       this.playlist = [];
       this.currentSubreddit = '';
