@@ -6,6 +6,8 @@
       var player,
           currentVideoItem = {};
 
+      this.isPlaying = false;
+
       Object.defineProperties(this, {
         player: {
           enumerable: true,
@@ -28,40 +30,6 @@
           }
         }
       });
-
-      function onPlayerReady() {
-        // player.playVideo();
-      }
-
-      function onPlayerStateChange(event) {
-        // event.data holds event type, one of the following:
-        // -1 (unstarted)
-        // 0 (ended)
-        // 1 (playing)
-        // 2 (paused)
-        // 3 (buffering)
-        // 5 (video cued).
-
-        // if event is 0 (ended), play another video.
-        if (event.data === 0) {
-          this.playNext();
-        }
-      }
-
-      function onPlayerError(event) {
-        // https://developers.google.com/youtube/iframe_api_reference#onError
-        if([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
-          this.markCurrentVideoItemWithError(event.data);
-          // TODO: stop trying after n tries
-          this.playNext();
-        }
-      }
-
-      function currentItemMatcher(item) {
-        return item.ownId === currentVideoItem.ownId;
-      }
-
-      this.isPlaying = false;
 
       this.markCurrentVideoItemWithError = function(errorCode) {
         var currentItemIndex = _.findIndex(PlaylistService.playlist, item => item.ownId === currentVideoItem.ownId);
@@ -125,9 +93,9 @@
             startSeconds: item.starttime || 0,
             suggestedQuality: 'default'
           });
+
           currentVideoItem = item;
           this.isPlaying = true;
-          $rootScope.$emit('videoPlay', currentVideoItem);
         }
       };
 
@@ -161,6 +129,37 @@
       this.resetCurrentVideoItem = function() {
         currentVideoItem = undefined;
       };
-    });
 
+      function onPlayerReady() {
+        // player.playVideo();
+      }
+
+      function onPlayerStateChange(event) {
+        // event.data holds event type, one of the following:
+        // -1 (unstarted)
+        // 0 (ended)
+        // 1 (playing)
+        // 2 (paused)
+        // 3 (buffering)
+        // 5 (video cued).
+
+        // if event is 0 (ended), play another video.
+        if (event.data === 0) {
+          this.playNext();
+        }
+      }
+
+      function onPlayerError(event) {
+        // https://developers.google.com/youtube/iframe_api_reference#onError
+        if([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
+          this.markCurrentVideoItemWithError(event.data);
+          // TODO: stop trying after n tries
+          this.playNext();
+        }
+      }
+
+      function currentItemMatcher(item) {
+        return item.ownId === currentVideoItem.ownId;
+      }
+    });
 })();

@@ -18,13 +18,6 @@
       this.settings = SettingsService.list;
       this.lastUpdatedData = {};
 
-      // TODO: not nice
-      $rootScope.$on('videoPlay', function(currentVideoItem) {
-        $timeout(function() {
-          $scope.$apply();
-        });
-      });
-
       this.toggleSidebar = function() {
         SidebarService.toggle();
       };
