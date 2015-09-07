@@ -62,7 +62,8 @@ module.exports = function(karma) {
     },
 
     ngHtml2JsPreprocessor: {
-      moduleName: 'orodarius'
+      moduleName: 'orodarius.templates',
+      stripPrefix: 'app/assets/'
     },
 
     // Start these browsers, currently available:
