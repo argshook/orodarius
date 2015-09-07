@@ -21,21 +21,10 @@
 
   <div class="sidebar-playlist-container">
     <div class="sidebar-playlist" ng-scroll-on="playerService.currentVideoItem">
-      <div
-        class="list-group-item"
-        ng-repeat="item in playlistService.playlist track by item.ownId"
-        ng-class="{current: item.ownId === playerService.currentVideoItem.ownId, erroneous: item.error}"
-        ng-click="sidebarCtrl.playVideo(item)"
-      >
-        <div class="list-group-item__index">{{$index + 1}}</div>
-        <div class="list-group-item__score">{{item.redditScore}}</div>
-        <div class="list-group-item__thumbnail" ng-class="{nsfw: item.thumbnailUrl === 'images/nsfw-thumbnail.jpg'}" style="background-image: url({{item.thumbnailUrl}});"></div>
-        <div class="list-group-item__title">{{item.title}}</div>
-        <div class="list-group-item__footer">
-          <span class="list-group-item__footer-error" ng-show="item.error.message">Unable to play: <strong>{{item.error.message}}</strong></span>
-          <span ng-show="sidebarCtrl.currentSubreddit.indexOf('+') > 0" class="list-group-item__footer-subreddit">r/{{item.subreddit}}</span>
-        </div>
-      </div>
+      <video-item ng-repeat="item in playlistService.playlist track by item.ownId"
+                  ng-click="sidebarCtrl.playVideo(item)">
+      </video-item>
+
       <div
         class="list-group-more"
         ng-show="playlistService.playlist.length > 0"
