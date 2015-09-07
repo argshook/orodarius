@@ -43,7 +43,7 @@ describe('Directive: video-item', function() {
         element = $compile('<video-item></video-item>')(_.extend(rootScope, scope));
 
     rootScope.$digest();
-    callback && callback.call(null, scope, $(element));
+    callback && callback.call(null, rootScope, $(element));
 
     return $(element);
   }
