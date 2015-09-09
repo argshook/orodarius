@@ -54,6 +54,7 @@ module.exports = function(karma) {
       '**/public/**/!(vendor).js': 'coverage',
       // '**/public/**/views/**/*.html': ['ng-html2js'],
       '**/*.html': ['ng-html2js'],
+      // TODO: add babel here?
     },
 
     coverageReporter: {
