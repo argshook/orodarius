@@ -19,7 +19,6 @@ describe('Service: PlaylistService', function() {
   }));
 
   beforeEach(function() {
-    spyOn(service, 'add');
     $httpBackend.whenGET(/.*\/(videos|birbir)\/.*/).respond(200, REDDIT);
   });
 
@@ -27,12 +26,21 @@ describe('Service: PlaylistService', function() {
     expect(angular.isArray(service.playlist)).toBe(true);
   });
 
-  it('should add entry to playlist passing contents as first argument', function() {
-    service.add(mockVideoItem);
-    expect(service.add).toHaveBeenCalledWith(mockVideoItem);
+  describe('add()', function() {
+    it('should add entry to playlist passing contents as first argument', function() {
+      service.add(mockVideoItem);
+      expect(service.playlist).toEqual([mockVideoItem]);
+    });
 
-    // This fails and I have no idea why...
-    // expect(service.playlist).toEqual([mockVideoItem]);
+    it('should resolve observePlaylist promise', inject(function($timeout) {
+      var resolved = false;
+      service.observePlaylist().then(function() {
+        resolved = true;
+      });
+      service.add(mockVideoItem);
+      $timeout.flush();
+      expect(resolved).toBe(true);
+    }));
   });
 
   describe('fetchSubreddit()', function() {
@@ -102,6 +110,17 @@ describe('Service: PlaylistService', function() {
         $httpBackend.flush();
         expect(expectedItems.length).toBeGreaterThan(0);
       });
+
+      it('should resolve observePlaylist promise', function() {
+        $httpBackend.whenGET(/whatever/).respond(200, REDDIT);
+        var resolved = false;
+        service.observePlaylist().then(function() {
+          resolved = true;
+        });
+        service.fetchSubreddit('whatever');
+        $httpBackend.flush();
+        expect(resolved).toBe(true);
+      });
     });
   });
 
@@ -126,6 +145,17 @@ describe('Service: PlaylistService', function() {
         expect(service.isLoading).toBe(true);
         $httpBackend.flush();
         expect(service.isLoading).toBe(false);
+      });
+
+      it('should resolve observePlaylist promise', function() {
+        var resolved = false;
+        service.observePlaylist().then(function() {
+          resolved = true;
+        });
+
+        service.expandPlaylist();
+        $httpBackend.flush();
+        expect(resolved).toBe(true);
       });
     });
 
@@ -170,4 +200,13 @@ describe('Service: PlaylistService', function() {
     });
   });
 
+  describe('observePlaylist()', function() {
+    it('should be exposed on service', function() {
+      expect(typeof service.observePlaylist).toBe('function');
+    });
+
+    it('should return a promise', function() {
+      expect(service.observePlaylist().then).toBeDefined();
+    });
+  });
 });
