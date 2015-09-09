@@ -89,6 +89,20 @@ describe('Service: PlaylistService', function() {
       $httpBackend.flush();
       expect(service.isLoading).toBe(false);
     });
+
+    describe('when resolved', function() {
+      it('should return new items', function() {
+        var expectedItems;
+        $httpBackend.whenGET(/whatever/).respond(200, REDDIT);
+
+        service.fetchSubreddit('whatever').then(function(newItems) {
+          expectedItems = newItems;
+        });
+
+        $httpBackend.flush();
+        expect(expectedItems.length).toBeGreaterThan(0);
+      });
+    });
   });
 
   describe('expandPlaylist()', function() {

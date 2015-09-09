@@ -26,6 +26,7 @@
           .then(newItems => {
             if(newItems) {
               this.playlist = this.playlist.concat(newItems);
+              return newItems;
             }
           }, angular.noop)
           .finally(() => this.isLoading = false);
