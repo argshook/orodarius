@@ -2,9 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlaylistService', function(RedditService, $q) {
-      var PLAYLIST_OBSERVE_PROMISE = $q.defer();
-
+    .service('PlaylistService', function(RedditService) {
       // Public values
       this.playlist = [];
       this.isLoading = false;
@@ -14,11 +12,9 @@
       this.clear = clear;
       this.fetchSubreddit = fetchSubreddit;
       this.expandPlaylist = expandPlaylist;
-      this.observePlaylist = observePlaylist;
 
       function add(item) {
         this.playlist.push(item);
-        PLAYLIST_OBSERVE_PROMISE.resolve(this.playlist);
         return this.playlist;
       }
 
@@ -30,7 +26,6 @@
           .then(newItems => {
             if(newItems) {
               this.playlist = this.playlist.concat(newItems);
-              PLAYLIST_OBSERVE_PROMISE.resolve();
               return newItems;
             }
           }, angular.noop)
@@ -45,14 +40,9 @@
           .then(newItems => {
             if(newItems) {
               this.playlist = this.playlist.concat(newItems);
-              PLAYLIST_OBSERVE_PROMISE.resolve();
             }
           }, angular.noop)
           .finally(() => this.isLoading = false);
-      }
-
-      function observePlaylist() {
-        return PLAYLIST_OBSERVE_PROMISE.promise;
       }
 
       function clear() {
