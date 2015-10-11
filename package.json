@@ -14,7 +14,6 @@
   "scripts": {
     "install": "webdriver-manager update",
     "postinstall": "bower install",
-    "deploy": "gh-pages-deploy",
     "start": "brunch w -s",
     "dev": "brunch w",
     "prod": "brunch b -P",
@@ -31,7 +30,6 @@
     "coveralls": "^2.11.3",
     "css-brunch": "~1.7.0",
     "es5-shim": "^4.1.9",
-    "gh-pages-deploy": "^0.3.0",
     "javascript-brunch": "~1.7.1",
     "karma": "~0.12.31",
     "karma-chrome-launcher": "0.1.7",
@@ -52,8 +50,5 @@
     "sass-brunch": "~1.8.8",
     "selenium-webdriver": "~2.44.0",
     "uglify-js-brunch": "~1.7.7"
-  },
-  "gh-pages-deploy": {
-    "staticpath": "public"
   }
 }
