@@ -1,0 +1,64 @@
+<div class="container-sidebar" ng-class="{'container-sidebar--open': sidebarService.isOpen}">
+  <div class="sidebar-toggle" ng-click="sidebarService.toggle()">
+    <span class="glyphicon glyphicon-circle-arrow-{{sidebarService.isOpen ? 'right' : 'left'}}"></span>
+  </div>
+
+  <div class="sidebar-heading">
+    <h1>Subreddit TV</h1>
+
+    <div class="sidebar-heading__checkbox-container">
+      <span ng-class="{active: sidebarCtrl.settings.isSidebarSticky}" class="glyphicon glyphicon-lock" ng-click="sidebarCtrl.toggleStickySidebar()"></span>
+      <span ng-class="{active: sidebarCtrl.settings.isFocusForced}" class="glyphicon glyphicon-magnet" ng-click="sidebarCtrl.toggleFocusForced()"></span>
+    </div>
+    <div class="sidebar-now-playing">
+      <span class="sidebar-now-playing-label">Now playing:</span>
+      <input class="sidebar-now-playing-input" placeholder="{{sidebarCtrl.currentSubreddit}}" type="text" ng-enter="sidebarCtrl.fillPlaylistWith(sidebarCtrl.currentSubreddit)" ng-enter-options="{blurOnEnter: true}" ng-model="sidebarCtrl.currentSubreddit" />
+      <button class="sidebar-now-playing-btn" ng-click="sidebarCtrl.fillPlaylistWith(sidebarCtrl.currentSubreddit)">
+        <span class="glyphicon glyphicon-search" ng-class="{loading: sidebarCtrl.isLoading}"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="sidebar-playlist-container">
+    <div class="sidebar-playlist" ng-scroll-on="playerService.currentVideoItem">
+      <video-item ng-repeat="item in sidebarCtrl.playlist track by item.ownId"
+                  ng-click="sidebarCtrl.playVideo(item)">
+      </video-item>
+
+      <div
+        class="list-group-more"
+        ng-show="sidebarCtrl.playlist.length > 0"
+        ng-class="{'list-group-more__loading': sidebarCtrl.isLoading}"
+        ng-click="sidebarCtrl.expandPlaylist()"
+      >
+        <span class="glyphicon glyphicon-plus"></span>
+      </div>
+      <div class="sidebar-empty" ng-class="{loading: sidebarCtrl.isLoading}" ng-show="sidebarCtrl.playlist.length === 0">
+        <div ng-if="lastSubreddits.length">
+          <h2>Recent playlists:</h2>
+          <div class="sidebar-empty__btns">
+            <div ng-repeat="subreddit in lastSubreddits" ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">r/{{subreddit.name}}</div>
+          </div>
+          <hr>
+        </div>
+        <h2>Suggestions:</h2>
+        <div class="sidebar-empty__btns">
+          <div ng-repeat="subreddit in sidebarCtrl.suggestedSubreddits" ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">
+            r/{{subreddit.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="row">
+      <div class="col-xs-6">
+        <a href="http://github.com/argshook/orodarius">github</a>
+      </div>
+      <div class="col-xs-6 text-right">
+        last updated <a href="{{sidebarCtrl.lastUpdatedData.url}}" title="{{sidebarCtrl.lastUpdatedData.message}}" target="_blank">{{sidebarCtrl.lastUpdatedData.date | date: 'medium'}}</a>
+      </div>
+    </div>
+  </div>
+</div>
