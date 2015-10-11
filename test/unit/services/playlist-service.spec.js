@@ -19,7 +19,6 @@ describe('Service: PlaylistService', function() {
   }));
 
   beforeEach(function() {
-    spyOn(service, 'add');
     $httpBackend.whenGET(/.*\/(videos|birbir)\/.*/).respond(200, REDDIT);
   });
 
@@ -27,12 +26,20 @@ describe('Service: PlaylistService', function() {
     expect(angular.isArray(service.playlist)).toBe(true);
   });
 
-  it('should add entry to playlist passing contents as first argument', function() {
-    service.add(mockVideoItem);
-    expect(service.add).toHaveBeenCalledWith(mockVideoItem);
+  describe('add()', function() {
+    it('should add item to playlist', function() {
+      service.add(mockVideoItem);
+      expect(service.playlist).toEqual([mockVideoItem]);
+    });
 
-    // This fails and I have no idea why...
-    // expect(service.playlist).toEqual([mockVideoItem]);
+    it('should publish playlist subscribers', function() {
+      var published = false;
+      service.subscribePlaylist(function() {
+        published = true;
+      });
+      service.add(mockVideoItem);
+      expect(published).toBe(true);
+    });
   });
 
   describe('fetchSubreddit()', function() {
@@ -102,6 +109,17 @@ describe('Service: PlaylistService', function() {
         $httpBackend.flush();
         expect(expectedItems.length).toBeGreaterThan(0);
       });
+
+      it('should call each subscriber set with observerPlaylist', function() {
+        $httpBackend.whenGET(/whatever/).respond(200, REDDIT);
+        var called = false;
+        service.subscribePlaylist(function() {
+          called = true;
+        });
+        service.fetchSubreddit('whatever');
+        $httpBackend.flush();
+        expect(called).toBe(true);
+      });
     });
   });
 
@@ -143,15 +161,20 @@ describe('Service: PlaylistService', function() {
     });
   });
 
-  describe("clear method", function() {
-    it("should be exposed", function () {
-      expect(service.clear).toBeDefined();
-    });
-
+  describe("clear()", function() {
     it("should reset playlist to empty array", function() {
       service.playlist = [1, 2, 3];
       service.clear();
       expect(service.playlist.length).toBe(0);
+    });
+
+    it('should publish playlist subscribers', function() {
+      var published = false;
+      service.subscribePlaylist(function() {
+        published = true;
+      });
+      service.clear();
+      expect(published).toBe(true);
     });
   });
 
@@ -167,6 +190,12 @@ describe('Service: PlaylistService', function() {
 
       expect(service.isLoading).toBe(true);
       $httpBackend.flush();
+    });
+  });
+
+  describe('subscribePlaylist', function() {
+    it('should be defined', function() {
+      expect(service.subscribePlaylist).toBeDefined();
     });
   });
 

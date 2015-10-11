@@ -3,6 +3,8 @@
 
   angular.module('orodarius')
     .service('PlaylistService', function(RedditService) {
+      let playlistSubscriberFns = [];
+
       // Public values
       this.playlist = [];
       this.isLoading = false;
@@ -12,9 +14,11 @@
       this.clear = clear;
       this.fetchSubreddit = fetchSubreddit;
       this.expandPlaylist = expandPlaylist;
+      this.subscribePlaylist = subscribePlaylist;
 
       function add(item) {
         this.playlist.push(item);
+        publishSubscribers();
         return this.playlist;
       }
 
@@ -26,6 +30,7 @@
           .then(newItems => {
             if(newItems) {
               this.playlist = this.playlist.concat(newItems);
+              publishSubscribers();
               return newItems;
             }
           }, angular.noop)
@@ -47,6 +52,15 @@
 
       function clear() {
         this.playlist = [];
+        publishSubscribers();
+      }
+
+      function subscribePlaylist(subscriberFn) {
+        playlistSubscriberFns.push(subscriberFn);
+      }
+
+      function publishSubscribers() {
+        playlistSubscriberFns.map(fn => fn());
       }
     });
 })();

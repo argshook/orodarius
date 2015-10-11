@@ -3,7 +3,7 @@
 
   angular.module('orodarius')
     .controller('sidebarCtrl', function(
-      $scope, $rootScope, $http, $timeout, $window,
+      $scope, $http, $timeout, $window,
       PlaylistService, PlayerService, SidebarService, LastSubredditsService,
       SettingsService
     ) {
@@ -17,6 +17,11 @@
       this.isLoading = false;
       this.settings = SettingsService.list;
       this.lastUpdatedData = {};
+      this.playlist = PlaylistService.playlist;
+
+      PlaylistService.subscribePlaylist(() => {
+        this.playlist = PlaylistService.playlist;
+      });
 
       this.toggleSidebar = function() {
         SidebarService.toggle();
@@ -46,18 +51,19 @@
 
         PlaylistService
           .fetchSubreddit(subreddit)
-          .then(data => {
-            PlayerService.playVideo(PlaylistService.playlist[0]);
+          .then(playlist => {
             this.isLoading = false;
+            this.playlist = playlist;
+            PlayerService.playVideo(PlaylistService.playlist[0]);
           });
       };
-
+      var that = this;
       this.expandPlaylist = function() {
         this.isLoading = true;
 
         PlaylistService
           .expandPlaylist()
-          .then(() => this.isLoading = false);
+          .finally(() => this.isLoading = false);
       };
 
       this.suggestedSubreddits = [
