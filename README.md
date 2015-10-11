@@ -12,7 +12,7 @@ A youtube video player for reddit. [arijus.net/orodarius](http://arijus.net/orod
 * `npm run prod` to minify javascript and css files for production deployment
 * `npm test` to run unit tests with [karma](http://karma-runner.github.io)
 
-You can deploy to `gh-pages` using `npm run deploy`.
+You can deploy to `gh-pages` using `./deploy.sh`.
 
 Notes:
 
