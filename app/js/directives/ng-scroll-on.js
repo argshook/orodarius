@@ -15,7 +15,7 @@
 
           scope.$watch('ngScrollOn', function(newVal, oldVal) {
             $timeout(function() {
-              var $currentItem = $(element).find('.current').prev().prev();
+              var $currentItem = $(element).find('.current').parent().prev().prev();
 
               if($currentItem.length) {
                 // scrollIntoView is native, believe it or not
