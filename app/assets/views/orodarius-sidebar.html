@@ -21,19 +21,19 @@
 
   <div class="sidebar-playlist-container">
     <div class="sidebar-playlist" ng-scroll-on="playerService.currentVideoItem">
-      <video-item ng-repeat="item in playlistService.playlist track by item.ownId"
+      <video-item ng-repeat="item in sidebarCtrl.playlist track by item.ownId"
                   ng-click="sidebarCtrl.playVideo(item)">
       </video-item>
 
       <div
         class="list-group-more"
-        ng-show="playlistService.playlist.length > 0"
+        ng-show="sidebarCtrl.playlist.length > 0"
         ng-class="{'list-group-more__loading': sidebarCtrl.isLoading}"
         ng-click="sidebarCtrl.expandPlaylist()"
       >
         <span class="glyphicon glyphicon-plus"></span>
       </div>
-      <div class="sidebar-empty" ng-class="{loading: sidebarCtrl.isLoading}" ng-show="playlistService.playlist.length === 0">
+      <div class="sidebar-empty" ng-class="{loading: sidebarCtrl.isLoading}" ng-show="sidebarCtrl.playlist.length === 0">
         <div ng-if="lastSubreddits.length">
           <h2>Recent playlists:</h2>
           <div class="sidebar-empty__btns">

@@ -145,6 +145,16 @@ describe('Service: PlaylistService', function() {
         $httpBackend.flush();
         expect(service.isLoading).toBe(false);
       });
+
+      it('should publish playlist subscribers', function() {
+        var published = false;
+        service.subscribePlaylist(function() {
+          published = true;
+        });
+        service.expandPlaylist();
+        $httpBackend.flush();
+        expect(published).toBe(true);
+      });
     });
 
     describe('when unsuccessful', function() {

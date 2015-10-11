@@ -9,7 +9,6 @@
     ) {
       // TODO: shouldn't expose the whole service just the parts needed.
       $scope.sidebarService = SidebarService;
-      $scope.playlistService = PlaylistService;
       $scope.playerService = PlayerService;
       $scope.lastSubreddits = LastSubredditsService.list;
 

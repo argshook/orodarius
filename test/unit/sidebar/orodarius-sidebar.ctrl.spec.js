@@ -46,7 +46,7 @@ describe('Controller: sidebarCtrl', function() {
     });
 
     it('should call playlistService.expandPlaylist()', function() {
-      spyOn(scope.playlistService, 'expandPlaylist').and.callThrough();
+      spyOn(ctrl, 'expandPlaylist').and.callThrough();
 
       ctrl.expandPlaylist();
       expect(ctrl.isLoading).toBe(true);
@@ -84,7 +84,7 @@ describe('Controller: sidebarCtrl', function() {
   });
 
   it('playlistService should contain items from PlaylistService.playlist', function() {
-    expect(scope.playlistService.playlist).toEqual([mockVideoItem, mockVideoItem]);
+    expect(ctrl.playlist).toEqual([mockVideoItem, mockVideoItem]);
   });
 
   it('playVideo method should tell PlayerService to play video', function() {

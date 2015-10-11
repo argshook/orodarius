@@ -45,6 +45,7 @@
           .then(newItems => {
             if(newItems) {
               this.playlist = this.playlist.concat(newItems);
+              publishSubscribers();
             }
           }, angular.noop)
           .finally(() => this.isLoading = false);
