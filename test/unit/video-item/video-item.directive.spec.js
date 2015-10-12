@@ -1,19 +1,16 @@
 'use strict';
 
 describe('Directive: video-item', function() {
-  var scope, $compile, $rootScope;
+  var compile;
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
-  beforeEach(inject(function(_$rootScope_, _$compile_) {
-    $rootScope = _$rootScope_;
-    $compile = _$compile_;
+  beforeEach(inject(function($rootScope, $compile) {
+    compile = createCompiler('<video-item />', $rootScope, $compile);
   }));
 
   it('should compile successfully', function() {
-    compile({}, function(scope, element) {
-      expect(element.find('.list-group-item').length).toBe(1);
-    });
+    expect($(compile().element).find('.list-group-item').length).toBe(1);
   });
 
   describe('when parent scope has proper `item` property', function() {
@@ -26,7 +23,7 @@ describe('Directive: video-item', function() {
         }
       };
 
-      element = compile(mockParentScope);
+      element = $(compile(mockParentScope).element);
     });
 
     it('should display title', function() {
@@ -37,14 +34,4 @@ describe('Directive: video-item', function() {
       expect(element.find('.list-group-item__score').text()).toBe('42');
     });
   });
-
-  function compile (scope, callback) {
-    var rootScope = $rootScope.$new(),
-        element = $compile('<video-item></video-item>')(_.extend(rootScope, scope));
-
-    rootScope.$digest();
-    callback && callback.call(null, rootScope, $(element));
-
-    return $(element);
-  }
 });
