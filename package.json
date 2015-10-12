@@ -46,6 +46,7 @@
     "karma-safari-launcher": "0.1.1",
     "karma-script-launcher": "~0.1.0",
     "ng-annotate-brunch": "~1.7.2",
+    "ng-directive-compiler-helper": "~0.0.1",
     "node-bourbon": "~1.2.3",
     "protractor": "~1.6.0",
     "sass-brunch": "~1.8.8",

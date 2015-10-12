@@ -19,6 +19,7 @@ module.exports = function(karma) {
       'node_modules/es5-shim/es5-shim.js',
       'bower_components/jquery/dist/jquery.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'node_modules/ng-directive-compiler-helper/lib/ng-directive-compiler-helper.js',
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'test/mocks/**/*.js',
       'test/unit/**/*.spec.js',
