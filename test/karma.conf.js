@@ -5,31 +5,34 @@ module.exports = function(karma) {
   karma.set({
 
     // base path, that will be used to resolve files and exclude
-    basePath: '../',
+    basePath: '../test/',
 
     // frameworks to use
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
-      // Application Code
-      'public/js/vendor.js',
-      'public/js/app.js',
+      '../node_modules/es5-shim/es5-shim.js',
+      '../bower_components/jquery/dist/jquery.js',
+      '../bower_components/lodash/dist/lodash.js',
+      '../bower_components/angular/angular.js',
+      '../bower_components/angular-mocks/angular-mocks.js',
+      '../bower_components/angular-resource/angular-resource.js',
+      '../bower_components/angular-sanitize/angular-sanitize.js',
+      '../bower_components/angular-local-storage/dist/angular-local-storage.js',
 
-      'node_modules/es5-shim/es5-shim.js',
-      'bower_components/jquery/dist/jquery.min.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      'node_modules/ng-directive-compiler-helper/lib/ng-directive-compiler-helper.js',
-      'bower_components/angular-local-storage/dist/angular-local-storage.js',
-      'test/mocks/**/*.js',
-      'test/unit/**/*.spec.js',
+      '../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+      '../node_modules/ng-directive-compiler-helper/lib/ng-directive-compiler-helper.js',
+      '../app/assets/views/**.html',
 
-      // if you wanna load template files in nested directories, you must use this
-      '**/assets/views/**/*.html'
+      '../app/js/**/*.js',
+
+      'mocks/**.js',
+      'unit/**/*.spec.js'
       ],
 
     // list of files to exclude
-    exclude: [],
+    exclude: [''],
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
@@ -52,20 +55,21 @@ module.exports = function(karma) {
     autoWatch: true,
 
     preprocessors: {
-      '**/public/**/!(vendor).js': 'coverage',
-      // '**/public/**/views/**/*.html': ['ng-html2js'],
-      '**/*.html': ['ng-html2js'],
-      // TODO: add babel here?
+      '../app/js/**/*.js': ['babel', 'coverage'],
+      '../app/assets/**/*.html': ['ng-html2js'],
+      'unit/**/*.js': ['babel']
     },
 
     coverageReporter: {
       type : 'lcov',
-      dir : 'coverage/'
+      dir : '../coverage/'
     },
 
     ngHtml2JsPreprocessor: {
       moduleName: 'orodarius.templates',
-      stripPrefix: 'app/assets/'
+      cacheIdFromPath: function(filepath) {
+        return filepath.match(/(?:\/)(views\/.*\.html?$)/)[1];
+      },
     },
 
     // Start these browsers, currently available:
@@ -102,8 +106,8 @@ module.exports = function(karma) {
       'karma-safari-launcher',
       'karma-phantomjs-launcher',
       'karma-junit-reporter',
-      'karma-html2js-preprocessor',
-      'karma-ng-html2js-preprocessor'
+      'karma-ng-html2js-preprocessor',
+      'karma-babel-preprocessor'
     ]
   });
 };

@@ -5,8 +5,9 @@ describe('Directive: video-item', function() {
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
-  beforeEach(inject(function($rootScope, $compile) {
+  beforeEach(inject(function($rootScope, $compile, $templateCache) {
     compile = createCompiler('<video-item />', $rootScope, $compile);
+    $templateCache.get();
   }));
 
   it('should compile successfully', function() {
@@ -15,7 +16,7 @@ describe('Directive: video-item', function() {
 
   describe('when parent scope has proper `item` property', function() {
     var element;
-    beforeEach(function() {
+    beforeEach(() => {
       var mockParentScope = {
         item: {
           redditScore: 42,
@@ -26,11 +27,11 @@ describe('Directive: video-item', function() {
       element = $(compile(mockParentScope).element);
     });
 
-    it('should display title', function() {
+    it('should display title', () => {
       expect(element.find('.list-group-item__title').text()).toBe('video item');
     });
 
-    it('should display reddit score', function() {
+    it('should display reddit score', () => {
       expect(element.find('.list-group-item__score').text()).toBe('42');
     });
   });
