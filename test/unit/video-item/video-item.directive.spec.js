@@ -5,9 +5,8 @@ describe('Directive: video-item', function() {
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
-  beforeEach(inject(function($rootScope, $compile, $templateCache) {
+  beforeEach(inject(function($rootScope, $compile) {
     compile = createCompiler('<video-item />', $rootScope, $compile);
-    $templateCache.get();
   }));
 
   it('should compile successfully', function() {

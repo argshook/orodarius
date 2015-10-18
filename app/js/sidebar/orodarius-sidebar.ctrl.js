@@ -43,20 +43,23 @@
         }
       };
 
-      this.fillPlaylistWith = function(subreddit = "videos") {
+      this.fillPlaylistWith = function(subreddit) {
         PlaylistService.clear();
-        this.currentSubreddit = subreddit;
-        this.isLoading = true;
 
-        PlaylistService
-          .fetchSubreddit(subreddit)
-          .then(playlist => {
-            this.isLoading = false;
-            this.playlist = playlist;
-            PlayerService.playVideo(PlaylistService.playlist[0]);
-          });
+        if(!!subreddit) {
+          this.currentSubreddit = subreddit;
+          this.isLoading = true;
+
+          PlaylistService
+            .fetchSubreddit(subreddit)
+            .then(playlist => {
+              this.isLoading = false;
+              this.playlist = playlist;
+              PlayerService.playVideo(PlaylistService.playlist[0]);
+            });
+        }
       };
-      var that = this;
+
       this.expandPlaylist = function() {
         this.isLoading = true;
 
@@ -75,9 +78,7 @@
         { name: 'videos+youtubehaiku' }
       ];
 
-      this.isListItemCurrentlyPlayed = function(item) {
-        return item.videoId === PlayerService.currentVideoItem.videoId;
-      };
+      this.isListItemCurrentlyPlayed = item => item.videoId === PlayerService.currentVideoItem.videoId;
 
       if(SettingsService.list.isFocusForced) {
         $window.addEventListener('blur', windowBlurHanlder);
@@ -96,9 +97,7 @@
 
       // TODO: need better implementation for firefox. and maybe other browsers
       function windowBlurHanlder() {
-        $timeout(function() {
-          $window.focus();
-        }, 100);
+        $timeout(() => $window.focus(), 100);
       }
     });
 })();

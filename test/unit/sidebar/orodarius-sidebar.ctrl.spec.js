@@ -128,6 +128,19 @@ describe('Controller: sidebarCtrl', function() {
       ctrl.fillPlaylistWith('videos');
       expect(PlaylistService.clear).toHaveBeenCalled();
     });
+
+    describe('when no argument passed', () => {
+      it('should clear ctrl.currentSubreddit', () => {
+        ctrl.fillPlaylistWith();
+        expect(ctrl.currentSubreddit).toBe('');
+      });
+
+      it('should not call PlaylistService.fetchSubreddit', () => {
+        spyOn(PlaylistService, 'fetchSubreddit');
+        ctrl.fillPlaylistWith();
+        expect(PlaylistService.fetchSubreddit).not.toHaveBeenCalled();
+      });
+    });
   });
 
 
