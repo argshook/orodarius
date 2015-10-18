@@ -36,7 +36,7 @@ module.exports = function(karma) {
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress', 'coverage'],
+    reporters: ['dots', 'coverage'],
 
     // web server port
     port: 9005,
@@ -105,7 +105,6 @@ module.exports = function(karma) {
       'karma-firefox-launcher',
       'karma-safari-launcher',
       'karma-phantomjs-launcher',
-      'karma-junit-reporter',
       'karma-ng-html2js-preprocessor',
       'karma-babel-preprocessor'
     ]
