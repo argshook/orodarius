@@ -60,9 +60,7 @@ exports.config = {
     ng_annotate: {
       pattern: /^app/
     },
-    ES6to5: {
-      blacklist: ["useStrict"]
-    },
+    ES6to5: {},
     autoprefixer: {
       browsers: [
         "last 2 version",

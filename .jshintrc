@@ -14,7 +14,7 @@
   "validthis": true,
   "undef": false,//true,
   "unused": false,//true,
-  "strict": true,
+  "strict": false,
   "globalstrict": true,
   "trailing": true,
   "smarttabs": false,

@@ -1,6 +1,4 @@
 ;(function() {
-  'use strict';
-
   angular.module('orodarius', ['LocalStorageModule'])
   .config(function(localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('orodarius');
