@@ -2,13 +2,13 @@
   class="list-group-item"
   ng-class="{current: item.ownId === playerService.currentVideoItem.ownId, erroneous: item.error}"
 >
-  <div class="list-group-item__index">{{$index + 1}}</div>
-  <div class="list-group-item__score">{{item.redditScore}}</div>
-  <div class="list-group-item__thumbnail" ng-class="{nsfw: item.thumbnailUrl === 'images/nsfw-thumbnail.jpg'}" style="background-image: url({{item.thumbnailUrl}});"></div>
-  <div class="list-group-item__title">{{item.title}}</div>
+  <div class="list-group-item__index">{{::$index + 1}}</div>
+  <div class="list-group-item__score">{{::item.redditScore}}</div>
+  <div class="list-group-item__thumbnail" ng-class="::{nsfw: item.thumbnailUrl === 'images/nsfw-thumbnail.jpg'}" style="background-image: url({{::item.thumbnailUrl}});"></div>
+  <div class="list-group-item__title">{{::item.title}}</div>
   <div class="list-group-item__footer">
     <span class="list-group-item__footer-error" ng-show="item.error.message">Unable to play: <strong>{{item.error.message}}</strong></span>
-    <span ng-show="sidebarCtrl.currentSubreddit.indexOf('+') > 0" class="list-group-item__footer-subreddit">r/{{item.subreddit}}</span>
+    <span ng-show="sidebarCtrl.currentSubreddit.indexOf('+') > 0" class="list-group-item__footer-subreddit">r/{{::item.subreddit}}</span>
   </div>
 </div>
 
