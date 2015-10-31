@@ -10,7 +10,7 @@
       // TODO: shouldn't expose the whole service just the parts needed.
       $scope.sidebarService = SidebarService;
       $scope.playerService = PlayerService;
-      $scope.lastSubreddits = LastSubredditsService.list;
+      $scope.lastSubreddits = LastSubredditsService.getList();
 
       this.currentSubreddit = '';
       this.isLoading = false;
