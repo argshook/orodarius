@@ -218,7 +218,7 @@ describe('Controller: sidebarCtrl', function() {
 
   describe('lastSubreddits property', function() {
     it('should be defined', function() {
-      expect(angular.isArray(scope.lastSubreddits)).toBe(true);
+      expect(angular.isArray(ctrl.lastSubreddits)).toBe(true);
     });
   });
 });
