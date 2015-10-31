@@ -17,15 +17,11 @@ describe('Service: LastSubredditsService', function() {
     expect(angular.isArray(service.list)).toBe(true);
   });
 
-  describe('add method', function() {
+  describe('add()', function() {
     var mockItem = { name: 'item' };
 
     afterEach(function() {
       localStorageService.clearAll();
-    });
-
-    it('should be defined', function() {
-      expect(service.add).toBeDefined();
     });
 
     it('should add item to list', function() {
@@ -44,5 +40,14 @@ describe('Service: LastSubredditsService', function() {
       service.add(mockItem);
       expect(service.list.length).toBe(1);
     });
+
+    it('should not allow more than 10 subreddits', () => {
+      _.range(1, 15).map(i => {
+        service.add({ name: `item-${i}` });
+      });
+
+      expect(service.getList().length).toBe(10);
+    });
   });
 });
+
