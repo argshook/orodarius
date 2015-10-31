@@ -12,7 +12,7 @@
     </div>
     <div class="sidebar-now-playing">
       <span class="sidebar-now-playing-label">Now playing:</span>
-      <input class="sidebar-now-playing-input" placeholder="{{sidebarCtrl.currentSubreddit}}" type="text" ng-enter="sidebarCtrl.fillPlaylistWith(sidebarCtrl.currentSubreddit)" ng-enter-options="{blurOnEnter: true}" ng-model="sidebarCtrl.currentSubreddit" />
+      <input class="sidebar-now-playing-input" type="text" ng-enter="sidebarCtrl.fillPlaylistWith(sidebarCtrl.currentSubreddit)" ng-enter-options="{blurOnEnter: true}" ng-model="sidebarCtrl.currentSubreddit" />
       <button class="sidebar-now-playing-btn" ng-click="sidebarCtrl.fillPlaylistWith(sidebarCtrl.currentSubreddit)">
         <span class="glyphicon glyphicon-search" ng-class="{loading: sidebarCtrl.isLoading}"></span>
       </button>
