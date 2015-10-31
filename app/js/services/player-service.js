@@ -12,22 +12,8 @@
 
         PlaylistService.playlist[currentItemIndex].error = {
           code: errorCode,
-          message: errorMessage()
+          message: errorMessage(errorCode)
         };
-
-        function errorMessage() {
-          switch (errorCode) {
-            case 2:
-              return "can't parse video ID";
-            case 5:
-              return "problem with HTML5 Youtube player";
-            case 100:
-              return "video is private or removed";
-            case 101:
-            case 150:
-              return "uploader does not allow embedded playback";
-          }
-        }
       };
 
       this.createNewPlayer = function(elementId, options) {
@@ -137,5 +123,20 @@
       function currentItemMatcher(item) {
         return item.ownId === this.currentVideoItem.ownId;
       }
+
+      function errorMessage(code) {
+        switch (code) {
+          case 2:
+            return "can't parse video ID";
+          case 5:
+            return "problem with HTML5 Youtube player";
+          case 100:
+            return "video is private or removed";
+          case 101:
+          case 150:
+            return "uploader does not allow embedded playback";
+        }
+      }
+
     });
 })();
