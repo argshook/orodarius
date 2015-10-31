@@ -34,10 +34,10 @@
         <span class="glyphicon glyphicon-plus"></span>
       </div>
       <div class="sidebar-empty" ng-class="{loading: sidebarCtrl.isLoading}" ng-show="sidebarCtrl.playlist.length === 0">
-        <div ng-if="lastSubreddits.length">
+        <div ng-if="sidebarCtrl.lastSubreddits.length">
           <h2>Recent playlists:</h2>
           <div class="sidebar-empty__btns">
-            <div ng-repeat="subreddit in ::sidebarCtrl.lastSubreddits" ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">r/{{::subreddit.name}}</div>
+            <div ng-repeat="subreddit in sidebarCtrl.lastSubreddits" ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">r/{{::subreddit.name}}</div>
           </div>
           <hr>
         </div>

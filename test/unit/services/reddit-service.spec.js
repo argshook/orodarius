@@ -106,7 +106,7 @@ describe('Service: RedditService', function() {
         RedditService.fetch('videos');
 
         $httpBackend.flush();
-        expect(LastSubredditsService.list[0].name).toBe('videos');
+        expect(LastSubredditsService.getList()[0].name).toBe('videos');
       });
 
       it("should populate playlist array with specific video item model", function() {

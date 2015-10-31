@@ -1,7 +1,8 @@
 'use strict';
 
 describe('Service: LastSubredditsService', function() {
-  var service, localStorageService;
+  let service, localStorageService,
+      mockItem = { name: 'item' };
 
   beforeEach(module('orodarius'));
   beforeEach(inject(function(LastSubredditsService, _localStorageService_) {
@@ -9,24 +10,25 @@ describe('Service: LastSubredditsService', function() {
     localStorageService = _localStorageService_;
   }));
 
-  it('should be defined', function() {
-    expect(service).toBeDefined();
+  afterEach(function() {
+    localStorageService.clearAll();
   });
 
-  it('should expose list property as an array', function() {
-    expect(angular.isArray(service.list)).toBe(true);
+  describe('getList()', () => {
+    it('should return array', () => {
+      expect(angular.isArray(service.getList())).toBe(true);
+    });
+
+    it('should return added items', () => {
+      service.add(mockItem);
+      expect(service.getList()).toEqual([mockItem]);
+    });
   });
 
   describe('add()', function() {
-    var mockItem = { name: 'item' };
-
-    afterEach(function() {
-      localStorageService.clearAll();
-    });
-
     it('should add item to list', function() {
       service.add(mockItem);
-      expect(service.list[0]).toEqual(mockItem);
+      expect(service.getList()[0]).toEqual(mockItem);
     });
 
     it('should call updateStorage', function() {
@@ -38,7 +40,7 @@ describe('Service: LastSubredditsService', function() {
     it('should not save duplicates', function() {
       service.add(mockItem);
       service.add(mockItem);
-      expect(service.list.length).toBe(1);
+      expect(service.getList().length).toBe(1);
     });
 
     it('should not allow more than 10 subreddits', () => {
