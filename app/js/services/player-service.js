@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlayerService', function($window, $rootScope, PlaylistService) {
+    .service('PlayerService', function($window, $timeout, PlaylistService) {
       this.youtubePlayer = null; // youtube iframe api instance
       this.isPlaying = false;
       this.currentVideoItem = {};
@@ -59,6 +59,8 @@
           this.currentVideoItem = item;
           this.isPlaying = true;
         }
+
+        $timeout(); // TODO :(
       };
 
       this.playNext = function() {

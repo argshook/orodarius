@@ -3,6 +3,11 @@
 describe('Service: PlayerService', function() {
   var service, player, PlaylistService, $q;
 
+  beforeEach(module($provide => {
+    $provide.decorator('$timeout', $delegate => {
+      return jasmine.createSpy('$timeout');
+    });
+  }));
   beforeEach(module('orodarius'));
 
   beforeEach(inject(function(_PlayerService_, _PlaylistService_, _$q_) {
@@ -36,6 +41,11 @@ describe('Service: PlayerService', function() {
         suggestedQuality: 'default'
       });
   });
+
+  it('playVideo should call $timeout to initiate digest', inject($timeout => {
+    service.playVideo(mockVideoItem);
+    expect($timeout).toHaveBeenCalled();
+  }));
 
   it('playNext should call playVideo with next videoId in row', function() {
     PlaylistService.playlist = [
