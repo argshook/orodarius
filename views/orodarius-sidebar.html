@@ -12,7 +12,7 @@
     </div>
     <div class="sidebar-now-playing">
       <span class="sidebar-now-playing-label">Now playing:</span>
-      <input class="sidebar-now-playing-input" placeholder="{{sidebarCtrl.currentSubreddit}}" type="text" ng-enter="sidebarCtrl.fillPlaylistWith(sidebarCtrl.currentSubreddit)" ng-enter-options="{blurOnEnter: true}" ng-model="sidebarCtrl.currentSubreddit" />
+      <input class="sidebar-now-playing-input" type="text" ng-enter="sidebarCtrl.fillPlaylistWith(sidebarCtrl.currentSubreddit)" ng-enter-options="{blurOnEnter: true}" ng-model="sidebarCtrl.currentSubreddit" />
       <button class="sidebar-now-playing-btn" ng-click="sidebarCtrl.fillPlaylistWith(sidebarCtrl.currentSubreddit)">
         <span class="glyphicon glyphicon-search" ng-class="{loading: sidebarCtrl.isLoading}"></span>
       </button>
@@ -34,17 +34,17 @@
         <span class="glyphicon glyphicon-plus"></span>
       </div>
       <div class="sidebar-empty" ng-class="{loading: sidebarCtrl.isLoading}" ng-show="sidebarCtrl.playlist.length === 0">
-        <div ng-if="lastSubreddits.length">
+        <div ng-if="sidebarCtrl.lastSubreddits.length">
           <h2>Recent playlists:</h2>
           <div class="sidebar-empty__btns">
-            <div ng-repeat="subreddit in lastSubreddits" ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">r/{{subreddit.name}}</div>
+            <div ng-repeat="subreddit in sidebarCtrl.lastSubreddits" ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">r/{{::subreddit.name}}</div>
           </div>
           <hr>
         </div>
         <h2>Suggestions:</h2>
         <div class="sidebar-empty__btns">
-          <div ng-repeat="subreddit in sidebarCtrl.suggestedSubreddits" ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">
-            r/{{subreddit.name}}
+          <div ng-repeat="subreddit in ::sidebarCtrl.suggestedSubreddits" ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">
+            r/{{::subreddit.name}}
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
         <a href="http://github.com/argshook/orodarius">github</a>
       </div>
       <div class="col-xs-6 text-right">
-        last updated <a href="{{sidebarCtrl.lastUpdatedData.url}}" title="{{sidebarCtrl.lastUpdatedData.message}}" target="_blank">{{sidebarCtrl.lastUpdatedData.date | date: 'medium'}}</a>
+        last updated <a href="{{::sidebarCtrl.lastUpdatedData.url}}" title="{{::sidebarCtrl.lastUpdatedData.message}}" target="_blank">{{::sidebarCtrl.lastUpdatedData.date | date: 'medium'}}</a>
       </div>
     </div>
   </div>
