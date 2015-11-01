@@ -1,0 +1,12 @@
+<div class="player-overlay" ng-show="vm.PlayerService.currentVideoItem.videoId">
+  <div class="video-score">
+    {{vm.PlayerService.currentVideoItem.redditScore}}
+  </div>
+
+  <div class="video-title">
+    <a ng-href="{{vm.PlayerService.currentVideoItem.redditUrl}}" target="_blank">
+      {{vm.PlayerService.currentVideoItem.title}}
+    </a>
+  </div>
+</div>
+
