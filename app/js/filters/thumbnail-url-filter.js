@@ -1,4 +1,4 @@
-;() => {
+;(() => {
   'use strict';
 
   angular.module('orodarius').filter('thumbnailUrlFilter', function() {
@@ -13,4 +13,5 @@
       return thumbnailUrl;
     };
   });
-}();
+})();
+

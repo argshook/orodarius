@@ -1,4 +1,4 @@
-;() => {
+;(() => {
   angular.module('orodarius')
     .directive('ngEnter', () => {
       return {
@@ -23,4 +23,4 @@
         }
       };
     });
-}();
+})();

@@ -1,4 +1,4 @@
-;() => {
+;(() => {
   'use strict';
 
   angular.module('orodarius')
@@ -9,4 +9,5 @@
         templateUrl: 'views/video-item.html'
       };
     });
-}();
+})();
+

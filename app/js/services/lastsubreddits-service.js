@@ -1,4 +1,4 @@
-;() => {
+;(() => {
   // TODO: this will eventually be lastQueriesService or something
   angular.module('orodarius')
     .service('LastSubredditsService', function(localStorageService) {
@@ -37,4 +37,5 @@
         add: addItem
       };
     });
-}();
+})();
+

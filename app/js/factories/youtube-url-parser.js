@@ -1,4 +1,4 @@
-;() => {
+;(() => {
   'use strict';
 
   angular.module('orodarius').factory('youtubeUrlParser', function() {
@@ -56,4 +56,4 @@
 
     return getVideoInfoFromUrl;
   });
-}();
+})();

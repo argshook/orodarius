@@ -1,4 +1,4 @@
-;() => {
+;(() => {
   'use strict';
 
   angular.module('orodarius').service('RedditService', function($http, $q, youtubeUrlParser, $filter, LastSubredditsService, $log) {
@@ -142,4 +142,5 @@
       return deferred.promise;
     }
   });
-}();
+})();
+
