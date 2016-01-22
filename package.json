@@ -11,7 +11,7 @@
   "scripts": {
     "install": "webdriver-manager update",
     "postinstall": "bower install",
-    "start": "brunch w -s",
+    "start": "brunch w -s -d 2>&1",
     "dev": "brunch w",
     "prod": "brunch b -P",
     "test": "karma start karma.conf.js",
