@@ -2,14 +2,11 @@
   "author": "Arijus Šukys <argshook@gmail.com>",
   "name": "orodarius",
   "description": "Youtube player for Reddit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/argshook/orodarius",
   "repository": {
     "type": "git",
     "url": "https://github.com/argshook/orodarius"
-  },
-  "engines": {
-    "node": "~0.12"
   },
   "scripts": {
     "install": "webdriver-manager update",
@@ -18,8 +15,7 @@
     "dev": "brunch w",
     "prod": "brunch b -P",
     "test": "karma start test/karma.conf.js",
-    "test-single": "karma start test/karma.conf.js --single-run",
-    "test-e2e": "protractor test/protractor-conf.js"
+    "test-single": "karma start test/karma.conf.js --single-run"
   },
   "devDependencies": {
     "autoprefixer-brunch": "1.8.3",
@@ -37,19 +33,15 @@
     "karma-chrome-launcher": "0.1.7",
     "karma-cli": "0.0.4",
     "karma-coverage": "^0.2.7",
-    "karma-firefox-launcher": "~0.1.4",
     "karma-jasmine": "0.3.4",
     "karma-ng-html2js-preprocessor": "^0.1.2",
     "karma-phantomjs-launcher": "~0.1.4",
     "karma-requirejs": "~0.2.2",
-    "karma-safari-launcher": "0.1.1",
     "karma-script-launcher": "~0.1.0",
     "ng-annotate-brunch": "~1.7.2",
     "ng-directive-compiler-helper": "~0.0.1",
-    "node-bourbon": "~1.2.3",
     "protractor": "~1.6.0",
     "sass-brunch": "~1.8.8",
-    "selenium-webdriver": "~2.44.0",
     "uglify-js-brunch": "~1.7.7"
   }
 }

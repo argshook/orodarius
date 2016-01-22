@@ -19,4 +19,3 @@ Notes:
 - Karma will run tests on save. To insure that changes are saved be sure to have `npm start` or `npm run dev` running in the console
 - You can set the browsers that you would like to target in the `/test/karma.conf.js` file E.g. `browser = ["ChromeCanary", "Firefox"]`
 
-* `npm run test-e2e` to run e2e tests with [karma](http://karma-runner.github.io) using protractor
