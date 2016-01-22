@@ -72,6 +72,13 @@ module.exports = function(karma) {
       },
     },
 
+    babelPreprocessor: {
+      options: {
+        presets: ['es2015'],
+        sourceMap: 'inline'
+      }
+    },
+
     // Start these browsers, currently available:
     // - Chrome
     // - ChromeCanary
