@@ -1,33 +1,26 @@
 'use strict';
 
 describe('Directive: ngBindKeys', function() {
-  var element, scope, $compile, $document;
+  var compile, $document;
+
+  var parentScopeMock = {
+    options: {
+      37: _.noop, // left
+      38: _.noop, // up
+      39: _.noop, // right
+      40: _.noop, // down
+      106: _.noop, // j
+      107: _.noop, // k
+      32: _.noop, // space
+      16: _.noop // shift
+    }
+  };
 
   beforeEach(module('orodarius'));
-  beforeEach(inject(function(_$compile_, _$rootScope_, _$document_) {
-    $compile = _$compile_;
-    scope = _$rootScope_.$new();
+  beforeEach(inject(function($compile, $rootScope, _$document_) {
+    compile = createCompiler('<div ng-bind-keys="options" />', $rootScope, $compile);
     $document = _$document_;
-
-    scope.ngBindKeysOptions = {
-      37: angular.noop, // left
-      38: angular.noop, // up
-      39: angular.noop, // right
-      40: angular.noop, // down
-      106: angular.noop, // j
-      107: angular.noop, // k
-      32: angular.noop, // space
-      16: angular.noop // shift
-    };
   }));
-
-  function compile(functionName) {
-    var template = _.template('<div ng-bind-keys="${functionName}"></div>', {
-      functionName: functionName || 'ngBindKeysOptions'
-    });
-    element = $compile(template)(scope);
-    scope.$digest();
-  }
 
   function triggerEventWithKeyCode(keyCode) {
     var event = $.Event('keydown');
@@ -36,17 +29,18 @@ describe('Directive: ngBindKeys', function() {
   }
 
   it('should compile successfully', function() {
-    compile();
-    expect(element).toBeTruthy();
+    compile(parentScopeMock, function(scope, element) {
+      expect(element).toBeTruthy();
+    });
   });
 
   it('should bind event listeners to element from passed object', function() {
-    var keyCodes = _(scope.ngBindKeysOptions).map(function(fn, keyCode) { return keyCode; }).value();
-    compile()
-    keyCodes.forEach(function(code) {
-      spyOn(scope.ngBindKeysOptions, code);
-      triggerEventWithKeyCode(code);
-      expect(scope.ngBindKeysOptions[code]).toHaveBeenCalled();
-    })
+    compile(parentScopeMock, function(scope) {
+      _.forOwn(scope.ngBindKeysOptions, function(keyFunction, keyCode) {
+        spyOn(scope.ngBindKeysOptions, keyCode);
+        triggerEventWithKeyCode(keyCode);
+        expect(scope.ngBindKeysOptions[keyCode]).toHaveBeenCalled();
+      });
+    });
   });
 });
