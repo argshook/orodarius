@@ -1,8 +1,6 @@
-// @import "../../node_modules/node-bourbon/assets/stylesheets/bourbon";
 @import "variables";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap"; // Boostrap 3
 
-// @import url("http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300Muli|Oswald:400,700&subset=latin,latin-ext,cyrillic-ext");
 @import url(http://fonts.googleapis.com/css?family=Muli|Roboto+Condensed:400,300,700&subset=latin,latin-ext);
 @import url("http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
 
@@ -25,10 +23,5 @@ body {
   height: 100vh;
 }
 
-.unselectable {
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
+.unselectable { user-select: none; }
+

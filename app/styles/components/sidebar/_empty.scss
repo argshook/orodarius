@@ -6,36 +6,7 @@
   color: rgba(255, 255, 255, .6);
 
   h2 {
-    padding: 0;
     margin: 1em 0;
-    font-weight: 100;
-  }
-
-  &__btns {
-    display: flex;
-    margin: 0 3em;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-
-    > div {
-      flex: 1 0 100px;
-      padding: .3em;
-      margin: .2em 0;
-      border-bottom: 1px solid rgba(255, 165, 0, 0.47);
-      transition: .2s ease all;
-
-      &:hover {
-        background: rgba(255, 165, 0, 0.25);
-        border-bottom-color: transparent;
-        transform: scale(1.1);
-        cursor: pointer;
-      }
-
-      &:active {
-        transform: scale(.9);
-      }
-    }
   }
 
   &.loading {
@@ -52,6 +23,36 @@
       background-position-x: 100%;
       background-size: 300%;
       animation: animateSidebarExpandBtnGradient 10s linear infinite;
+    }
+  }
+}
+
+.sidebar-suggestions {
+  display: flex;
+  margin: 0 3em;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  &__button {
+    flex: 1 0 150px;
+    padding: .5em .3em;
+    margin: .2em;
+    font-size: 1.3em;
+    font-weight: bold;
+    border: 1px solid rgba(255, 165, 0, 0.27);
+    transition: .2s ease all;
+    background: transparent;
+
+    &:hover {
+      background: rgba(255, 165, 0, 0.25);
+      border: 1px solid rgba(255, 165, 0, 0.57);
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(.9);
     }
   }
 }

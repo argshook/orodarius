@@ -6,10 +6,10 @@
   &-label { margin: 0 1.5em; }
 
   &-input {
-    padding: 1em 1em;
+    padding: .7em 1em;
     background: transparent;
-    border: 0;
-    border-bottom: 1px solid fade-out(#adadad, .4);
+    border: 1px solid fade-out(#adadad, .4);
+    border-radius: 3px;
     color: fade-out(orange, .4);
     transition: .2s ease all;
 
