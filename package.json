@@ -15,7 +15,7 @@
     "dev": "brunch w",
     "prod": "brunch b -P",
     "test": "karma start karma.conf.js",
-    "test-single": "karma start test/karma.conf.js --single-run"
+    "test-single": "karma start karma.conf.js --single-run"
   },
   "devDependencies": {
     "babel-brunch": "^6.0.0",
