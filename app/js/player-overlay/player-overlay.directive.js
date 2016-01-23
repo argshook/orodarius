@@ -11,10 +11,10 @@
       scope: false,
       templateUrl: 'views/player-overlay.html',
       controllerAs: 'vm',
-      controller: function(PlayerService) {
+      controller: ['PlayerService', function(PlayerService) {
         this.PlayerService = PlayerService;
-      }
+      }]
     };
   }
-
 })();
+

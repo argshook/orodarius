@@ -13,7 +13,7 @@
     "postinstall": "bower install",
     "start": "brunch w -s",
     "dev": "brunch w",
-    "prod": "brunch b -P",
+    "prod": "brunch b -p -d",
     "test": "karma start karma.conf.js",
     "test-single": "karma start karma.conf.js --single-run"
   },
