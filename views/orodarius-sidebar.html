@@ -40,7 +40,7 @@
         <div ng-if="sidebarCtrl.lastSubreddits.length">
           <h2>Recent</h2>
           <div class="sidebar-empty__btns">
-            <button ng-repeat="subreddit in sidebarCtrl.lastSubreddits"
+            <button class="sidebar-suggestions__button" ng-repeat="subreddit in sidebarCtrl.lastSubreddits"
               ng-click="sidebarCtrl.fillPlaylistWith(subreddit.name)">r/{{::subreddit.name}}</buttn>
           </div>
           <hr>
