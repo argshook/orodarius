@@ -28,7 +28,7 @@ npm run test-single || { printf "${RED}test failed :(${NC}\n" ; exit 1; }
 printf "${GREEN}done${NC}\n"
 
 printf "Running prod build...\n"
-brunch b -P || { printf "${RED}build failed :(${NC}\n"; exit 1; }
+brunch b -p || { printf "${RED}build failed :(${NC}\n"; exit 1; }
 printf "${GREEN}done${NC}\n"
 
 confirm "Move files and commit to gh-pages? [y/N]" && (
