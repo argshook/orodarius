@@ -2,12 +2,12 @@
   position: absolute;
   display: flex;
   align-items: center;
-  top: 3vh;
-  left: 3vh;
+  top: 5vh;
+  left: 1vh;
   width: 80vw;
   z-index: $zindex-player-overlay;
   padding: 1em;
-  opacity: .5;
+  opacity: .4;
   transition: .2s ease all;
 
   &:hover { opacity: .9; }
@@ -54,7 +54,6 @@
       font-weight: 700;
       line-height: 1.5;
       padding: .3em .2em;
-      /*box-shadow: -10px 0 0 0 transparent, 10px 0 0 0 transparent;*/
       text-transform: uppercase;
       background: transparent;
       text-shadow: 0 1px 1px #222;

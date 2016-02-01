@@ -10,7 +10,7 @@
   width: $width;
   display: flex;
   flex-direction: column;
-  background: rgba(20, 20, 20, 0.7);
+  background: rgba(20, 20, 20, 0.9);
   z-index: $zindex-sidebar;
   transition: .25s ease all;
 
@@ -40,8 +40,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(90deg, transparent 10%, rgba(20, 20, 20, .2) 90%);
-  border-radius: 100% 0 0 100%;
   font-size: 1.5em;
   font-weight: 100;
   color: rgba(255, 255, 255, 0.32);
