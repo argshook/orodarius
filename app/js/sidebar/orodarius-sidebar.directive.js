@@ -7,6 +7,8 @@
         restrict: 'E',
         scope: {},
         templateUrl: 'views/orodarius-sidebar.html',
+        controllerAs: 'sidebarCtrl',
+        bindToController: true,
         controller: function(
           $scope, $http, $timeout, $window,
           PlaylistService, PlayerService, SidebarService, LastSubredditsService,
@@ -69,8 +71,8 @@
             this.isLoading = true;
 
             PlaylistService
-            .expandPlaylist()
-            .finally(() => this.isLoading = false);
+              .expandPlaylist()
+              .finally(() => this.isLoading = false);
           };
 
           this.suggestedSubreddits = [
@@ -104,9 +106,7 @@
           function windowBlurHanlder() {
             $timeout(() => $window.focus(), 100);
           }
-    },
-        controllerAs: 'sidebarCtrl',
-        bindToController: true
+        }
       };
     });
 })();

@@ -3,13 +3,13 @@
     <span class="glyphicon glyphicon-circle-arrow-{{sidebarService.isOpen ? 'right' : 'left'}}"></span>
   </div>
 
-
-  <orodarius-sidebar-head />
+  <orodarius-sidebar-head></orodarius-sidebar-head>
 
   <div class="sidebar-playlist-container">
     <div class="sidebar-playlist" ng-scroll-on="playerService.currentVideoItem">
-      <video-item ng-repeat="item in sidebarCtrl.playlist track by item.ownId"
-                  ng-click="sidebarCtrl.playVideo(item)">
+      <video-item ng-repeat="item in sidebarCtrl.playlist track by $index"
+                  ng-click="sidebarCtrl.playVideo(item)"
+                  video-item="item">
       </video-item>
 
       <div

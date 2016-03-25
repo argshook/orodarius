@@ -5,7 +5,9 @@
     .directive('videoItem', () => {
       return {
         restrict: 'E',
-        scope: true,
+        scope: {
+          item: '=videoItem'
+        },
         templateUrl: 'views/video-item.html'
       };
     });
