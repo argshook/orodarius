@@ -15,10 +15,11 @@ describe('Directive: video-item', function() {
       redditScore: '42',
       subreddit: "videos",
       error: null
-    }
+    },
+    currentSubreddit: 'videos'
   };
 
-  var elementAttrsMock = { 'video-item': 'videoItem' };
+  var elementAttrsMock = { 'video-item': 'videoItem', 'current-subreddit': 'currentSubreddit' };
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));

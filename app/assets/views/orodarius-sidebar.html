@@ -9,7 +9,8 @@
     <div class="sidebar-playlist" ng-scroll-on="playerService.currentVideoItem">
       <video-item ng-repeat="item in sidebarCtrl.playlist track by $index"
                   ng-click="sidebarCtrl.playVideo(item)"
-                  video-item="item">
+                  video-item="item"
+                  current-subreddit="sidebarCtrl.currentSubreddit">
       </video-item>
 
       <div

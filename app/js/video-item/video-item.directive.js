@@ -6,9 +6,15 @@
       return {
         restrict: 'E',
         scope: {
-          item: '=videoItem'
+          item: '=videoItem',
+          currentSubreddit: '=currentSubreddit'
         },
-        templateUrl: 'views/video-item.html'
+        templateUrl: 'views/video-item.html',
+        bindToController: true,
+        controllerAs: '$ctrl',
+        controller: function(PlayerService) {
+          this.playerService = PlayerService;
+        } 
       };
     });
 })();
