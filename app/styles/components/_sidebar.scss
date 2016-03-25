@@ -10,7 +10,7 @@
   width: $width;
   display: flex;
   flex-direction: column;
-  background: rgba(20, 20, 20, 0.9);
+  background: rgba(20, 20, 20, .9);
   z-index: $zindex-sidebar;
   transition: .25s ease all;
 
@@ -96,3 +96,4 @@
 
   a { color: rgba(200, 200, 200, .5); }
 }
+
