@@ -21,7 +21,6 @@
           this.lastSubreddits = LastSubredditsService.getList();
           this.currentSubreddit = '';
           this.isLoading = false;
-          this.settings = SettingsService.list;
           this.lastUpdatedData = {};
           this.playlist = PlaylistService.playlist;
 
@@ -29,41 +28,11 @@
             this.playlist = PlaylistService.playlist;
           });
 
-          this.toggleSidebar = function() {
-            SidebarService.toggle();
-          };
-
-          this.toggleFocusForced = function() {
-            SettingsService.toggle('isFocusForced');
-            $window[(SettingsService.list.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
-          };
-
-          this.toggleStickySidebar = function() {
-            SettingsService.toggle('isSidebarSticky');
-          };
-
           this.playVideo = function(item) {
             PlayerService.playVideo(item);
 
             if(!SettingsService.list.isSidebarSticky) {
               SidebarService.toggle();
-            }
-          };
-
-          this.fillPlaylistWith = function(subreddit) {
-            PlaylistService.clear();
-
-            if(!!subreddit) {
-              this.currentSubreddit = subreddit;
-              this.isLoading = true;
-
-              PlaylistService
-              .fetchSubreddit(subreddit)
-              .then(playlist => {
-                this.isLoading = false;
-                this.playlist = playlist;
-                PlayerService.playVideo(PlaylistService.playlist[0]);
-              });
             }
           };
 
@@ -90,6 +59,23 @@
           if(SettingsService.list.isFocusForced) {
             $window.addEventListener('blur', windowBlurHanlder);
           }
+
+          this.fillPlaylistWith = function(subreddit) {
+            PlaylistService.clear();
+
+            if(!!subreddit) {
+              this.currentSubreddit = subreddit;
+              this.isLoading = true;
+
+              PlaylistService
+              .fetchSubreddit(subreddit)
+              .then(playlist => {
+                this.isLoading = false;
+                this.playlist = playlist;
+                PlayerService.playVideo(PlaylistService.playlist[0]);
+              });
+            }
+          };
 
           this.getLastUpdated = function() {
             $http.get('https://api.github.com/repos/argshook/orodarius/commits/gh-pages')

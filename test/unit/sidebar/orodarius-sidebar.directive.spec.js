@@ -93,15 +93,6 @@ describe('Directive: orodarius-sidebar', function() {
     });
   });
 
-  it('toggleSidebar should toggle isOpen flag', function() {
-    compile(function (scope) {
-      scope.sidebarCtrl.toggleSidebar();
-      expect(scope.sidebarService.isOpen).toBe(false);
-
-      scope.sidebarCtrl.toggleSidebar();
-      expect(scope.sidebarService.isOpen).toBe(true);
-    });
-  });
 
   it('playlistService should contain items from PlaylistService.playlist', function() {
     compile(function (scope) {
@@ -125,15 +116,6 @@ describe('Directive: orodarius-sidebar', function() {
       expect(scope.sidebarService.isOpen).toBe(false);
     });
   }));
-
-  it('isOpen should be true after playVideo has been invoked when isSidebarSticky is true', () => {
-    compile(scope => {
-      scope.sidebarService.isOpen = true;
-      scope.sidebarCtrl.settings.isSidebarSticky = true;
-      scope.sidebarCtrl.playVideo(mockVideoItem);
-      expect(scope.sidebarService.isOpen).toBe(true);
-    });
-  });
 
   describe('fillPlaylistWith()', function() {
     it('should set isLoading to true and back to false after resolve', inject($httpBackend => {
@@ -199,60 +181,6 @@ describe('Directive: orodarius-sidebar', function() {
         }));
       });
     });
-  });
-
-  describe('settings', () => {
-    it('should contain default values', inject(SettingsService => {
-      compile(scope => {
-        expect(scope.sidebarCtrl.settings.isSidebarSticky).toBe(false);
-        expect(scope.sidebarCtrl.settings.isFocusForced).toBe(false);
-      });
-    }));
-  });
-
-  describe('toggleFocusForced method', () => {
-    it('should toggle $scope.isFocusForced when called', inject(SettingsService => {
-      compile(scope => {
-        scope.sidebarCtrl.toggleFocusForced();
-        expect(scope.sidebarCtrl.settings.isFocusForced).toBe(true);
-        scope.sidebarCtrl.toggleFocusForced();
-        expect(scope.sidebarCtrl.settings.isFocusForced).toBe(false);
-      });
-    }));
-
-    it('should attach blur event listener on window when isFocusForced is false', inject($window => {
-      spyOn($window, 'addEventListener');
-      compile(scope => {
-        scope.sidebarCtrl.settings.isFocusForced = false;
-        scope.sidebarCtrl.toggleFocusForced();
-        expect($window.addEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
-      });
-    }));
-
-    it('should remove blur event listener from window when isFocusForced is true', inject(function($window) {
-      spyOn($window, 'removeEventListener');
-      compile(function (scope) {
-        scope.sidebarCtrl.settings.isFocusForced = true;
-        scope.sidebarCtrl.toggleFocusForced();
-        expect($window.removeEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
-      });
-    }));
-  });
-
-  describe('toggleStickySidebar()', function() {
-    it('should be defined on controller', function () {
-      compile(scope => {
-        expect(typeof scope.sidebarCtrl.toggleStickySidebar).toBe('function');
-      });
-    });
-
-    it('should toggle isSidebarSticky property using SettingsService', inject(SettingsService => {
-      compile(scope => {
-        spyOn(SettingsService, 'toggle').and.callThrough();
-        scope.sidebarCtrl.toggleStickySidebar();
-        expect(SettingsService.toggle).toHaveBeenCalledWith('isSidebarSticky');
-      });
-    }));
   });
 
   describe('getLastUpdated method', function() {
