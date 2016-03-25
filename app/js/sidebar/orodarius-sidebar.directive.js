@@ -9,11 +9,7 @@
         templateUrl: 'views/orodarius-sidebar.html',
         controllerAs: 'sidebarCtrl',
         bindToController: true,
-        controller: function(
-          $scope, $http, $timeout, $window,
-          PlaylistService, PlayerService, SidebarService, LastSubredditsService,
-          SettingsService
-        ) {
+        controller: function($scope, $http, PlaylistService, PlayerService, SidebarService, LastSubredditsService, SettingsService) {
           // TODO: shouldn't expose the whole service just the parts needed.
           $scope.sidebarService = SidebarService;
           $scope.playerService = PlayerService;
@@ -56,10 +52,6 @@
 
           this.isListItemCurrentlyPlayed = item => item.videoId === PlayerService.currentVideoItem.videoId;
 
-          if(SettingsService.list.isFocusForced) {
-            $window.addEventListener('blur', windowBlurHanlder);
-          }
-
           this.fillPlaylistWith = function(subreddit) {
             PlaylistService.clear();
 
@@ -87,11 +79,6 @@
           };
 
           this.getLastUpdated();
-
-          // TODO: need better implementation for firefox. and maybe other browsers
-          function windowBlurHanlder() {
-            $timeout(() => $window.focus(), 100);
-          }
         }
       };
     });

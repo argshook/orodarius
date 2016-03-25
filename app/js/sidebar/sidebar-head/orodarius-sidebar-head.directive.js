@@ -9,7 +9,7 @@
         scope: {},
         templateUrl: 'views/orodarius-sidebar-head.html',
         controllerAs: 'orodariusSidebarHead',
-        controller: function(SettingsService, PlaylistService, PlayerService, SidebarService, $window) {
+        controller: function(SettingsService, PlaylistService, PlayerService, SidebarService, $window, $timeout) {
           this.sidebarService = SidebarService;
           this.settings = SettingsService.list;
 
