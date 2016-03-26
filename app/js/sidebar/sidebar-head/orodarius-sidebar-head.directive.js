@@ -43,7 +43,6 @@
             $window[(SettingsService.list.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
           };
 
-          var flashModeInterval;
           this.toggleFlashMode = function() {
             SettingsService.toggle('isFlashModeEnabled');
           }
