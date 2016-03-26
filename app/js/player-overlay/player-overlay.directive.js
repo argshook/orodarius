@@ -10,7 +10,7 @@
       restrict: 'E',
       scope: false,
       templateUrl: 'views/player-overlay.html',
-      controllerAs: 'vm',
+      controllerAs: '$ctrl',
       controller: ['PlayerService', function(PlayerService) {
         this.PlayerService = PlayerService;
       }]
