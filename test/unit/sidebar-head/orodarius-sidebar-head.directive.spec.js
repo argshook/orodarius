@@ -1,6 +1,6 @@
 'use srict';
 
-describe('Directive: $ctrl', function() {
+describe('Directive: orodariusSidebarHead', function() {
   var compile;
 
   beforeEach(module('orodarius.templates'));

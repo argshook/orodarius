@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: orodarius-sidebar', function() {
+describe('Directive: orodariusSidebar', function() {
   var compile;
 
   beforeEach(module('orodarius.templates'));
