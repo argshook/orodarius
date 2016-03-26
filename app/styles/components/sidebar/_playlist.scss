@@ -1,11 +1,13 @@
 .sidebar-playlist-container {
   flex: 1 1 auto;
   overflow: auto;
+  padding-top: $sidebar-heading-height;
+
+  &--loading { @extend %loading-modifier; }
 }
 
 .sidebar-playlist {
   overflow-y: auto;
-  margin-top: $sidebar-heading-height;
 
   .list-group-item {
     padding: 1em;
@@ -174,16 +176,18 @@
 
     &:hover { background-color: rgba(255, 255, 255, .1); }
 
-    &__loading {
-      background-image: repeating-linear-gradient(
-                          -20deg,
-                          rgba(0, 0, 0, 0.2) 0,
-                          fade-out(orange, .9) 3%);
-      background-position-x: 100%;
-      background-size: 300%;
-      animation: animateSidebarExpandBtnGradient 10s linear infinite;
-    }
+    &--loading { @extend %loading-modifier; }
   }
+}
+
+%loading-modifier {
+  background-image: repeating-linear-gradient(
+  -20deg,
+  rgba(0, 0, 0, 0.2) 0,
+  fade-out(orange, .9) 3%);
+  background-position-x: 100%;
+  background-size: 300%;
+  animation: animateSidebarExpandBtnGradient 10s linear infinite;
 }
 
 @keyframes animateSidebarExpandBtnGradient {
@@ -191,3 +195,4 @@
     background-position-x: 0;
   }
 }
+

@@ -172,16 +172,5 @@ describe('Directive: orodarius-sidebar', function() {
       expect(typeof scope.sidebarCtrl.currentSubreddit).toBe('string');
     });
   });
-
-  describe('suggested subreddits', function() {
-    it('should contain at least 4 items of certain structure', function() {
-      compile(function (scope) {
-        expect(scope.sidebarCtrl.suggestedSubreddits.length).toBeGreaterThan(3);
-        expect(scope.sidebarCtrl.suggestedSubreddits[0]).toEqual(jasmine.objectContaining({
-          name: 'videos'
-        }));
-      });
-    });
-  });
 });
 

@@ -9,8 +9,7 @@
         scope: {},
         templateUrl: 'views/orodarius-sidebar-foot.html',
         controllerAs: '$ctrl',
-        controller: function(LastSubredditsService, $http) {
-          this.lastSubreddits = LastSubredditsService.getList();
+        controller: function($http) {
           this.lastUpdatedData = {};
 
           this.getLastUpdated = function() {

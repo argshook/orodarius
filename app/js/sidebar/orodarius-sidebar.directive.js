@@ -38,16 +38,6 @@
               .then(() =>  this.isLoading = false);
           };
 
-          this.suggestedSubreddits = [
-            { name: 'videos' },
-            { name: 'youtubehaiku' },
-            { name: 'artisanvideos' },
-            { name: 'listentothis' },
-            { name: 'gamephysics' },
-            { name: 'music' },
-            { name: 'videos+youtubehaiku' }
-          ];
-
           this.isListItemCurrentlyPlayed = item => item.videoId === PlayerService.currentVideoItem.videoId;
 
           this.fillPlaylistWith = function(subreddit) {

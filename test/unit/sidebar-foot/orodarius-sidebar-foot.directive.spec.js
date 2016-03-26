@@ -43,12 +43,5 @@ describe('Directive: orodariusSidebarFoot', function() {
     }));
   });
 
-  describe('lastSubreddits property', function() {
-    it('should be defined', function() {
-      compile(function (scope) {
-        expect(_.isArray(scope.$ctrl.lastSubreddits)).toBe(true);
-      });
-    });
-  });
 });
 

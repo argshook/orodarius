@@ -1,30 +1,11 @@
 // when playlist contains no items, this item is shown
-.sidebar-empty {
+.orodarius-sidebar-empty {
   text-align: center;
   padding: 1em 0;
   font-weight: 100;
   color: rgba(255, 255, 255, .6);
 
-  h2 {
-    margin: 1em 0;
-  }
-
-  &.loading {
-    position: relative;
-
-    &:after {
-      position: absolute;
-      content: ' ';
-      top: 0; right: 0; bottom: 0; left: 0;
-      background-image: repeating-linear-gradient(
-                          -20deg,
-                          rgba(0, 0, 0, 0.2) 0,
-                          fade-out(orange, .9) 3%);
-      background-position-x: 100%;
-      background-size: 300%;
-      animation: animateSidebarExpandBtnGradient 10s linear infinite;
-    }
-  }
+  h2 { margin: 1em 0; }
 }
 
 .sidebar-suggestions {
