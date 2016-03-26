@@ -1,6 +1,6 @@
 'use srict';
 
-describe('Directive: orodariusSidebarHead', function() {
+describe('Directive: $ctrl', function() {
   var compile;
 
   beforeEach(module('orodarius.templates'));
@@ -17,25 +17,25 @@ describe('Directive: orodariusSidebarHead', function() {
 
   it('toggleSidebar should toggle isOpen flag', inject(SidebarService => {
     compile(scope => {
-      scope.orodariusSidebarHead.toggleSidebar();
-      expect(scope.orodariusSidebarHead.sidebarService.isOpen).toBe(false);
+      scope.$ctrl.toggleSidebar();
+      expect(scope.$ctrl.sidebarService.isOpen).toBe(false);
 
-      scope.orodariusSidebarHead.toggleSidebar();
-      expect(scope.orodariusSidebarHead.sidebarService.isOpen).toBe(true);
+      scope.$ctrl.toggleSidebar();
+      expect(scope.$ctrl.sidebarService.isOpen).toBe(true);
     });
   }));
 
   describe('toggleStickySidebar()', function() {
     it('should be defined on controller', function () {
       compile(scope => {
-        expect(typeof scope.orodariusSidebarHead.toggleStickySidebar).toBe('function');
+        expect(typeof scope.$ctrl.toggleStickySidebar).toBe('function');
       });
     });
 
     it('should toggle isSidebarSticky property using SettingsService', inject(SettingsService => {
       compile(scope => {
         spyOn(SettingsService, 'toggle').and.callThrough();
-        scope.orodariusSidebarHead.toggleStickySidebar();
+        scope.$ctrl.toggleStickySidebar();
         expect(SettingsService.toggle).toHaveBeenCalledWith('isSidebarSticky');
       });
     }));
@@ -44,18 +44,18 @@ describe('Directive: orodariusSidebarHead', function() {
   describe('toggleFocusForced method', () => {
     it('should toggle $scope.isFocusForced when called', inject(SettingsService => {
       compile(scope => {
-        scope.orodariusSidebarHead.toggleFocusForced();
-        expect(scope.orodariusSidebarHead.settings.isFocusForced).toBe(true);
-        scope.orodariusSidebarHead.toggleFocusForced();
-        expect(scope.orodariusSidebarHead.settings.isFocusForced).toBe(false);
+        scope.$ctrl.toggleFocusForced();
+        expect(scope.$ctrl.settings.isFocusForced).toBe(true);
+        scope.$ctrl.toggleFocusForced();
+        expect(scope.$ctrl.settings.isFocusForced).toBe(false);
       });
     }));
 
     it('should attach blur event listener on window when isFocusForced is false', inject($window => {
       spyOn($window, 'addEventListener');
       compile(scope => {
-        scope.orodariusSidebarHead.settings.isFocusForced = false;
-        scope.orodariusSidebarHead.toggleFocusForced();
+        scope.$ctrl.settings.isFocusForced = false;
+        scope.$ctrl.toggleFocusForced();
         expect($window.addEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
       });
     }));
@@ -63,8 +63,8 @@ describe('Directive: orodariusSidebarHead', function() {
     it('should remove blur event listener from window when isFocusForced is true', inject(function($window) {
       spyOn($window, 'removeEventListener');
       compile(function (scope) {
-        scope.orodariusSidebarHead.settings.isFocusForced = true;
-        scope.orodariusSidebarHead.toggleFocusForced();
+        scope.$ctrl.settings.isFocusForced = true;
+        scope.$ctrl.toggleFocusForced();
         expect($window.removeEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
       });
     }));
@@ -74,8 +74,8 @@ describe('Directive: orodariusSidebarHead', function() {
     it('should contain default values', inject(SettingsService => {
       SettingsService.list.isSidebarSticky = false;
       compile(scope => {
-        expect(scope.orodariusSidebarHead.settings.isSidebarSticky).toBe(false);
-        expect(scope.orodariusSidebarHead.settings.isFocusForced).toBe(false);
+        expect(scope.$ctrl.settings.isSidebarSticky).toBe(false);
+        expect(scope.$ctrl.settings.isFocusForced).toBe(false);
       });
     }));
   });
@@ -84,7 +84,7 @@ describe('Directive: orodariusSidebarHead', function() {
     it('should call SettingsService.toggle', inject(SettingsService => {
       spyOn(SettingsService, 'toggle');
       compile(scope => {
-        scope.orodariusSidebarHead.toggleFlashMode();
+        scope.$ctrl.toggleFlashMode();
         expect(SettingsService.toggle).toHaveBeenCalledWith('isFlashModeEnabled');
       });
     }));
@@ -94,10 +94,10 @@ describe('Directive: orodariusSidebarHead', function() {
     spyOn(PlayerService, 'playVideo');
 
     compile(scope => {
-      scope.orodariusSidebarHead.sidebarService.isOpen = true;
-      scope.orodariusSidebarHead.settings.isSidebarSticky = true;
+      scope.$ctrl.sidebarService.isOpen = true;
+      scope.$ctrl.settings.isSidebarSticky = true;
       PlayerService.playVideo();
-      expect(scope.orodariusSidebarHead.sidebarService.isOpen).toBe(true);
+      expect(scope.$ctrl.sidebarService.isOpen).toBe(true);
     });
   }));
 });

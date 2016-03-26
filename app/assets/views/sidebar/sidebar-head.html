@@ -2,10 +2,10 @@
   <h1>Subreddit TV</h1>
 
   <div class="sidebar-heading__checkbox-container">
-    <span ng-class="{active: orodariusSidebarHead.settings.isSidebarSticky}" class="glyphicon glyphicon-lock" ng-click="orodariusSidebarHead.toggleStickySidebar()"></span>
-    <span ng-class="{active: orodariusSidebarHead.settings.isFocusModeForced}" class="glyphicon glyphicon-magnet" ng-click="orodariusSidebarHead.toggleFocusForced()"></span>
-    <span ng-class="{active: orodariusSidebarHead.settings.isFlashModeEnabled}" class="glyphicon glyphicon-flash"
-      ng-click="orodariusSidebarHead.toggleFlashMode()"></span>
+    <span ng-class="{active: $ctrl.settings.isSidebarSticky}" class="glyphicon glyphicon-lock" ng-click="$ctrl.toggleStickySidebar()"></span>
+    <span ng-class="{active: $ctrl.settings.isFocusModeForced}" class="glyphicon glyphicon-magnet" ng-click="$ctrl.toggleFocusForced()"></span>
+    <span ng-class="{active: $ctrl.settings.isFlashModeEnabled}" class="glyphicon glyphicon-flash"
+      ng-click="$ctrl.toggleFlashMode()"></span>
   </div>
 
   <div class="sidebar-now-playing">
@@ -14,12 +14,12 @@
     <input
       type="text"
       class="sidebar-now-playing-input"
-      ng-enter="orodariusSidebarHead.fillPlaylistWith(orodariusSidebarHead.currentSubreddit)"
+      ng-enter="$ctrl.fillPlaylistWith($ctrl.currentSubreddit)"
       ng-enter-options="{blurOnEnter: true}"
-      ng-model="orodariusSidebarHead.currentSubreddit" />
+      ng-model="$ctrl.currentSubreddit" />
 
-    <button class="sidebar-now-playing-btn" ng-click="orodariusSidebarHead.fillPlaylistWith(orodariusSidebarHead.currentSubreddit)">
-      <span class="glyphicon glyphicon-search" ng-class="{loading: orodariusSidebarHead.isLoading}"></span>
+    <button class="sidebar-now-playing-btn" ng-click="$ctrl.fillPlaylistWith($ctrl.currentSubreddit)">
+      <span class="glyphicon glyphicon-search" ng-class="{loading: $ctrl.isLoading}"></span>
     </button>
   </div>
 </div>
