@@ -6,32 +6,19 @@
     .directive('orodariusSidebarHead', function() {
       return {
         restrict: 'E',
-        scope: {},
+        scope: {
+          onSearchStart: '&',
+          isLoading: '='
+        },
         templateUrl: 'views/sidebar/sidebar-head.html',
+        bindToController: true,
         controllerAs: '$ctrl',
-        controller: function(SettingsService, PlaylistService, PlayerService, SidebarService, $window, $timeout, $interval) {
+        controller: function(SettingsService, SidebarService, $window, $timeout) {
           this.sidebarService = SidebarService;
           this.settings = SettingsService.list;
 
           this.toggleStickySidebar = function() {
             SettingsService.toggle('isSidebarSticky');
-          };
-
-          this.fillPlaylistWith = function(subreddit) {
-            PlaylistService.clear();
-
-            if(!!subreddit) {
-              this.currentSubreddit = subreddit;
-              this.isLoading = true;
-
-              PlaylistService
-              .fetchSubreddit(subreddit)
-              .then(playlist => {
-                this.isLoading = false;
-                this.playlist = playlist;
-                PlayerService.playVideo(PlaylistService.playlist[0]);
-              });
-            }
           };
 
           this.toggleSidebar = function() {

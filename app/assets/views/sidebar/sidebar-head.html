@@ -14,11 +14,11 @@
     <input
       type="text"
       class="sidebar-now-playing-input"
-      ng-enter="$ctrl.fillPlaylistWith($ctrl.currentSubreddit)"
+      ng-enter="$ctrl.onSearchStart({ subreddit: $ctrl.currentSubreddit })"
       ng-enter-options="{blurOnEnter: true}"
       ng-model="$ctrl.currentSubreddit" />
 
-    <button class="sidebar-now-playing-btn" ng-click="$ctrl.fillPlaylistWith($ctrl.currentSubreddit)">
+    <button class="sidebar-now-playing-btn" ng-click="$ctrl.onSearchStart({ subreddit: $ctrl.currentSubreddit })">
       <span class="glyphicon glyphicon-search" ng-class="{loading: $ctrl.isLoading}"></span>
     </button>
   </div>

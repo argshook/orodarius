@@ -42,6 +42,5 @@ describe('Directive: orodariusSidebarFoot', function() {
       });
     }));
   });
-
 });
 

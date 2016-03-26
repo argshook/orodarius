@@ -100,5 +100,37 @@ describe('Directive: orodariusSidebarHead', function() {
       expect(scope.$ctrl.sidebarService.isOpen).toBe(true);
     });
   }));
+
+  describe('when search icon clicked', () => {
+    it('should call parentScope.onSearchStart with correct subreddit', () => {
+      let parentScope = { onSearchStart: jasmine.createSpy() };
+
+      compile(parentScope, { 'on-search-start': 'onSearchStart(subreddit)'}, (scope, element) => {
+        scope.$ctrl.currentSubreddit = 'expected sub';
+        element.find('.sidebar-now-playing-btn').click();
+        expect(parentScope.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
+      });
+    });
+  });
+
+  describe('when focused input received enter key press', () => {
+    it('should call parentScope.onSearchStart with correct subreddit', () => {
+      let parentScope = { onSearchStart: jasmine.createSpy() };
+
+      compile(parentScope, { 'on-search-start': 'onSearchStart(subreddit)'}, (scope, element) => {
+        scope.$ctrl.currentSubreddit = 'expected sub';
+        element.find('.sidebar-now-playing-input').triggerHandler({ type: 'keypress', which: 13 });
+        scope.$digest();
+        expect(parentScope.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
+      });
+    });
+  });
+
+  it('should receive isLoading from attribute', () => {
+    let parentScope = { isLoading: true };
+    compile(parentScope, { 'is-loading': parentScope.isLoading }, scope => {
+      expect(scope.$ctrl.isLoading).toBe(parentScope.isLoading);
+    });
+  });
 });
 

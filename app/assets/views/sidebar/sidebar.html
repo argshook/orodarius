@@ -3,7 +3,10 @@
     <span class="glyphicon glyphicon-circle-arrow-{{sidebarService.isOpen ? 'right' : 'left'}}"></span>
   </div>
 
-  <orodarius-sidebar-head></orodarius-sidebar-head>
+  <orodarius-sidebar-head
+    on-search-start="$ctrl.fillPlaylistWith(subreddit)"
+    is-loading="$ctrl.isLoading"
+    ></orodarius-sidebar-head>
 
   <div
     class="sidebar-playlist-container"
