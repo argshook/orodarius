@@ -3,7 +3,9 @@
 
   <div class="sidebar-heading__checkbox-container">
     <span ng-class="{active: orodariusSidebarHead.settings.isSidebarSticky}" class="glyphicon glyphicon-lock" ng-click="orodariusSidebarHead.toggleStickySidebar()"></span>
-    <span ng-class="{active: orodariusSidebarHead.settings.isFocusForced}" class="glyphicon glyphicon-magnet" ng-click="orodariusSidebarHead.toggleFocusForced()"></span>
+    <span ng-class="{active: orodariusSidebarHead.settings.isFocusModeForced}" class="glyphicon glyphicon-magnet" ng-click="orodariusSidebarHead.toggleFocusForced()"></span>
+    <span ng-class="{active: orodariusSidebarHead.settings.isFlashModeEnabled}" class="glyphicon glyphicon-flash"
+      ng-click="orodariusSidebarHead.toggleFlashMode()"></span>
   </div>
   <div class="sidebar-now-playing">
     <span class="sidebar-now-playing-label">Now playing:</span>

@@ -80,6 +80,16 @@ describe('Directive: orodariusSidebarHead', function() {
     }));
   });
 
+  describe('toggleFlashMode()', function() {
+    it('should call SettingsService.toggle', inject(SettingsService => {
+      spyOn(SettingsService, 'toggle');
+      compile(scope => {
+        scope.orodariusSidebarHead.toggleFlashMode();
+        expect(SettingsService.toggle).toHaveBeenCalledWith('isFlashModeEnabled');
+      });
+    }));
+  });
+
   it('isOpen should be true after PlayerService.playVideo has been invoked when isSidebarSticky is true', inject(PlayerService => {
     spyOn(PlayerService, 'playVideo');
 
@@ -90,6 +100,5 @@ describe('Directive: orodariusSidebarHead', function() {
       expect(scope.orodariusSidebarHead.sidebarService.isOpen).toBe(true);
     });
   }));
-
 });
 

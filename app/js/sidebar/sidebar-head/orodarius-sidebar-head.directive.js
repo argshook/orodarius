@@ -9,7 +9,7 @@
         scope: {},
         templateUrl: 'views/orodarius-sidebar-head.html',
         controllerAs: 'orodariusSidebarHead',
-        controller: function(SettingsService, PlaylistService, PlayerService, SidebarService, $window, $timeout) {
+        controller: function(SettingsService, PlaylistService, PlayerService, SidebarService, $window, $timeout, $interval) {
           this.sidebarService = SidebarService;
           this.settings = SettingsService.list;
 
@@ -43,6 +43,10 @@
             $window[(SettingsService.list.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
           };
 
+          var flashModeInterval;
+          this.toggleFlashMode = function() {
+            SettingsService.toggle('isFlashModeEnabled');
+          }
 
           if(SettingsService.list.isFocusForced) {
             $window.addEventListener('blur', windowBlurHanlder);

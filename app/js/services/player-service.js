@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlayerService', function($window, $timeout, PlaylistService) {
+    .service('PlayerService', function($window, $timeout, PlaylistService, SettingsService) {
       this.youtubePlayer = null; // youtube iframe api instance
       this.isPlaying = false;
       this.currentVideoItem = {};
@@ -37,7 +37,7 @@
 
         this.youtubePlayer.addEventListener('onReady', onPlayerReady.bind(this));
         this.youtubePlayer.addEventListener('onError', onPlayerError.bind(this));
-        this.youtubePlayer.addEventListener('onStateChange', onPlayerStateChange.bind(this));
+        this.youtubePlayer.addEventListener('onStateChange', this.onPlayerStateChange.bind(this));
 
         return this.youtubePlayer;
       };
@@ -94,11 +94,7 @@
         this.currentVideoItem = undefined;
       };
 
-      function onPlayerReady() {
-        // player.playVideo();
-      }
-
-      function onPlayerStateChange(event) {
+      this.onPlayerStateChange = function(event) {
         // event.data holds event type, one of the following:
         // -1 (unstarted)
         // 0 (ended)
@@ -107,10 +103,19 @@
         // 3 (buffering)
         // 5 (video cued).
 
+        if(SettingsService.list.isFlashModeEnabled && event.data === 1) {
+          $timeout(() => {
+            this.playNext();
+          }, 5000)
+        }
         // if event is 0 (ended), play another video.
         if (event.data === 0) {
           this.playNext();
         }
+      }
+
+      function onPlayerReady() {
+        // player.playVideo();
       }
 
       function onPlayerError(event) {

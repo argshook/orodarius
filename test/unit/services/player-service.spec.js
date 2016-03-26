@@ -162,4 +162,15 @@ describe('Service: PlayerService', function() {
       expect(PlaylistService.playlist[0].error).toEqual({ code: 150, message: err101and150msg });
     });
   });
+
+  describe('onPlayerStateChange()', () => {
+    describe('when called with event.data === 0 and isFlashModeEnabled === true', () => {
+      it('should call playNext after 5 seconds', inject((SettingsService, $timeout) => {
+        SettingsService.list.isFlashModeEnabled = true;
+        spyOn(service, 'playNext');
+        service.onPlayerStateChange({ data: 0 });
+        expect(service.playNext).toHaveBeenCalled();
+      }));
+    });
+  });
 });
