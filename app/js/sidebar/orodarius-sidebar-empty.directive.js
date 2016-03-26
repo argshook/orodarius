@@ -9,7 +9,7 @@
         scope: {
           onSubredditClick: '&'
         },
-        templateUrl: 'views/orodarius-sidebar-empty.html',
+        templateUrl: 'views/sidebar/sidebar-empty.html',
         bindToController: true,
         controllerAs: '$ctrl',
         controller: function(LastSubredditsService) {

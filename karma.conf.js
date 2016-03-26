@@ -24,6 +24,7 @@ module.exports = function(karma) {
       '../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
       '../node_modules/ng-directive-compiler-helper/lib/ng-directive-compiler-helper.js',
       '../app/assets/views/**.html',
+      '../app/assets/views/*/**.html',
 
       '../app/js/**/*.js',
 

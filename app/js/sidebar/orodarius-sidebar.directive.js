@@ -6,7 +6,7 @@
       return {
         restrict: 'E',
         scope: {},
-        templateUrl: 'views/orodarius-sidebar.html',
+        templateUrl: 'views/sidebar/sidebar.html',
         controllerAs: 'sidebarCtrl',
         bindToController: true,
         controller: function($scope, PlaylistService, PlayerService, SidebarService, SettingsService) {

@@ -7,7 +7,7 @@
       return {
         restrict: 'E',
         scope: {},
-        templateUrl: 'views/orodarius-sidebar-foot.html',
+        templateUrl: 'views/sidebar/sidebar-foot.html',
         controllerAs: '$ctrl',
         controller: function($http) {
           this.lastUpdatedData = {};

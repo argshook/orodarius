@@ -7,7 +7,7 @@
       return {
         restrict: 'E',
         scope: {},
-        templateUrl: 'views/orodarius-sidebar-head.html',
+        templateUrl: 'views/sidebar/sidebar-head.html',
         controllerAs: 'orodariusSidebarHead',
         controller: function(SettingsService, PlaylistService, PlayerService, SidebarService, $window, $timeout, $interval) {
           this.sidebarService = SidebarService;
