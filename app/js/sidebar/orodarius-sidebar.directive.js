@@ -9,15 +9,13 @@
         templateUrl: 'views/orodarius-sidebar.html',
         controllerAs: 'sidebarCtrl',
         bindToController: true,
-        controller: function($scope, $http, PlaylistService, PlayerService, SidebarService, LastSubredditsService, SettingsService) {
+        controller: function($scope, PlaylistService, PlayerService, SidebarService, SettingsService) {
           // TODO: shouldn't expose the whole service just the parts needed.
           $scope.sidebarService = SidebarService;
           $scope.playerService = PlayerService;
 
-          this.lastSubreddits = LastSubredditsService.getList();
           this.currentSubreddit = '';
           this.isLoading = false;
-          this.lastUpdatedData = {};
           this.playlist = PlaylistService.playlist;
 
           PlaylistService.subscribePlaylist(() => {
@@ -37,7 +35,7 @@
 
             PlaylistService
               .expandPlaylist()
-              .finally(() => this.isLoading = false);
+              .then(() =>  this.isLoading = false);
           };
 
           this.suggestedSubreddits = [
@@ -68,17 +66,6 @@
               });
             }
           };
-
-          this.getLastUpdated = function() {
-            $http.get('https://api.github.com/repos/argshook/orodarius/commits/gh-pages')
-            .then(data => this.lastUpdatedData = {
-              url: data.data.html_url,
-              date: data.data.commit.author.date,
-              message: data.data.commit.message
-            });
-          };
-
-          this.getLastUpdated();
         }
       };
     });

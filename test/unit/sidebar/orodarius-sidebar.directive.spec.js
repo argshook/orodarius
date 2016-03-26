@@ -4,16 +4,12 @@ describe('Directive: orodarius-sidebar', function() {
   var compile;
 
   beforeEach(module('orodarius.templates'));
-  beforeEach(module('orodarius'));
+  beforeEach(module('orodarius', $provide => {
+    $provide.factory('orodariusSidebarFootDirective', () => { return {}; });
+  }));
 
   beforeEach(inject(function($compile, $rootScope, $httpBackend, PlaylistService) {
     compile = createCompiler('<orodarius-sidebar />', $rootScope, $compile);
-
-    $httpBackend.whenGET(/api\.github\.com/).respond(200, {});
-
-    var githubMock = '{"html_url": "htmlUrl.com", "commit": { "author": { "date": "123" }, "message": "hello" }}';
-    $httpBackend.expectGET('https://api.github.com/repos/argshook/orodarius/commits/gh-pages')
-      .respond(200, githubMock);
 
     PlaylistService.add(mockVideoItem);
     PlaylistService.add(mockVideoItem);
@@ -34,13 +30,18 @@ describe('Directive: orodarius-sidebar', function() {
   });
 
   describe('expandPlaylist()', function() {
-    it('should call playlistService.expandPlaylist()', inject(function($httpBackend) {
-      compile(function (scope) {
-        spyOn(scope.sidebarCtrl, 'expandPlaylist').and.callThrough();
+    it('should set isLoading to true and back to false when PlaylistService.expandPlaylist resolves', inject((PlaylistService, $q) => {
+      let promise = $q.defer();
+      spyOn(PlaylistService, 'expandPlaylist').and.callFake(() => {
+        return promise.promise;
+      });
 
+      compile(function (scope) {
         scope.sidebarCtrl.expandPlaylist();
         expect(scope.sidebarCtrl.isLoading).toBe(true);
-        $httpBackend.flush();
+        promise.resolve();
+        scope.$digest();
+        expect(PlaylistService.expandPlaylist).toHaveBeenCalled();
         expect(scope.sidebarCtrl.isLoading).toBe(false);
       });
     }));
@@ -179,35 +180,6 @@ describe('Directive: orodarius-sidebar', function() {
         expect(scope.sidebarCtrl.suggestedSubreddits[0]).toEqual(jasmine.objectContaining({
           name: 'videos'
         }));
-      });
-    });
-  });
-
-  describe('getLastUpdated method', function() {
-    it('should be defined', function() {
-      compile(function (scope) {
-        expect(scope.sidebarCtrl.getLastUpdated).toBeDefined();
-      });
-    });
-
-    it('should return string from github API call', inject(function($httpBackend) {
-      compile(function (scope) {
-        // request mocked in before each somewhere at the top
-        $httpBackend.flush();
-
-        expect(scope.sidebarCtrl.lastUpdatedData).toEqual({
-          url: "htmlUrl.com",
-          date: "123",
-          message: "hello"
-        });
-      });
-    }));
-  });
-
-  describe('lastSubreddits property', function() {
-    it('should be defined', function() {
-      compile(function (scope) {
-        expect(_.isArray(scope.sidebarCtrl.lastSubreddits)).toBe(true);
       });
     });
   });
