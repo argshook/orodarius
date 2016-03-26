@@ -24,7 +24,7 @@ describe('Directive: orodarius-sidebar', function() {
   describe('isLoading', function() {
     it('should be exposed as controller variable and set to false', function() {
       compile(function (scope) {
-        expect(scope.sidebarCtrl.isLoading).toBe(false);
+        expect(scope.$ctrl.isLoading).toBe(false);
       });
     });
   });
@@ -37,12 +37,12 @@ describe('Directive: orodarius-sidebar', function() {
       });
 
       compile(function (scope) {
-        scope.sidebarCtrl.expandPlaylist();
-        expect(scope.sidebarCtrl.isLoading).toBe(true);
+        scope.$ctrl.expandPlaylist();
+        expect(scope.$ctrl.isLoading).toBe(true);
         promise.resolve();
         scope.$digest();
         expect(PlaylistService.expandPlaylist).toHaveBeenCalled();
-        expect(scope.sidebarCtrl.isLoading).toBe(false);
+        expect(scope.$ctrl.isLoading).toBe(false);
       });
     }));
   });
@@ -52,7 +52,7 @@ describe('Directive: orodarius-sidebar', function() {
       it('should return true', inject(function(PlayerService) {
         compile(function (scope) {
           PlayerService.currentVideoItem.videoId = 1;
-          expect(scope.sidebarCtrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(true);
+          expect(scope.$ctrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(true);
         });
       }));
     });
@@ -61,7 +61,7 @@ describe('Directive: orodarius-sidebar', function() {
       it('should return true', inject(function(PlayerService) {
         compile(function (scope) {
           PlayerService.currentVideoItem.videoId = 2;
-          expect(scope.sidebarCtrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(false);
+          expect(scope.$ctrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(false);
         });
       }));
     });
@@ -72,7 +72,7 @@ describe('Directive: orodarius-sidebar', function() {
       it('should return true', inject(function(PlayerService) {
         compile(function (scope) {
           PlayerService.currentVideoItem.videoId = 1;
-          expect(scope.sidebarCtrl.isListItemCurrentlyPlayed(({ videoId: 1 }))).toBe(true);
+          expect(scope.$ctrl.isListItemCurrentlyPlayed(({ videoId: 1 }))).toBe(true);
         });
       }));
     });
@@ -81,7 +81,7 @@ describe('Directive: orodarius-sidebar', function() {
       it('should return true', inject(function(PlayerService) {
         compile(function (scope) {
           PlayerService.currentVideoItem.videoId = 2;
-          expect(scope.sidebarCtrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(false);
+          expect(scope.$ctrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(false);
         });
       }));
     });
@@ -97,14 +97,14 @@ describe('Directive: orodarius-sidebar', function() {
 
   it('playlistService should contain items from PlaylistService.playlist', function() {
     compile(function (scope) {
-      expect(scope.sidebarCtrl.playlist).toEqual([mockVideoItem, mockVideoItem]);
+      expect(scope.$ctrl.playlist).toEqual([mockVideoItem, mockVideoItem]);
     });
   });
 
   it('playVideo method should tell PlayerService to play video', inject(PlayerService => {
     spyOn(PlayerService, 'playVideo');
     compile(scope => {
-      scope.sidebarCtrl.playVideo(mockVideoItem);
+      scope.$ctrl.playVideo(mockVideoItem);
       expect(PlayerService.playVideo).toHaveBeenCalledWith(mockVideoItem);
     });
   }));
@@ -113,7 +113,7 @@ describe('Directive: orodarius-sidebar', function() {
     SettingsService.list.isSidebarSticky = false;
     compile(scope => {
       scope.sidebarService.isOpen = true;
-      scope.sidebarCtrl.playVideo(mockVideoItem);
+      scope.$ctrl.playVideo(mockVideoItem);
       expect(scope.sidebarService.isOpen).toBe(false);
     });
   }));
@@ -122,20 +122,20 @@ describe('Directive: orodarius-sidebar', function() {
     it('should set isLoading to true and back to false after resolve', inject($httpBackend => {
       compile(scope => {
         $httpBackend.whenGET(/whatever/).respond(200, REDDIT);
-        expect(scope.sidebarCtrl.isLoading).toBe(false);
+        expect(scope.$ctrl.isLoading).toBe(false);
 
-        scope.sidebarCtrl.fillPlaylistWith('whatever');
-        expect(scope.sidebarCtrl.isLoading).toBe(true);
+        scope.$ctrl.fillPlaylistWith('whatever');
+        expect(scope.$ctrl.isLoading).toBe(true);
 
         $httpBackend.flush();
-        expect(scope.sidebarCtrl.isLoading).toBe(false);
+        expect(scope.$ctrl.isLoading).toBe(false);
       });
     }));
 
     it('should fill sidebar.list with fetched items from reddit', inject(PlaylistService => {
       compile(scope => {
         spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({then: angular.noop});
-        scope.sidebarCtrl.fillPlaylistWith('artisanvideos');
+        scope.$ctrl.fillPlaylistWith('artisanvideos');
         expect(PlaylistService.fetchSubreddit).toHaveBeenCalledWith('artisanvideos');
       });
     }));
@@ -143,7 +143,7 @@ describe('Directive: orodarius-sidebar', function() {
     it('should clear playlist', inject(PlaylistService => {
       compile(scope => {
         spyOn(PlaylistService, 'clear');
-        scope.sidebarCtrl.fillPlaylistWith('videos');
+        scope.$ctrl.fillPlaylistWith('videos');
         expect(PlaylistService.clear).toHaveBeenCalled();
       });
     }));
@@ -151,15 +151,15 @@ describe('Directive: orodarius-sidebar', function() {
     describe('when no argument passed', () => {
       it('should clear ctrl.currentSubreddit', () => {
         compile(scope => {
-          scope.sidebarCtrl.fillPlaylistWith();
-          expect(scope.sidebarCtrl.currentSubreddit).toBe('');
+          scope.$ctrl.fillPlaylistWith();
+          expect(scope.$ctrl.currentSubreddit).toBe('');
         });
       });
 
       it('should not call PlaylistService.fetchSubreddit', inject(PlaylistService => {
         compile(scope => {
           spyOn(PlaylistService, 'fetchSubreddit');
-          scope.sidebarCtrl.fillPlaylistWith();
+          scope.$ctrl.fillPlaylistWith();
           expect(PlaylistService.fetchSubreddit).not.toHaveBeenCalled();
         });
       }));
@@ -169,7 +169,7 @@ describe('Directive: orodarius-sidebar', function() {
 
   it('should contain currentSubreddit property on controller', function() {
     compile(function (scope) {
-      expect(typeof scope.sidebarCtrl.currentSubreddit).toBe('string');
+      expect(typeof scope.$ctrl.currentSubreddit).toBe('string');
     });
   });
 });

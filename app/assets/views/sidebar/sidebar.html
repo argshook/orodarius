@@ -7,29 +7,29 @@
 
   <div
     class="sidebar-playlist-container"
-    ng-class="{'sidebar-playlist-container--loading': sidebarCtrl.isLoading}">
+    ng-class="{'sidebar-playlist-container--loading': $ctrl.isLoading}">
     <div
       class="sidebar-playlist"
       ng-scroll-on="playerService.currentVideoItem">
-      <video-item ng-repeat="item in sidebarCtrl.playlist track by $index"
-                  ng-click="sidebarCtrl.playVideo(item)"
+      <video-item ng-repeat="item in $ctrl.playlist track by $index"
+                  ng-click="$ctrl.playVideo(item)"
                   video-item="item"
-                  current-subreddit="sidebarCtrl.currentSubreddit">
+                  current-subreddit="$ctrl.currentSubreddit">
       </video-item>
 
       <div
         class="list-group-more"
-        ng-show="sidebarCtrl.playlist.length > 0"
-        ng-class="{'list-group-more--loading': sidebarCtrl.isLoading}"
-        ng-click="sidebarCtrl.expandPlaylist()"
+        ng-show="$ctrl.playlist.length > 0"
+        ng-class="{'list-group-more--loading': $ctrl.isLoading}"
+        ng-click="$ctrl.expandPlaylist()"
       >
         <span class="glyphicon glyphicon-plus"></span>
       </div>
     </div>
 
     <orodarius-sidebar-empty
-      ng-show="sidebarCtrl.playlist.length === 0"
-      on-subreddit-click="sidebarCtrl.fillPlaylistWith(subreddit)"
+      ng-show="$ctrl.playlist.length === 0"
+      on-subreddit-click="$ctrl.fillPlaylistWith(subreddit)"
       >
     </orodarius-sidebar-empty>
   </div>

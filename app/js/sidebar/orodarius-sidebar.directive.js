@@ -7,7 +7,7 @@
         restrict: 'E',
         scope: {},
         templateUrl: 'views/sidebar/sidebar.html',
-        controllerAs: 'sidebarCtrl',
+        controllerAs: '$ctrl',
         bindToController: true,
         controller: function($scope, PlaylistService, PlayerService, SidebarService, SettingsService) {
           // TODO: shouldn't expose the whole service just the parts needed.
