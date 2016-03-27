@@ -14,7 +14,6 @@
 
         /* methods */
         this.getIsOpen = getIsOpen;
-        this.getCurrentVideoItem = getCurrentVideoItem;
         this.toggle = toggle;
         this.playVideo = playVideo;
         this.expandPlaylist = expandPlaylist;
@@ -48,13 +47,13 @@
             this.isLoading = true;
 
             PlaylistService
-            .fetchSubreddit(subreddit)
-            .then(playlist => {
-              this.isLoading = false;
-              this.playlist = playlist;
+              .fetchSubreddit(subreddit)
+              .then(playlist => {
+                this.isLoading = false;
+                this.playlist = playlist;
 
-              PlayerService.playVideo(PlaylistService.playlist[0]);
-            });
+                PlayerService.playVideo(PlaylistService.playlist[0]);
+              });
           }
         };
 
@@ -64,10 +63,6 @@
 
         function toggle() {
           SidebarService.toggle();
-        }
-
-        function getCurrentVideoItem() {
-          return PlayerService.currentVideoItem;
         }
       }
     }
