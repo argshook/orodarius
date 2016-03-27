@@ -111,7 +111,25 @@ describe('Directive: orodariusSidebar', function() {
     }));
   });
 
+  describe('$ctrl.toggle()', () => {
+    it('should call SidebarService.toggle()', inject(SidebarService => {
+      spyOn(SidebarService, 'toggle');
 
+      compile(scope => {
+        scope.$ctrl.toggle();
+        expect(SidebarService.toggle).toHaveBeenCalled();
+      });
+    }));
+
+    it('should be called from expected click in view', inject(SidebarService => {
+      spyOn(SidebarService, 'toggle');
+
+      compile((scope, element) => {
+        element.find('.sidebar-toggle').click();
+        expect(SidebarService.toggle).toHaveBeenCalled();
+      });
+    }));
+  });
 
   it('playlistService should contain items from PlaylistService.playlist', function() {
     compile(function (scope) {
@@ -189,7 +207,6 @@ describe('Directive: orodariusSidebar', function() {
       }));
     });
   });
-
 
   it('should contain currentSubreddit property on controller', function() {
     compile(function (scope) {

@@ -1,5 +1,5 @@
 <div class="container-sidebar" ng-class="{'container-sidebar--open': $ctrl.getIsOpen()}">
-  <div class="sidebar-toggle" ng-click="sidebarService.toggle()">
+  <div class="sidebar-toggle" ng-click="$ctrl.toggle()">
     <span class="glyphicon glyphicon-circle-arrow-{{$ctrl.getIsOpen() ? 'right' : 'left'}}"></span>
   </div>
 

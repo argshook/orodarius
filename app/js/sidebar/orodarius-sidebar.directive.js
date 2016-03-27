@@ -18,6 +18,7 @@
           this.playlist = PlaylistService.playlist;
 
           this.getIsOpen = getIsOpen;
+          this.toggle = toggle;
 
           PlaylistService.subscribePlaylist(() => {
             this.playlist = PlaylistService.playlist;
@@ -61,6 +62,10 @@
 
           function getIsOpen() {
             return SidebarService.isOpen;
+          }
+
+          function toggle() {
+            SidebarService.toggle();
           }
         }
       };
