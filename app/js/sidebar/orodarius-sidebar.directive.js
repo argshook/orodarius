@@ -13,18 +13,23 @@
           // TODO: shouldn't expose the whole service just the parts needed.
           $scope.playerService = PlayerService;
 
+          /* properties */
           this.currentSubreddit = '';
           this.isLoading = false;
           this.playlist = PlaylistService.playlist;
 
+          /* methods */
           this.getIsOpen = getIsOpen;
           this.toggle = toggle;
+          this.playVideo = playVideo;
+          this.expandPlaylist = expandPlaylist;
+          this.fillPlaylistWith = fillPlaylistWith;
 
           PlaylistService.subscribePlaylist(() => {
             this.playlist = PlaylistService.playlist;
           });
 
-          this.playVideo = function(item) {
+          function playVideo(item) {
             PlayerService.playVideo(item);
 
             if(!SettingsService.list.isSidebarSticky) {
@@ -32,7 +37,7 @@
             }
           };
 
-          this.expandPlaylist = function() {
+          function expandPlaylist() {
             this.isLoading = true;
 
             PlaylistService
@@ -40,7 +45,7 @@
               .then(() =>  this.isLoading = false);
           };
 
-          this.fillPlaylistWith = function(subreddit) {
+          function fillPlaylistWith(subreddit) {
             PlaylistService.clear();
 
             if(!!subreddit) {
