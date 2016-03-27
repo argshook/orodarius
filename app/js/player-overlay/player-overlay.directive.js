@@ -8,7 +8,7 @@
   function playerOverlayDirective() {
     return {
       restrict: 'E',
-      scope: false,
+      scope: {},
       templateUrl: 'views/player-overlay.html',
       controllerAs: '$ctrl',
       controller: ['PlayerService', function(PlayerService) {
