@@ -1,15 +1,13 @@
 <div
   class="orodarius-root"
   ng-bind-keys="$ctrl.keyboardEventsOptions">
-  <!--TODO: move player to component-->
   <div class="container-full">
     <div class="video-player-container">
       <div id="main-video-player" youtube-player></div>
     </div>
   </div>
 
-  <orodarius-sidebar current-subreddit="$ctrl.currentSubreddit"/>
-
+  <orodarius-sidebar></orodarius-sidebar>
   <player-overlay></player-overlay>
 </div>
 
