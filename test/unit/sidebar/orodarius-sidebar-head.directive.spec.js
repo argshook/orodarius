@@ -102,17 +102,6 @@ describe('Directive: orodariusSidebarHead', function() {
     }));
   });
 
-  it('isOpen should be true after PlayerService.playVideo has been invoked when isSidebarSticky is true', inject(PlayerService => {
-    spyOn(PlayerService, 'playVideo');
-
-    compile(scope => {
-      scope.$ctrl.sidebarService.isOpen = true;
-      scope.$ctrl.settings.isSidebarSticky = true;
-      PlayerService.playVideo();
-      expect(scope.$ctrl.sidebarService.isOpen).toBe(true);
-    });
-  }));
-
   describe('when search icon clicked', () => {
     it('should call parentScope.onSearchStart with correct subreddit', () => {
       compile(parentScopeMock, elementAttrsMock, (scope, element) => {

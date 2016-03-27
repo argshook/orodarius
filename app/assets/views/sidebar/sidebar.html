@@ -1,11 +1,12 @@
-<div class="container-sidebar" ng-class="{'container-sidebar--open': sidebarService.isOpen}">
+<div class="container-sidebar" ng-class="{'container-sidebar--open': $ctrl.getIsOpen()}">
   <div class="sidebar-toggle" ng-click="sidebarService.toggle()">
-    <span class="glyphicon glyphicon-circle-arrow-{{sidebarService.isOpen ? 'right' : 'left'}}"></span>
+    <span class="glyphicon glyphicon-circle-arrow-{{$ctrl.getIsOpen() ? 'right' : 'left'}}"></span>
   </div>
 
   <orodarius-sidebar-head
     on-search-start="$ctrl.fillPlaylistWith(subreddit)"
     is-loading="$ctrl.isLoading"
+    current-subreddit="$ctrl.currentSubreddit"
     ></orodarius-sidebar-head>
 
   <div

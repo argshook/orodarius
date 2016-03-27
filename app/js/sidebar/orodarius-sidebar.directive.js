@@ -11,12 +11,13 @@
         bindToController: true,
         controller: function($scope, PlaylistService, PlayerService, SidebarService, SettingsService) {
           // TODO: shouldn't expose the whole service just the parts needed.
-          $scope.sidebarService = SidebarService;
           $scope.playerService = PlayerService;
 
           this.currentSubreddit = '';
           this.isLoading = false;
           this.playlist = PlaylistService.playlist;
+
+          this.getIsOpen = getIsOpen;
 
           PlaylistService.subscribePlaylist(() => {
             this.playlist = PlaylistService.playlist;
@@ -48,14 +49,19 @@
               this.isLoading = true;
 
               PlaylistService
-              .fetchSubreddit(subreddit)
-              .then(playlist => {
-                this.isLoading = false;
-                this.playlist = playlist;
-                PlayerService.playVideo(PlaylistService.playlist[0]);
-              });
+                .fetchSubreddit(subreddit)
+                .then(playlist => {
+                  this.isLoading = false;
+                  this.playlist = playlist;
+
+                  PlayerService.playVideo(PlaylistService.playlist[0]);
+                });
             }
           };
+
+          function getIsOpen() {
+            return SidebarService.isOpen;
+          }
         }
       };
     });

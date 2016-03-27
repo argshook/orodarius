@@ -88,11 +88,29 @@ describe('Directive: orodariusSidebar', function() {
   });
 
 
-  it('should get sidebarService.isOpen flag as false', function() {
-    compile(function (scope) {
-      expect(scope.sidebarService.isOpen).toBe(true);
-    });
+  describe('$ctrl.getIsOpen()', () => {
+    it('should return SidebarService.isOpen', inject(SidebarService => {
+      SidebarService.isOpen = false;
+      compile(scope => {
+        expect(scope.$ctrl.getIsOpen()).toBe(SidebarService.isOpen);
+      });
+    }));
+
+    it('should be used in view correctly', inject(SidebarService => {
+      SidebarService.isOpen = false;
+      compile((scope, element) => {
+        expect(element.find('.container-sidebar').hasClass('container-sidebar--open')).toBe(false);
+        expect(element.find('.glyphicon-circle-arrow-left').length).toBe(1);
+
+        SidebarService.isOpen = true;
+        scope.$digest();
+
+        expect(element.find('.container-sidebar').hasClass('container-sidebar--open')).toBe(true);
+        expect(element.find('.glyphicon-circle-arrow-right').length).toBe(1);
+      });
+    }));
   });
+
 
 
   it('playlistService should contain items from PlaylistService.playlist', function() {
@@ -101,22 +119,28 @@ describe('Directive: orodariusSidebar', function() {
     });
   });
 
-  it('playVideo method should tell PlayerService to play video', inject(PlayerService => {
-    spyOn(PlayerService, 'playVideo');
-    compile(scope => {
-      scope.$ctrl.playVideo(mockVideoItem);
-      expect(PlayerService.playVideo).toHaveBeenCalledWith(mockVideoItem);
-    });
-  }));
+  describe('$ctrl.playVideo()', () => {
+    it('should call PlayerService.playVideo passing video item', inject(PlayerService => {
+      spyOn(PlayerService, 'playVideo');
 
-  it('isOpen should be false after playVideo has been invoked', inject((SidebarService, SettingsService) => {
-    SettingsService.list.isSidebarSticky = false;
-    compile(scope => {
-      scope.sidebarService.isOpen = true;
-      scope.$ctrl.playVideo(mockVideoItem);
-      expect(scope.sidebarService.isOpen).toBe(false);
+      compile(scope => {
+        scope.$ctrl.playVideo(mockVideoItem);
+        expect(PlayerService.playVideo).toHaveBeenCalledWith(mockVideoItem);
+      });
+    }));
+
+    describe('when SettingsService.isSidebarSticky is false', () => {
+      it('should call SidebarService.toggle()', inject((SidebarService, SettingsService) => {
+        SettingsService.list.isSidebarSticky = false;
+        SidebarService.isOpen = true;
+
+        compile(scope => {
+          scope.$ctrl.playVideo(mockVideoItem);
+          expect(scope.$ctrl.getIsOpen()).toBe(false);
+        });
+      }));
     });
-  }));
+  });
 
   describe('fillPlaylistWith()', function() {
     it('should set isLoading to true and back to false after resolve', inject($httpBackend => {
