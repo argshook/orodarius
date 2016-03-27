@@ -6,10 +6,7 @@
     .component('orodariusSidebar', {
       bindings: {},
       templateUrl: 'views/sidebar/sidebar.html',
-      controller: function($scope, PlaylistService, PlayerService, SidebarService, SettingsService) {
-        // TODO: shouldn't expose the whole service just the parts needed.
-        $scope.playerService = PlayerService;
-
+      controller: function(PlaylistService, PlayerService, SidebarService, SettingsService) {
         /* properties */
         this.currentSubreddit = '';
         this.isLoading = false;
@@ -17,6 +14,7 @@
 
         /* methods */
         this.getIsOpen = getIsOpen;
+        this.getCurrentVideoItem = getCurrentVideoItem;
         this.toggle = toggle;
         this.playVideo = playVideo;
         this.expandPlaylist = expandPlaylist;
@@ -66,6 +64,10 @@
 
         function toggle() {
           SidebarService.toggle();
+        }
+
+        function getCurrentVideoItem() {
+          return PlayerService.currentVideoItem;
         }
       }
     }

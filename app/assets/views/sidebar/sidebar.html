@@ -14,7 +14,7 @@
     ng-class="{'sidebar-playlist-container--loading': $ctrl.isLoading}">
     <div
       class="sidebar-playlist"
-      ng-scroll-on="playerService.currentVideoItem">
+      ng-scroll-on="$ctrl.getCurrentVideoItem()">
       <video-item ng-repeat="item in $ctrl.playlist track by $index"
                   ng-click="$ctrl.playVideo(item)"
                   video-item="item"
