@@ -47,47 +47,6 @@ describe('Directive: orodariusSidebar', function() {
     }));
   });
 
-  describe('isListItemCurrentlyPlayed()', function() {
-    describe('when passed videoId equals to currently played video id', function() {
-      it('should return true', inject(function(PlayerService) {
-        compile(function (scope) {
-          PlayerService.currentVideoItem.videoId = 1;
-          expect(scope.$ctrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(true);
-        });
-      }));
-    });
-
-    describe('when passed videoId does not equal to currently played video id', function() {
-      it('should return true', inject(function(PlayerService) {
-        compile(function (scope) {
-          PlayerService.currentVideoItem.videoId = 2;
-          expect(scope.$ctrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(false);
-        });
-      }));
-    });
-  });
-
-  describe('isListItemCurrentlyPlayed()', function() {
-    describe('when passed videoId equals to currently played video id', function() {
-      it('should return true', inject(function(PlayerService) {
-        compile(function (scope) {
-          PlayerService.currentVideoItem.videoId = 1;
-          expect(scope.$ctrl.isListItemCurrentlyPlayed(({ videoId: 1 }))).toBe(true);
-        });
-      }));
-    });
-
-    describe('when passed videoId does not equal to currently played video id', function() {
-      it('should return true', inject(function(PlayerService) {
-        compile(function (scope) {
-          PlayerService.currentVideoItem.videoId = 2;
-          expect(scope.$ctrl.isListItemCurrentlyPlayed({ videoId: 1 })).toBe(false);
-        });
-      }));
-    });
-  });
-
-
   describe('$ctrl.getIsOpen()', () => {
     it('should return SidebarService.isOpen', inject(SidebarService => {
       SidebarService.isOpen = false;

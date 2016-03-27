@@ -40,8 +40,6 @@
               .then(() =>  this.isLoading = false);
           };
 
-          this.isListItemCurrentlyPlayed = item => item.videoId === PlayerService.currentVideoItem.videoId;
-
           this.fillPlaylistWith = function(subreddit) {
             PlaylistService.clear();
 
