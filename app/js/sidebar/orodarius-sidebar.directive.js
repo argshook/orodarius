@@ -1,77 +1,74 @@
 ;(function() {
   'use strict';
 
-  angular.module('orodarius')
-    .directive('orodariusSidebar', function() {
-      return {
-        restrict: 'E',
-        scope: {},
-        templateUrl: 'views/sidebar/sidebar.html',
-        controllerAs: '$ctrl',
-        bindToController: true,
-        controller: function($scope, PlaylistService, PlayerService, SidebarService, SettingsService) {
-          // TODO: shouldn't expose the whole service just the parts needed.
-          $scope.playerService = PlayerService;
+  angular
+    .module('orodarius')
+    .component('orodariusSidebar', {
+      bindings: {},
+      templateUrl: 'views/sidebar/sidebar.html',
+      controller: function($scope, PlaylistService, PlayerService, SidebarService, SettingsService) {
+        // TODO: shouldn't expose the whole service just the parts needed.
+        $scope.playerService = PlayerService;
 
-          /* properties */
-          this.currentSubreddit = '';
-          this.isLoading = false;
+        /* properties */
+        this.currentSubreddit = '';
+        this.isLoading = false;
+        this.playlist = PlaylistService.playlist;
+
+        /* methods */
+        this.getIsOpen = getIsOpen;
+        this.toggle = toggle;
+        this.playVideo = playVideo;
+        this.expandPlaylist = expandPlaylist;
+        this.fillPlaylistWith = fillPlaylistWith;
+
+        PlaylistService.subscribePlaylist(() => {
           this.playlist = PlaylistService.playlist;
+        });
 
-          /* methods */
-          this.getIsOpen = getIsOpen;
-          this.toggle = toggle;
-          this.playVideo = playVideo;
-          this.expandPlaylist = expandPlaylist;
-          this.fillPlaylistWith = fillPlaylistWith;
+        function playVideo(item) {
+          PlayerService.playVideo(item);
 
-          PlaylistService.subscribePlaylist(() => {
-            this.playlist = PlaylistService.playlist;
-          });
+          if(!SettingsService.list.isSidebarSticky) {
+            SidebarService.toggle();
+          }
+        };
 
-          function playVideo(item) {
-            PlayerService.playVideo(item);
+        function expandPlaylist() {
+          this.isLoading = true;
 
-            if(!SettingsService.list.isSidebarSticky) {
-              SidebarService.toggle();
-            }
-          };
+          PlaylistService
+          .expandPlaylist()
+          .then(() =>  this.isLoading = false);
+        };
 
-          function expandPlaylist() {
+        function fillPlaylistWith(subreddit) {
+          PlaylistService.clear();
+
+          if(!!subreddit) {
+            this.currentSubreddit = subreddit;
             this.isLoading = true;
 
             PlaylistService
-              .expandPlaylist()
-              .then(() =>  this.isLoading = false);
-          };
+            .fetchSubreddit(subreddit)
+            .then(playlist => {
+              this.isLoading = false;
+              this.playlist = playlist;
 
-          function fillPlaylistWith(subreddit) {
-            PlaylistService.clear();
-
-            if(!!subreddit) {
-              this.currentSubreddit = subreddit;
-              this.isLoading = true;
-
-              PlaylistService
-                .fetchSubreddit(subreddit)
-                .then(playlist => {
-                  this.isLoading = false;
-                  this.playlist = playlist;
-
-                  PlayerService.playVideo(PlaylistService.playlist[0]);
-                });
-            }
-          };
-
-          function getIsOpen() {
-            return SidebarService.isOpen;
+              PlayerService.playVideo(PlaylistService.playlist[0]);
+            });
           }
+        };
 
-          function toggle() {
-            SidebarService.toggle();
-          }
+        function getIsOpen() {
+          return SidebarService.isOpen;
         }
-      };
-    });
+
+        function toggle() {
+          SidebarService.toggle();
+        }
+      }
+    }
+  );
 })();
 
