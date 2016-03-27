@@ -136,5 +136,21 @@ describe('Directive: root', () => {
       }));
     });
   });
+
+  it('should use ng-bind-keys on root element properly', () => {
+    compile((scope, element) => {
+      expect(element.find('.orodarius-root').attr('ng-bind-keys')).toBe('$ctrl.keyboardEventsOptions');
+    });
+  });
+
+  describe('nested components', () => {
+    it('should exist as expected', () => {
+      compile((scope, element) => {
+        expect(element.find('#main-video-player').attr('youtube-player')).toBe('');
+        expect(element.find('orodarius-sidebar').length).toBe(1);
+        expect(element.find('player-overlay').length).toBe(1);
+      });
+    });
+  });
 });
 
