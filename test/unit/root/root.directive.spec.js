@@ -152,5 +152,33 @@ describe('Directive: root', () => {
       });
     });
   });
+
+  describe('$ctrl.currentSubreddit', function() {
+    it('should initially be empty string', () => {
+      compile(scope => {
+        expect(scope.$ctrl.currentSubreddit).toBe('');
+      });
+    });
+
+    it('should be attached to orodarius-sidebar via attribute', () => {
+      compile(function (scope, element) {
+        expect(element.find('orodarius-sidebar').attr('current-subreddit')).toBe('$ctrl.currentSubreddit');
+      });
+    });
+
+    describe('when onPlayerStart event occurs', function() {
+      it('should be set to whatever event gave us', inject($rootScope => {
+        compile(scope => {
+          scope.$ctrl.currentSubreddit = 'u wot m8';
+          $rootScope.$emit('onPlayerStart', {
+            currentSubreddit: 'yaman'
+          });
+
+          scope.$digest();
+          expect(scope.$ctrl.currentSubreddit).toBe('yaman');
+        });
+      }));
+    });
+  });
 });
 

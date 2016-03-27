@@ -6,7 +6,14 @@
     .component('root', {
       bindings: {},
       templateUrl: 'views/root.html',
-      controller: function($scope, PlayerService, PlaylistService, SidebarService) {
+      controller: function($scope, $rootScope, PlayerService, PlaylistService, SidebarService) {
+        this.currentSubreddit = '';
+
+        $rootScope.$on('onPlayerStart', (event, data) => {
+          this.currentSubreddit = data.currentSubreddit;
+        });
+
+        // TODO: move keyboard controlls to separate service which would provide callbacks or something
         this.keyboardEventsOptions = {
           38() { playPrevious(); }, // up
           37() { playPrevious(); }, // left
