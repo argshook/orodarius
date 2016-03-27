@@ -8,7 +8,8 @@
         restrict: 'E',
         scope: {
           onSearchStart: '&',
-          isLoading: '='
+          isLoading: '=',
+          currentSubreddit: '='
         },
         templateUrl: 'views/sidebar/sidebar-head.html',
         bindToController: true,

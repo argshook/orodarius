@@ -1,7 +1,19 @@
 'use srict';
 
 describe('Directive: orodariusSidebarHead', function() {
-  var compile;
+  let compile;
+
+  let parentScopeMock = {
+    currentSubreddit: 'something-really-bad-as-usual',
+    onSearchStart: jasmine.createSpy('onSearchStartSpy'),
+    isLoading: false
+  };
+
+  let elementAttrsMock = {
+    'current-subreddit': 'currentSubreddit',
+    'is-loading': 'isLoading',
+    'on-search-start': 'onSearchStart(subreddit)',
+  };
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
@@ -103,25 +115,21 @@ describe('Directive: orodariusSidebarHead', function() {
 
   describe('when search icon clicked', () => {
     it('should call parentScope.onSearchStart with correct subreddit', () => {
-      let parentScope = { onSearchStart: jasmine.createSpy() };
-
-      compile(parentScope, { 'on-search-start': 'onSearchStart(subreddit)'}, (scope, element) => {
+      compile(parentScopeMock, elementAttrsMock, (scope, element) => {
         scope.$ctrl.currentSubreddit = 'expected sub';
         element.find('.sidebar-now-playing-btn').click();
-        expect(parentScope.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
+        expect(parentScopeMock.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
       });
     });
   });
 
   describe('when focused input received enter key press', () => {
     it('should call parentScope.onSearchStart with correct subreddit', () => {
-      let parentScope = { onSearchStart: jasmine.createSpy() };
-
-      compile(parentScope, { 'on-search-start': 'onSearchStart(subreddit)'}, (scope, element) => {
+      compile(parentScopeMock, elementAttrsMock, (scope, element) => {
         scope.$ctrl.currentSubreddit = 'expected sub';
         element.find('.sidebar-now-playing-input').triggerHandler({ type: 'keypress', which: 13 });
         scope.$digest();
-        expect(parentScope.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
+        expect(parentScopeMock.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
       });
     });
   });
@@ -130,6 +138,14 @@ describe('Directive: orodariusSidebarHead', function() {
     let parentScope = { isLoading: true };
     compile(parentScope, { 'is-loading': parentScope.isLoading }, scope => {
       expect(scope.$ctrl.isLoading).toBe(parentScope.isLoading);
+    });
+  });
+
+  describe('$ctrl.currentSubreddit', () => {
+    it('should be exposed from parentScope', () => {
+      compile(parentScopeMock, elementAttrsMock, scope => {
+        expect(scope.$ctrl.currentSubreddit).toBe(parentScopeMock.currentSubreddit);
+      });
     });
   });
 });
