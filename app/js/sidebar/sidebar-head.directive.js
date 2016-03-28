@@ -11,9 +11,13 @@
       },
       templateUrl: 'views/sidebar/sidebar-head.html',
       controller: function(SettingsService, SidebarService, $window, $timeout) {
+        /* properties */
+        this.isSettingsPanelVisible = false;
         this.sidebarService = SidebarService;
         this.settings = SettingsService.list;
 
+        /* methods */
+        this.toggleIsSettingsPanelVisible = toggleIsSettingsPanelVisible;
         this.toggleStickySidebar = function() {
           SettingsService.toggle('isSidebarSticky');
         };
@@ -38,6 +42,10 @@
         // TODO: need better implementation for firefox. and maybe other browsers
         function windowBlurHanlder() {
           $timeout(() => $window.focus(), 100);
+        }
+
+        function toggleIsSettingsPanelVisible() {
+          this.isSettingsPanelVisible = !this.isSettingsPanelVisible;
         }
       }
     });

@@ -137,5 +137,67 @@ describe('Directive: sidebarHead', function() {
       });
     });
   });
+
+  describe('$ctrl.isSettingsPanelVisible', () => {
+    it('should be false initially', () => {
+      compile(parentScopeMock, elementAttrsMock, scope => {
+        expect(scope.$ctrl.isSettingsPanelVisible).toBe(false);
+      });
+    });
+  });
+
+  describe('sidebar-settings-panel', () => {
+    it('should exist in view', () => {
+      compile(parentScopeMock, elementAttrsMock, (scope, element) => {
+        expect(element.find('.sidebar-settings-panel').length).toBe(1);
+      });
+    });
+
+    it('should be hidden initially', () => {
+      compile(parentScopeMock, elementAttrsMock, (scope, element) => {
+        expect(element.find(".sidebar-settings-panel").hasClass("ng-hide")).toBe(true);
+      });
+    });
+
+    describe('when $ctrl.isSettingsPanelVisible is true', () => {
+      it('should be visible', () => {
+        compile(parentScopeMock, elementAttrsMock, function (scope, element) {
+          scope.$ctrl.isSettingsPanelVisible = true;
+          scope.$digest();
+          expect(element.find('.sidebar-settings-panel').hasClass('ng-hide')).toBe(false);
+        });
+      });
+    });
+  });
+
+  describe('settings panel toggle btn', () => {
+    it('should exist in view', () => {
+      compile(parentScopeMock, elementAttrsMock, (scope, element) => {
+        expect(element.find('.sidebar-settings-panel-toggle').length).toBe(1);
+      });
+    });
+
+    describe('when clicked', () => {
+      it('should call scope.$ctrl.toggleIsSettingsPanelVisible()', () => {
+        compile(parentScopeMock, elementAttrsMock, (scope, element) => {
+          spyOn(scope.$ctrl, 'toggleIsSettingsPanelVisible');
+          element.find('.sidebar-settings-panel-toggle').click();
+          expect(scope.$ctrl.toggleIsSettingsPanelVisible).toHaveBeenCalled();
+        })
+      });
+    });
+  });
+
+  describe('$ctrl.toggleIsSettingsPanelVisible', () => {
+    it('should toggle $ctrl.isSettingsPanelVisible value', () => {
+      compile(parentScopeMock, elementAttrsMock, scope => {
+        scope.$ctrl.isSettingsPanelVisible = false;
+        scope.$ctrl.toggleIsSettingsPanelVisible();
+        expect(scope.$ctrl.isSettingsPanelVisible).toBe(true);
+        scope.$ctrl.toggleIsSettingsPanelVisible();
+        expect(scope.$ctrl.isSettingsPanelVisible).toBe(false);
+      });
+    });
+  });
 });
 

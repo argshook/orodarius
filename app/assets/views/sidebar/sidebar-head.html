@@ -22,6 +22,15 @@
       <span class="glyphicon glyphicon-search" ng-class="{loading: $ctrl.isLoading}"></span>
     </button>
 
+    <button
+      class="sidebar-now-playing-btn sidebar-settings-panel-toggle"
+      ng-click="$ctrl.toggleIsSettingsPanelVisible()">
+      <span class="glyphicon glyphicon-cog"></span>
+    </button>
+  </div>
+
+  <div class="sidebar-settings-panel" ng-show="$ctrl.isSettingsPanelVisible">
+    Hai settings panel!
   </div>
 </div>
 
