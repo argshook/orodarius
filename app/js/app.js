@@ -1,5 +1,5 @@
 ;(function() {
-  angular.module('orodarius', ['LocalStorageModule'])
+  angular.module('orodarius', ['LocalStorageModule', 'ngAnimate'])
   .config(function(localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('orodarius');
   })
