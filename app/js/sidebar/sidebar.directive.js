@@ -11,6 +11,7 @@
         this.currentSubreddit = '';
         this.isLoading = false;
         this.playlist = PlaylistService.playlist;
+        this.currentState = 'main';
 
         /* methods */
         this.getIsOpen = getIsOpen;
@@ -18,6 +19,7 @@
         this.playVideo = playVideo;
         this.expandPlaylist = expandPlaylist;
         this.fillPlaylistWith = fillPlaylistWith;
+        this.setCurrentState = setCurrentState;
 
         PlaylistService.subscribePlaylist(() => {
           this.playlist = PlaylistService.playlist;
@@ -63,6 +65,10 @@
 
         function toggle() {
           SidebarService.toggle();
+        }
+
+        function setCurrentState(state) {
+          this.currentState = state;
         }
       }
     }

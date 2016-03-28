@@ -86,7 +86,17 @@ describe('Directive: sidebarHead', function() {
   });
 
   describe('$ctrl.toggleIsSettingsPanelVisible', () => {
-    it('should toggle $ctrl.isSettingsPanelVisible value', () => {
+    it('should call $ctrl.onStateSet correctly', () => {
+      compile(parentScopeMock, elementAttrsMock, scope => {
+        spyOn(scope.$ctrl, 'onStateSet');
+        scope.$ctrl.toggleIsSettingsPanelVisible();
+        expect(scope.$ctrl.onStateSet).toHaveBeenCalledWith({ state: 'settings' });
+        scope.$ctrl.toggleIsSettingsPanelVisible();
+        expect(scope.$ctrl.onStateSet).toHaveBeenCalledWith({ state: 'main' });
+      });
+    });
+
+    it('should toggle $ctrl.isSettingsPanelVisible', () => {
       compile(parentScopeMock, elementAttrsMock, scope => {
         scope.$ctrl.isSettingsPanelVisible = false;
         scope.$ctrl.toggleIsSettingsPanelVisible();

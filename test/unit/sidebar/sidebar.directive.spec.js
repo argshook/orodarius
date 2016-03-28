@@ -172,5 +172,32 @@ describe('Directive: sidebar', function() {
       expect(scope.$ctrl.currentSubreddit).toBe('');
     });
   });
+
+  describe('$ctrl.currentState', () => {
+    it('should be `main` initially', () => {
+      compile(scope => {
+        expect(scope.$ctrl.currentState).toBe('main');
+      });
+    });
+
+    describe('when its `main`', () => {
+      it('should show sidebar-empty', () => {
+        compile(function (scope, element) {
+          scope.$ctrl.currentState = 'main';
+          expect(element.find('sidebar-empty').length).toBe(1);
+        });
+      });
+    });
+  });
+
+  describe('$ctrl.setCurrentState', () => {
+    it('should set $ctrl.currentState', () => {
+      compile(scope => {
+        scope.$ctrl.currentState = 'first-state';
+        scope.$ctrl.setCurrentState('another-state');
+        expect(scope.$ctrl.currentState).toBe('another-state');
+      });
+    });
+  });
 });
 

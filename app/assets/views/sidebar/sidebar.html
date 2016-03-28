@@ -5,26 +5,36 @@
 
   <sidebar-head
     on-search-start="$ctrl.fillPlaylistWith(subreddit)"
+    on-state-set="$ctrl.setCurrentState(state)"
     is-loading="$ctrl.isLoading"
     current-subreddit="$ctrl.currentSubreddit">
   </sidebar-head>
 
   <div
     class="sidebar-playlist-container"
+    ng-switch="$ctrl.currentState"
     ng-class="{'sidebar-playlist-container--loading': $ctrl.isLoading}">
 
-    <sidebar-list
-      list="$ctrl.playlist"
-      is-loading="$ctrl.isLoading"
-      current-subreddit="$ctrl.currentSubreddit"
-      on-item-click="$ctrl.playVideo(item)"
-      on-expand-click="$ctrl.expandPlaylist()">
-    </sidebar-list>
+    <settings-panel
+      ng-switch-when="settings"
+    >
+    </settings-panel>
 
-    <sidebar-empty
-      ng-show="$ctrl.playlist.length === 0"
-      on-subreddit-click="$ctrl.fillPlaylistWith(subreddit)" >
-    </sidebar-empty>
+    <div ng-switch-default>
+      <sidebar-list
+        ng-show="$ctrl.playlist.length > 0"
+        list="$ctrl.playlist"
+        is-loading="$ctrl.isLoading"
+        current-subreddit="$ctrl.currentSubreddit"
+        on-item-click="$ctrl.playVideo(item)"
+        on-expand-click="$ctrl.expandPlaylist()">
+      </sidebar-list>
+
+      <sidebar-empty
+        ng-show="$ctrl.playlist.length === 0"
+        on-subreddit-click="$ctrl.fillPlaylistWith(subreddit)" >
+      </sidebar-empty>
+    </div>
   </div>
 
   <sidebar-foot></sidebar-foot>
