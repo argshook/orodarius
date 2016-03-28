@@ -23,7 +23,7 @@ describe('Directive: sidebarHead', function() {
 
   it('should compile successfully', function() {
     compile(function (scope, element) {
-      expect(element.find('.orodarius-sidebar-head').length).toBe(1);
+      expect(element.find('.sidebar-head').length).toBe(1);
     });
   });
 

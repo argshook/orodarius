@@ -1,7 +1,7 @@
-<div class="sidebar-heading orodarius-sidebar-head">
+<div class="sidebar-head">
   <h1>Subreddit TV</h1>
 
-  <div class="sidebar-heading__checkbox-container">
+  <div class="sidebar-head__checkbox-container">
     <span ng-class="{active: $ctrl.settings.isSidebarSticky}" class="glyphicon glyphicon-lock" ng-click="$ctrl.toggleStickySidebar()"></span>
     <span ng-class="{active: $ctrl.settings.isFocusModeForced}" class="glyphicon glyphicon-magnet" ng-click="$ctrl.toggleFocusForced()"></span>
     <span ng-class="{active: $ctrl.settings.isFlashModeEnabled}" class="glyphicon glyphicon-flash"
@@ -21,6 +21,7 @@
     <button class="sidebar-now-playing-btn" ng-click="$ctrl.onSearchStart({ subreddit: $ctrl.currentSubreddit })">
       <span class="glyphicon glyphicon-search" ng-class="{loading: $ctrl.isLoading}"></span>
     </button>
+
   </div>
 </div>
 
