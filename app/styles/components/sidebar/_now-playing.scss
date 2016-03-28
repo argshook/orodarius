@@ -1,7 +1,6 @@
 .sidebar-now-playing {
   text-align: center;
   color: #adadad;
-  margin-bottom: 2em;
 
   &-label { margin: 0 1.5em; }
 
@@ -25,8 +24,17 @@
     margin: 0 5px;
     border: 0;
     font-size: 1.2em;
+    text-align: center;
+    vertical-align: middle;
     background: transparent;
-    transform: translateY(5px);
+    transition: .5s ease-out transform;
+
+    &--active {
+      color: orange;
+      transform: rotateZ(180deg);
+    }
+
+    &:focus { outline: 0; }
   }
 
   .glyphicon-search.loading {

@@ -1,6 +1,6 @@
 'use srict';
 
-describe('Directive: sidebarHead', function() {
+fdescribe('Directive: sidebarHead', function() {
   let compile;
 
   let parentScopeMock = {
