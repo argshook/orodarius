@@ -1,6 +1,6 @@
 'use srict';
 
-describe('Directive: orodariusSidebarHead', function() {
+describe('Directive: sidebarHead', function() {
   let compile;
 
   let parentScopeMock = {
@@ -18,7 +18,7 @@ describe('Directive: orodariusSidebarHead', function() {
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
   beforeEach(inject(function($compile, $rootScope) {
-    compile = createCompiler('<orodarius-sidebar-head />', $rootScope, $compile);
+    compile = createCompiler('<sidebar-head />', $rootScope, $compile);
   }));
 
   it('should compile successfully', function() {

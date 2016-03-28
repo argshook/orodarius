@@ -3,7 +3,7 @@
 
   angular
     .module('orodarius')
-    .component('orodariusSidebarFoot', {
+    .component('sidebarFoot', {
       bindings: {},
       templateUrl: 'views/sidebar/sidebar-foot.html',
       controller: function($http) {

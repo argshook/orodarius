@@ -3,7 +3,7 @@
 
   angular
     .module('orodarius')
-    .component('orodariusSidebarEmpty', {
+    .component('sidebarEmpty', {
       bindings: {
         onSubredditClick: '&'
       },

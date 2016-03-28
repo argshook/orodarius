@@ -3,7 +3,7 @@
 
   angular
     .module('orodarius')
-    .component('orodariusSidebarHead', {
+    .component('sidebarHead', {
       bindings: {
         onSearchStart: '&',
         isLoading: '=',

@@ -1,15 +1,15 @@
 'use strict';
 
-describe('Directive: orodariusSidebar', function() {
+describe('Directive: sidebar', function() {
   var compile;
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius', $provide => {
-    $provide.factory('orodariusSidebarFootDirective', () => { return {}; });
+    $provide.factory('sidebarFootDirective', () => { return {}; });
   }));
 
   beforeEach(inject(function($compile, $rootScope, $httpBackend, PlaylistService) {
-    compile = createCompiler('<orodarius-sidebar />', $rootScope, $compile);
+    compile = createCompiler('<sidebar />', $rootScope, $compile);
 
     PlaylistService.add(mockVideoItem);
     PlaylistService.add(mockVideoItem);

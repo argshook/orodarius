@@ -1,12 +1,12 @@
 'use srict';
 
-describe('Directive: orodariusSidebarFoot', function() {
+describe('Directive: sidebarFoot', function() {
   var compile;
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
   beforeEach(inject(function($compile, $rootScope, $httpBackend) {
-    compile = createCompiler('<orodarius-sidebar-foot />', $rootScope, $compile);
+    compile = createCompiler('<sidebar-foot />', $rootScope, $compile);
 
     $httpBackend.whenGET(/api\.github\.com/).respond(200, {});
 

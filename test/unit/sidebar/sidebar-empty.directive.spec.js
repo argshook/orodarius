@@ -1,12 +1,12 @@
 'use srict';
 
-describe('Directive: orodariusSidebarEmpty', function() {
+describe('Directive: sidebarEmpty', function() {
   var compile;
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
   beforeEach(inject(function($compile, $rootScope, $httpBackend) {
-    compile = createCompiler('<orodarius-sidebar-empty />', $rootScope, $compile);
+    compile = createCompiler('<sidebar-empty />', $rootScope, $compile);
   }));
 
   it('should compile successfully', function() {

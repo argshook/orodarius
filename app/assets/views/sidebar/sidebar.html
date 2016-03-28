@@ -3,31 +3,30 @@
     <span class="glyphicon glyphicon-circle-arrow-{{$ctrl.getIsOpen() ? 'right' : 'left'}}"></span>
   </div>
 
-  <orodarius-sidebar-head
+  <sidebar-head
     on-search-start="$ctrl.fillPlaylistWith(subreddit)"
     is-loading="$ctrl.isLoading"
-    current-subreddit="$ctrl.currentSubreddit"
-    ></orodarius-sidebar-head>
+    current-subreddit="$ctrl.currentSubreddit">
+  </sidebar-head>
 
   <div
     class="sidebar-playlist-container"
     ng-class="{'sidebar-playlist-container--loading': $ctrl.isLoading}">
 
-    <orodarius-sidebar-list
+    <sidebar-list
       list="$ctrl.playlist"
       is-loading="$ctrl.isLoading"
       current-subreddit="$ctrl.currentSubreddit"
       on-item-click="$ctrl.playVideo(item)"
       on-expand-click="$ctrl.expandPlaylist()">
-    </orodarius-sidebar-list>
+    </sidebar-list>
 
-    <orodarius-sidebar-empty
+    <sidebar-empty
       ng-show="$ctrl.playlist.length === 0"
-      on-subreddit-click="$ctrl.fillPlaylistWith(subreddit)"
-      >
-    </orodarius-sidebar-empty>
+      on-subreddit-click="$ctrl.fillPlaylistWith(subreddit)" >
+    </sidebar-empty>
   </div>
 
-  <orodarius-sidebar-foot></orodarius-sidebar-foot>
+  <sidebar-foot></sidebar-foot>
 </div>
 

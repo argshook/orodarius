@@ -3,7 +3,7 @@
 
   angular
     .module('orodarius')
-    .component('orodariusSidebar', {
+    .component('sidebar', {
       bindings: {},
       templateUrl: 'views/sidebar/sidebar.html',
       controller: function(PlaylistService, PlayerService, SidebarService, SettingsService) {

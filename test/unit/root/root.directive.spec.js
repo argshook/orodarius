@@ -5,7 +5,7 @@ describe('Directive: root', () => {
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius', $provide => {
-    let mockedDirectives = ['orodariusSidebar', 'playerOverlay'];
+    let mockedDirectives = ['sidebar', 'playerOverlay'];
 
     mockedDirectives.forEach(directive => $provide.factory(`${directive}Directive`, () => { return {}; }));
   }));
@@ -146,7 +146,7 @@ describe('Directive: root', () => {
   describe('nested components', () => {
     it('should exist as expected', () => {
       compile((scope, element) => {
-        let expectedElements = ['player', 'orodarius-sidebar', 'player-overlay'];
+        let expectedElements = ['player', 'sidebar', 'player-overlay'];
 
         expectedElements.
           forEach(selector => expect(element.find(selector).length).toBe(1));

@@ -1,9 +1,9 @@
 'use strict';
 
-describe('Directive: orodariusSidebarList', function() {
+describe('Directive: sidebarList', function() {
   let compile;
 
-  let directiveTemplate = '<orodarius-sidebar-list list="list" on-item-click="onItemClick(item)" on-expand-click="onExpandClick()" is-loading="isLoading" current-subreddit="currentSubreddit" />';
+  let directiveTemplate = '<sidebar-list list="list" on-item-click="onItemClick(item)" on-expand-click="onExpandClick()" is-loading="isLoading" current-subreddit="currentSubreddit" />';
 
   let parentScopeMock = {
     list: [1, 2, 3, 4, 5],

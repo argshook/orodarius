@@ -3,7 +3,7 @@
 
   angular
     .module('orodarius')
-    .component('orodariusSidebarList', {
+    .component('sidebarList', {
       bindings: {
         list: '=',
         currentSubreddit: '=',
