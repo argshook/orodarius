@@ -23,8 +23,21 @@ describe('Directive: playerOverlay', () => {
     PlayerService.currentVideoItem.redditUrl = 'https://reddit.cum/abloogiewoogiewoo';
     PlayerService.currentVideoItem.title = 'best video';
 
-    expect(compile().element.find('.video-title a').attr('href')).toBe('https://reddit.cum/abloogiewoogiewoo');
-    expect(compile().element.find('.video-title a').text().trim()).toBe('best video');
+    compile((scope, element) => {
+      let $videoTitle = element.find('.video-title a');
+
+      expect($videoTitle.attr('href')).toBe('https://reddit.cum/abloogiewoogiewoo');
+      expect($videoTitle.text().trim()).toBe('best video');
+    });
   }));
+
+  describe('$ctrl.getCurrentVideoItem()', () => {
+    it('should return PlayerService.currentVideoItem', inject(PlayerService => {
+      PlayerService.currentVideoItem = 'yo man watup';
+      compile(scope => {
+        expect(scope.$ctrl.getCurrentVideoItem()).toBe(PlayerService.currentVideoItem);
+      });
+    }));
+  });
 });
 

@@ -3,17 +3,15 @@
 
   angular
     .module('orodarius')
-    .directive('playerOverlay', playerOverlayDirective);
+    .component('playerOverlay', playerOverlayComponent());
 
-  function playerOverlayDirective() {
+  function playerOverlayComponent() {
     return {
-      restrict: 'E',
-      scope: {},
+      bindings: {},
       templateUrl: 'views/player-overlay.html',
-      controllerAs: '$ctrl',
-      controller: ['PlayerService', function(PlayerService) {
-        this.PlayerService = PlayerService;
-      }]
+      controller: function(PlayerService) {
+        this.getCurrentVideoItem = () => PlayerService.currentVideoItem;
+      }
     };
   }
 })();

@@ -1,11 +1,11 @@
-<div class="player-overlay" ng-show="$ctrl.PlayerService.currentVideoItem.videoId">
+<div class="player-overlay" ng-show="$ctrl.getCurrentVideoItem().videoId">
   <div class="video-score">
-    {{$ctrl.PlayerService.currentVideoItem.redditScore}}
+    {{$ctrl.getCurrentVideoItem().redditScore}}
   </div>
 
   <div class="video-title">
-    <a ng-href="{{$ctrl.PlayerService.currentVideoItem.redditUrl}}" target="_blank">
-      {{$ctrl.PlayerService.currentVideoItem.title}}
+    <a ng-href="{{$ctrl.getCurrentVideoItem().redditUrl}}" target="_blank">
+      {{$ctrl.getCurrentVideoItem().title}}
     </a>
   </div>
 </div>
