@@ -1,0 +1,49 @@
+<div
+  class="settings-panel"
+  ng-show="$ctrl.isSettingsPanelVisible">
+  <div class="sidebar-settings-panel-list">
+    <h2>Settings</h2>
+    <div
+      class="sidebar-settings-panel-list__item"
+      ng-class="{'sidebar-settings-panel-list__item--active': $ctrl.settings.isSidebarSticky}"
+      ng-click="$ctrl.toggleStickySidebar()">
+      <span class="glyphicon glyphicon-lock"></span>
+      <span>
+        Lock sidebar
+        <br>
+        <small>
+          Keep it open when changing videos
+        </small>
+      </span>
+    </div>
+
+    <div
+      class="sidebar-settings-panel-list__item"
+      ng-class="{'sidebar-settings-panel-list__item--active': $ctrl.settings.isFocusModeForced}"
+      ng-click="$ctrl.toggleFocusForced()">
+      <span class="glyphicon glyphicon-magnet"></span>
+      <span>
+        <strong>Try</strong>&nbsp;to hold focus on Orodarius
+        <br>
+        <small>
+          so our shortcuts work after you click Youtube player
+          <br>
+          <span class="special">works 60% of the time</span>
+        </small>
+      </span>
+    </div>
+
+    <div
+      class="sidebar-settings-panel-list__item"
+      ng-class="{'sidebar-settings-panel-list__item--active': $ctrl.settings.isFlashModeEnabled}"
+      ng-click="$ctrl.toggleFlashMode()">
+      <span class="glyphicon glyphicon-flash"></span>
+      <span>
+        Fast Forward
+        <br>
+        <small>Change video every 5 seconds</small>
+      </span>
+    </div>
+  </div>
+</div>
+

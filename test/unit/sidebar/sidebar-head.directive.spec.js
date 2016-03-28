@@ -1,6 +1,6 @@
 'use srict';
 
-fdescribe('Directive: sidebarHead', function() {
+describe('Directive: sidebarHead', function() {
   let compile;
 
   let parentScopeMock = {
@@ -37,71 +37,6 @@ fdescribe('Directive: sidebarHead', function() {
     });
   }));
 
-  describe('toggleStickySidebar()', function() {
-    it('should be defined on controller', function () {
-      compile(scope => {
-        expect(typeof scope.$ctrl.toggleStickySidebar).toBe('function');
-      });
-    });
-
-    it('should toggle isSidebarSticky property using SettingsService', inject(SettingsService => {
-      compile(scope => {
-        spyOn(SettingsService, 'toggle').and.callThrough();
-        scope.$ctrl.toggleStickySidebar();
-        expect(SettingsService.toggle).toHaveBeenCalledWith('isSidebarSticky');
-      });
-    }));
-  });
-
-  describe('toggleFocusForced method', () => {
-    it('should toggle $scope.isFocusForced when called', inject(SettingsService => {
-      compile(scope => {
-        scope.$ctrl.toggleFocusForced();
-        expect(scope.$ctrl.settings.isFocusForced).toBe(true);
-        scope.$ctrl.toggleFocusForced();
-        expect(scope.$ctrl.settings.isFocusForced).toBe(false);
-      });
-    }));
-
-    it('should attach blur event listener on window when isFocusForced is false', inject($window => {
-      spyOn($window, 'addEventListener');
-      compile(scope => {
-        scope.$ctrl.settings.isFocusForced = false;
-        scope.$ctrl.toggleFocusForced();
-        expect($window.addEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
-      });
-    }));
-
-    it('should remove blur event listener from window when isFocusForced is true', inject(function($window) {
-      spyOn($window, 'removeEventListener');
-      compile(function (scope) {
-        scope.$ctrl.settings.isFocusForced = true;
-        scope.$ctrl.toggleFocusForced();
-        expect($window.removeEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
-      });
-    }));
-  });
-
-  describe('settings', () => {
-    it('should contain default values', inject(SettingsService => {
-      SettingsService.list.isSidebarSticky = false;
-      compile(scope => {
-        expect(scope.$ctrl.settings.isSidebarSticky).toBe(false);
-        expect(scope.$ctrl.settings.isFocusForced).toBe(false);
-      });
-    }));
-  });
-
-  describe('toggleFlashMode()', function() {
-    it('should call SettingsService.toggle', inject(SettingsService => {
-      spyOn(SettingsService, 'toggle');
-      compile(scope => {
-        scope.$ctrl.toggleFlashMode();
-        expect(SettingsService.toggle).toHaveBeenCalledWith('isFlashModeEnabled');
-      });
-    }));
-  });
-
   describe('when search icon clicked', () => {
     it('should call parentScope.onSearchStart with correct subreddit', () => {
       compile(parentScopeMock, elementAttrsMock, (scope, element) => {
@@ -134,32 +69,6 @@ fdescribe('Directive: sidebarHead', function() {
     it('should be exposed from parentScope', () => {
       compile(parentScopeMock, elementAttrsMock, scope => {
         expect(scope.$ctrl.currentSubreddit).toBe(parentScopeMock.currentSubreddit);
-      });
-    });
-  });
-
-  describe('$ctrl.isSettingsPanelVisible', () => {
-    it('should be false initially', () => {
-      compile(parentScopeMock, elementAttrsMock, scope => {
-        expect(scope.$ctrl.isSettingsPanelVisible).toBe(false);
-      });
-    });
-  });
-
-  describe('sidebar-settings-panel', () => {
-    it('should be hidden initially', () => {
-      compile(parentScopeMock, elementAttrsMock, (scope, element) => {
-        expect(element.find(".sidebar-settings-panel").hasClass("ng-hide")).toBe(true);
-      });
-    });
-
-    describe('when $ctrl.isSettingsPanelVisible is true', () => {
-      it('should be visible', () => {
-        compile(parentScopeMock, elementAttrsMock, function (scope, element) {
-          scope.$ctrl.isSettingsPanelVisible = true;
-          scope.$digest();
-          expect(element.find('.sidebar-settings-panel').hasClass('ng-hide')).toBe(false);
-        });
       });
     });
   });

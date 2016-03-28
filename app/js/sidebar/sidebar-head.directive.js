@@ -18,31 +18,10 @@
 
         /* methods */
         this.toggleIsSettingsPanelVisible = toggleIsSettingsPanelVisible;
-        this.toggleStickySidebar = function() {
-          SettingsService.toggle('isSidebarSticky');
-        };
 
         this.toggleSidebar = function() {
           SidebarService.toggle();
         };
-
-        this.toggleFocusForced = function() {
-          SettingsService.toggle('isFocusForced');
-          $window[(SettingsService.list.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
-        };
-
-        this.toggleFlashMode = function() {
-          SettingsService.toggle('isFlashModeEnabled');
-        }
-
-        if(SettingsService.list.isFocusForced) {
-          $window.addEventListener('blur', windowBlurHanlder);
-        }
-
-        // TODO: need better implementation for firefox. and maybe other browsers
-        function windowBlurHanlder() {
-          $timeout(() => $window.focus(), 100);
-        }
 
         function toggleIsSettingsPanelVisible() {
           this.isSettingsPanelVisible = !this.isSettingsPanelVisible;

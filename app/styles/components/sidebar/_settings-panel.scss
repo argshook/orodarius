@@ -10,7 +10,7 @@
   transition: .2s ease all;
 
   &.ng-hide {
-    /*opacity: 0;*/
+    opacity: 0;
     height: 0;
   }
 
@@ -36,10 +36,14 @@
     border-left: 1px solid transparent;
     transition: .2s ease all;
 
+    &:hover,
+    &--active {
+      box-shadow: 0 0 60px 0 hsla(39,50%,30%,0.18) inset;
+    }
+
     &--active {
       color: orange;
       border-left-color: orange;
-      box-shadow: 0 0 60px 0 hsla(39,50%,30%,0.18) inset;
 
       span.glyphicon { color: orange; }
       small.special { opacity: 1; }
