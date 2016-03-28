@@ -1,21 +1,17 @@
 ;(() => {
   'use strict';
 
-  angular.module('orodarius')
-    .directive('videoItem', () => {
-      return {
-        restrict: 'E',
-        scope: {
-          item: '=videoItem',
-          currentSubreddit: '=currentSubreddit'
-        },
-        templateUrl: 'views/video-item.html',
-        bindToController: true,
-        controllerAs: '$ctrl',
-        controller: function(PlayerService) {
-          this.playerService = PlayerService;
-        } 
-      };
+  angular
+    .module('orodarius')
+    .component('videoItem', {
+      bindings: {
+        item: '=videoItem',
+        currentSubreddit: '=currentSubreddit'
+      },
+      templateUrl: 'views/video-item.html',
+      controller: function(PlayerService) {
+        this.playerService = PlayerService;
+      }
     });
 })();
 
