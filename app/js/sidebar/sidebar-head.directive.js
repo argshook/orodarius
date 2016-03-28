@@ -10,7 +10,7 @@
         currentSubreddit: '='
       },
       templateUrl: 'views/sidebar/sidebar-head.html',
-      controller: function(SettingsService, SidebarService, $window, $timeout) {
+      controller: ['SettingsService', 'SidebarService', '$window', '$timeout', function(SettingsService, SidebarService, $window, $timeout) {
         /* properties */
         this.isSettingsPanelVisible = false;
         this.sidebarService = SidebarService;
@@ -47,7 +47,7 @@
         function toggleIsSettingsPanelVisible() {
           this.isSettingsPanelVisible = !this.isSettingsPanelVisible;
         }
-      }
+      }]
     });
 })();
 

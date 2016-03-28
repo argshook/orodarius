@@ -5,7 +5,7 @@ describe('Directive: root', () => {
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius', $provide => {
-    let mockedDirectives = ['sidebar', 'playerOverlay'];
+    let mockedDirectives = ['sidebar', 'playerOverlay', 'player'];
 
     mockedDirectives.forEach(directive => $provide.factory(`${directive}Directive`, () => { return {}; }));
   }));

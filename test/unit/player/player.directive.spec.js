@@ -4,7 +4,9 @@ describe('Component: player', function() {
   let compile;
 
   beforeEach(module('orodarius.templates'));
-  beforeEach(module('orodarius'));
+  beforeEach(module('orodarius', $provide => {
+    $provide.factory('youtubePlayerDirective', () => { return {}; });
+  }));
 
   beforeEach(inject(($compile, $rootScope) => {
     compile = createCompiler('<player />', $rootScope, $compile);

@@ -17,7 +17,6 @@ describe('Directive: youtube-player', function() {
     PlayerService = _PlayerService_;
     angular.extend(scope, mockScope);
     spyOn(PlayerService, 'createNewPlayer');
-
   }));
 
   function compileWith(id) {
