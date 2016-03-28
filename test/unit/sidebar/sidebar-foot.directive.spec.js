@@ -18,7 +18,7 @@ describe('Directive: sidebarFoot', function() {
 
   it('should compile successfully', function() {
     compile(function (scope, element) {
-      expect(element.find('.orodarius-sidebar-foot').length).toBe(1);
+      expect(element.find('.sidebar-foot').length).toBe(1);
     });
   });
 
