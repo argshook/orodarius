@@ -1,11 +1,3 @@
-.sidebar-playlist-container {
-  flex: 1 1 auto;
-  overflow: auto;
-  padding-top: $sidebar-heading-height;
-
-  &--loading { @extend %loading-modifier; }
-}
-
 .sidebar-playlist {
   overflow-y: auto;
 
