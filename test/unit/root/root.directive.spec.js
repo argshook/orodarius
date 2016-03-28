@@ -5,7 +5,7 @@ describe('Directive: root', () => {
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius', $provide => {
-    let mockedDirectives = ['orodariusSidebar', 'playerOverlay', 'youtubePlayer'];
+    let mockedDirectives = ['orodariusSidebar', 'playerOverlay'];
 
     mockedDirectives.forEach(directive => $provide.factory(`${directive}Directive`, () => { return {}; }));
   }));
@@ -146,9 +146,10 @@ describe('Directive: root', () => {
   describe('nested components', () => {
     it('should exist as expected', () => {
       compile((scope, element) => {
-        expect(element.find('#main-video-player').attr('youtube-player')).toBe('');
-        expect(element.find('orodarius-sidebar').length).toBe(1);
-        expect(element.find('player-overlay').length).toBe(1);
+        let expectedElements = ['player', 'orodarius-sidebar', 'player-overlay'];
+
+        expectedElements.
+          forEach(selector => expect(element.find(selector).length).toBe(1));
       });
     });
   });
