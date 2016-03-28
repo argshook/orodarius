@@ -147,12 +147,6 @@ describe('Directive: sidebarHead', function() {
   });
 
   describe('sidebar-settings-panel', () => {
-    it('should exist in view', () => {
-      compile(parentScopeMock, elementAttrsMock, (scope, element) => {
-        expect(element.find('.sidebar-settings-panel').length).toBe(1);
-      });
-    });
-
     it('should be hidden initially', () => {
       compile(parentScopeMock, elementAttrsMock, (scope, element) => {
         expect(element.find(".sidebar-settings-panel").hasClass("ng-hide")).toBe(true);
@@ -171,12 +165,6 @@ describe('Directive: sidebarHead', function() {
   });
 
   describe('settings panel toggle btn', () => {
-    it('should exist in view', () => {
-      compile(parentScopeMock, elementAttrsMock, (scope, element) => {
-        expect(element.find('.sidebar-settings-panel-toggle').length).toBe(1);
-      });
-    });
-
     describe('when clicked', () => {
       it('should call scope.$ctrl.toggleIsSettingsPanelVisible()', () => {
         compile(parentScopeMock, elementAttrsMock, (scope, element) => {
