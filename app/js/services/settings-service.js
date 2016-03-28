@@ -2,6 +2,7 @@
   'use strict';
 
   var DEFAULT_SETTINGS = {
+    watchCount: 0,
     isSidebarSticky: false,
     isFocusForced: false,
     sources: [{
@@ -28,6 +29,12 @@
         updateStorage();
       }
 
+
+      if(_.isUndefined(settings.watchCount)) {
+        settings.wathcCount = DEFAULT_SETTINGS.watchCount;
+        updateStorage();
+      }
+
       function add(name, setting) {
         settings[name] = setting;
         updateStorage();
@@ -42,11 +49,16 @@
         }
       }
 
+      function set(name, value) {
+        settings[name] = value;
+        updateStorage();
+      }
+
       function updateStorage() {
         localStorageService.set(settingsStorageName, settings);
       }
 
-      return { list: settings, add, toggle };
+      return { list: settings, add, toggle, set };
     });
 
 })();

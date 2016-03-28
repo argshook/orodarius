@@ -3,7 +3,9 @@
   opacity: 1;
 }
 
-.sidebar-settings-panel-list {
+.settings-panel-list {
+  margin-bottom: 60px;
+
   h2 {
     margin-bottom: 40px;
     text-align: center;
@@ -52,5 +54,10 @@
     color: #bbb;
     transition: .2s ease color;
   }
+}
+
+.settings-panel-info {
+  text-align: center;
+  color: #777;
 }
 

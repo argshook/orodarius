@@ -58,6 +58,7 @@
 
           this.currentVideoItem = item;
           this.isPlaying = true;
+          SettingsService.set('watchCount', SettingsService.list.watchCount + 1);
         }
 
         $timeout(); // TODO :(
