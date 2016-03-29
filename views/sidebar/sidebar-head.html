@@ -1,0 +1,27 @@
+<div class="sidebar-head">
+  <h1>Subreddit TV</h1>
+
+  <div class="sidebar-now-playing">
+    <span class="sidebar-now-playing-label">Now playing:</span>
+
+    <input
+      type="text"
+      class="sidebar-now-playing-input"
+      ng-enter="$ctrl.onSearchStart({ subreddit: $ctrl.currentSubreddit })"
+      ng-enter-options="{blurOnEnter: true}"
+      ng-model="$ctrl.currentSubreddit" />
+
+    <button class="sidebar-now-playing-btn" ng-click="$ctrl.onSearchStart({ subreddit: $ctrl.currentSubreddit })">
+      <span class="glyphicon glyphicon-search" ng-class="{loading: $ctrl.isLoading}"></span>
+    </button>
+
+    <button
+      class="sidebar-now-playing-btn sidebar-settings-panel-toggle"
+      ng-class="{ 'sidebar-now-playing-btn--active': $ctrl.isSettingsPanelVisible }"
+      ng-click="$ctrl.toggleIsSettingsPanelVisible()">
+      <span class="glyphicon glyphicon-cog"></span>
+    </button>
+  </div>
+
+</div>
+
