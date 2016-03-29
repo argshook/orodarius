@@ -22,18 +22,8 @@
         updateStorage();
       }
 
-      // users prior to settings.sources implementation will have
-      // no such property, thus adding it here to avoid breaking code
-      if(_.isUndefined(settings.sources)) {
-        settings.sources = DEFAULT_SETTINGS.sources;
-        updateStorage();
-      }
-
-
-      if(_.isUndefined(settings.watchCount)) {
-        settings.wathcCount = DEFAULT_SETTINGS.watchCount;
-        updateStorage();
-      }
+      _.defaultsDeep(settings, DEFAULT_SETTINGS);
+      updateStorage()
 
       function add(name, setting) {
         settings[name] = setting;

@@ -10,12 +10,20 @@ describe('Service: SettingsService', function() {
     localStorageService = _localStorageService_;
   }));
 
+  afterEach(() => {
+    localStorageService.set('settings', {});
+  });
+
   // TODO: maybe better to expose settings as direct service properties rather
   // than nesting them under list? Who knows, maybe
   describe('list', function() {
-    it('should contain some default items', function() {
-      expect(service.list.isSidebarSticky).toBeDefined();
-      expect(service.list.isFocusForced).toBeDefined();
+    it('should contain expected properties', function() {
+      expect(service.list).toEqual(jasmine.objectContaining({
+        watchCount: 0,
+        isSidebarSticky: false,
+        isFocusForced: false,
+        sources: jasmine.any(Array)
+      }));
     });
 
     describe('sources array', function() {
@@ -46,8 +54,17 @@ describe('Service: SettingsService', function() {
     });
   });
 
+  describe('set()', () => {
+    it('should set setting value by key', () => {
+      expect(service.list.something).not.toBeDefined();
+      service.set('something', 'value');
+      expect(service.list.something).toBe('value');
+    });
+  });
+
   describe('toggle()', function() {
     it('should toggle boolean setting value', function() {
+      service.list.isSidebarSticky = false;
       service.toggle('isSidebarSticky');
       expect(service.list.isSidebarSticky).toBe(true);
       service.toggle('isSidebarSticky');
