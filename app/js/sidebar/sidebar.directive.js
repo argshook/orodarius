@@ -6,7 +6,7 @@
     .component('sidebar', {
       bindings: {},
       templateUrl: 'views/sidebar/sidebar.html',
-      controller: function(PlaylistService, PlayerService, SidebarService, SettingsService) {
+      controller: ['PlaylistService', 'PlayerService', 'SidebarService', 'SettingsService', function(PlaylistService, PlayerService, SidebarService, SettingsService) {
         /* properties */
         this.currentSubreddit = '';
         this.isLoading = false;
@@ -70,7 +70,7 @@
         function setCurrentState(state) {
           this.currentState = state;
         }
-      }
+      }]
     }
   );
 })();

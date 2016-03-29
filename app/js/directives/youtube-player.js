@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .directive('youtubePlayer', function($window, PlayerService) {
+    .directive('youtubePlayer', ['$window', 'PlayerService', function($window, PlayerService) {
       return {
         restrict: 'A',
         replace: false,
@@ -27,5 +27,6 @@
           };
         }
       };
-    });
+    }]);
 })();
+

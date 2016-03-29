@@ -13,7 +13,7 @@
   };
 
   angular.module('orodarius')
-    .service('SettingsService', function(localStorageService) {
+    .service('SettingsService', ['localStorageService', function(localStorageService) {
       var settingsStorageName = 'settings',
           settings = localStorageService.get(settingsStorageName);
 
@@ -49,6 +49,6 @@
       }
 
       return { list: settings, add, toggle, set };
-    });
+    }]);
 
 })();

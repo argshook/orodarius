@@ -1,7 +1,7 @@
 ;(() => {
   // TODO: this will eventually be lastQueriesService or something
   angular.module('orodarius')
-    .service('LastSubredditsService', function(localStorageService) {
+    .service('LastSubredditsService', ['localStorageService', function(localStorageService) {
       let lastSubredditsStorageName = 'lastSubreddits',
           lastSubredditsLimit = 10;
 
@@ -36,6 +36,6 @@
         getList,
         add: addItem
       };
-    });
+    }]);
 })();
 

@@ -9,9 +9,9 @@
     return {
       bindings: {},
       templateUrl: 'views/player-overlay.html',
-      controller: function(PlayerService) {
+      controller: ['PlayerService', function(PlayerService) {
         this.getCurrentVideoItem = () => PlayerService.currentVideoItem;
-      }
+      }]
     };
   }
 })();

@@ -6,7 +6,7 @@
     .component('sidebarFoot', {
       bindings: {},
       templateUrl: 'views/sidebar/sidebar-foot.html',
-      controller: function($http) {
+      controller: ['$http', function($http) {
         this.lastUpdatedData = {};
 
         this.getLastUpdated = function() {
@@ -19,7 +19,7 @@
         };
 
         this.getLastUpdated();
-      }
+      }]
     });
 })();
 

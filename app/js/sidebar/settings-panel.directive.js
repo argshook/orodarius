@@ -6,7 +6,7 @@
     .component('settingsPanel', {
       bindings: {},
       templateUrl: 'views/sidebar/settings-panel.html',
-      controller: function(SettingsService, $window, $timeout) {
+      controller: ['SettingsService', '$window', '$timeout', function(SettingsService, $window, $timeout) {
         /* properties */
         this.settings = SettingsService.list;
 
@@ -37,6 +37,7 @@
           $timeout(() => $window.focus(), 100);
         }
 
-      }
+      }]
     })
 })();
+

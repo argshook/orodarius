@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlaylistService', function(RedditService) {
+    .service('PlaylistService', ['RedditService', function(RedditService) {
       let playlistSubscriberFns = [];
 
       // Public values
@@ -63,5 +63,6 @@
       function publishSubscribers() {
         playlistSubscriberFns.map(fn => fn());
       }
-    });
+    }]);
 })();
+

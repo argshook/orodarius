@@ -8,7 +8,7 @@
         onSubredditClick: '&'
       },
       templateUrl: 'views/sidebar/sidebar-empty.html',
-      controller: function(LastSubredditsService) {
+      controller: ['LastSubredditsService', function(LastSubredditsService) {
         this.lastSubreddits = LastSubredditsService.getList();
 
         this.suggestedSubreddits = [
@@ -20,7 +20,7 @@
           { name: 'music' },
           { name: 'videos+youtubehaiku' }
         ];
-      }
+      }]
     });
 })();
 

@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .directive('ngScrollOn', function($timeout) {
+    .directive('ngScrollOn', ['$timeout', function($timeout) {
       return {
         restrict: 'A',
         scope: {
@@ -29,5 +29,5 @@
           });
         }
       };
-    });
+    }]);
 })();

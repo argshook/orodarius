@@ -12,11 +12,11 @@
         onExpandClick: '&'
       },
       templateUrl: 'views/sidebar/sidebar-list.html',
-      controller: function(PlayerService) {
+      controller: ['PlayerService', function(PlayerService) {
         this.getCurrentVideoItem = function() {
           return PlayerService.currentVideoItem;
         };
-      }
+      }]
     }
   );
 })();

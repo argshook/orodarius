@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .directive('ngBindKeys', function($document) {
+    .directive('ngBindKeys', ['$document', function($document) {
       return {
         restrict: 'A',
         scope: {
@@ -23,6 +23,6 @@
           });
         }
       };
-    });
+    }]);
 
 })();

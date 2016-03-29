@@ -9,9 +9,9 @@
         currentSubreddit: '=currentSubreddit'
       },
       templateUrl: 'views/video-item.html',
-      controller: function(PlayerService) {
+      controller: ['PlayerService', function(PlayerService) {
         this.playerService = PlayerService;
-      }
+      }]
     });
 })();
 

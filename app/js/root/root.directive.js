@@ -6,7 +6,7 @@
     .component('root', {
       bindings: {},
       templateUrl: 'views/root.html',
-      controller: function($scope, PlayerService, PlaylistService, SidebarService) {
+      controller: ['$scope', 'PlayerService', 'PlaylistService', 'SidebarService', function($scope, PlayerService, PlaylistService, SidebarService) {
         this.keyboardEventsOptions = {
           38() { playPrevious(); }, // up
           37() { playPrevious(); }, // left
@@ -36,7 +36,7 @@
             $scope.$apply();
           }
         }
-      }
+      }]
     });
 })();
 
