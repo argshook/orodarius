@@ -5,6 +5,7 @@
   <video-item ng-repeat="item in $ctrl.list track by $index"
               ng-click="$ctrl.onItemClick({ item: item })"
               video-item="item"
+              index="$index + 1"
               current-subreddit="$ctrl.currentSubreddit">
   </video-item>
 

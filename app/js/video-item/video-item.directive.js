@@ -6,7 +6,8 @@
     .component('videoItem', {
       bindings: {
         item: '=videoItem',
-        currentSubreddit: '=currentSubreddit'
+        currentSubreddit: '=currentSubreddit',
+        index: '='
       },
       templateUrl: 'views/video-item.html',
       controller: ['PlayerService', function(PlayerService) {

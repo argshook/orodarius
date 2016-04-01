@@ -43,7 +43,10 @@ describe('Directive: sidebarList', function() {
 
     it('should have expected attributes', () => {
       compile(parentScopeMock, (scope, element) => {
-        expect(element.find('video-item').eq(0).attr('current-subreddit')).toBe('$ctrl.currentSubreddit');
+        let $videoItem = element.find('video-item').eq(0);
+        expect($videoItem.attr('current-subreddit')).toBe('$ctrl.currentSubreddit');
+        expect($videoItem.attr('video-item')).toBe('item');
+        expect($videoItem.attr('index')).toBe('$index + 1');
       });
     });
 
