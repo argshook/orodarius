@@ -124,7 +124,7 @@
         if([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
           this.markCurrentVideoItemWithError(event.data);
           // TODO: stop trying after n tries
-          this.playNext();
+          //this.playNext();
         }
       }
 

@@ -14,7 +14,7 @@ describe('Directive: video-item', function() {
       redditUrl: `http://reddit.com/asdasdj`,
       redditScore: '42',
       subreddit: "videos",
-      error: null
+      error: null,
     },
     currentSubreddit: 'videos'
   };
@@ -57,6 +57,42 @@ describe('Directive: video-item', function() {
         expect(element.find('.video-item__index').html()).toBe('33');
       });
     });
+  });
+
+  describe('$ctrl.getIsIdCurrent()', () => {
+    describe('when given id === currentVideoItem.ownId', () => {
+      it('should return true', inject(PlayerService => {
+        PlayerService.currentVideoItem.ownId = 10;
+        compile(parentScopeMock, elementAttrsMock, scope => {
+          expect(scope.$ctrl.getIsIdCurrent(10)).toBe(true);
+        });
+      }));
+    });
+
+    describe('when given id !== currentVideoItem.ownId', () => {
+      it('should return true', inject(PlayerService => {
+        let parentScope = _.cloneDeep(parentScopeMock);
+        PlayerService.currentVideoItem.ownId = 10;
+        compile(parentScopeMock, elementAttrsMock, scope => {
+          expect(scope.$ctrl.getIsIdCurrent(15)).toBe(false);
+          expect(scope.$ctrl.getIsIdCurrent()).toBe(false);
+
+          delete PlayerService.currentVideoItem.ownId;
+
+          expect(scope.$ctrl.getIsIdCurrent()).toBe(false);
+        });
+      }));
+    });
+
+    it('should be used in view', inject(PlayerService => {
+      let parentScope = _.cloneDeep(parentScopeMock);
+      parentScope.videoItem.ownId = 10;
+      PlayerService.currentVideoItem.ownId = 10;
+
+      compile(parentScope, elementAttrsMock, (scope, element) => {
+        expect(element.find('.video-item').hasClass('video-item--current')).toBe(true);
+      });
+    }));
   });
 });
 
