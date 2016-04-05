@@ -174,11 +174,12 @@ describe('Directive: sidebar', function() {
   });
 
   describe('$ctrl.currentState', () => {
-    it('should be `main` initially', () => {
+    it('should equal to SidebarService.state.get()', inject(SidebarService => {
+      SidebarService.state.set('orly?');
       compile(scope => {
-        expect(scope.$ctrl.currentState).toBe('main');
+        expect(scope.$ctrl.currentState).toBe('orly?');
       });
-    });
+    }));
 
     describe('when its `main`', () => {
       it('should show sidebar-empty', () => {
@@ -190,13 +191,25 @@ describe('Directive: sidebar', function() {
     });
   });
 
-  describe('$ctrl.setCurrentState', () => {
-    it('should set $ctrl.currentState', () => {
+  describe('SidebarService.state.subscribe listener', () => {
+    it('should update $ctrl.currentState when it changes', inject(SidebarService => {
       compile(scope => {
-        scope.$ctrl.currentState = 'first-state';
-        scope.$ctrl.setCurrentState('another-state');
-        expect(scope.$ctrl.currentState).toBe('another-state');
+        SidebarService.state.set('hello');
+        expect(scope.$ctrl.currentState).toBe('hello');
       });
+    }));
+  });
+
+  describe('$ctrl.toggleSettingsState', () => {
+    describe('when SidebarService.state.get() === `main`', () => {
+      it('should calls SidebarService.state.set(`settings`)', inject(SidebarService => {
+        spyOn(SidebarService.state, 'get').and.callFake(() => 'main');
+        spyOn(SidebarService.state, 'set');
+        compile(scope => {
+          scope.$ctrl.toggleSettingsState();
+          expect(SidebarService.state.set).toHaveBeenCalledWith('settings');
+        });
+      }));
     });
   });
 });

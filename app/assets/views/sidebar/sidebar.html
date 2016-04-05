@@ -5,7 +5,7 @@
 
   <sidebar-head
     on-search-start="$ctrl.fillPlaylistWith(subreddit)"
-    on-state-set="$ctrl.setCurrentState(state)"
+    on-settings-click="$ctrl.toggleSettingsState()"
     is-loading="$ctrl.isLoading"
     current-subreddit="$ctrl.currentSubreddit">
   </sidebar-head>

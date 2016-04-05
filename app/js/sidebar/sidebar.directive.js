@@ -11,7 +11,7 @@
         this.currentSubreddit = '';
         this.isLoading = false;
         this.playlist = PlaylistService.playlist;
-        this.currentState = 'main';
+        this.currentState = SidebarService.state.get();
 
         /* methods */
         this.getIsOpen = getIsOpen;
@@ -19,11 +19,13 @@
         this.playVideo = playVideo;
         this.expandPlaylist = expandPlaylist;
         this.fillPlaylistWith = fillPlaylistWith;
-        this.setCurrentState = setCurrentState;
+        this.toggleSettingsState = toggleSettingsState;
 
         PlaylistService.subscribePlaylist(() => {
           this.playlist = PlaylistService.playlist;
         });
+
+        SidebarService.state.subscribe(state => this.currentState = state);
 
         function playVideo(item) {
           PlayerService.playVideo(item);
@@ -67,8 +69,9 @@
           SidebarService.toggle();
         }
 
-        function setCurrentState(state) {
-          this.currentState = state;
+        function toggleSettingsState(state) {
+          let current = SidebarService.state.get();
+          SidebarService.state.set(current === 'main' ? 'settings' : 'main');
         }
       }]
     }
