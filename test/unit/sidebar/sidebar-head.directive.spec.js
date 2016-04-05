@@ -1,6 +1,6 @@
 'use srict';
 
-describe('Directive: sidebarHead', function() {
+describe('Directive: sidebarHead', () => {
   let compile;
 
   let parentScopeMock = {
@@ -17,25 +17,15 @@ describe('Directive: sidebarHead', function() {
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
-  beforeEach(inject(function($compile, $rootScope) {
+  beforeEach(inject(($compile, $rootScope) => {
     compile = createCompiler('<sidebar-head />', $rootScope, $compile);
   }));
 
-  it('should compile successfully', function() {
-    compile(function (scope, element) {
+  it('should compile successfully', () => {
+    compile((scope, element) => {
       expect(element.find('.sidebar-head').length).toBe(1);
     });
   });
-
-  it('toggleSidebar should toggle isOpen flag', inject(SidebarService => {
-    compile(scope => {
-      scope.$ctrl.toggleSidebar();
-      expect(scope.$ctrl.sidebarService.isOpen).toBe(false);
-
-      scope.$ctrl.toggleSidebar();
-      expect(scope.$ctrl.sidebarService.isOpen).toBe(true);
-    });
-  }));
 
   describe('when search icon clicked', () => {
     it('should call parentScope.onSearchStart with correct subreddit', () => {

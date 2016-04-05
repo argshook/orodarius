@@ -11,18 +11,13 @@
         onStateSet: '&'
       },
       templateUrl: 'views/sidebar/sidebar-head.html',
-      controller: ['SettingsService', 'SidebarService', '$window', '$timeout', function(SettingsService, SidebarService, $window, $timeout) {
+      controller: ['SettingsService', function(SettingsService) {
         /* properties */
         this.isSettingsPanelVisible = false;
-        this.sidebarService = SidebarService;
         this.settings = SettingsService.list;
 
         /* methods */
         this.toggleIsSettingsPanelVisible = toggleIsSettingsPanelVisible.call(this);
-
-        this.toggleSidebar = function() {
-          SidebarService.toggle();
-        };
 
         function toggleIsSettingsPanelVisible() {
           let currentState = 'main';
