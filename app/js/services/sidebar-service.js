@@ -5,7 +5,7 @@
     .service('SidebarService', function() {
       // TODO extract this to factory
       this.state = new function StateManager() {
-        let CURRENT_STATE = '';
+        let CURRENT_STATE = 'main';
         let LISTENERS = [];
 
         const set = state =>
@@ -15,7 +15,7 @@
           CURRENT_STATE;
 
         const invokeListeners = () =>
-          _.each(LISTENERS, listener => listener());
+          _.each(LISTENERS, listener => listener(CURRENT_STATE));
 
         const registerListener = listener => {
           LISTENERS = [listener].concat(LISTENERS);

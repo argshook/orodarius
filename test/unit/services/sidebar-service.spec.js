@@ -41,6 +41,12 @@ describe("Service: SidebarService", function() {
       }));
     });
 
+    describe('get()', function() {
+      it('should return `main` initially', function() {
+        expect(SidebarService.state.get()).toBe('main');
+      });
+    });
+
     describe('set() & get()', function() {
       it('should set and return state.current', function() {
         SidebarService.state.set('anotherState');
