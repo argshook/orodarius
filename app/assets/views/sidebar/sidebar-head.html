@@ -17,8 +17,8 @@
 
     <button
       class="sidebar-now-playing-btn sidebar-settings-panel-toggle"
-      ng-class="{ 'sidebar-now-playing-btn--active': $ctrl.isSettingsPanelVisible }"
-      ng-click="$ctrl.toggleIsSettingsPanelVisible()">
+      ng-class="{ 'sidebar-now-playing-btn--active': $ctrl.currentState === 'settings' }"
+      ng-click="$ctrl.onSettingsClick()">
       <span class="glyphicon glyphicon-cog"></span>
     </button>
   </div>

@@ -6,11 +6,13 @@ describe('Directive: sidebarHead', () => {
   let parentScopeMock = {
     currentSubreddit: 'something-really-bad-as-usual',
     onSearchStart: jasmine.createSpy('onSearchStartSpy'),
-    isLoading: false
+    isLoading: false,
+    currentState: ''
   };
 
   let elementAttrsMock = {
     'current-subreddit': 'currentSubreddit',
+    'current-state': 'currentState',
     'is-loading': 'isLoading',
     'on-search-start': 'onSearchStart(subreddit)',
   };
@@ -65,34 +67,32 @@ describe('Directive: sidebarHead', () => {
 
   describe('settings panel toggle btn', () => {
     describe('when clicked', () => {
-      it('should call scope.$ctrl.toggleIsSettingsPanelVisible()', () => {
+      it('should call scope.$ctrl.onSettingsClick', () => {
         compile(parentScopeMock, elementAttrsMock, (scope, element) => {
-          spyOn(scope.$ctrl, 'toggleIsSettingsPanelVisible');
+          spyOn(scope.$ctrl, 'onSettingsClick');
           element.find('.sidebar-settings-panel-toggle').click();
-          expect(scope.$ctrl.toggleIsSettingsPanelVisible).toHaveBeenCalled();
+          expect(scope.$ctrl.onSettingsClick).toHaveBeenCalled();
         })
       });
     });
   });
 
-  describe('$ctrl.toggleIsSettingsPanelVisible', () => {
-    it('should call $ctrl.onStateSet correctly', () => {
-      compile(parentScopeMock, elementAttrsMock, scope => {
-        spyOn(scope.$ctrl, 'onStateSet');
-        scope.$ctrl.toggleIsSettingsPanelVisible();
-        expect(scope.$ctrl.onStateSet).toHaveBeenCalledWith({ state: 'settings' });
-        scope.$ctrl.toggleIsSettingsPanelVisible();
-        expect(scope.$ctrl.onStateSet).toHaveBeenCalledWith({ state: 'main' });
-      });
-    });
+  describe('settings state btn', () => {
+    describe('when expected state is given', () => {
+      it('should have specific class', () => {
+        let parentScope = _.cloneDeep(parentScopeMock);
+        parentScope.currentState = 'settings';
 
-    it('should toggle $ctrl.isSettingsPanelVisible', () => {
-      compile(parentScopeMock, elementAttrsMock, scope => {
-        scope.$ctrl.isSettingsPanelVisible = false;
-        scope.$ctrl.toggleIsSettingsPanelVisible();
-        expect(scope.$ctrl.isSettingsPanelVisible).toBe(true);
-        scope.$ctrl.toggleIsSettingsPanelVisible();
-        expect(scope.$ctrl.isSettingsPanelVisible).toBe(false);
+        compile(parentScope, elementAttrsMock, function (scope, element) {
+          expect(element.find('.sidebar-settings-panel-toggle')
+            .hasClass('sidebar-now-playing-btn--active')).toBe(true);
+        });
+
+        parentScope.currentState = 'shit';
+        compile(parentScope, elementAttrsMock, function (scope, element) {
+          expect(element.find('.sidebar-settings-panel-toggle')
+            .hasClass('sidebar-now-playing-btn--active')).toBe(false);
+        });
       });
     });
   });
