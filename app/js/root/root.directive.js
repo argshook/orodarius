@@ -18,8 +18,19 @@
             $scope.$apply();
           },
           27: event => { // escape
-            SidebarService.close();
+            if(SidebarService.state.get() === 'settings') {
+              SidebarService.state.set('main');
+            } else {
+              SidebarService.close();
+            }
+
             $scope.$apply();
+          },
+          83: event => { // s
+            if(SidebarService.state.get() !== 'settings') {
+              SidebarService.state.set('settings');
+              $scope.$apply();
+            }
           }
         };
 

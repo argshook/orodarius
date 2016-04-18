@@ -31,8 +31,74 @@ describe('Directive: root', () => {
             40: jasmine.any(Function),
             32: jasmine.any(Function),
             16: jasmine.any(Function),
-            27: jasmine.any(Function)
+            27: jasmine.any(Function),
+            83: jasmine.any(Function)
           }));
+      });
+    });
+
+    it('should call PlayerService.playOrPause on space key', inject(PlayerService => {
+      compile(scope => {
+        spyOn(PlayerService, 'playOrPause');
+
+        scope.$ctrl.keyboardEventsOptions[32]();
+        expect(PlayerService.playOrPause).toHaveBeenCalled();
+      });
+    }));
+
+    it('should call SidebarService.toggle on shift key', inject(SidebarService => {
+      compile(scope => {
+        spyOn(SidebarService, 'toggle');
+        spyOn(scope, '$apply');
+
+        scope.$ctrl.keyboardEventsOptions[16]();
+        expect(SidebarService.toggle).toHaveBeenCalled();
+        expect(scope.$apply).toHaveBeenCalled();
+      });
+    }));
+
+    describe('when SidebarService.state === `settings`', () => {
+      it('should call SidebarService.state.set(`main`)', inject(SidebarService => {
+        SidebarService.state.set('settings');
+        compile(scope => {
+          spyOn(SidebarService.state, 'set');
+
+          scope.$ctrl.keyboardEventsOptions[27]();
+          expect(SidebarService.state.set).toHaveBeenCalledWith('main');
+        });
+      }));
+    });
+
+    describe('when SidebarService.state !== `settings`', () => {
+      it('should call SidebarService.close on escape key', inject(SidebarService => {
+        compile(scope => {
+          spyOn(scope, '$apply');
+          spyOn(SidebarService, 'close');
+
+          scope.$ctrl.keyboardEventsOptions[27]();
+          expect(SidebarService.close).toHaveBeenCalled();
+          expect(scope.$apply).toHaveBeenCalled();
+        });
+      }));
+    });
+
+
+    describe('s key', () => {
+      describe('when SidebarService.state !== `settings`', () => {
+        it('should call SidebarService.state.set(`settings`)', inject(SidebarService => {
+          compile(scope => {
+            spyOn(SidebarService.state, 'set').and.callThrough();
+            spyOn(scope, '$apply');
+
+            SidebarService.state.set('main');
+            scope.$ctrl.keyboardEventsOptions[83]();
+            expect(SidebarService.state.set.calls.argsFor(1)).toEqual(['settings']);
+
+            scope.$ctrl.keyboardEventsOptions[83]();
+            expect(SidebarService.state.set.calls.count()).toBe(2);
+            expect(scope.$apply.calls.count()).toBe(1);
+          });
+        }));
       });
     });
 
@@ -64,17 +130,6 @@ describe('Directive: root', () => {
         });
       }));
 
-      it('should call PlayerService.playNext on right key', inject(PlayerService => {
-        compile(scope => {
-          spyOn(PlayerService, 'playNext');
-          spyOn(scope, '$apply');
-          scope.$ctrl.keyboardEventsOptions[39]();
-
-          expect(PlayerService.playNext).toHaveBeenCalled();
-          expect(scope.$apply).toHaveBeenCalled();
-        });
-      }));
-
       it('should call PlayerService.playPrevious on down key', inject(PlayerService => {
         compile(scope => {
           spyOn(PlayerService, 'playNext');
@@ -86,33 +141,13 @@ describe('Directive: root', () => {
         });
       }));
 
-      it('should call PlayerService.playOrPause on space key', inject(PlayerService => {
+      it('should call PlayerService.playNext on right key', inject(PlayerService => {
         compile(scope => {
-          spyOn(PlayerService, 'playOrPause');
-
-          scope.$ctrl.keyboardEventsOptions[32]();
-          expect(PlayerService.playOrPause).toHaveBeenCalled();
-        });
-      }));
-
-      it('should call SidebarService.toggle on space key', inject(SidebarService => {
-        compile(scope => {
-          spyOn(SidebarService, 'toggle');
+          spyOn(PlayerService, 'playNext');
           spyOn(scope, '$apply');
+          scope.$ctrl.keyboardEventsOptions[39]();
 
-          scope.$ctrl.keyboardEventsOptions[16]();
-          expect(SidebarService.toggle).toHaveBeenCalled();
-          expect(scope.$apply).toHaveBeenCalled();
-        });
-      }));
-
-      it('should call SidebarService.close on escape key', inject(SidebarService => {
-        compile(scope => {
-          spyOn(scope, '$apply');
-          spyOn(SidebarService, 'close');
-
-          scope.$ctrl.keyboardEventsOptions[27]();
-          expect(SidebarService.close).toHaveBeenCalled();
+          expect(PlayerService.playNext).toHaveBeenCalled();
           expect(scope.$apply).toHaveBeenCalled();
         });
       }));
