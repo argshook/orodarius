@@ -165,6 +165,17 @@ describe('Directive: sidebar', function() {
         });
       }));
     });
+
+    describe('while $ctrl.isLoading is true', () => {
+      it('should not call PlaylistService.fetchSubreddit', inject(PlaylistService => {
+        spyOn(PlaylistService, 'fetchSubreddit').and.callThrough();
+        compile(scope => {
+          scope.$ctrl.isLoading = true;
+          scope.$ctrl.fillPlaylistWith('youtubeiku');
+          expect(PlaylistService.fetchSubreddit).not.toHaveBeenCalled();
+        });
+      }));
+    });
   });
 
   it('should contain currentSubreddit property on controller', () => {

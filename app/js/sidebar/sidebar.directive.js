@@ -52,7 +52,7 @@
         function fillPlaylistWith(subreddit) {
           PlaylistService.clear();
 
-          if(!!subreddit) {
+          if(!!subreddit && !this.isLoading) {
             this.currentSubreddit = subreddit;
             this.isLoading = true;
 
@@ -64,6 +64,10 @@
 
                 PlayerService.playVideo(PlaylistService.playlist[0]);
               });
+          }
+
+          if(!subreddit) {
+            this.isLoading = false;
           }
         };
 
