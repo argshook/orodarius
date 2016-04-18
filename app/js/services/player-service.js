@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('orodarius')
-    .service('PlayerService', ['$window', '$timeout', 'PlaylistService', 'SettingsService', function($window, $timeout, PlaylistService, SettingsService) {
+    .service('PlayerService', ['$window', '$timeout', 'PlaylistService', 'SettingsService', '$rootScope', function($window, $timeout, PlaylistService, SettingsService, $rootScope) {
       this.youtubePlayer = null; // youtube iframe api instance
       this.isPlaying = false;
       this.currentVideoItem = {};
@@ -70,15 +70,18 @@
         if(nextVideoItemIndex === PlaylistService.playlist.length) {
           PlaylistService.expandPlaylist().then(data => {
             this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
+            $rootScope.$emit('orodariusScrollIntoView');
           });
         } else {
           this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
+          $rootScope.$emit('orodariusScrollIntoView');
         }
       };
 
       this.playPrevious = function() {
         var previousVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this)) - 1;
         this.playVideo(PlaylistService.playlist[previousVideoItemIndex < 0 ? 0 : previousVideoItemIndex], 'previous');
+        $rootScope.$emit('orodariusScrollIntoView');
       };
 
       this.playOrPause = function() {
@@ -124,7 +127,7 @@
         if([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
           this.markCurrentVideoItemWithError(event.data);
           // TODO: stop trying after n tries
-          //this.playNext();
+          this.playNext();
         }
       }
 

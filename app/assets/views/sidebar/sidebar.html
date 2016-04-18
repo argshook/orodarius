@@ -13,6 +13,8 @@
   <div
     class="sidebar-state-container"
     ng-switch="$ctrl.currentState"
+    ng-scroll-to="'.video-item--current'"
+    offset-top="50"
     ng-class="{'sidebar-playlist-container--loading': $ctrl.isLoading}">
 
     <settings-panel

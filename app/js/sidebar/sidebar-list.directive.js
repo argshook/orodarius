@@ -11,12 +11,7 @@
         onItemClick: '&',
         onExpandClick: '&'
       },
-      templateUrl: 'views/sidebar/sidebar-list.html',
-      controller: ['PlayerService', function(PlayerService) {
-        this.getCurrentVideoItem = function() {
-          return PlayerService.currentVideoItem;
-        };
-      }]
+      templateUrl: 'views/sidebar/sidebar-list.html'
     }
   );
 })();

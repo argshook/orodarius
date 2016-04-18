@@ -1,6 +1,4 @@
-<div
-  class="sidebar-playlist"
-  ng-scroll-on="$ctrl.getCurrentVideoItem()">
+<div class="sidebar-playlist">
 
   <video-item ng-repeat="item in $ctrl.list track by $index"
               ng-click="$ctrl.onItemClick({ item: item })"

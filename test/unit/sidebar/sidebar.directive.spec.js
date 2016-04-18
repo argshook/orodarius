@@ -198,6 +198,21 @@ describe('Directive: sidebar', function() {
         expect(scope.$ctrl.currentState).toBe('hello');
       });
     }));
+
+    describe('when state changes to `main`', function() {
+      it('should broadcast orodariusScrollIntoView event on $rootScope', inject((SidebarService, $rootScope) => {
+        spyOn($rootScope, '$broadcast');
+        compile(scope => {
+          SidebarService.state.set('main');
+          expect($rootScope.$broadcast).toHaveBeenCalledWith('orodariusScrollIntoView');
+
+          SidebarService.state.set('something else');
+          expect($rootScope.$broadcast.calls.count()).toBe(2);
+          // 2 because localStorage module calls it once somewhere
+          // i know i know
+        });
+      }));
+    });
   });
 
   describe('$ctrl.toggleSettingsState', () => {

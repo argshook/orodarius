@@ -92,21 +92,5 @@ describe('Directive: sidebarList', function() {
       });
     });
   });
-
-  describe('$ctrl.getCurrentVideoItem()', () => {
-    it('should return PlayerService.currentVideoItem', inject(PlayerService => {
-      PlayerService.currentVideoItem = { a: '360noscopebruh' };
-
-      compile(scope => {
-        expect(scope.$ctrl.getCurrentVideoItem()).toEqual(PlayerService.currentVideoItem);
-      });
-    }));
-
-    it('should be used in view correctly', () => {
-      compile((scope, element) => {
-        expect(element.find('.sidebar-playlist').attr('ng-scroll-on')).toBe('$ctrl.getCurrentVideoItem()');
-      });
-    });
-  });
 });
 

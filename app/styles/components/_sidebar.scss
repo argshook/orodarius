@@ -72,18 +72,14 @@
 
   > * {
     &.ng-enter {
-      position: absolute;
-      top: $sidebar-heading-height;
-      left: 0;
-      right: 0;
       opacity: 0;
-      transform: translateY(-30px) scale(.8);
+      transform: translateX(-30px);
       transition: .2s ease-out all;
     }
 
     &.ng-enter-active {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateX(0);
     }
 
     &.ng-leave {
@@ -91,15 +87,17 @@
       top: $sidebar-heading-height;
       left: 0;
       right: 0;
+      overflow: hidden;
+      bottom: 0;
       opacity: 0;
-      transform: translateY(0) scale(1);
+      transform: translateX(0);
       opacity: 1;
       transition: .4s ease-out all;
     }
 
     &.ng-leave-active {
       opacity: 0;
-      transform: translateY(30px) scale(.8);
+      transform: translateX(30px);
     }
   }
 }

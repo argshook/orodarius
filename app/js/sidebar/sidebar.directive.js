@@ -6,7 +6,7 @@
     .component('sidebar', {
       bindings: {},
       templateUrl: 'views/sidebar/sidebar.html',
-      controller: ['PlaylistService', 'PlayerService', 'SidebarService', 'SettingsService', function(PlaylistService, PlayerService, SidebarService, SettingsService) {
+      controller: ['PlaylistService', 'PlayerService', 'SidebarService', 'SettingsService', '$rootScope', function(PlaylistService, PlayerService, SidebarService, SettingsService, $rootScope) {
         /* properties */
         this.currentSubreddit = '';
         this.isLoading = false;
@@ -25,7 +25,13 @@
           this.playlist = PlaylistService.playlist;
         });
 
-        SidebarService.state.subscribe(state => this.currentState = state);
+        SidebarService.state.subscribe(state => {
+          this.currentState = state;
+
+          if(state === 'main') {
+            $rootScope.$broadcast('orodariusScrollIntoView');
+          }
+        });
 
         function playVideo(item) {
           PlayerService.playVideo(item);
