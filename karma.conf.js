@@ -111,8 +111,6 @@ module.exports = function(karma) {
       'karma-jasmine',
       'karma-coverage',
       'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-safari-launcher',
       'karma-phantomjs-launcher',
       'karma-ng-html2js-preprocessor',
       'karma-babel-preprocessor'
