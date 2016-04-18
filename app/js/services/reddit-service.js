@@ -1,7 +1,19 @@
 ;(() => {
   'use strict';
 
-  angular.module('orodarius').service('RedditService', ['$http', '$q', 'youtubeUrlParser', '$filter', 'LastSubredditsService', '$log', function($http, $q, youtubeUrlParser, $filter, LastSubredditsService, $log) {
+  angular
+    .module('orodarius')
+    .service('RedditService', [
+      '$http',
+      '$q',
+      'youtubeUrlParser',
+      '$filter',
+      'LastSubredditsService',
+      '$log',
+      RedditService
+    ]);
+
+  function RedditService($http, $q, youtubeUrlParser, $filter, LastSubredditsService, $log) {
     let NUM_FETCH_RETRIES = 0,
         NUM_MAX_FETCH_RETRIES = 3, // means there might be at most 4 consecutive GETs until proper data received
         AFTER_TAG = '',
@@ -11,6 +23,7 @@
     this.fetch = fetch;
     this.items = [];
     this.getNext = getNext;
+    this.clearCache = clearCache;
 
     const API_ROOT_URL = 'http://www.reddit.com/r/';
 
@@ -141,6 +154,10 @@
 
       return deferred.promise;
     }
-  }]);
+
+    function clearCache() {
+      this.items = [];
+    }
+  }
 })();
 

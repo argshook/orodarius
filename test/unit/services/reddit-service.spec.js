@@ -257,6 +257,13 @@ describe('Service: RedditService', function() {
         expect(rejected).toBe(true);
       }));
     });
+  });
 
+  describe('clearCache()', () => {
+    it('should set RedditService.items to empty array', () => {
+      RedditService.items = [ 1, 2, 3, 4 ];
+      RedditService.clearCache();
+      expect(RedditService.items).toEqual([]);
+    });
   });
 });
