@@ -5,14 +5,17 @@
 
   <sidebar-head
     on-search-start="$ctrl.fillPlaylistWith(subreddit)"
-    on-state-set="$ctrl.setCurrentState(state)"
+    on-settings-click="$ctrl.toggleSettingsState()"
     is-loading="$ctrl.isLoading"
+    current-state="$ctrl.currentState"
     current-subreddit="$ctrl.currentSubreddit">
   </sidebar-head>
 
   <div
     class="sidebar-state-container"
     ng-switch="$ctrl.currentState"
+    ng-scroll-to="'.video-item--current'"
+    offset-top="50"
     ng-class="{'sidebar-playlist-container--loading': $ctrl.isLoading}">
 
     <settings-panel
