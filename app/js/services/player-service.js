@@ -107,6 +107,11 @@
         // 3 (buffering)
         // 5 (video cued).
 
+
+        if(SettingsService.list.isFocusForced) {
+          document.activeElement.blur();
+        }
+
         if(SettingsService.list.isFlashModeEnabled && event.data === 1) {
           $timeout(() => {
             this.playNext();

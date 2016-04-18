@@ -164,6 +164,15 @@ describe('Service: PlayerService', function() {
   });
 
   describe('onPlayerStateChange()', () => {
+    describe('when SettingsService.list.isFocusForced is true', () => {
+      it('should call document.activeElement.blur()', inject(SettingsService => {
+        SettingsService.list.isFocusForced = true;
+        spyOn(document.activeElement, 'blur');
+        service.onPlayerStateChange({ data: 0 });
+        expect(document.activeElement.blur).toHaveBeenCalled();
+      }));
+    });
+
     describe('when called with event.data === 0 and isFlashModeEnabled === true', () => {
       it('should call playNext after 5 seconds', inject((SettingsService, $timeout) => {
         SettingsService.list.isFlashModeEnabled = true;

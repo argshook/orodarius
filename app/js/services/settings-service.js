@@ -48,6 +48,7 @@
         localStorageService.set(settingsStorageName, settings);
       }
 
+      // TODO: refactor to use get instead of list
       return { list: settings, add, toggle, set };
     }]);
 
