@@ -1,0 +1,18 @@
+<div class="sidebar-playlist">
+
+  <video-item ng-repeat="item in $ctrl.list track by $index"
+              ng-click="$ctrl.onItemClick({ item: item })"
+              video-item="item"
+              index="$index + 1"
+              current-subreddit="$ctrl.currentSubreddit">
+  </video-item>
+
+  <div
+    class="list-group-more"
+    ng-show="$ctrl.list.length > 0"
+    ng-class="{'list-group-more--loading': $ctrl.isLoading}"
+    ng-click="$ctrl.onExpandClick()">
+    <span class="glyphicon glyphicon-plus"></span>
+  </div>
+</div>
+

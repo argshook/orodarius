@@ -1,0 +1,44 @@
+<div class="container-sidebar" ng-class="{'container-sidebar--open': $ctrl.getIsOpen()}">
+  <div class="sidebar-toggle" ng-click="$ctrl.toggle()">
+    <span class="glyphicon glyphicon-circle-arrow-{{$ctrl.getIsOpen() ? 'right' : 'left'}}"></span>
+  </div>
+
+  <sidebar-head
+    on-search-start="$ctrl.fillPlaylistWith(subreddit)"
+    on-settings-click="$ctrl.toggleSettingsState()"
+    is-loading="$ctrl.isLoading"
+    current-state="$ctrl.currentState"
+    current-subreddit="$ctrl.currentSubreddit">
+  </sidebar-head>
+
+  <div
+    class="sidebar-state-container"
+    ng-switch="$ctrl.currentState"
+    ng-scroll-to="'.video-item--current'"
+    offset-top="50"
+    ng-class="{'sidebar-playlist-container--loading': $ctrl.isLoading}">
+
+    <settings-panel
+      ng-switch-when="settings">
+    </settings-panel>
+
+    <div ng-switch-default>
+      <sidebar-list
+        ng-show="$ctrl.playlist.length > 0"
+        list="$ctrl.playlist"
+        is-loading="$ctrl.isLoading"
+        current-subreddit="$ctrl.currentSubreddit"
+        on-item-click="$ctrl.playVideo(item)"
+        on-expand-click="$ctrl.expandPlaylist()">
+      </sidebar-list>
+
+      <sidebar-empty
+        ng-show="$ctrl.playlist.length === 0"
+        on-subreddit-click="$ctrl.fillPlaylistWith(subreddit)" >
+      </sidebar-empty>
+    </div>
+  </div>
+
+  <sidebar-foot></sidebar-foot>
+</div>
+
