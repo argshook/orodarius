@@ -17,6 +17,13 @@ describe('Directive: sidebarHead', () => {
     'on-search-start': 'onSearchStart(subreddit)',
   };
 
+  const driver = {
+    head: e => e.find('.sidebar-head'),
+    nowPlaying: e => e.find('.sidebar-now-playing-btn'),
+    nowPlayingInput: e => e.find('.sidebar-now-playing-input'),
+    toggler: e => e.find('.sidebar-settings-panel-toggle')
+  };
+
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
   beforeEach(inject(($compile, $rootScope) => {
@@ -24,29 +31,29 @@ describe('Directive: sidebarHead', () => {
   }));
 
   it('should compile successfully', () => {
-    compile((scope, element) => {
+    compile({}, {}, (scope, element, driver) => {
       expect(element.find('.sidebar-head').length).toBe(1);
-    });
+    }, driver);
   });
 
   describe('when search icon clicked', () => {
     it('should call parentScope.onSearchStart with correct subreddit', () => {
-      compile(parentScopeMock, elementAttrsMock, (scope, element) => {
+      compile(parentScopeMock, elementAttrsMock, (scope, element, driver) => {
         scope.$ctrl.currentSubreddit = 'expected sub';
-        element.find('.sidebar-now-playing-btn').click();
+        driver.nowPlaying().click();
         expect(parentScopeMock.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
-      });
+      }, driver);
     });
   });
 
   describe('when focused input received enter key press', () => {
     it('should call parentScope.onSearchStart with correct subreddit', () => {
-      compile(parentScopeMock, elementAttrsMock, (scope, element) => {
+      compile(parentScopeMock, elementAttrsMock, (scope, element, driver) => {
         scope.$ctrl.currentSubreddit = 'expected sub';
-        element.find('.sidebar-now-playing-input').triggerHandler({ type: 'keypress', which: 13 });
+        driver.nowPlayingInput().triggerHandler({ type: 'keypress', which: 13 });
         scope.$digest();
         expect(parentScopeMock.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
-      });
+      }, driver);
     });
   });
 
@@ -68,11 +75,11 @@ describe('Directive: sidebarHead', () => {
   describe('settings panel toggle btn', () => {
     describe('when clicked', () => {
       it('should call scope.$ctrl.onSettingsClick', () => {
-        compile(parentScopeMock, elementAttrsMock, (scope, element) => {
+        compile(parentScopeMock, elementAttrsMock, (scope, element, driver) => {
           spyOn(scope.$ctrl, 'onSettingsClick');
-          element.find('.sidebar-settings-panel-toggle').click();
+          driver.toggler().click();
           expect(scope.$ctrl.onSettingsClick).toHaveBeenCalled();
-        })
+        }, driver)
       });
     });
   });
@@ -83,16 +90,14 @@ describe('Directive: sidebarHead', () => {
         let parentScope = _.cloneDeep(parentScopeMock);
         parentScope.currentState = 'settings';
 
-        compile(parentScope, elementAttrsMock, function (scope, element) {
-          expect(element.find('.sidebar-settings-panel-toggle')
-            .hasClass('sidebar-now-playing-btn--active')).toBe(true);
-        });
+        compile(parentScope, elementAttrsMock, function (scope, element, driver) {
+          expect(driver.toggler().hasClass('sidebar-now-playing-btn--active')).toBe(true);
+        }, driver);
 
         parentScope.currentState = 'shit';
-        compile(parentScope, elementAttrsMock, function (scope, element) {
-          expect(element.find('.sidebar-settings-panel-toggle')
-            .hasClass('sidebar-now-playing-btn--active')).toBe(false);
-        });
+        compile(parentScope, elementAttrsMock, function (scope, element, driver) {
+          expect(driver.toggler().hasClass('sidebar-now-playing-btn--active')).toBe(false);
+        }, driver);
       });
     });
   });

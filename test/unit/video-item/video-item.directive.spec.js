@@ -1,6 +1,6 @@
 'use strict';
 
-fdescribe('Directive: video-item', function() {
+describe('Directive: video-item', function() {
   var compile;
 
   var parentScopeMock = {
