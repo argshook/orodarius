@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: video-item', function() {
+fdescribe('Directive: video-item', function() {
   var compile;
 
   var parentScopeMock = {
@@ -25,6 +25,12 @@ describe('Directive: video-item', function() {
     'index': 'index'
   };
 
+  var driver = {
+    title: e => e.find('.video-item__title'),
+    score: e => e.find('.video-item__score'),
+    index: e => e.find('.video-item__index')
+  };
+
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
   beforeEach(inject(function($rootScope, $compile) {
@@ -37,15 +43,15 @@ describe('Directive: video-item', function() {
 
   describe('when parent scope has proper `item` property', function() {
     it('should display title', () => {
-      compile(parentScopeMock, elementAttrsMock, function(scope, element) {
-        expect(element.find('.video-item__title').text()).toBe(parentScopeMock.videoItem.title);
-      })
+      compile(parentScopeMock, elementAttrsMock, function(scope, element, driver) {
+        expect(driver.title().text()).toBe(parentScopeMock.videoItem.title)
+      }, driver);
     });
 
     it('should display reddit score', () => {
-      compile(parentScopeMock, elementAttrsMock, function (scope, element) {
-        expect(element.find('.video-item__score').text()).toBe(parentScopeMock.videoItem.redditScore);
-      });
+      compile(parentScopeMock, elementAttrsMock, function (scope, element, driver) {
+        expect(driver.score().text()).toBe(parentScopeMock.videoItem.redditScore);
+      }, driver);
     });
   });
 
@@ -53,9 +59,9 @@ describe('Directive: video-item', function() {
     it('should display that index in view', () => {
       let parentScope = _.cloneDeep(parentScopeMock);
       parentScope.index = 33;
-      compile(parentScope, elementAttrsMock, (scope, element) => {
-        expect(element.find('.video-item__index').html()).toBe('33');
-      });
+      compile(parentScope, elementAttrsMock, (scope, element, driver) => {
+        expect(driver.index().html()).toBe('33');
+      }, driver);
     });
   });
 
