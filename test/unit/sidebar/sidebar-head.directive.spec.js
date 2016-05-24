@@ -32,7 +32,7 @@ describe('Directive: sidebarHead', () => {
 
   it('should compile successfully', () => {
     compile({}, {}, (scope, element, driver) => {
-      expect(element.find('.sidebar-head').length).toBe(1);
+      expect(driver.head().length).toBe(1);
     }, driver);
   });
 
