@@ -19,21 +19,21 @@ describe('Directive: sidebarHead', () => {
 
   const driver = {
     head: e => e.find('.sidebar-head'),
-    nowPlaying: e => e.find('.sidebar-now-playing-btn'),
-    nowPlayingInput: e => e.find('.sidebar-now-playing-input'),
-    toggler: e => e.find('.sidebar-settings-panel-toggle')
+    nowPlaying: e =>  e.find('.sidebar-now-playing-btn'),
+    nowPlayingInput: e =>  e.find('.sidebar-now-playing-input'),
+    toggler: e =>  e.find('.sidebar-settings-panel-toggle')
   };
 
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
   beforeEach(inject(($compile, $rootScope) => {
-    compile = createCompiler('<sidebar-head />', $rootScope, $compile);
+    compile = createCompiler('<sidebar-head />', $rootScope, $compile, driver);
   }));
 
   it('should compile successfully', () => {
-    compile({}, {}, (scope, element, driver) => {
+    compile((scope, element, driver) => {
       expect(driver.head().length).toBe(1);
-    }, driver);
+    });
   });
 
   describe('when search icon clicked', () => {
@@ -42,7 +42,7 @@ describe('Directive: sidebarHead', () => {
         scope.$ctrl.currentSubreddit = 'expected sub';
         driver.nowPlaying().click();
         expect(parentScopeMock.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
-      }, driver);
+      });
     });
   });
 
@@ -53,7 +53,7 @@ describe('Directive: sidebarHead', () => {
         driver.nowPlayingInput().triggerHandler({ type: 'keypress', which: 13 });
         scope.$digest();
         expect(parentScopeMock.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
-      }, driver);
+      });
     });
   });
 
@@ -79,7 +79,7 @@ describe('Directive: sidebarHead', () => {
           spyOn(scope.$ctrl, 'onSettingsClick');
           driver.toggler().click();
           expect(scope.$ctrl.onSettingsClick).toHaveBeenCalled();
-        }, driver)
+        })
       });
     });
   });
@@ -92,12 +92,12 @@ describe('Directive: sidebarHead', () => {
 
         compile(parentScope, elementAttrsMock, function (scope, element, driver) {
           expect(driver.toggler().hasClass('sidebar-now-playing-btn--active')).toBe(true);
-        }, driver);
+        });
 
         parentScope.currentState = 'shit';
         compile(parentScope, elementAttrsMock, function (scope, element, driver) {
           expect(driver.toggler().hasClass('sidebar-now-playing-btn--active')).toBe(false);
-        }, driver);
+        });
       });
     });
   });

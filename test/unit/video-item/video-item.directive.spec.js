@@ -34,7 +34,7 @@ describe('Directive: video-item', function() {
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
   beforeEach(inject(function($rootScope, $compile) {
-    compile = createCompiler('<video-item />', $rootScope, $compile);
+    compile = createCompiler('<video-item />', $rootScope, $compile, driver);
   }));
 
   it('should compile successfully', function() {
@@ -45,13 +45,13 @@ describe('Directive: video-item', function() {
     it('should display title', () => {
       compile(parentScopeMock, elementAttrsMock, function(scope, element, driver) {
         expect(driver.title().text()).toBe(parentScopeMock.videoItem.title)
-      }, driver);
+      });
     });
 
     it('should display reddit score', () => {
       compile(parentScopeMock, elementAttrsMock, function (scope, element, driver) {
         expect(driver.score().text()).toBe(parentScopeMock.videoItem.redditScore);
-      }, driver);
+      });
     });
   });
 
@@ -61,7 +61,7 @@ describe('Directive: video-item', function() {
       parentScope.index = 33;
       compile(parentScope, elementAttrsMock, (scope, element, driver) => {
         expect(driver.index().html()).toBe('33');
-      }, driver);
+      });
     });
   });
 

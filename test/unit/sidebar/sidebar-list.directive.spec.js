@@ -15,9 +15,10 @@ describe('Directive: sidebarList', function() {
 
   const driver = {
     more: e => e.find('.list-group-more'),
-    validateAttrs: (e, s, attrAndValue) => {
+    videoItem: e => e.find('video-item'),
+    validateAttrs: function(attrAndValue) {
       return attrAndValue.reduce((acc, [attr, value]) => {
-        return e.find('video-item').attr(attr) === value
+        return this.videoItem(this.$).attr(attr) === value
       }, false);
     }
   };
@@ -26,7 +27,7 @@ describe('Directive: sidebarList', function() {
   beforeEach(module('orodarius'));
 
   beforeEach(inject(($compile, $rootScope, $httpBackend, PlaylistService) => {
-    compile = createCompiler(directiveTemplate, $rootScope, $compile);
+    compile = createCompiler(directiveTemplate, $rootScope, $compile, driver);
   }));
 
   it('should compile successfully', () => {
@@ -60,7 +61,7 @@ describe('Directive: sidebarList', function() {
         ];
 
         expect(driver.validateAttrs(attrAndValue)).toBe(true);
-      }, driver);
+      });
     });
 
     describe('when clicked', () => {
@@ -81,7 +82,7 @@ describe('Directive: sidebarList', function() {
 
         compile(parentScope, {}, (scope, element, driver) => {
           expect(driver.more().hasClass('list-group-more--loading')).toBe(true);
-        }, driver);
+        });
       });
     });
 
@@ -92,7 +93,7 @@ describe('Directive: sidebarList', function() {
 
         compile(parentScope, {}, function (scope, element, driver) {
           expect(driver.more().hasClass('ng-hide')).toBe(true);
-        }, driver);
+        });
       });
     });
 
@@ -101,7 +102,7 @@ describe('Directive: sidebarList', function() {
         compile(parentScopeMock, {}, (scope, element, driver) => {
           driver.more().click();
           expect(parentScopeMock.onExpandClick).toHaveBeenCalled();
-        }, driver);
+        });
       });
     });
   });
