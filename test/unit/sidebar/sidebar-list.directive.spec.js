@@ -52,7 +52,7 @@ describe('Directive: sidebarList', function() {
     });
 
     it('should have expected attributes', () => {
-      compile(parentScopeMock, {}, (scope, element, driver) => {
+      compile(parentScopeMock, (scope, element, driver) => {
         let $videoItem = element.find('video-item').eq(0);
         const attrAndValue = [
           [ 'currentSubreddit', '$ctrl.currentSubreddit' ],
@@ -80,7 +80,7 @@ describe('Directive: sidebarList', function() {
         let parentScope = _.clone(parentScopeMock);
         parentScope.isLoading = true;
 
-        compile(parentScope, {}, (scope, element, driver) => {
+        compile(parentScope, (scope, element, driver) => {
           expect(driver.more().hasClass('list-group-more--loading')).toBe(true);
         });
       });
@@ -91,7 +91,7 @@ describe('Directive: sidebarList', function() {
         let parentScope = _.clone(parentScopeMock);
         parentScope.list = [];
 
-        compile(parentScope, {}, function (scope, element, driver) {
+        compile(parentScope, function (scope, element, driver) {
           expect(driver.more().hasClass('ng-hide')).toBe(true);
         });
       });
@@ -99,7 +99,7 @@ describe('Directive: sidebarList', function() {
 
     describe('when clicked', () => {
       it('should call $ctrl.onExpandClick correctly', () => {
-        compile(parentScopeMock, {}, (scope, element, driver) => {
+        compile(parentScopeMock, (scope, element, driver) => {
           driver.more().click();
           expect(parentScopeMock.onExpandClick).toHaveBeenCalled();
         });
