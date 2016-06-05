@@ -13,11 +13,21 @@ describe('Directive: sidebarList', function() {
     onExpandClick: jasmine.createSpy('onExpandClick')
   };
 
+  const driver = {
+    more: e => e.find('.list-group-more'),
+    videoItem: e => e.find('video-item'),
+    validateAttrs: function(attrAndValue) {
+      return attrAndValue.reduce((acc, [attr, value]) => {
+        return this.videoItem(this.$).attr(attr) === value
+      }, false);
+    }
+  };
+
   beforeEach(module('orodarius.templates'));
   beforeEach(module('orodarius'));
 
   beforeEach(inject(($compile, $rootScope, $httpBackend, PlaylistService) => {
-    compile = createCompiler(directiveTemplate, $rootScope, $compile);
+    compile = createCompiler(directiveTemplate, $rootScope, $compile, driver);
   }));
 
   it('should compile successfully', () => {
@@ -42,11 +52,15 @@ describe('Directive: sidebarList', function() {
     });
 
     it('should have expected attributes', () => {
-      compile(parentScopeMock, (scope, element) => {
+      compile(parentScopeMock, (scope, element, driver) => {
         let $videoItem = element.find('video-item').eq(0);
-        expect($videoItem.attr('current-subreddit')).toBe('$ctrl.currentSubreddit');
-        expect($videoItem.attr('video-item')).toBe('item');
-        expect($videoItem.attr('index')).toBe('$index + 1');
+        const attrAndValue = [
+          [ 'currentSubreddit', '$ctrl.currentSubreddit' ],
+          [ 'video-item', 'item' ],
+          [ 'index', '$index + 1' ]
+        ];
+
+        expect(driver.validateAttrs(attrAndValue)).toBe(true);
       });
     });
 
@@ -66,8 +80,8 @@ describe('Directive: sidebarList', function() {
         let parentScope = _.clone(parentScopeMock);
         parentScope.isLoading = true;
 
-        compile(parentScope, function (scope, element) {
-          expect(element.find('.list-group-more').hasClass('list-group-more--loading')).toBe(true);
+        compile(parentScope, (scope, element, driver) => {
+          expect(driver.more().hasClass('list-group-more--loading')).toBe(true);
         });
       });
     });
@@ -77,16 +91,16 @@ describe('Directive: sidebarList', function() {
         let parentScope = _.clone(parentScopeMock);
         parentScope.list = [];
 
-        compile(parentScope, function (scope, element) {
-          expect(element.find('.list-group-more').hasClass('ng-hide')).toBe(true);
+        compile(parentScope, function (scope, element, driver) {
+          expect(driver.more().hasClass('ng-hide')).toBe(true);
         });
       });
     });
 
     describe('when clicked', () => {
       it('should call $ctrl.onExpandClick correctly', () => {
-        compile(parentScopeMock, (scope, element) => {
-          element.find('.list-group-more').click();
+        compile(parentScopeMock, (scope, element, driver) => {
+          driver.more().click();
           expect(parentScopeMock.onExpandClick).toHaveBeenCalled();
         });
       });
