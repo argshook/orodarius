@@ -18,6 +18,7 @@ describe('Service: PlayerService', function() {
     player = service.createNewPlayer('main-video-player');
 
     spyOn(player, 'loadVideoById');
+    spyOn(PlaylistService, 'expandPlaylist').and.returnValue($q.resolve());
   }));
 
   it('createNewPlayer method should create new player instance', function() {
@@ -47,33 +48,32 @@ describe('Service: PlayerService', function() {
     expect($timeout).toHaveBeenCalled();
   }));
 
-  it('playNext should call playVideo with next videoId in row', function() {
+  it('playNext should call playVideo with next videoId in row', inject(($rootScope) => {
     PlaylistService.playlist = [
-      { videoId: 'currentId' },
-      { videoId: 'nextId' }
+      { videoId: 'currentId', ownId: 0 },
+      { videoId: 'nextId', ownId: 1 }
     ];
 
-    service.currentVideoItem.videoId = PlaylistService.playlist[0].videoId;
+    service.currentVideoItem = PlaylistService.playlist[0];
 
     service.playNext();
+    $rootScope.$apply();
     expect(service.currentVideoItem.videoId).toBe('nextId');
-  });
+  }));
 
-  it('playNext method should call PlaylistService.expandPlaylist when third to the last item reached', () => {
-    PlaylistService.playlist = [
-      { videoId: 'currentId' },
-      { videoId: 'currentId1' },
-      { videoId: 'currentId2' },
-      { videoId: 'currentId3' }
-    ];
+  it('playNext method should call PlaylistService.expandPlaylist when any of three items on playlist end ar currently playing', inject(($rootScope) => {
+    PlaylistService.playlist = _.range(4).map(i => { return { videoId: `currentId${i}`, ownId: i }; });
 
-    spyOn(PlaylistService, 'expandPlaylist').and.callThrough();
-    service.currentVideoItem.videoId = PlaylistService.playlist[0].videoId;
-    service.playNext();
-    expect(PlaylistService.expandPlaylist.calls.count()).toBe(1);
-  });
+    _.range(3).map(i => {
+        service.currentVideoItem = PlaylistService.playlist[i];
+        service.playNext();
+        $rootScope.$apply();
+    });
 
-  it('playNext method should determine next video by videoId, name and created properties', function() {
+    expect(PlaylistService.expandPlaylist.calls.count()).toBe(3);
+  }));
+
+  it('playNext method should determine next video by videoId, name and created properties', inject(($rootScope) => {
     PlaylistService.playlist = [
       { videoId: 'currentId', name: 'WHAAT', created: 1 },
       { videoId: 'currentId', name: 'WHAAT', created: 2 }
@@ -81,8 +81,9 @@ describe('Service: PlayerService', function() {
 
     service.currentVideoItem = PlaylistService.playlist[0];
     service.playNext();
+    $rootScope.$apply();
     expect(service.currentVideoItem).toEqual(PlaylistService.playlist[1]);
-  });
+  }));
 
   it('playPrevious should play previous video in row', function() {
     PlaylistService.playlist = [

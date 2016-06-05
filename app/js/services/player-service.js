@@ -68,7 +68,7 @@
         var nextVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this)) + 1;
 
         // TODO: it'd probably make more sense if PlaylistService take care of itself rather than this PlayerService
-        if(nextVideoItemIndex === PlaylistService.playlist.length - 3) {
+        if(nextVideoItemIndex >= Math.max(PlaylistService.playlist.length - 3, 0)) {
           PlaylistService.expandPlaylist().then(data => {
             this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
             $rootScope.$emit('orodariusScrollIntoView');
