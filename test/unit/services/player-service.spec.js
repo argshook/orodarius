@@ -59,14 +59,18 @@ describe('Service: PlayerService', function() {
     expect(service.currentVideoItem.videoId).toBe('nextId');
   });
 
-  it('playNext method should call PlaylistService.expandPlaylist when last item reached', function() {
+  it('playNext method should call PlaylistService.expandPlaylist when third to the last item reached', () => {
     PlaylistService.playlist = [
-      { videoId: 'currentId' }
+      { videoId: 'currentId' },
+      { videoId: 'currentId1' },
+      { videoId: 'currentId2' },
+      { videoId: 'currentId3' }
     ];
-    spyOn(PlaylistService, 'expandPlaylist').and.returnValue({ then: angular.noop });
+
+    spyOn(PlaylistService, 'expandPlaylist').and.callThrough();
     service.currentVideoItem.videoId = PlaylistService.playlist[0].videoId;
     service.playNext();
-    expect(PlaylistService.expandPlaylist).toHaveBeenCalled();
+    expect(PlaylistService.expandPlaylist.calls.count()).toBe(1);
   });
 
   it('playNext method should determine next video by videoId, name and created properties', function() {
