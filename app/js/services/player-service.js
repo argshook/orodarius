@@ -20,7 +20,7 @@
         var defaultPlayerOptions = {
           width: $window.innerWidth, // TODO: perhaps move to settings value
           height: $window.innerHeight,
-          videoId: 'DT2oAtQtFrg',
+          videoId: 'ZGXh-kgedkI',
           playerVars: {
             autohide: 1,
             autoplay: 0,
