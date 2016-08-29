@@ -29,7 +29,7 @@ describe('Service: SettingsService', function() {
     describe('sources array', function() {
       var mockSourceObject = {
         name: 'reddit',
-        apiUrl: 'http://www.reddit.com/r/',
+        apiUrl: 'https://www.reddit.com/r/',
         isEnabled: true
       };
 

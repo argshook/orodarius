@@ -14,8 +14,8 @@
               "banned_by": null,
               "media_embed": {},
               "subreddit": "videos",
-              "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hello, everyone,&lt;/p&gt;\n\n&lt;p&gt;We have a few updates to bring you about the state of &lt;a href=\"/r/videos\"&gt;/r/videos&lt;/a&gt;, and some new features which we hope you&amp;#39;ll like:&lt;/p&gt;\n\n&lt;p&gt;&lt;strong&gt;1. (Re-)introducing &lt;a href=\"/r/videos_discussion\"&gt;/r/videos_discussion&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;\n\n&lt;p&gt;As not that many of you will be aware, we have &lt;strong&gt;a meta sub for discussion about &lt;a href=\"/r/videos\"&gt;/r/videos&lt;/a&gt;&lt;/strong&gt;, its rules, its practices, and generally for us to communicate with you &lt;em&gt;en masse&lt;/em&gt;.&lt;/p&gt;\n\n&lt;p&gt;It&amp;#39;s been around for a little while, but we&amp;#39;ve re-vamped it, tightened up on the rules, and would like to see as many of you there as possible. We get a lot of messages from you guys to find out about why certain rules exist, if we have considered adding/removing [something], and other such useful debate. Now there&amp;#39;s a place to have those discussions openly, with contributions from as many people as possible: &lt;strong&gt;&lt;a href=\"/r/videos_discussion\"&gt;/r/videos_discussion&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;\n\n&lt;hr/&gt;\n\n&lt;p&gt;&lt;strong&gt;2. The IRC&lt;/strong&gt;&lt;/p&gt;\n\n&lt;p&gt;We haven&amp;#39;t publicised this much, but &lt;strong&gt;we have our very own IRC channel: #videos on Snoonet&lt;/strong&gt;. You can &lt;strong&gt;join &lt;a href=\"https://kiwiirc.com/client/irc.snoonet.org/#videos\"&gt;using the web client&lt;/a&gt;&lt;/strong&gt;, or you can use whichever desktop client you prefer &lt;a href=\"https://www.snoonet.org/help#using-webchat\"&gt;following this guide&lt;/a&gt; if required.&lt;/p&gt;\n\n&lt;p&gt;We&amp;#39;d love to see some of you on there, and get some #videos regulars. If you aren&amp;#39;t enthralled by the level of chat alone, then keep in mind that it&amp;#39;s a very good way to contact us directly for longer/faster conversations than modmail would allow for. There will (almost) always be a mod online, so feel free to get in touch that way if you&amp;#39;d rather.&lt;/p&gt;\n\n&lt;hr/&gt;\n\n&lt;p&gt;&lt;strong&gt;3. Vines&lt;/strong&gt;&lt;/p&gt;\n\n&lt;p&gt;We&amp;#39;ve had a whole lot of messages arguing for and against the banning of Vines following &lt;a href=\"http://www.reddit.com/r/videos/comments/2zzod4/when_you_dunked_so_hard_it_went_in_twice/\"&gt;this submission&lt;/a&gt; which hit #1 on the frontpage.&lt;/p&gt;\n\n&lt;p&gt;Having discussed it with many of you who messaged in, and amongst ourselves, &lt;strong&gt;we will be trialling a few new features&lt;/strong&gt;:&lt;/p&gt;\n\n&lt;p&gt;&lt;strong&gt;- [Vine] tags in title.&lt;/strong&gt; These are not (yet) enforced, but are strongly encouraged. It helps mobile users out a lot.&lt;/p&gt;\n\n&lt;p&gt;&lt;strong&gt;- Toggle vines on/off.&lt;/strong&gt; If you hate them lots, get rid of them by clicking the link in the sidebar to toggle them off altogether&lt;/p&gt;\n\n&lt;p&gt;Vines are fairly unique in that the length restriction lends itself to certain types of content which other platforms do not encourage in the same way, and so it would be a shame to remove them entirely. This way, if you don&amp;#39;t want to watch them, they should be easier to avoid. If the tag proves popular, then we may move to a more enforced method in future in which only Vines with [Vine] at the beginning of the title are permitted.&lt;/p&gt;\n\n&lt;p&gt;&lt;em&gt;Please note that this is going to be in place for trial period of about a month. We&amp;#39;d love to hear your feedback over on &lt;a href=\"http://www.reddit.com/r/videos_discussion/comments/306kqn/mod_post_vine_policy_changes_discussion/\"&gt;this thread in /r/videos_discussion&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;\n\n&lt;hr/&gt;\n\n&lt;p&gt;&lt;strong&gt;4. New Moderators&lt;/strong&gt;&lt;/p&gt;\n\n&lt;p&gt;As a default subreddit, we strive to set up rules that bring you the best content possible without overly limiting what you can and cannot submit. A lot of these rules cannot be automated by a bot, and therefore must have humans to confirm if a post is or is not breaking them.&lt;/p&gt;\n\n&lt;p&gt;As a result, we have added six new moderators in order to help keep up with modmail, comment moderation, and general moderation exercises. After a trial period of a month, we are proud to announce these new moderators as they have been knocking it out of the park in terms of activity, professionalism, and attitude!&lt;/p&gt;\n\n&lt;p&gt;Please give a big welcome to the newest members of the &lt;a href=\"/r/videos\"&gt;/r/videos&lt;/a&gt; team:&lt;/p&gt;\n\n&lt;p&gt;&lt;a href=\"/u/Fritzly\"&gt;/u/Fritzly&lt;/a&gt;,&lt;br/&gt;\n&lt;a href=\"/u/bacondev\"&gt;/u/bacondev&lt;/a&gt;,&lt;br/&gt;\n&lt;a href=\"/u/Meepster23\"&gt;/u/Meepster23&lt;/a&gt;,&lt;br/&gt;\n&lt;a href=\"/u/TheMentalist10\"&gt;/u/TheMentalist10&lt;/a&gt;,&lt;br/&gt;\n&lt;a href=\"/u/MuggyFuzzball\"&gt;/u/MuggyFuzzball&lt;/a&gt;,&lt;br/&gt;\nand &lt;a href=\"/u/S1lv3rSmith\"&gt;/u/S1lv3rSmith&lt;/a&gt;&lt;/p&gt;\n\n&lt;hr/&gt;\n\n&lt;p&gt;And that&amp;#39;s all, folks. See you next time.&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;&lt;em&gt;The &lt;a href=\"/r/videos\"&gt;/r/videos&lt;/a&gt; Moderators&lt;/em&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
-              "selftext": "Hello, everyone,\n\nWe have a few updates to bring you about the state of /r/videos, and some new features which we hope you'll like:\n\n**1. (Re-)introducing /r/videos_discussion**\n\nAs not that many of you will be aware, we have **a meta sub for discussion about /r/videos**, its rules, its practices, and generally for us to communicate with you *en masse*.\n\nIt's been around for a little while, but we've re-vamped it, tightened up on the rules, and would like to see as many of you there as possible. We get a lot of messages from you guys to find out about why certain rules exist, if we have considered adding/removing [something], and other such useful debate. Now there's a place to have those discussions openly, with contributions from as many people as possible: **/r/videos_discussion**\n*****\n**2. The IRC**\n\nWe haven't publicised this much, but **we have our very own IRC channel: #videos on Snoonet**. You can **join [using the web client](https://kiwiirc.com/client/irc.snoonet.org/#videos)**, or you can use whichever desktop client you prefer [following this guide](https://www.snoonet.org/help#using-webchat) if required.\n\nWe'd love to see some of you on there, and get some #videos regulars. If you aren't enthralled by the level of chat alone, then keep in mind that it's a very good way to contact us directly for longer/faster conversations than modmail would allow for. There will (almost) always be a mod online, so feel free to get in touch that way if you'd rather.\n*****\n**3. Vines**\n\nWe've had a whole lot of messages arguing for and against the banning of Vines following [this submission](http://www.reddit.com/r/videos/comments/2zzod4/when_you_dunked_so_hard_it_went_in_twice/) which hit #1 on the frontpage.\n\nHaving discussed it with many of you who messaged in, and amongst ourselves, **we will be trialling a few new features**:\n\n**- [Vine] tags in title.** These are not (yet) enforced, but are strongly encouraged. It helps mobile users out a lot.\n\n**- Toggle vines on/off.** If you hate them lots, get rid of them by clicking the link in the sidebar to toggle them off altogether\n\nVines are fairly unique in that the length restriction lends itself to certain types of content which other platforms do not encourage in the same way, and so it would be a shame to remove them entirely. This way, if you don't want to watch them, they should be easier to avoid. If the tag proves popular, then we may move to a more enforced method in future in which only Vines with [Vine] at the beginning of the title are permitted.\n\n*Please note that this is going to be in place for trial period of about a month. We'd love to hear your feedback over on [this thread in /r/videos_discussion](http://www.reddit.com/r/videos_discussion/comments/306kqn/mod_post_vine_policy_changes_discussion/)*\n*****\n**4. New Moderators**\n\nAs a default subreddit, we strive to set up rules that bring you the best content possible without overly limiting what you can and cannot submit. A lot of these rules cannot be automated by a bot, and therefore must have humans to confirm if a post is or is not breaking them.\n\nAs a result, we have added six new moderators in order to help keep up with modmail, comment moderation, and general moderation exercises. After a trial period of a month, we are proud to announce these new moderators as they have been knocking it out of the park in terms of activity, professionalism, and attitude!\n\nPlease give a big welcome to the newest members of the /r/videos team:\n\n/u/Fritzly,  \n/u/bacondev,  \n/u/Meepster23,  \n/u/TheMentalist10,  \n/u/MuggyFuzzball,  \nand /u/S1lv3rSmith\n\n*****\n\nAnd that's all, folks. See you next time.\n\n- *The /r/videos Moderators*\n",
+              "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hello, everyone,&lt;/p&gt;\n\n&lt;p&gt;We have a few updates to bring you about the state of &lt;a href=\"/r/videos\"&gt;/r/videos&lt;/a&gt;, and some new features which we hope you&amp;#39;ll like:&lt;/p&gt;\n\n&lt;p&gt;&lt;strong&gt;1. (Re-)introducing &lt;a href=\"/r/videos_discussion\"&gt;/r/videos_discussion&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;\n\n&lt;p&gt;As not that many of you will be aware, we have &lt;strong&gt;a meta sub for discussion about &lt;a href=\"/r/videos\"&gt;/r/videos&lt;/a&gt;&lt;/strong&gt;, its rules, its practices, and generally for us to communicate with you &lt;em&gt;en masse&lt;/em&gt;.&lt;/p&gt;\n\n&lt;p&gt;It&amp;#39;s been around for a little while, but we&amp;#39;ve re-vamped it, tightened up on the rules, and would like to see as many of you there as possible. We get a lot of messages from you guys to find out about why certain rules exist, if we have considered adding/removing [something], and other such useful debate. Now there&amp;#39;s a place to have those discussions openly, with contributions from as many people as possible: &lt;strong&gt;&lt;a href=\"/r/videos_discussion\"&gt;/r/videos_discussion&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;\n\n&lt;hr/&gt;\n\n&lt;p&gt;&lt;strong&gt;2. The IRC&lt;/strong&gt;&lt;/p&gt;\n\n&lt;p&gt;We haven&amp;#39;t publicised this much, but &lt;strong&gt;we have our very own IRC channel: #videos on Snoonet&lt;/strong&gt;. You can &lt;strong&gt;join &lt;a href=\"https://kiwiirc.com/client/irc.snoonet.org/#videos\"&gt;using the web client&lt;/a&gt;&lt;/strong&gt;, or you can use whichever desktop client you prefer &lt;a href=\"https://www.snoonet.org/help#using-webchat\"&gt;following this guide&lt;/a&gt; if required.&lt;/p&gt;\n\n&lt;p&gt;We&amp;#39;d love to see some of you on there, and get some #videos regulars. If you aren&amp;#39;t enthralled by the level of chat alone, then keep in mind that it&amp;#39;s a very good way to contact us directly for longer/faster conversations than modmail would allow for. There will (almost) always be a mod online, so feel free to get in touch that way if you&amp;#39;d rather.&lt;/p&gt;\n\n&lt;hr/&gt;\n\n&lt;p&gt;&lt;strong&gt;3. Vines&lt;/strong&gt;&lt;/p&gt;\n\n&lt;p&gt;We&amp;#39;ve had a whole lot of messages arguing for and against the banning of Vines following &lt;a href=\"https://www.reddit.com/r/videos/comments/2zzod4/when_you_dunked_so_hard_it_went_in_twice/\"&gt;this submission&lt;/a&gt; which hit #1 on the frontpage.&lt;/p&gt;\n\n&lt;p&gt;Having discussed it with many of you who messaged in, and amongst ourselves, &lt;strong&gt;we will be trialling a few new features&lt;/strong&gt;:&lt;/p&gt;\n\n&lt;p&gt;&lt;strong&gt;- [Vine] tags in title.&lt;/strong&gt; These are not (yet) enforced, but are strongly encouraged. It helps mobile users out a lot.&lt;/p&gt;\n\n&lt;p&gt;&lt;strong&gt;- Toggle vines on/off.&lt;/strong&gt; If you hate them lots, get rid of them by clicking the link in the sidebar to toggle them off altogether&lt;/p&gt;\n\n&lt;p&gt;Vines are fairly unique in that the length restriction lends itself to certain types of content which other platforms do not encourage in the same way, and so it would be a shame to remove them entirely. This way, if you don&amp;#39;t want to watch them, they should be easier to avoid. If the tag proves popular, then we may move to a more enforced method in future in which only Vines with [Vine] at the beginning of the title are permitted.&lt;/p&gt;\n\n&lt;p&gt;&lt;em&gt;Please note that this is going to be in place for trial period of about a month. We&amp;#39;d love to hear your feedback over on &lt;a href=\"https://www.reddit.com/r/videos_discussion/comments/306kqn/mod_post_vine_policy_changes_discussion/\"&gt;this thread in /r/videos_discussion&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;\n\n&lt;hr/&gt;\n\n&lt;p&gt;&lt;strong&gt;4. New Moderators&lt;/strong&gt;&lt;/p&gt;\n\n&lt;p&gt;As a default subreddit, we strive to set up rules that bring you the best content possible without overly limiting what you can and cannot submit. A lot of these rules cannot be automated by a bot, and therefore must have humans to confirm if a post is or is not breaking them.&lt;/p&gt;\n\n&lt;p&gt;As a result, we have added six new moderators in order to help keep up with modmail, comment moderation, and general moderation exercises. After a trial period of a month, we are proud to announce these new moderators as they have been knocking it out of the park in terms of activity, professionalism, and attitude!&lt;/p&gt;\n\n&lt;p&gt;Please give a big welcome to the newest members of the &lt;a href=\"/r/videos\"&gt;/r/videos&lt;/a&gt; team:&lt;/p&gt;\n\n&lt;p&gt;&lt;a href=\"/u/Fritzly\"&gt;/u/Fritzly&lt;/a&gt;,&lt;br/&gt;\n&lt;a href=\"/u/bacondev\"&gt;/u/bacondev&lt;/a&gt;,&lt;br/&gt;\n&lt;a href=\"/u/Meepster23\"&gt;/u/Meepster23&lt;/a&gt;,&lt;br/&gt;\n&lt;a href=\"/u/TheMentalist10\"&gt;/u/TheMentalist10&lt;/a&gt;,&lt;br/&gt;\n&lt;a href=\"/u/MuggyFuzzball\"&gt;/u/MuggyFuzzball&lt;/a&gt;,&lt;br/&gt;\nand &lt;a href=\"/u/S1lv3rSmith\"&gt;/u/S1lv3rSmith&lt;/a&gt;&lt;/p&gt;\n\n&lt;hr/&gt;\n\n&lt;p&gt;And that&amp;#39;s all, folks. See you next time.&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;&lt;em&gt;The &lt;a href=\"/r/videos\"&gt;/r/videos&lt;/a&gt; Moderators&lt;/em&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+              "selftext": "Hello, everyone,\n\nWe have a few updates to bring you about the state of /r/videos, and some new features which we hope you'll like:\n\n**1. (Re-)introducing /r/videos_discussion**\n\nAs not that many of you will be aware, we have **a meta sub for discussion about /r/videos**, its rules, its practices, and generally for us to communicate with you *en masse*.\n\nIt's been around for a little while, but we've re-vamped it, tightened up on the rules, and would like to see as many of you there as possible. We get a lot of messages from you guys to find out about why certain rules exist, if we have considered adding/removing [something], and other such useful debate. Now there's a place to have those discussions openly, with contributions from as many people as possible: **/r/videos_discussion**\n*****\n**2. The IRC**\n\nWe haven't publicised this much, but **we have our very own IRC channel: #videos on Snoonet**. You can **join [using the web client](https://kiwiirc.com/client/irc.snoonet.org/#videos)**, or you can use whichever desktop client you prefer [following this guide](https://www.snoonet.org/help#using-webchat) if required.\n\nWe'd love to see some of you on there, and get some #videos regulars. If you aren't enthralled by the level of chat alone, then keep in mind that it's a very good way to contact us directly for longer/faster conversations than modmail would allow for. There will (almost) always be a mod online, so feel free to get in touch that way if you'd rather.\n*****\n**3. Vines**\n\nWe've had a whole lot of messages arguing for and against the banning of Vines following [this submission](https://www.reddit.com/r/videos/comments/2zzod4/when_you_dunked_so_hard_it_went_in_twice/) which hit #1 on the frontpage.\n\nHaving discussed it with many of you who messaged in, and amongst ourselves, **we will be trialling a few new features**:\n\n**- [Vine] tags in title.** These are not (yet) enforced, but are strongly encouraged. It helps mobile users out a lot.\n\n**- Toggle vines on/off.** If you hate them lots, get rid of them by clicking the link in the sidebar to toggle them off altogether\n\nVines are fairly unique in that the length restriction lends itself to certain types of content which other platforms do not encourage in the same way, and so it would be a shame to remove them entirely. This way, if you don't want to watch them, they should be easier to avoid. If the tag proves popular, then we may move to a more enforced method in future in which only Vines with [Vine] at the beginning of the title are permitted.\n\n*Please note that this is going to be in place for trial period of about a month. We'd love to hear your feedback over on [this thread in /r/videos_discussion](https://www.reddit.com/r/videos_discussion/comments/306kqn/mod_post_vine_policy_changes_discussion/)*\n*****\n**4. New Moderators**\n\nAs a default subreddit, we strive to set up rules that bring you the best content possible without overly limiting what you can and cannot submit. A lot of these rules cannot be automated by a bot, and therefore must have humans to confirm if a post is or is not breaking them.\n\nAs a result, we have added six new moderators in order to help keep up with modmail, comment moderation, and general moderation exercises. After a trial period of a month, we are proud to announce these new moderators as they have been knocking it out of the park in terms of activity, professionalism, and attitude!\n\nPlease give a big welcome to the newest members of the /r/videos team:\n\n/u/Fritzly,  \n/u/bacondev,  \n/u/Meepster23,  \n/u/TheMentalist10,  \n/u/MuggyFuzzball,  \nand /u/S1lv3rSmith\n\n*****\n\nAnd that's all, folks. See you next time.\n\n- *The /r/videos Moderators*\n",
               "likes": null,
               "user_reports": [],
               "secure_media": null,
@@ -44,7 +44,7 @@
               "permalink": "/r/videos/comments/306s8r/discussions_the_irc_vines_and_new_mods/",
               "name": "t3_306s8r",
               "created": 1427241477.0,
-              "url": "http://www.reddit.com/r/videos/comments/306s8r/discussions_the_irc_vines_and_new_mods/",
+              "url": "https://www.reddit.com/r/videos/comments/306s8r/discussions_the_irc_vines_and_new_mods/",
               "author_flair_text": null,
               "title": "Discussions, The IRC, Vines, and New Mods",
               "created_utc": 1427237877.0,
@@ -74,10 +74,10 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Plasser &amp; Theurer SWIETELSKY Baugesellschaft m.b.H.",
                   "title": "RU 800 S",
-                  "url": "http://www.youtube.com/watch?v=02pWbr9bgbA",
+                  "url": "https://www.youtube.com/watch?v=02pWbr9bgbA",
                   "type": "video",
                   "author_name": "TrackMachines",
                   "height": 338,
@@ -88,7 +88,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2F02pWbr9bgbA%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/channel/UCgRU4p9o32jgY4vQKRIrZjA"
+                  "author_url": "https://www.youtube.com/channel/UCgRU4p9o32jgY4vQKRIrZjA"
                 },
                 "type": "youtube.com"
               },
@@ -104,7 +104,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/LyDjqRWMBlXO9mvdZDlSOjpOp6qlpQ9SMHe7VXHVjhE.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/LyDjqRWMBlXO9mvdZDlSOjpOp6qlpQ9SMHe7VXHVjhE.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -129,10 +129,10 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Plasser &amp; Theurer SWIETELSKY Baugesellschaft m.b.H.",
                   "title": "RU 800 S",
-                  "url": "http://www.youtube.com/watch?v=02pWbr9bgbA",
+                  "url": "https://www.youtube.com/watch?v=02pWbr9bgbA",
                   "type": "video",
                   "author_name": "TrackMachines",
                   "height": 338,
@@ -141,9 +141,9 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/02pWbr9bgbA/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/02pWbr9bgbA/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/channel/UCgRU4p9o32jgY4vQKRIrZjA"
+                  "author_url": "https://www.youtube.com/channel/UCgRU4p9o32jgY4vQKRIrZjA"
                 },
                 "type": "youtube.com"
               },
@@ -172,10 +172,10 @@
               "secure_media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Cody's really glad Easter's over. Special Thanks: - Lauren Davis - James Rayburn",
                   "title": "The Bad Egg",
-                  "url": "http://www.youtube.com/watch?v=8dl3rYC8ls0",
+                  "url": "https://www.youtube.com/watch?v=8dl3rYC8ls0",
                   "author_name": "Grant &amp; Cody",
                   "height": 338,
                   "width": 600,
@@ -186,7 +186,7 @@
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2F8dl3rYC8ls0%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/channel/UCmpQekXIv8okzdzSOECpNjA"
+                  "author_url": "https://www.youtube.com/channel/UCmpQekXIv8okzdzSOECpNjA"
                 }
               },
               "link_flair_text": null,
@@ -201,7 +201,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/NqdvNIl2KcFXZ4xtEPoHAoIkVBsEHEf0ZxnohWrn_fI.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/NqdvNIl2KcFXZ4xtEPoHAoIkVBsEHEf0ZxnohWrn_fI.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -227,10 +227,10 @@
               "media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Cody's really glad Easter's over. Special Thanks: - Lauren Davis - James Rayburn",
                   "title": "The Bad Egg",
-                  "url": "http://www.youtube.com/watch?v=8dl3rYC8ls0",
+                  "url": "https://www.youtube.com/watch?v=8dl3rYC8ls0",
                   "author_name": "Grant &amp; Cody",
                   "height": 338,
                   "width": 600,
@@ -238,10 +238,10 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/8dl3rYC8ls0/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/8dl3rYC8ls0/hqdefault.jpg",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/channel/UCmpQekXIv8okzdzSOECpNjA"
+                  "author_url": "https://www.youtube.com/channel/UCmpQekXIv8okzdzSOECpNjA"
                 }
               },
               "mod_reports": [],
@@ -282,7 +282,7 @@
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F190307624_295x166.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "type": "video",
                   "thumbnail_height": 166,
-                  "author_url": "http://vimeo.com/user6943476"
+                  "author_url": "https://vimeo.com/user6943476"
                 }
               },
               "link_flair_text": null,
@@ -297,7 +297,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/zViRyHX_qzciubM3PVp8I9GZN3MOYkqqxk_AehYGASo.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/zViRyHX_qzciubM3PVp8I9GZN3MOYkqqxk_AehYGASo.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -315,7 +315,7 @@
               "permalink": "/r/videos/comments/31mmu9/on_using_the_nword_or_nigger_hilarious_speech/",
               "name": "t3_31mmu9",
               "created": 1428357896.0,
-              "url": "http://player.vimeo.com/video/28517394",
+              "url": "https://player.vimeo.com/video/28517394",
               "author_flair_text": null,
               "title": "On using the n-word, or \"nigger:\" Hilarious speech",
               "created_utc": 1428329096.0,
@@ -333,10 +333,10 @@
                   "author_name": "matt grisat",
                   "version": "1.0",
                   "provider_name": "Vimeo",
-                  "thumbnail_url": "http://i.vimeocdn.com/video/190307624_295x166.jpg",
+                  "thumbnail_url": "https://i.vimeocdn.com/video/190307624_295x166.jpg",
                   "type": "video",
                   "thumbnail_height": 166,
-                  "author_url": "http://vimeo.com/user6943476"
+                  "author_url": "https://vimeo.com/user6943476"
                 }
               },
               "mod_reports": [],
@@ -363,10 +363,10 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Uploaded by ooskah on 2015-04-06.",
                   "title": "Idiots body slamming hoods of random parked cars, receive instant karma at end",
-                  "url": "http://www.youtube.com/watch?v=1f1wpHIpyKQ",
+                  "url": "https://www.youtube.com/watch?v=1f1wpHIpyKQ",
                   "type": "video",
                   "author_name": "ooskah",
                   "height": 450,
@@ -377,7 +377,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2F1f1wpHIpyKQ%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/ooskah"
+                  "author_url": "https://www.youtube.com/user/ooskah"
                 },
                 "type": "youtube.com"
               },
@@ -393,7 +393,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/i5o6X7Jcvht_uK3ZEHyv5Uai89pD-vmY4qrqepYM3pg.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/i5o6X7Jcvht_uK3ZEHyv5Uai89pD-vmY4qrqepYM3pg.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -418,10 +418,10 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Uploaded by ooskah on 2015-04-06.",
                   "title": "Idiots body slamming hoods of random parked cars, receive instant karma at end",
-                  "url": "http://www.youtube.com/watch?v=1f1wpHIpyKQ",
+                  "url": "https://www.youtube.com/watch?v=1f1wpHIpyKQ",
                   "type": "video",
                   "author_name": "ooskah",
                   "height": 450,
@@ -430,9 +430,9 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/1f1wpHIpyKQ/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/1f1wpHIpyKQ/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/ooskah"
+                  "author_url": "https://www.youtube.com/user/ooskah"
                 },
                 "type": "youtube.com"
               },
@@ -461,10 +461,10 @@
               "secure_media": {
                 "type": "youtu.be",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "The Game of Chairs will determine who will be king or queen of Jesteros. Four players will march around three chairs while music plays until one remains. Who will take the crown in this game of musical chairs? Robb, Cersie, Joffrey, Daeneyrus or....?",
                   "title": "Sesame Street: Game of Chairs (Game of Thrones Parody)",
-                  "url": "http://www.youtube.com/watch?v=dhWUFXvaZjo",
+                  "url": "https://www.youtube.com/watch?v=dhWUFXvaZjo",
                   "author_name": "Sesame Street",
                   "height": 338,
                   "width": 600,
@@ -475,7 +475,7 @@
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FdhWUFXvaZjo%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/SesameStreet"
+                  "author_url": "https://www.youtube.com/user/SesameStreet"
                 }
               },
               "link_flair_text": null,
@@ -490,7 +490,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://a.thumbs.redditmedia.com/emX69DGnKULt2H-15nlBPVy1YMfHcjhKYaS416D_hN4.jpg",
+              "thumbnail": "https://a.thumbs.redditmedia.com/emX69DGnKULt2H-15nlBPVy1YMfHcjhKYaS416D_hN4.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -508,7 +508,7 @@
               "permalink": "/r/videos/comments/31m7kw/sesame_street_game_of_chairs_game_of_thrones/",
               "name": "t3_31m7kw",
               "created": 1428347478.0,
-              "url": "http://youtu.be/dhWUFXvaZjo",
+              "url": "https://youtu.be/dhWUFXvaZjo",
               "author_flair_text": null,
               "title": "'Sesame Street: Game of Chairs (Game of Thrones Parody)",
               "created_utc": 1428318678.0,
@@ -516,10 +516,10 @@
               "media": {
                 "type": "youtu.be",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "The Game of Chairs will determine who will be king or queen of Jesteros. Four players will march around three chairs while music plays until one remains. Who will take the crown in this game of musical chairs? Robb, Cersie, Joffrey, Daeneyrus or....?",
                   "title": "Sesame Street: Game of Chairs (Game of Thrones Parody)",
-                  "url": "http://www.youtube.com/watch?v=dhWUFXvaZjo",
+                  "url": "https://www.youtube.com/watch?v=dhWUFXvaZjo",
                   "author_name": "Sesame Street",
                   "height": 338,
                   "width": 600,
@@ -527,10 +527,10 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/dhWUFXvaZjo/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/dhWUFXvaZjo/hqdefault.jpg",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/SesameStreet"
+                  "author_url": "https://www.youtube.com/user/SesameStreet"
                 }
               },
               "mod_reports": [],
@@ -558,10 +558,10 @@
               "secure_media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Drivers Conversation with Signal Box. (Real Life) All Signal Box conversations on the railway are taped. Box contacts the Driver to alert him of a \"potential hazard\". The result is far from the professional radio communication it should be, but who blames them, it's just darn right funny as the driver descends in to hysterics!",
                   "title": "CSR: Signal Box to Driver (Real life radio transmission)",
-                  "url": "http://www.youtube.com/watch?v=P_eRWbpQKbg",
+                  "url": "https://www.youtube.com/watch?v=P_eRWbpQKbg",
                   "author_name": "Vec777",
                   "height": 450,
                   "width": 600,
@@ -572,7 +572,7 @@
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FP_eRWbpQKbg%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/Vec777"
+                  "author_url": "https://www.youtube.com/user/Vec777"
                 }
               },
               "link_flair_text": null,
@@ -587,7 +587,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/6k16paQ1T6pAVnUHFxfSmti9mKWEQ9vYN_QHyToZnVQ.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/6k16paQ1T6pAVnUHFxfSmti9mKWEQ9vYN_QHyToZnVQ.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -613,10 +613,10 @@
               "media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Drivers Conversation with Signal Box. (Real Life) All Signal Box conversations on the railway are taped. Box contacts the Driver to alert him of a \"potential hazard\". The result is far from the professional radio communication it should be, but who blames them, it's just darn right funny as the driver descends in to hysterics!",
                   "title": "CSR: Signal Box to Driver (Real life radio transmission)",
-                  "url": "http://www.youtube.com/watch?v=P_eRWbpQKbg",
+                  "url": "https://www.youtube.com/watch?v=P_eRWbpQKbg",
                   "author_name": "Vec777",
                   "height": 450,
                   "width": 600,
@@ -624,10 +624,10 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/P_eRWbpQKbg/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/P_eRWbpQKbg/hqdefault.jpg",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/Vec777"
+                  "author_url": "https://www.youtube.com/user/Vec777"
                 }
               },
               "mod_reports": [],
@@ -655,10 +655,10 @@
               "secure_media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "version": "1.0",
                   "title": "Bryn law breaks down talking about Gary speed",
-                  "url": "http://www.youtube.com/watch?v=sdJXMeMLRGk",
+                  "url": "https://www.youtube.com/watch?v=sdJXMeMLRGk",
                   "thumbnail_width": 480,
                   "height": 450,
                   "width": 600,
@@ -668,7 +668,7 @@
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FsdJXMeMLRGk%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/Patsy19780"
+                  "author_url": "https://www.youtube.com/user/Patsy19780"
                 }
               },
               "link_flair_text": null,
@@ -683,7 +683,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/W9S3O748yVHJhJf83tIJfJuJXGLF2IN1_AQtwD5k94Y.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/W9S3O748yVHJhJf83tIJfJuJXGLF2IN1_AQtwD5k94Y.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -709,20 +709,20 @@
               "media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "version": "1.0",
                   "title": "Bryn law breaks down talking about Gary speed",
-                  "url": "http://www.youtube.com/watch?v=sdJXMeMLRGk",
+                  "url": "https://www.youtube.com/watch?v=sdJXMeMLRGk",
                   "thumbnail_width": 480,
                   "height": 450,
                   "width": 600,
                   "html": "&lt;iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=http%3A%2F%2Fwww.youtube.com%2Fembed%2FsdJXMeMLRGk%3Ffeature%3Doembed&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DsdJXMeMLRGk&amp;image=http%3A%2F%2Fi.ytimg.com%2Fvi%2FsdJXMeMLRGk%2Fhqdefault.jpg&amp;key=2aa3c4d5f3de4f5b9120b660ad850dc9&amp;type=text%2Fhtml&amp;schema=youtube\" width=\"600\" height=\"450\" scrolling=\"no\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;",
                   "author_name": "Patsy19780",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/sdJXMeMLRGk/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/sdJXMeMLRGk/hqdefault.jpg",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/Patsy19780"
+                  "author_url": "https://www.youtube.com/user/Patsy19780"
                 }
               },
               "mod_reports": [],
@@ -755,7 +755,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/p-kBEC3724d0316Sx_INKdgC5dnI27QkAJ2T-EdFPKM.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/p-kBEC3724d0316Sx_INKdgC5dnI27QkAJ2T-EdFPKM.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -798,10 +798,10 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Firstly, we have an example of diamagnetic levitation. Diamagnetic materials are repelled by both the north and the south pole of a regular magnet. However the effect is a very weak one. Water is diamagnetic, and also a substance called pyrolytic graphite, which we show here.",
                   "title": "Two New Magnetic Toys",
-                  "url": "http://www.youtube.com/watch?v=oNRDvDIqD1M",
+                  "url": "https://www.youtube.com/watch?v=oNRDvDIqD1M",
                   "type": "video",
                   "author_name": "Grand Illusions",
                   "height": 338,
@@ -812,7 +812,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FoNRDvDIqD1M%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/henders007"
+                  "author_url": "https://www.youtube.com/user/henders007"
                 },
                 "type": "youtube.com"
               },
@@ -828,7 +828,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/ZRKAAaVcwD_Ty93-B7eT8sxnF6Gj6AOcQ7pzH1gsI-w.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/ZRKAAaVcwD_Ty93-B7eT8sxnF6Gj6AOcQ7pzH1gsI-w.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -853,10 +853,10 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Firstly, we have an example of diamagnetic levitation. Diamagnetic materials are repelled by both the north and the south pole of a regular magnet. However the effect is a very weak one. Water is diamagnetic, and also a substance called pyrolytic graphite, which we show here.",
                   "title": "Two New Magnetic Toys",
-                  "url": "http://www.youtube.com/watch?v=oNRDvDIqD1M",
+                  "url": "https://www.youtube.com/watch?v=oNRDvDIqD1M",
                   "type": "video",
                   "author_name": "Grand Illusions",
                   "height": 338,
@@ -865,9 +865,9 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/oNRDvDIqD1M/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/oNRDvDIqD1M/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/henders007"
+                  "author_url": "https://www.youtube.com/user/henders007"
                 },
                 "type": "youtube.com"
               },
@@ -895,10 +895,10 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Hardcore thug shows he",
                   "title": "Gangsta cries like a little bitch after getting a life sentence",
-                  "url": "http://www.youtube.com/watch?v=--HVVekoqpU",
+                  "url": "https://www.youtube.com/watch?v=--HVVekoqpU",
                   "type": "video",
                   "author_name": "Zaynalll",
                   "height": 450,
@@ -909,7 +909,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2F--HVVekoqpU%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/Zaynalll"
+                  "author_url": "https://www.youtube.com/user/Zaynalll"
                 },
                 "type": "youtube.com"
               },
@@ -925,7 +925,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/IHgayO0IgmdthEMQiFp1diA1sEmUNUQgQvfoQ9G8ZNU.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/IHgayO0IgmdthEMQiFp1diA1sEmUNUQgQvfoQ9G8ZNU.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -950,10 +950,10 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Hardcore thug shows he",
                   "title": "Gangsta cries like a little bitch after getting a life sentence",
-                  "url": "http://www.youtube.com/watch?v=--HVVekoqpU",
+                  "url": "https://www.youtube.com/watch?v=--HVVekoqpU",
                   "type": "video",
                   "author_name": "Zaynalll",
                   "height": 450,
@@ -962,9 +962,9 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/--HVVekoqpU/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/--HVVekoqpU/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/Zaynalll"
+                  "author_url": "https://www.youtube.com/user/Zaynalll"
                 },
                 "type": "youtube.com"
               },
@@ -993,10 +993,10 @@
               "secure_media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Uploaded by fth kurnz on 2013-03-02.",
                   "title": "The World's Best Job-Topless Women Trampoline Coach",
-                  "url": "http://www.youtube.com/watch?v=1fG5N0PGiTY",
+                  "url": "https://www.youtube.com/watch?v=1fG5N0PGiTY",
                   "author_name": "fth kurnz",
                   "height": 338,
                   "width": 600,
@@ -1007,7 +1007,7 @@
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2F1fG5N0PGiTY%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/fthkrnz58"
+                  "author_url": "https://www.youtube.com/user/fthkrnz58"
                 }
               },
               "link_flair_text": "Original in comments",
@@ -1048,10 +1048,10 @@
               "media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Uploaded by fth kurnz on 2013-03-02.",
                   "title": "The World's Best Job-Topless Women Trampoline Coach",
-                  "url": "http://www.youtube.com/watch?v=1fG5N0PGiTY",
+                  "url": "https://www.youtube.com/watch?v=1fG5N0PGiTY",
                   "author_name": "fth kurnz",
                   "height": 338,
                   "width": 600,
@@ -1059,10 +1059,10 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/1fG5N0PGiTY/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/1fG5N0PGiTY/hqdefault.jpg",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/fthkrnz58"
+                  "author_url": "https://www.youtube.com/user/fthkrnz58"
                 }
               },
               "mod_reports": [],
@@ -1089,9 +1089,9 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "title": "Yola Language Song",
-                  "url": "http://www.youtube.com/watch?v=RFl9ptuxd8s",
+                  "url": "https://www.youtube.com/watch?v=RFl9ptuxd8s",
                   "type": "video",
                   "html": "&lt;iframe class=\"embedly-embed\" src=\"https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FRFl9ptuxd8s%3Ffeature%3Doembed&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DRFl9ptuxd8s&amp;image=http%3A%2F%2Fi.ytimg.com%2Fvi%2FRFl9ptuxd8s%2Fhqdefault.jpg&amp;key=2aa3c4d5f3de4f5b9120b660ad850dc9&amp;type=text%2Fhtml&amp;schema=youtube\" width=\"600\" height=\"450\" scrolling=\"no\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;",
                   "thumbnail_width": 480,
@@ -1102,7 +1102,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FRFl9ptuxd8s%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/snadhghus"
+                  "author_url": "https://www.youtube.com/user/snadhghus"
                 },
                 "type": "youtube.com"
               },
@@ -1118,7 +1118,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://a.thumbs.redditmedia.com/6sqEhgInPBZTQrg1nvvAvI7IThSVlRBJEMSeY_PS648.jpg",
+              "thumbnail": "https://a.thumbs.redditmedia.com/6sqEhgInPBZTQrg1nvvAvI7IThSVlRBJEMSeY_PS648.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -1143,9 +1143,9 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "title": "Yola Language Song",
-                  "url": "http://www.youtube.com/watch?v=RFl9ptuxd8s",
+                  "url": "https://www.youtube.com/watch?v=RFl9ptuxd8s",
                   "type": "video",
                   "html": "&lt;iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=http%3A%2F%2Fwww.youtube.com%2Fembed%2FRFl9ptuxd8s%3Ffeature%3Doembed&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DRFl9ptuxd8s&amp;image=http%3A%2F%2Fi.ytimg.com%2Fvi%2FRFl9ptuxd8s%2Fhqdefault.jpg&amp;key=2aa3c4d5f3de4f5b9120b660ad850dc9&amp;type=text%2Fhtml&amp;schema=youtube\" width=\"600\" height=\"450\" scrolling=\"no\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;",
                   "thumbnail_width": 480,
@@ -1154,9 +1154,9 @@
                   "version": "1.0",
                   "author_name": "snadhghus",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/RFl9ptuxd8s/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/RFl9ptuxd8s/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/snadhghus"
+                  "author_url": "https://www.youtube.com/user/snadhghus"
                 },
                 "type": "youtube.com"
               },
@@ -1185,10 +1185,10 @@
               "secure_media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "hope4messiah hope4messiah@gmail.com",
                   "title": "Please share this video... Facebook keeps deleting it",
-                  "url": "http://www.youtube.com/watch?v=eRq_Pxkg_kU",
+                  "url": "https://www.youtube.com/watch?v=eRq_Pxkg_kU",
                   "author_name": "Worldwide Hustlin",
                   "height": 450,
                   "width": 600,
@@ -1199,7 +1199,7 @@
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FeRq_Pxkg_kU%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/worldwidehustlin"
+                  "author_url": "https://www.youtube.com/user/worldwidehustlin"
                 }
               },
               "link_flair_text": null,
@@ -1214,7 +1214,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/h2F-uoyYrv2HGYGxhnU8aRsvVkUoZvLE9GP2H4vVKEc.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/h2F-uoyYrv2HGYGxhnU8aRsvVkUoZvLE9GP2H4vVKEc.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -1240,10 +1240,10 @@
               "media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "hope4messiah hope4messiah@gmail.com",
                   "title": "Please share this video... Facebook keeps deleting it",
-                  "url": "http://www.youtube.com/watch?v=eRq_Pxkg_kU",
+                  "url": "https://www.youtube.com/watch?v=eRq_Pxkg_kU",
                   "author_name": "Worldwide Hustlin",
                   "height": 450,
                   "width": 600,
@@ -1251,10 +1251,10 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/eRq_Pxkg_kU/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/eRq_Pxkg_kU/hqdefault.jpg",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/worldwidehustlin"
+                  "author_url": "https://www.youtube.com/user/worldwidehustlin"
                 }
               },
               "mod_reports": [],
@@ -1282,10 +1282,10 @@
               "secure_media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
-                  "description": "http://tomscott.com - http://twitter.com/tomscott - pull down for details of Ai Pioppi! In the foothills of the Dolomites, an hour or so north of Venice, lies Ai Pioppi, a restaurant that's home to an astonishing, giant, human-powered, kinetic-art theme park playground.",
+                  "provider_url": "https://www.youtube.com/",
+                  "description": "https://tomscott.com - https://twitter.com/tomscott - pull down for details of Ai Pioppi! In the foothills of the Dolomites, an hour or so north of Venice, lies Ai Pioppi, a restaurant that's home to an astonishing, giant, human-powered, kinetic-art theme park playground.",
                   "title": "The Human-Powered, Giant Theme Park Playground: Ai Pioppi",
-                  "url": "http://www.youtube.com/watch?v=iCQEc736GO4",
+                  "url": "https://www.youtube.com/watch?v=iCQEc736GO4",
                   "author_name": "Tom Scott",
                   "height": 338,
                   "width": 600,
@@ -1296,7 +1296,7 @@
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FiCQEc736GO4%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/enyay"
+                  "author_url": "https://www.youtube.com/user/enyay"
                 }
               },
               "link_flair_text": null,
@@ -1311,7 +1311,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://a.thumbs.redditmedia.com/DdpqaNykkAqCXB9dCiOKloV9px9hBrR0XypwHgR-374.jpg",
+              "thumbnail": "https://a.thumbs.redditmedia.com/DdpqaNykkAqCXB9dCiOKloV9px9hBrR0XypwHgR-374.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -1337,10 +1337,10 @@
               "media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
-                  "description": "http://tomscott.com - http://twitter.com/tomscott - pull down for details of Ai Pioppi! In the foothills of the Dolomites, an hour or so north of Venice, lies Ai Pioppi, a restaurant that's home to an astonishing, giant, human-powered, kinetic-art theme park playground.",
+                  "provider_url": "https://www.youtube.com/",
+                  "description": "https://tomscott.com - https://twitter.com/tomscott - pull down for details of Ai Pioppi! In the foothills of the Dolomites, an hour or so north of Venice, lies Ai Pioppi, a restaurant that's home to an astonishing, giant, human-powered, kinetic-art theme park playground.",
                   "title": "The Human-Powered, Giant Theme Park Playground: Ai Pioppi",
-                  "url": "http://www.youtube.com/watch?v=iCQEc736GO4",
+                  "url": "https://www.youtube.com/watch?v=iCQEc736GO4",
                   "author_name": "Tom Scott",
                   "height": 338,
                   "width": 600,
@@ -1348,10 +1348,10 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/iCQEc736GO4/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/iCQEc736GO4/hqdefault.jpg",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/enyay"
+                  "author_url": "https://www.youtube.com/user/enyay"
                 }
               },
               "mod_reports": [],
@@ -1378,9 +1378,9 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "title": "Anne Hathaway on Lip Sync Battle",
-                  "url": "http://www.youtube.com/watch?v=LguStmm8bRk",
+                  "url": "https://www.youtube.com/watch?v=LguStmm8bRk",
                   "type": "video",
                   "html": "&lt;iframe class=\"embedly-embed\" src=\"https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FLguStmm8bRk%3Ffeature%3Doembed&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DLguStmm8bRk&amp;image=http%3A%2F%2Fi.ytimg.com%2Fvi%2FLguStmm8bRk%2Fhqdefault.jpg&amp;key=2aa3c4d5f3de4f5b9120b660ad850dc9&amp;type=text%2Fhtml&amp;schema=youtube\" width=\"600\" height=\"338\" scrolling=\"no\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;",
                   "thumbnail_width": 480,
@@ -1391,7 +1391,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FLguStmm8bRk%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/LipSyncBattle"
+                  "author_url": "https://www.youtube.com/user/LipSyncBattle"
                 },
                 "type": "youtube.com"
               },
@@ -1407,7 +1407,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/5TXknPZyvwQBoz-6wXUrAimeYy6aWg5bZpVEwDl7t3A.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/5TXknPZyvwQBoz-6wXUrAimeYy6aWg5bZpVEwDl7t3A.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -1432,9 +1432,9 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "title": "Anne Hathaway on Lip Sync Battle",
-                  "url": "http://www.youtube.com/watch?v=LguStmm8bRk",
+                  "url": "https://www.youtube.com/watch?v=LguStmm8bRk",
                   "type": "video",
                   "html": "&lt;iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=http%3A%2F%2Fwww.youtube.com%2Fembed%2FLguStmm8bRk%3Ffeature%3Doembed&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DLguStmm8bRk&amp;image=http%3A%2F%2Fi.ytimg.com%2Fvi%2FLguStmm8bRk%2Fhqdefault.jpg&amp;key=2aa3c4d5f3de4f5b9120b660ad850dc9&amp;type=text%2Fhtml&amp;schema=youtube\" width=\"600\" height=\"338\" scrolling=\"no\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;",
                   "thumbnail_width": 480,
@@ -1443,9 +1443,9 @@
                   "version": "1.0",
                   "author_name": "Lip Sync Battle on Spike",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/LguStmm8bRk/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/LguStmm8bRk/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/LipSyncBattle"
+                  "author_url": "https://www.youtube.com/user/LipSyncBattle"
                 },
                 "type": "youtube.com"
               },
@@ -1473,10 +1473,10 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Uploaded by ONEEZE on 2015-03-18.",
                   "title": "Rip Off Medications: Duexis",
-                  "url": "http://www.youtube.com/watch?v=BpopP_Sl1e0",
+                  "url": "https://www.youtube.com/watch?v=BpopP_Sl1e0",
                   "type": "video",
                   "author_name": "ONEEZE",
                   "height": 338,
@@ -1487,7 +1487,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FBpopP_Sl1e0%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/14thSun"
+                  "author_url": "https://www.youtube.com/user/14thSun"
                 },
                 "type": "youtube.com"
               },
@@ -1503,7 +1503,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/iUXGUCwLM38M_QUkFIc8TkZkloVURo60l6OA7pF3kAY.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/iUXGUCwLM38M_QUkFIc8TkZkloVURo60l6OA7pF3kAY.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -1528,10 +1528,10 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Uploaded by ONEEZE on 2015-03-18.",
                   "title": "Rip Off Medications: Duexis",
-                  "url": "http://www.youtube.com/watch?v=BpopP_Sl1e0",
+                  "url": "https://www.youtube.com/watch?v=BpopP_Sl1e0",
                   "type": "video",
                   "author_name": "ONEEZE",
                   "height": 338,
@@ -1540,9 +1540,9 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/BpopP_Sl1e0/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/BpopP_Sl1e0/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/14thSun"
+                  "author_url": "https://www.youtube.com/user/14thSun"
                 },
                 "type": "youtube.com"
               },
@@ -1571,9 +1571,9 @@
               "secure_media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://youtube.com",
+                  "provider_url": "https://youtube.com",
                   "description": "Was playing RA3 today and caught this gem in the Allied campaign! Major props to EA and the C&amp;C team! I couldn't stop laughing and had to pause for a few minutes. lol",
-                  "url": "http://www.youtube.com/watch?v=niZpcdp2v34",
+                  "url": "https://www.youtube.com/watch?v=niZpcdp2v34",
                   "type": "video",
                   "thumbnail_width": 480,
                   "height": 338,
@@ -1597,7 +1597,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/-8Hv8ZqiUJ5VsiUS39H6a7TChZdaOiMDmAvdY1NoZYw.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/-8Hv8ZqiUJ5VsiUS39H6a7TChZdaOiMDmAvdY1NoZYw.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -1623,9 +1623,9 @@
               "media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://youtube.com",
+                  "provider_url": "https://youtube.com",
                   "description": "Was playing RA3 today and caught this gem in the Allied campaign! Major props to EA and the C&amp;C team! I couldn't stop laughing and had to pause for a few minutes. lol",
-                  "url": "http://www.youtube.com/watch?v=niZpcdp2v34",
+                  "url": "https://www.youtube.com/watch?v=niZpcdp2v34",
                   "type": "video",
                   "thumbnail_width": 480,
                   "height": 338,
@@ -1633,7 +1633,7 @@
                   "html": "&lt;iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=http%3A%2F%2Fwww.youtube.com%2Fembed%2FniZpcdp2v34&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DniZpcdp2v34&amp;image=http%3A%2F%2Fi.ytimg.com%2Fvi%2FniZpcdp2v34%2Fhqdefault.jpg&amp;key=2aa3c4d5f3de4f5b9120b660ad850dc9&amp;type=text%2Fhtml&amp;schema=youtube\" width=\"600\" height=\"338\" scrolling=\"no\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;",
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/niZpcdp2v34/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/niZpcdp2v34/hqdefault.jpg",
                   "thumbnail_height": 360
                 }
               },
@@ -1662,10 +1662,10 @@
               "secure_media": {
                 "type": "youtu.be",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Uploaded by Samima on 2015-03-26.",
                   "title": "POV Motorcycle Crash At Blocked Intersection",
-                  "url": "http://www.youtube.com/watch?v=uMzWbuRMW9U",
+                  "url": "https://www.youtube.com/watch?v=uMzWbuRMW9U",
                   "author_name": "Samima",
                   "height": 450,
                   "width": 600,
@@ -1676,7 +1676,7 @@
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FuMzWbuRMW9U%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/channel/UC6uhAO5aoPSOOuDf04f5YJA"
+                  "author_url": "https://www.youtube.com/channel/UC6uhAO5aoPSOOuDf04f5YJA"
                 }
               },
               "link_flair_text": null,
@@ -1691,7 +1691,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/Qirt6gV9ahR9FllxnQ8wP6VWAmogbfrg3ArsfNufFvU.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/Qirt6gV9ahR9FllxnQ8wP6VWAmogbfrg3ArsfNufFvU.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -1709,7 +1709,7 @@
               "permalink": "/r/videos/comments/31nv7y/who_do_you_think_is_at_fault_here/",
               "name": "t3_31nv7y",
               "created": 1428377931.0,
-              "url": "http://youtu.be/uMzWbuRMW9U",
+              "url": "https://youtu.be/uMzWbuRMW9U",
               "author_flair_text": null,
               "title": "Who do you think is at fault here?",
               "created_utc": 1428349131.0,
@@ -1717,10 +1717,10 @@
               "media": {
                 "type": "youtu.be",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Uploaded by Samima on 2015-03-26.",
                   "title": "POV Motorcycle Crash At Blocked Intersection",
-                  "url": "http://www.youtube.com/watch?v=uMzWbuRMW9U",
+                  "url": "https://www.youtube.com/watch?v=uMzWbuRMW9U",
                   "author_name": "Samima",
                   "height": 450,
                   "width": 600,
@@ -1728,10 +1728,10 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/uMzWbuRMW9U/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/uMzWbuRMW9U/hqdefault.jpg",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/channel/UC6uhAO5aoPSOOuDf04f5YJA"
+                  "author_url": "https://www.youtube.com/channel/UC6uhAO5aoPSOOuDf04f5YJA"
                 }
               },
               "mod_reports": [],
@@ -1758,10 +1758,10 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "I bet Sam $10 he couldn't eat a piece of sushi without gagging or making any faces.",
                   "title": "Sushi Challenge",
-                  "url": "http://www.youtube.com/watch?v=1VZisCc7TP4",
+                  "url": "https://www.youtube.com/watch?v=1VZisCc7TP4",
                   "type": "video",
                   "author_name": "Casey Levi",
                   "height": 450,
@@ -1772,7 +1772,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2F1VZisCc7TP4%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/channel/UCIL2XmZrooUKdxUtARnE24Q"
+                  "author_url": "https://www.youtube.com/channel/UCIL2XmZrooUKdxUtARnE24Q"
                 },
                 "type": "youtube.com"
               },
@@ -1788,7 +1788,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/RV-m35QivzF3aP2wNa0MPVJ1owIiC88g9YtY1XL7eQY.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/RV-m35QivzF3aP2wNa0MPVJ1owIiC88g9YtY1XL7eQY.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -1813,10 +1813,10 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "I bet Sam $10 he couldn't eat a piece of sushi without gagging or making any faces.",
                   "title": "Sushi Challenge",
-                  "url": "http://www.youtube.com/watch?v=1VZisCc7TP4",
+                  "url": "https://www.youtube.com/watch?v=1VZisCc7TP4",
                   "type": "video",
                   "author_name": "Casey Levi",
                   "height": 450,
@@ -1825,9 +1825,9 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/1VZisCc7TP4/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/1VZisCc7TP4/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/channel/UCIL2XmZrooUKdxUtARnE24Q"
+                  "author_url": "https://www.youtube.com/channel/UCIL2XmZrooUKdxUtARnE24Q"
                 },
                 "type": "youtube.com"
               },
@@ -1856,10 +1856,10 @@
               "secure_media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "version": "1.0",
                   "title": "Shallow Blocker/ Shallow mount barrier (PAS68) Road Blocker Crash test : HT1-VIPER",
-                  "url": "http://www.youtube.com/watch?v=PZujRvN0WE8",
+                  "url": "https://www.youtube.com/watch?v=PZujRvN0WE8",
                   "thumbnail_width": 480,
                   "height": 338,
                   "width": 600,
@@ -1869,7 +1869,7 @@
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FPZujRvN0WE8%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/roadblockers"
+                  "author_url": "https://www.youtube.com/user/roadblockers"
                 }
               },
               "link_flair_text": null,
@@ -1884,7 +1884,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://a.thumbs.redditmedia.com/uXcFoldo0L8eJMvIzxN8M3xtdsV37HLlcbob3z3zYa0.jpg",
+              "thumbnail": "https://a.thumbs.redditmedia.com/uXcFoldo0L8eJMvIzxN8M3xtdsV37HLlcbob3z3zYa0.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -1910,20 +1910,20 @@
               "media": {
                 "type": "youtube.com",
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "version": "1.0",
                   "title": "Shallow Blocker/ Shallow mount barrier (PAS68) Road Blocker Crash test : HT1-VIPER",
-                  "url": "http://www.youtube.com/watch?v=PZujRvN0WE8",
+                  "url": "https://www.youtube.com/watch?v=PZujRvN0WE8",
                   "thumbnail_width": 480,
                   "height": 338,
                   "width": 600,
                   "html": "&lt;iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=http%3A%2F%2Fwww.youtube.com%2Fembed%2FPZujRvN0WE8%3Ffeature%3Doembed&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DPZujRvN0WE8&amp;image=http%3A%2F%2Fi.ytimg.com%2Fvi%2FPZujRvN0WE8%2Fhqdefault.jpg&amp;key=2aa3c4d5f3de4f5b9120b660ad850dc9&amp;type=text%2Fhtml&amp;schema=youtube\" width=\"600\" height=\"338\" scrolling=\"no\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;",
                   "author_name": "Barriers Bollards",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/PZujRvN0WE8/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/PZujRvN0WE8/hqdefault.jpg",
                   "type": "video",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/roadblockers"
+                  "author_url": "https://www.youtube.com/user/roadblockers"
                 }
               },
               "mod_reports": [],
@@ -1950,10 +1950,10 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
-                  "description": "SUBSCRIBE!: http://goo.gl/HDo2G0 Learn Java is an upcoming tutorial series where DevFactor will be comprehensively covering the entire language and its nuances. Each video will be broken into short 5 minute or less segments, making it optimal for anyone looking to learn Java basics or master advanced Java concepts.",
+                  "provider_url": "https://www.youtube.com/",
+                  "description": "SUBSCRIBE!: https://goo.gl/HDo2G0 Learn Java is an upcoming tutorial series where DevFactor will be comprehensively covering the entire language and its nuances. Each video will be broken into short 5 minute or less segments, making it optimal for anyone looking to learn Java basics or master advanced Java concepts.",
                   "title": "Introduction to Java Programming - Learn Java #1",
-                  "url": "http://www.youtube.com/watch?v=kZpMoeUqK-A",
+                  "url": "https://www.youtube.com/watch?v=kZpMoeUqK-A",
                   "type": "video",
                   "author_name": "DevFactor",
                   "height": 338,
@@ -1964,7 +1964,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FkZpMoeUqK-A%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/devfactor"
+                  "author_url": "https://www.youtube.com/user/devfactor"
                 },
                 "type": "youtube.com"
               },
@@ -1980,7 +1980,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/yaoNNbwEhS4oZpIY7xe1e0lEPq-59RC2P9MVk-6t_ok.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/yaoNNbwEhS4oZpIY7xe1e0lEPq-59RC2P9MVk-6t_ok.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -2005,10 +2005,10 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
-                  "description": "SUBSCRIBE!: http://goo.gl/HDo2G0 Learn Java is an upcoming tutorial series where DevFactor will be comprehensively covering the entire language and its nuances. Each video will be broken into short 5 minute or less segments, making it optimal for anyone looking to learn Java basics or master advanced Java concepts.",
+                  "provider_url": "https://www.youtube.com/",
+                  "description": "SUBSCRIBE!: https://goo.gl/HDo2G0 Learn Java is an upcoming tutorial series where DevFactor will be comprehensively covering the entire language and its nuances. Each video will be broken into short 5 minute or less segments, making it optimal for anyone looking to learn Java basics or master advanced Java concepts.",
                   "title": "Introduction to Java Programming - Learn Java #1",
-                  "url": "http://www.youtube.com/watch?v=kZpMoeUqK-A",
+                  "url": "https://www.youtube.com/watch?v=kZpMoeUqK-A",
                   "type": "video",
                   "author_name": "DevFactor",
                   "height": 338,
@@ -2017,9 +2017,9 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/kZpMoeUqK-A/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/kZpMoeUqK-A/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/devfactor"
+                  "author_url": "https://www.youtube.com/user/devfactor"
                 },
                 "type": "youtube.com"
               },
@@ -2047,10 +2047,10 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "This is a special video submission to Mutual of Omaha's Wild Kingdom \"NEW WILD GUIDE\" Contest Visit Viperkeeper on Facebook for news &amp; exclusive content: https://www.facebook.com/pages/Viperkeeper/156984027682678",
                   "title": "Elvis: Rampage Edition",
-                  "url": "http://www.youtube.com/watch?v=QtkM70AX2Ks",
+                  "url": "https://www.youtube.com/watch?v=QtkM70AX2Ks",
                   "type": "video",
                   "author_name": "viperkeeper",
                   "height": 338,
@@ -2061,7 +2061,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FQtkM70AX2Ks%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/viperkeeper"
+                  "author_url": "https://www.youtube.com/user/viperkeeper"
                 },
                 "type": "youtube.com"
               },
@@ -2077,7 +2077,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://a.thumbs.redditmedia.com/qhQHHqub-VRjp-OUvVkG0_TGXegmXatjLc1fwWsbMq0.jpg",
+              "thumbnail": "https://a.thumbs.redditmedia.com/qhQHHqub-VRjp-OUvVkG0_TGXegmXatjLc1fwWsbMq0.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -2102,10 +2102,10 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "This is a special video submission to Mutual of Omaha's Wild Kingdom \"NEW WILD GUIDE\" Contest Visit Viperkeeper on Facebook for news &amp; exclusive content: https://www.facebook.com/pages/Viperkeeper/156984027682678",
                   "title": "Elvis: Rampage Edition",
-                  "url": "http://www.youtube.com/watch?v=QtkM70AX2Ks",
+                  "url": "https://www.youtube.com/watch?v=QtkM70AX2Ks",
                   "type": "video",
                   "author_name": "viperkeeper",
                   "height": 338,
@@ -2114,9 +2114,9 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/QtkM70AX2Ks/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/QtkM70AX2Ks/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/viperkeeper"
+                  "author_url": "https://www.youtube.com/user/viperkeeper"
                 },
                 "type": "youtube.com"
               },
@@ -2144,10 +2144,10 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Traveling for anyone isn't easy, and traveling for Brian is no exception. Hope you enjoyed this video! www.ShawStrength.com",
                   "title": "Traveling can be more difficult than you think.",
-                  "url": "http://www.youtube.com/watch?v=rA7VXl3q5HA",
+                  "url": "https://www.youtube.com/watch?v=rA7VXl3q5HA",
                   "type": "video",
                   "author_name": "SHAWSTRENGTH",
                   "height": 338,
@@ -2158,7 +2158,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FrA7VXl3q5HA%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/SHAWSTRENGTH"
+                  "author_url": "https://www.youtube.com/user/SHAWSTRENGTH"
                 },
                 "type": "youtube.com"
               },
@@ -2174,7 +2174,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/5Sw0gDqIWaTTyK7WeBYWUSViIUFbdTbZ--kMh4_x5-Y.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/5Sw0gDqIWaTTyK7WeBYWUSViIUFbdTbZ--kMh4_x5-Y.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -2199,10 +2199,10 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Traveling for anyone isn't easy, and traveling for Brian is no exception. Hope you enjoyed this video! www.ShawStrength.com",
                   "title": "Traveling can be more difficult than you think.",
-                  "url": "http://www.youtube.com/watch?v=rA7VXl3q5HA",
+                  "url": "https://www.youtube.com/watch?v=rA7VXl3q5HA",
                   "type": "video",
                   "author_name": "SHAWSTRENGTH",
                   "height": 338,
@@ -2211,9 +2211,9 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/rA7VXl3q5HA/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/rA7VXl3q5HA/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/SHAWSTRENGTH"
+                  "author_url": "https://www.youtube.com/user/SHAWSTRENGTH"
                 },
                 "type": "youtube.com"
               },
@@ -2241,10 +2241,10 @@
               "user_reports": [],
               "secure_media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Unplugged, real wood, Hi Def sound - Box 'N Balls",
                   "title": "Box 'N Balls on expert mode &amp; other games",
-                  "url": "http://www.youtube.com/watch?v=BADjzW52oWQ",
+                  "url": "https://www.youtube.com/watch?v=BADjzW52oWQ",
                   "type": "video",
                   "author_name": "noahog",
                   "height": 338,
@@ -2255,7 +2255,7 @@
                   "provider_name": "YouTube",
                   "thumbnail_url": "https://i.embed.ly/1/image?url=http%3A%2F%2Fi.ytimg.com%2Fvi%2FBADjzW52oWQ%2Fhqdefault.jpg&amp;key=b1e305db91cf4aa5a86b732cc9fffceb",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/noahog"
+                  "author_url": "https://www.youtube.com/user/noahog"
                 },
                 "type": "youtube.com"
               },
@@ -2271,7 +2271,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/r_ogNt9O712c63eYEFd44wm9FEcl-eiXadYIUX8YTyI.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/r_ogNt9O712c63eYEFd44wm9FEcl-eiXadYIUX8YTyI.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,
@@ -2296,10 +2296,10 @@
               "distinguished": null,
               "media": {
                 "oembed": {
-                  "provider_url": "http://www.youtube.com/",
+                  "provider_url": "https://www.youtube.com/",
                   "description": "Unplugged, real wood, Hi Def sound - Box 'N Balls",
                   "title": "Box 'N Balls on expert mode &amp; other games",
-                  "url": "http://www.youtube.com/watch?v=BADjzW52oWQ",
+                  "url": "https://www.youtube.com/watch?v=BADjzW52oWQ",
                   "type": "video",
                   "author_name": "noahog",
                   "height": 338,
@@ -2308,9 +2308,9 @@
                   "thumbnail_width": 480,
                   "version": "1.0",
                   "provider_name": "YouTube",
-                  "thumbnail_url": "http://i.ytimg.com/vi/BADjzW52oWQ/hqdefault.jpg",
+                  "thumbnail_url": "https://i.ytimg.com/vi/BADjzW52oWQ/hqdefault.jpg",
                   "thumbnail_height": 360,
-                  "author_url": "http://www.youtube.com/user/noahog"
+                  "author_url": "https://www.youtube.com/user/noahog"
                 },
                 "type": "youtube.com"
               },
@@ -2344,7 +2344,7 @@
               "approved_by": null,
               "over_18": false,
               "hidden": false,
-              "thumbnail": "http://b.thumbs.redditmedia.com/5M_CyBgeN6KIAlUDPvEyOEAcS_1-YGMNMtplgMH8lmA.jpg",
+              "thumbnail": "https://b.thumbs.redditmedia.com/5M_CyBgeN6KIAlUDPvEyOEAcS_1-YGMNMtplgMH8lmA.jpg",
               "subreddit_id": "t5_2qh1e",
               "edited": false,
               "link_flair_css_class": null,

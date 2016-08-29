@@ -25,7 +25,7 @@
     this.getNext = getNext;
     this.clearCache = clearCache;
 
-    const API_ROOT_URL = 'http://www.reddit.com/r/';
+    const API_ROOT_URL = 'https://www.reddit.com/r/';
 
     function fetch(subredditName = '', afterTag = '') {
       const deferred = $q.defer(),
@@ -106,7 +106,7 @@
                     starttime: videoInfo.starttime,
                     thumbnailUrl: $filter('thumbnailUrlFilter')(item.data.thumbnail),
                     created: item.data.created,
-                    redditUrl: `http://reddit.com${item.data.permalink}`,
+                    redditUrl: `https://reddit.com${item.data.permalink}`,
                     redditScore: item.data.score,
                     subreddit: item.data.subreddit,
                     error: null

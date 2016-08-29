@@ -46,7 +46,7 @@ describe('Service: RedditService', function() {
           { title: 'name4', videoId: 'VSNuZEdYrH0', created: 4 },
         ];
 
-        $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=50').respond(200, {
+        $httpBackend.whenGET('https://www.reddit.com/r/duplicateVideosMock/hot.json?limit=50').respond(200, {
           data: {
             children: [
               { kind: 't3', data: { domain: 'youtube.com', title: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
@@ -64,7 +64,7 @@ describe('Service: RedditService', function() {
       });
 
       it("should uniquefy fetched items", function() {
-        $httpBackend.whenGET('http://www.reddit.com/r/duplicateVideosMock/hot.json?limit=50').respond(200, {
+        $httpBackend.whenGET('https://www.reddit.com/r/duplicateVideosMock/hot.json?limit=50').respond(200, {
           data: {
             children: [
               { kind: 't3', data: { domain: 'youtube.com', title: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
@@ -82,12 +82,12 @@ describe('Service: RedditService', function() {
 
       /* jshint ignore:start */
       it("should normalize each video item title", function() {
-        $httpBackend.whenGET('http://www.reddit.com/r/shitheads/hot.json?limit=50').respond(200, {
+        $httpBackend.whenGET('https://www.reddit.com/r/shitheads/hot.json?limit=50').respond(200, {
           data: {
             children: [
               { kind: 't3', data: { domain: 'youtube.com', title: '&amp;&reg;&copy;', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
               { kind: 't3', data: { domain: 'youtube.com', title: '&reg;lalala&copy;$&amp;', created: 2, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
-              { kind: 't3', data: { domain: 'youtube.com', title: 'http://shitheads.com/?hai&reg;=what', created: 3, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+              { kind: 't3', data: { domain: 'youtube.com', title: 'https://shitheads.com/?hai&reg;=what', created: 3, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
             ]
           }
         });
@@ -97,7 +97,7 @@ describe('Service: RedditService', function() {
 
         expect(RedditService.items[0].title).toBe('&®©');
         expect(RedditService.items[1].title).toBe('®lalala©$&');
-        expect(RedditService.items[2].title).toBe('http://shitheads.com/?hai®=what');
+        expect(RedditService.items[2].title).toBe('https://shitheads.com/?hai®=what');
       });
       /* jshint ignore:end */
 
@@ -118,9 +118,9 @@ describe('Service: RedditService', function() {
             url: 'https://www.youtube.com/watch?v=1f1wpHIpyKQ',
             videoId: '1f1wpHIpyKQ',
             starttime: 0,
-            thumbnailUrl: 'http://b.thumbs.redditmedia.com/i5o6X7Jcvht_uK3ZEHyv5Uai89pD-vmY4qrqepYM3pg.jpg',
+            thumbnailUrl: 'https://b.thumbs.redditmedia.com/i5o6X7Jcvht_uK3ZEHyv5Uai89pD-vmY4qrqepYM3pg.jpg',
             created: 1428297419,
-            redditUrl: 'http://reddit.com/r/videos/comments/31lenf/idiots_body_slamming_hoods_of_random_parked_cars/',
+            redditUrl: 'https://reddit.com/r/videos/comments/31lenf/idiots_body_slamming_hoods_of_random_parked_cars/',
             redditScore: 4558,
             subreddit: 'videos',
             error: null

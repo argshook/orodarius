@@ -101,7 +101,7 @@ module.exports = function(karma) {
     reportSlowerThan: 500,
 
     proxies: {
-      '/': 'http://localhost:3333/'
+      '/': 'https://localhost:3333/'
     },
 
     // urlRoot: '__karma__',

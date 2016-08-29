@@ -7,7 +7,7 @@
     isFocusForced: false,
     sources: [{
       name: 'reddit',
-      apiUrl: 'http://www.reddit.com/r/',
+      apiUrl: 'https://www.reddit.com/r/',
       isEnabled: true
     }]
   };
