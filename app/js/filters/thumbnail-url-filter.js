@@ -1,17 +1,25 @@
 ;(() => {
   'use strict';
 
-  angular.module('orodarius').filter('thumbnailUrlFilter', function() {
-    return function(thumbnailUrl) {
-      switch(thumbnailUrl) {
-        case 'nsfw':
-          return 'images/nsfw-thumbnail.jpg';
-        case 'default':
-          return 'images/default-thumbnail.png';
-      }
+  angular
+    .module('orodarius')
+    .filter('thumbnailUrlFilter', () => url => filterUrl(url));
 
-      return thumbnailUrl;
-    };
-  });
+  function filterUrl(url) {
+    return [url]
+      .map(s => typeof s === 'string' ? s : '')
+      .map(s => s.replace(/^http:\/\//, 'https://'))
+      .map(s => {
+        switch (s) {
+          case 'nsfw':
+            return 'images/nsfw-thumbnail.jpg';
+          case 'default':
+            return 'images/default-thumbnail.png';
+          default:
+            return s;
+        }
+      })
+      .shift();
+  }
 })();
 
