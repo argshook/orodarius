@@ -2,7 +2,7 @@
 
 /* global REDDIT */
 
-describe('Service: PlaylistService', function() {
+fdescribe('Service: PlaylistService', function() {
   var service, LastSubredditsService, localStorageService, RedditService, $httpBackend, $q;
 
   beforeEach(module('orodarius'));
@@ -185,6 +185,12 @@ describe('Service: PlaylistService', function() {
       });
       service.clear();
       expect(published).toBe(true);
+    });
+
+    it('should call RedditService.clear()', function() {
+      spyOn(RedditService, 'clear');
+      service.clear();
+      expect(RedditService.clear).toHaveBeenCalled();
     });
   });
 

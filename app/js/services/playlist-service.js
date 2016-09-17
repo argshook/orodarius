@@ -53,6 +53,7 @@
 
       function clear() {
         this.playlist = [];
+        RedditService.clear();
         publishSubscribers();
       }
 

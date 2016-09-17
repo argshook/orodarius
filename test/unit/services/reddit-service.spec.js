@@ -258,5 +258,13 @@ describe('Service: RedditService', function() {
       }));
     });
   });
+
+  describe('clear()', function() {
+    it('should set items to empty array', function() {
+      RedditService.items = [1, 2, 3];
+      RedditService.clear();
+      expect(RedditService.items).toEqual([]);
+    });
+  });
 });
 

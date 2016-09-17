@@ -25,6 +25,7 @@
     return {
       fetch,
       getNext,
+      clear,
       items: []
     };
 
@@ -65,7 +66,7 @@
       // haha yeah, when more sources haha
       LastSubredditsService.add({ name: CURRENT_SUBREDDIT });
 
-      return uniqueNewItems;
+      return $q.resolve(uniqueNewItems);
     }
 
     // TODO: refactor to filter?
@@ -132,6 +133,10 @@
         $log.warn('cant expand playlist, no afterTag found!');
         return $q.reject();
       }
+    }
+
+    function clear() {
+      this.items = [];
     }
   }
 })();

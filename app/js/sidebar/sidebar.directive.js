@@ -45,8 +45,8 @@
           this.isLoading = true;
 
           PlaylistService
-          .expandPlaylist()
-          .then(() =>  this.isLoading = false);
+            .expandPlaylist()
+            .then(() =>  this.isLoading = false);
         };
 
         function fillPlaylistWith(subreddit) {
