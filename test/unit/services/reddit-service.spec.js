@@ -80,6 +80,26 @@ describe('Service: RedditService', function() {
         expect(RedditService.items.length).toBe(1);
       });
 
+      it("should discard items with unexpected domains", function() {
+        $httpBackend.whenGET('https://www.reddit.com/r/domainVideosMock/hot.json?limit=50').respond(200, {
+          data: {
+            children: [
+              { kind: 't3', data: { domain: 'youtube.com', title: 'name1', created: 1, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+              { kind: 't3', data: { domain: 'youtu.be', title: 'name2', created: 2, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+              { kind: 't3', data: { domain: 'self.youtubehaiku', title: 'name3', created: 3, url: 'https://www.youtube.com/watch?v=VSNuZEdYrH0' } },
+            ]
+          }
+        });
+
+        RedditService.fetch('domainVideosMock');
+        $httpBackend.flush();
+
+        expect(RedditService.items).toEqual([
+          jasmine.objectContaining({ title: 'name1' }),
+          jasmine.objectContaining({ title: 'name2' })
+        ]);
+      });
+
       /* jshint ignore:start */
       it("should normalize each video item title", function() {
         $httpBackend.whenGET('https://www.reddit.com/r/shitheads/hot.json?limit=50').respond(200, {

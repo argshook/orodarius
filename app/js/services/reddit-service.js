@@ -81,7 +81,8 @@
       // TODO: move this to separate factory which would accept all kinds of sources but output
       // canonical object for the whole app to use
       return data
-        .filter(item => item.kind === 't3' && /youtu\.?be/.test(item.data.domain)) // t3 - link posts
+        .filter(({ kind }) => kind === 't3') // t3 - link posts
+        .filter(({ data }) => /^(m\.)?youtu\.?be/.test(data.domain))
         .map(item => {
           var videoInfo = youtubeUrlParser(item.data.url);
 
