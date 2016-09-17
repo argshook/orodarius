@@ -43,11 +43,6 @@ describe('Service: PlayerService', function() {
       });
   });
 
-  it('playVideo should call $timeout to initiate digest', inject($timeout => {
-    service.playVideo(mockVideoItem);
-    expect($timeout).toHaveBeenCalled();
-  }));
-
   it('playNext should call playVideo with next videoId in row', inject(($rootScope) => {
     PlaylistService.playlist = [
       { videoId: 'currentId', ownId: 0 },

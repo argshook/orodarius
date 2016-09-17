@@ -2,7 +2,7 @@
 
 /* global REDDIT */
 
-fdescribe('Service: PlaylistService', function() {
+describe('Service: PlaylistService', function() {
   var service, LastSubredditsService, localStorageService, RedditService, $httpBackend, $q;
 
   beforeEach(module('orodarius'));
