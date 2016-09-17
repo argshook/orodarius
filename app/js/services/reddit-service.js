@@ -92,27 +92,26 @@
       // TODO: refactor to allow different sources but output same structure as now
       // TODO: move this to separate factory which would accept all kinds of sources but output
       // canonical object for the whole app to use
-      return _(data)
-                .filter((item) => item.kind === 't3' && item.data.domain === 'youtube.com') // t3 - link posts
-                .map((item) => {
-                  var videoInfo = youtubeUrlParser(item.data.url);
+      return data
+        .filter(item => item.kind === 't3' && /youtu\.?be/.test(item.data.domain)) // t3 - link posts
+        .map(item => {
+          var videoInfo = youtubeUrlParser(item.data.url);
 
-                  // this is where playlist
-                  // item is built
-                  return {
-                    title: item.data.title,
-                    url: item.data.url,
-                    videoId: videoInfo.id,
-                    starttime: videoInfo.starttime,
-                    thumbnailUrl: $filter('thumbnailUrlFilter')(item.data.thumbnail),
-                    created: item.data.created,
-                    redditUrl: `https://reddit.com${item.data.permalink}`,
-                    redditScore: item.data.score,
-                    subreddit: item.data.subreddit,
-                    error: null
-                  };
-                })
-                .value();
+          // this is where playlist
+          // item is built
+          return {
+            title: item.data.title,
+            url: item.data.url,
+            videoId: videoInfo.id,
+            starttime: videoInfo.starttime,
+            thumbnailUrl: $filter('thumbnailUrlFilter')(item.data.thumbnail),
+            created: item.data.created,
+            redditUrl: `https://reddit.com${item.data.permalink}`,
+            redditScore: item.data.score,
+            subreddit: item.data.subreddit,
+            error: null
+          };
+        });
     }
 
     // TODO: refactor to filter?
@@ -123,13 +122,12 @@
         '&reg;': '®'
       };
 
-      return _(newItems)
-              .map(item => {
-                item.title = item.title.replace(/(&amp;|&copy;|&reg;)/g, match => sanitizers[match]),
-                item.ownId = _.uniqueId('orodarius_video-item_');
-                return item;
-              })
-              .value();
+      return newItems
+        .map(item => {
+          item.title = item.title.replace(/(&amp;|&copy;|&reg;)/g, match => sanitizers[match]),
+          item.ownId = _.uniqueId('orodarius_video-item_');
+          return item;
+        });
     }
 
     function compareOldTo(newItem) {
