@@ -139,20 +139,16 @@
     }
 
     function getNext() {
-      let deferred = $q.defer();
-      if(!IS_LOADING) {
-        if(AFTER_TAG) {
-          this.fetch(CURRENT_SUBREDDIT, AFTER_TAG).then(
-            newItems => deferred.resolve(newItems),
-            () => deferred.reject()
-          );
-        } else {
-          $log.warn('cant expand playlist, no afterTag found!');
-          deferred.reject();
-        }
+      if(IS_LOADING) {
+        return $q.reject();
       }
 
-      return deferred.promise;
+      if(AFTER_TAG) {
+        return this.fetch(CURRENT_SUBREDDIT, AFTER_TAG);
+      } else {
+        $log.warn('cant expand playlist, no afterTag found!');
+        return $q.reject();
+      }
     }
 
     function clearCache() {
