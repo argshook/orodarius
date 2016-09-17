@@ -1,3 +1,5 @@
+/* global angular */
+
 ;(() => {
   'use strict';
 
@@ -19,49 +21,45 @@
     let matches =
       youtubeRegs
         .reduce((acc, curr) => {
-            let match = curr.exec(url);
-            return !!match ? match : acc;
-          }, null);
+          let match = curr.exec(url);
+          return !!match ? match : acc;
+        }, null);
 
-    if(matches) {
-      // Check url for timecode e.g t=1h23m15s
-      var timecodeRe = /t=(.*?)&|t=(.*?)$/i,
-        starttime = 0,
-        timecodeResult = timecodeRe.exec(url);
-
-      if(timecodeResult !== null) {
-        var time_blocks = {'h':3600, 'm':60, 's':1},
-          timeRE = /[0-9]+[h|m|s]/ig;
-
-        // Get each segment e.g. 8m and calculate its value in seconds
-        var timeMatch = timecodeResult[0].match(timeRE);
-
-        if(timeMatch) {
-          timeMatch.forEach(function(ts){
-            var unit = time_blocks[ts.charAt(ts.length-1)],
-            amount = parseInt(ts.slice(0, - 1), 10);
-
-            // Add each unit to starttime
-            starttime += unit * amount;
-          });
-        } else {
-          // support direct timestamp e.g. t=200
-          starttime = parseInt(timecodeResult[0].replace('t=',''), 10);
-          if (isNaN(starttime)) {
-            starttime = 0;
-          }
-        }
-      }
-
-      return {
-        id: matches[1],
-        starttime: starttime
-      };
-    } else {
-      // wtf why
-      return '';
-    }
+    return !matches ? null : {
+      id: matches[1],
+      starttime: getStartTime(url)
+    };
   }
 
+  // Check url for timecode e.g t=1h23m15s
+  function getStartTime(url) {
+    const timecodeRe = /t=(.*?)&|t=(.*?)$/i;
+    const timecodeResult = timecodeRe.exec(decodeURIComponent(url));
+
+    let starttime = 0;
+
+    if (timecodeResult !== null) {
+      const timeBlocks = { h: 3600, m: 60, s: 1 };
+      const timeReg = /[0-9]+[h|m|s]/ig;
+
+      // Get each segment e.g. 8m and calculate its value in seconds
+      const timeMatch = timecodeResult[0].match(timeReg);
+
+      if (timeMatch) {
+        timeMatch.forEach(ts => {
+          const unit = timeBlocks[ts.charAt(ts.length - 1)];
+          const amount = parseInt(ts.slice(0, - 1), 10);
+
+          // Add each unit to starttime
+          starttime += unit * amount;
+        });
+      } else {
+        // support direct timestamp e.g. t=200
+        starttime = parseInt(timecodeResult[0].replace('t=', ''), 10) || 0;
+      }
+    }
+
+    return starttime;
+  }
 })();
 

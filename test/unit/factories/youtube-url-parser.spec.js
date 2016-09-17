@@ -10,8 +10,8 @@ describe('Factory: youtubeUrlParser', () => {
   }));
 
   describe('given no parameters', () => {
-    it('should return empty string', () => {
-      expect(youtubeUrlParser()).toBe('');
+    it('should return null', () => {
+      expect(youtubeUrlParser()).toBe(null);
     });
   });
 
@@ -54,9 +54,12 @@ describe('Factory: youtubeUrlParser', () => {
             videoStartTime = 230;
 
         var youtubeUrls = [
-          'https://www.youtube.com/watch?v='+ videoId +'&amp;feature=youtu.be&t=230',
-          'https://www.youtube.com/watch?v='+ videoId +'&amp;feature=youtu.be&amp;t=3m50s',
-          'https://www.youtube.com/watch?v='+ videoId +'&amp;feature=youtu.be&t=3m50s',
+          `https://www.youtube.com/watch?v=${videoId}&amp;feature=youtu.be&t=230`,
+          `https://www.youtube.com/watch?v=${videoId}&amp;feature=youtu.be&amp;t=3m50s`,
+          `https://www.youtube.com/watch?v=${videoId}&amp;feature=youtu.be&t=3m50s`,
+          `https://youtu.be/${videoId}&amp;t=230`,
+          `m.youtube.com/watch?v=${videoId}&t=0h3m50s`,
+          `https://www.youtube.com/attribution_link?a=LOViDhH-uZE&u=%2Fwatch%3Fv%3D${videoId}%26feature%3Dshare%26t%3D230`,
         ];
 
         expectUrlsToEqualObject(youtubeUrls, {
