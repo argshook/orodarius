@@ -13,72 +13,59 @@
       RedditService
     ]);
 
+  const NUM_MAX_FETCH_RETRIES = 3; // do at most 4 consecutive GETs until expected data received
+  const API_ROOT_URL = 'https://www.reddit.com/r/';
+
   function RedditService($http, $q, youtubeUrlParser, $filter, LastSubredditsService, $log) {
-    let NUM_FETCH_RETRIES = 0,
-        NUM_MAX_FETCH_RETRIES = 3, // means there might be at most 4 consecutive GETs until proper data received
-        AFTER_TAG = '',
-        IS_LOADING = false,
-        CURRENT_SUBREDDIT = '';
+    let NUM_FETCH_RETRIES = 0;
+    let AFTER_TAG = '';
+    let IS_LOADING = false;
+    let CURRENT_SUBREDDIT = '';
 
-    this.fetch = fetch;
-    this.items = [];
-    this.getNext = getNext;
-    this.clearCache = clearCache;
-
-    const API_ROOT_URL = 'https://www.reddit.com/r/';
+    return {
+      fetch,
+      getNext,
+      items: []
+    };
 
     function fetch(subredditName = '', afterTag = '') {
-      const deferred = $q.defer(),
-            apiUrl = `${API_ROOT_URL}${subredditName}/hot.json?limit=50` + (afterTag ? `&after=${afterTag}` : '');
+      const API_URL = `${API_ROOT_URL}${subredditName}/hot.json?limit=50${afterTag ? `&after=${afterTag}` : ''}`;
 
       AFTER_TAG = afterTag;
       CURRENT_SUBREDDIT = subredditName;
       IS_LOADING = true;
 
-      if(_.isEmpty(subredditName)) {
-        deferred.reject();
-      } else {
-        $http
-          .get(apiUrl)
-          .success(onFetchSuccess.bind(this))
-          .error(onFetchFailure.bind(this));
+      return _.isEmpty(subredditName) ? $q.reject() : $http
+        .get(API_URL)
+        .then(onFetchSuccess.bind(this))
+        .catch(() => $q.reject())
+        .finally(() => IS_LOADING = false);
+    }
+
+    function onFetchSuccess({ data: { data } }) {
+      NUM_FETCH_RETRIES++;
+      AFTER_TAG = data.after;
+
+      let newItems = uniquefyVideoItems(subredditResultsFilter(data.children));
+
+      if (newItems.length === 0 && NUM_FETCH_RETRIES <= NUM_MAX_FETCH_RETRIES) {
+        return fetch.call(this, CURRENT_SUBREDDIT, AFTER_TAG);
       }
 
-      function onFetchSuccess(data, status, headers, config) {
-        const fetchedData = data.data;
+      let uniqueNewItems =
+        postProcess(newItems)
+          .filter(i => !isVideoItemInList(this.items, i));
 
-        NUM_FETCH_RETRIES++;
-        AFTER_TAG = fetchedData.after;
-        IS_LOADING = false;
+      this.items = this.items.concat(uniqueNewItems);
 
-        let newItems = uniquefyVideoItems(subredditResultsFilter(fetchedData.children));
+      NUM_FETCH_RETRIES = 0;
 
-        if(newItems.length) {
-          // TODO: move out of reddit service, this is will not be reddit specific in the
-          // future when more sources will be available
-          LastSubredditsService.add({ name: subredditName });
-        }
+      // TODO: move out of reddit service, this is will not be reddit specific in the
+      // future when more sources will be available
+      // haha yeah, when more sources haha
+      LastSubredditsService.add({ name: CURRENT_SUBREDDIT });
 
-        if(newItems.length === 0 && NUM_FETCH_RETRIES <= NUM_MAX_FETCH_RETRIES) {
-          fetch.call(this, subredditName, AFTER_TAG, deferred);
-        } else {
-          let processNewItems = postProcess(newItems),
-              uniqueNewItems = _.filter(newItems, item => compareOldTo.call(this, item));
-
-          this.items = this.items.concat(uniqueNewItems);
-
-          NUM_FETCH_RETRIES = 0;
-
-          deferred.resolve(uniqueNewItems);
-        }
-      }
-
-      function onFetchFailure(data, status, headers, config) {
-        IS_LOADING = false;
-        deferred.reject(data);
-      }
-
-      return deferred.promise;
+      return uniqueNewItems;
     }
 
     // TODO: refactor to filter?
@@ -130,10 +117,8 @@
         });
     }
 
-    function compareOldTo(newItem) {
-      var duplicateItems = _(this.items).filter(item => item.videoId === newItem.videoId).value().length;
-
-      return duplicateItems > 0 ? false : true;
+    function isVideoItemInList(list, item) {
+      return list.some(i => i.videoId === item.videoId);
     }
 
     function getNext() {
@@ -147,10 +132,6 @@
         $log.warn('cant expand playlist, no afterTag found!');
         return $q.reject();
       }
-    }
-
-    function clearCache() {
-      this.items = [];
     }
   }
 })();
