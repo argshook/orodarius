@@ -1,7 +1,8 @@
 ;(function() {
   'use strict';
 
-  angular.module('orodarius')
+  angular
+    .module('orodarius')
     .service('PlayerService', ['$window', '$timeout', 'PlaylistService', 'SettingsService', '$rootScope', function($window, $timeout, PlaylistService, SettingsService, $rootScope) {
       this.youtubePlayer = null; // youtube iframe api instance
       this.isPlaying = false;
@@ -107,19 +108,16 @@
         // 5 (video cued).
 
 
-        if(SettingsService.list.isFocusForced) {
-          document.activeElement.blur();
-        }
+        const conditionsAndActions =
+          [ [ SettingsService.list.isFocusForced
+            , () => document.activeElement.blur() ]
+          , [ SettingsService.list.isFlashModeEnabled && event.data === 1
+            , () => $timeout(() => { this.playNext(); }, 5000) ]
+          , [ event.data === 0
+            , () => this.playNext() ]
+          ];
 
-        if(SettingsService.list.isFlashModeEnabled && event.data === 1) {
-          $timeout(() => {
-            this.playNext();
-          }, 5000)
-        }
-        // if event is 0 (ended), play another video.
-        if (event.data === 0) {
-          this.playNext();
-        }
+        conditionsAndActions.map(([ c, a ]) => c ? a() : null);
       }
 
       function onPlayerReady() {
