@@ -181,5 +181,13 @@ describe('Service: PlayerService', function() {
         expect(service.playNext).toHaveBeenCalled();
       }));
     });
+
+    describe('when called with event.data === 1', function() {
+      it('should call PlayerService.cleanCurrentVideoItemErrors()', function() {
+        spyOn(service, 'cleanCurrentVideoItemErrors');
+        service.onPlayerStateChange({ data: 1 });
+        expect(service.cleanCurrentVideoItemErrors).toHaveBeenCalled();
+      });
+    });
   });
 });

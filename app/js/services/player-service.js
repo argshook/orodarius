@@ -9,12 +9,18 @@
       this.currentVideoItem = {};
 
       this.markCurrentVideoItemWithError = function(errorCode) {
-        var currentItemIndex = _.findIndex(PlaylistService.playlist, item => item.ownId === this.currentVideoItem.ownId);
+        const currentItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this));
 
         PlaylistService.playlist[currentItemIndex].error = {
           code: errorCode,
           message: errorMessage(errorCode)
         };
+      };
+
+      this.cleanCurrentVideoItemErrors = function() {
+        const currentItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this));
+
+        PlaylistService.playlist[currentItemIndex].error = null;
       };
 
       this.createNewPlayer = function(elementId, options) {
@@ -115,6 +121,8 @@
             , () => $timeout(() => { this.playNext(); }, 5000) ]
           , [ event.data === 0
             , () => this.playNext() ]
+          , [ event.data === 1
+            , () => this.cleanCurrentVideoItemErrors() ]
           ];
 
         conditionsAndActions.map(([ c, a ]) => c ? a() : null);
