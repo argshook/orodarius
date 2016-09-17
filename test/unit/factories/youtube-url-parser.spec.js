@@ -1,51 +1,55 @@
 'use strict';
 
-describe('Factory: youtubeUrlParser', function() {
+describe('Factory: youtubeUrlParser', () => {
   var youtubeUrlParser;
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_youtubeUrlParser_) {
+  beforeEach(inject((_youtubeUrlParser_) => {
     youtubeUrlParser = _youtubeUrlParser_;
   }));
 
-  describe('when no parameter passed', function() {
-    it('should return empty string', function() {
+  describe('given no parameters', () => {
+    it('should return empty string', () => {
       expect(youtubeUrlParser()).toBe('');
     });
   });
 
-  describe('when one parameter passed', function() {
-    describe('with no timestamp in url', function() {
-      it('should return correct object', function() {
-        var videoId = 'l5dvu4feCFk';
+  describe('given valid youtube url', () => {
+    it('should return expected object', () => {
+      var videoId = 'l5dvu4feCFk';
 
-        var youtubeUrls = [
-          'youtube.com/watch?v='+ videoId,
-          'm.youtube.com/watch?v='+ videoId,
-          'https://m.youtube.com/watch?v='+ videoId,
-          '//youtube.com/watch?v='+ videoId,
-          '//m.youtube.com/watch?v='+ videoId,
-          'www.youtube.com/watch?v='+ videoId,
-          'https://www.youtube.com/watch?v='+ videoId +'&amp;feature=youtu.be',
-          'https://youtube.com/watch?v='+ videoId +'&amp;feature=youtu.be',
-          'https://www.youtube.com/watch?v='+ videoId +'&feature=youtu.be',
-          'https://www.youtube.com/watch?v='+ videoId +'&&&feature=youtu.be',
-          'https://www.youtube.com/watch?v='+ videoId +'&&&feature=youtu.be#hash',
-          'https://www.youtube.com/watch?v='+ videoId +'&&&feature=youtu.be/#slashed-hash',
-          'https://www.youtube.com/watch?v='+ videoId,
-          'https://www.youtube.com/watch?v='+ videoId +'&amp;feature=youtu.be&amp;'
-        ];
+      var youtubeUrls = [
+        `youtube.com/watch?v=${videoId}`,
+        `www.youtube.com/watch?v=${videoId}`,
+        `http://www.youtube.com/watch?v=${videoId}`,
+        `https://youtube.com/watch?v=${videoId}`,
+        `https://m.youtube.com/watch?v=${videoId}`,
+        `//youtube.com/watch?v=${videoId}`,
+        `//m.youtube.com/watch?v=${videoId}`,
+        `http://www.youtube.com/v/${videoId}`,
+        `http://www.youtube.com/v/${videoId}`,
+        `https://www.youtube.com/watch?v=${videoId}&ampfeature=youtu.be`,
+        `https://youtube.com/watch?v=${videoId}&amp;feature=youtu.be`,
+        `https://www.youtube.com/watch?v=${videoId}&feature=youtu.be`,
+        `https://www.youtube.com/watch?v=${videoId}&&&feature=youtu.be`,
+        `https://www.youtube.com/watch?v=${videoId}&&&feature=youtu.be#hash`,
+        `https://www.youtube.com/watch?v=${videoId}&&&feature=youtu.be/#slashed-hash`,
+        `https://www.youtube.com/watch?v=${videoId}`,
+        `https://www.youtube.com/watch?v=${videoId}&amp;feature=youtu.be&amp;`,
+        `https://youtu.be/${videoId}`,
+        `m.youtube.com/watch?v=${videoId}`,
+        `https://www.youtube.com/attribution_link?a=LOViDhH-uZE&u=%2Fwatch%3Fv%3D${videoId}%26feature%3Dshare`,
+      ];
 
-        expectUrlsToEqualObject(youtubeUrls, {
-          id: videoId,
-          starttime: 0
-        });
+      expectUrlsToEqualObject(youtubeUrls, {
+        id: videoId,
+        starttime: 0
       });
     });
 
-    describe('with timestamp in url', function() {
-      it('should return correct object', function() {
+    describe('containing timestamp', () => {
+      it('should return correct object', () => {
         var videoId = 'l5dvu4feCFk',
             videoStartTime = 230;
 
@@ -62,8 +66,8 @@ describe('Factory: youtubeUrlParser', function() {
       });
     });
 
-    describe('with wrong parameters', function() {
-      it('should ignore wrong timestamp', function() {
+    describe('with wrong parameters', () => {
+      it('should ignore wrong timestamp', () => {
         var videoId = 'l5dvu4feCFk';
         var youtubeUrls = [
           'youtube.com/watch?v='+ videoId +'&amp;feature=youtu.be&t=',
@@ -81,8 +85,9 @@ describe('Factory: youtubeUrlParser', function() {
   });
 
   function expectUrlsToEqualObject(urls, object) {
-    urls.forEach(function(url) {
-      expect(youtubeUrlParser(url)).toEqual(object);
+    urls.forEach(url => {
+      // array with url so i can know which failed
+      expect([ url, youtubeUrlParser(url) ]).toEqual([ jasmine.any(String), object ]);
     });
   }
 });
