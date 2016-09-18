@@ -17,12 +17,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 110px;
     font-size: 1.9em;
     font-weight: 700;
     color: rgba(245, 245, 245, .8);
     transition: .2s $transition all;
     font-family: $font-muli;
-    flex-basis: 150px;
 
     &:before,
     &:after {
@@ -47,12 +47,16 @@
   }
 
   .video-title {
-    a {
+    flex: 1 0 auto;
+
+    &__reddit,
+    &__youtube {
+      display: block;
       color: #fff;
       font-size: 1.4em;
       font-family: $font-roboto;
       font-weight: 700;
-      line-height: 1.5;
+      line-height: 1.7;
       padding: .3em .2em;
       text-transform: uppercase;
       background: transparent;
@@ -61,6 +65,60 @@
       word-break: break-all;
 
       &:hover { text-decoration: none; }
+
+      &:before {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        display: inline-block;
+        text-align: center;
+        font-size: .8em;
+        line-height: 26px;
+        border-radius: 50%;
+        text-shadow: none;
+        opacity: .5;
+      }
+
+      &.ng-enter {
+        opacity: 0;
+        transition: .2s $transition all;
+        transform: translateY(-20px);
+
+        &-active {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      &.ng-leave {
+        opacity: 1;
+        transition: .2s $transition all;
+        transform: translateY(0);
+
+        &-active {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+      }
+    }
+
+    &__reddit {
+      &:before {
+        content: 'R';
+        background: #cee3f8;
+        color: #333;
+      }
+    }
+
+    &__youtube {
+      font-size: 1.2em;
+
+      &:before {
+        content: 'Y';
+        background: #e62117;
+        color: #333;
+        color: #f1f1f1;
+      }
     }
   }
 }

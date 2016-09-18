@@ -27,6 +27,7 @@
         const currentItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this));
 
         PlaylistService.playlist[currentItemIndex].youtubeMeta = metadata;
+        $rootScope.$digest(); // hahaha it's like some idiot is writing this
       };
 
       this.createNewPlayer = function(elementId, options) {
