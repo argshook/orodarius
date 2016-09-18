@@ -33,7 +33,8 @@
             autoplay: 0,
             controls: 1,
             disablekb: 1,
-            enablejsapi: 1
+            enablejsapi: 1,
+            'iv_load_policy': 3
           }
         };
 
