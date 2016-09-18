@@ -71,8 +71,8 @@
 
     // TODO: refactor to filter?
     function uniquefyVideoItems(videoItems) {
+      // wtf is this
       var stringifiedArray = _(videoItems).map(item => JSON.stringify(item)).value();
-      // console.log(_(_.uniq(stringifiedArray)).map(item => JSON.parse(item)).value().length);
       return _(_.uniq(stringifiedArray)).map(item => JSON.parse(item)).value();
     }
 
@@ -83,12 +83,16 @@
       return data
         .filter(({ kind }) => kind === 't3') // t3 - link posts
         .filter(({ data }) => /^(m\.)?youtu\.?be/.test(data.domain))
-        .map(item => {
-          var videoInfo = youtubeUrlParser(item.data.url);
+        .reduce((items, item) => {
+          let videoInfo = youtubeUrlParser(item.data.url);
+
+          if(!videoInfo) {
+            return items;
+          }
 
           // this is where playlist
           // item is built
-          return {
+          return items.concat({
             title: item.data.title,
             url: item.data.url,
             videoId: videoInfo.id,
@@ -99,8 +103,8 @@
             redditScore: item.data.score,
             subreddit: item.data.subreddit,
             error: null
-          };
-        });
+          });
+        }, []);
     }
 
     // TODO: refactor to filter?

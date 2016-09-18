@@ -1,43 +1,44 @@
 .sidebar-now-playing {
   text-align: center;
   color: #adadad;
+}
 
-  &-label { margin: 0 1.5em; }
+.sidebar-now-playing-label { margin: 0 1.5em; }
 
-  &-input {
-    padding: .7em 1em;
-    background: transparent;
-    border: 1px solid fade-out(#adadad, .4);
-    border-radius: 3px;
-    color: fade-out(orange, .4);
-    transition: .2s $transition all;
+.sidebar-now-playing-input {
+  padding: .7em 1em;
+  width: 50%;
+  background: transparent;
+  border: 1px solid fade-out(#adadad, .4);
+  border-radius: 3px;
+  color: fade-out(orange, .4);
+  transition: .2s $transition all;
 
-    &:focus,
-    &:hover {
-      box-shadow: 0 -10px 7px -3px fade-out(white, .96) inset;
-    }
+  &:focus,
+  &:hover {
+    box-shadow: 0 -10px 7px -3px fade-out(white, .96) inset;
+  }
+}
+
+.sidebar-now-playing-btn {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  border: 0;
+  font-size: 1.2em;
+  text-align: center;
+  vertical-align: middle;
+  background: transparent;
+  transition: .5s $transition transform;
+
+  &--active {
+    color: orange;
+    transform: rotateZ(180deg);
   }
 
-  &-btn {
-    width: 30px;
-    height: 30px;
-    margin: 0 5px;
-    border: 0;
-    font-size: 1.2em;
-    text-align: center;
-    vertical-align: middle;
-    background: transparent;
-    transition: .5s $transition transform;
+  &:focus { outline: 0; }
+}
 
-    &--active {
-      color: orange;
-      transform: rotateZ(180deg);
-    }
-
-    &:focus { outline: 0; }
-  }
-
-  .glyphicon-search.loading {
-    animation: sidebarSearchIconLoadingSpin 2s linear infinite;
-  }
+.glyphicon-search.loading {
+  animation: sidebarSearchIconLoadingSpin 2s linear infinite;
 }
