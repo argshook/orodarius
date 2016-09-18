@@ -21,9 +21,10 @@
 
 %loading-modifier {
   background-image: repeating-linear-gradient(
-  -20deg,
-  rgba(0, 0, 0, 0.2) 0,
-  fade-out(orange, .9) 3%);
+      -20deg,
+      rgba(0, 0, 0, 0.2) 0,
+      fade-out(orange, .9) 3%
+    );
   background-position-x: 100%;
   background-size: 300%;
   animation: animateSidebarExpandBtnGradient 10s linear infinite;

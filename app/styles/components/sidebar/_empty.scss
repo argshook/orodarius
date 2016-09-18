@@ -17,23 +17,27 @@
 
   &__button {
     flex: 1 0 150px;
-    padding: .5em .3em;
-    margin: .2em;
+    padding: .6em .7em;
+    margin: .5em;
     font-size: 1.3em;
-    font-weight: bold;
+    font-weight: 300;
     border: 1px solid rgba(255, 165, 0, 0.27);
+    border-radius: 3px;
     transition: .2s $transition all;
     background: transparent;
 
     &:hover {
       background: rgba(255, 165, 0, 0.25);
-      border: 1px solid rgba(255, 165, 0, 0.57);
-      transform: scale(1.1);
+      border-color: transparent;
+      transform: scale(1.15);
+      border-radius: 6px;
+      box-shadow: 0 15px 10px -5px rgba(0, 0, 0, .4);
       cursor: pointer;
     }
 
     &:active {
-      transform: scale(.9);
+      transform: scale(1);
+      box-shadow: none;
     }
   }
 }

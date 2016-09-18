@@ -52,6 +52,8 @@
   height: $sidebar-heading-height;
   background: fade-out(black, .2);
 
+  &--loading { @extend %loading-modifier; }
+
   h1 {
     padding: .2em;
     margin-bottom: .8em;
