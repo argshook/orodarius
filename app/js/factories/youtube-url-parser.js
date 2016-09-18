@@ -13,7 +13,8 @@
     `youtube\\.com\\/watch\\?.*v=${videoIdReg}`,
     `youtube\\.com/v/${videoIdReg}`,
     `youtu\\.be\\/${videoIdReg}`,
-    `youtube\\.com\\/attribution_link\\?.+(?:watch%3Fv%3D)${videoIdReg}`
+    `youtube\\.com\\/attribution_link\\?.+(?:watch%3Fv%3D)${videoIdReg}`,
+    `youtube\\.com\\/shared\\?ci=${videoIdReg}`
   ].map(r => urlPrefixReg + r)
     .map(r => new RegExp(r, 'i'));
 

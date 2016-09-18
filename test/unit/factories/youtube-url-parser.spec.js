@@ -40,6 +40,7 @@ describe('Factory: youtubeUrlParser', () => {
         `https://youtu.be/${videoId}`,
         `m.youtube.com/watch?v=${videoId}`,
         `https://www.youtube.com/attribution_link?a=LOViDhH-uZE&u=%2Fwatch%3Fv%3D${videoId}%26feature%3Dshare`,
+        `https://www.youtube.com/shared?ci=${videoId}`
       ];
 
       expectUrlsToEqualObject(youtubeUrls, {
