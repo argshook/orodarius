@@ -23,6 +23,12 @@
         PlaylistService.playlist[currentItemIndex].error = null;
       };
 
+      this.setCurrentVideoItemYoutubeMetadata = function(metadata) {
+        const currentItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this));
+
+        PlaylistService.playlist[currentItemIndex].youtubeMeta = metadata;
+      };
+
       this.createNewPlayer = function(elementId, options) {
         var defaultPlayerOptions = {
           width: $window.innerWidth, // TODO: perhaps move to settings value
@@ -123,10 +129,14 @@
           , [ event.data === 0
             , () => this.playNext() ]
           , [ event.data === 1
-            , () => this.cleanCurrentVideoItemErrors() ]
+            , () => {
+                this.cleanCurrentVideoItemErrors()
+                this.setCurrentVideoItemYoutubeMetadata(event.target.getVideoData());
+              }
+            ]
           ];
 
-        conditionsAndActions.map(([ c, a ]) => c ? a() : null);
+        conditionsAndActions.map(([ c, a ]) => c ? a(event) : null);
       }
 
       function onPlayerReady() {

@@ -163,6 +163,18 @@ describe('Service: PlayerService', function() {
     });
   });
 
+  describe('setCurrentVideoItemYoutubeMetadata', function() {
+    it('should set given metadata object to currentVideoItem', inject(function(PlaylistService) {
+      PlaylistService.playlist = [
+        { videoId: 'currentId', ownId: '1', youtubeMeta: null }
+      ];
+
+      service.currentVideoItem = PlaylistService.playlist[0];
+      service.setCurrentVideoItemYoutubeMetadata({ data: 'hello' });
+      expect(PlaylistService.playlist[0].youtubeMeta).toEqual({ data: 'hello' });
+    }));
+  });
+
   describe('onPlayerStateChange()', () => {
     describe('when SettingsService.list.isFocusForced is true', () => {
       it('should call document.activeElement.blur()', inject(SettingsService => {
@@ -183,10 +195,20 @@ describe('Service: PlayerService', function() {
     });
 
     describe('when called with event.data === 1', function() {
-      it('should call PlayerService.cleanCurrentVideoItemErrors()', function() {
+      beforeEach(() => {
         spyOn(service, 'cleanCurrentVideoItemErrors');
-        service.onPlayerStateChange({ data: 1 });
+        spyOn(service, 'setCurrentVideoItemYoutubeMetadata');
+      });
+
+      it('should call PlayerService.cleanCurrentVideoItemErrors()', function() {
+        service.onPlayerStateChange({ data: 1, target: { getVideoData: angular.noop }});
         expect(service.cleanCurrentVideoItemErrors).toHaveBeenCalled();
+      });
+
+      it('should call setCurrentVideoItemYoutubeMetadata passing event object', function() {
+        const getVideoDataSpy = () => "hello data";
+        service.onPlayerStateChange({ data: 1, target: { getVideoData: getVideoDataSpy }});
+        expect(service.setCurrentVideoItemYoutubeMetadata).toHaveBeenCalledWith(getVideoDataSpy());
       });
     });
   });
