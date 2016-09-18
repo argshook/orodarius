@@ -4,8 +4,21 @@
   </div>
 
   <div class="video-title">
-    <a ng-href="{{$ctrl.getCurrentVideoItem().redditUrl}}" target="_blank">
+    <a
+      ng-href="{{$ctrl.getCurrentVideoItem().redditUrl}}"
+      class="video-title__reddit"
+      target="_blank"
+      title="Reddit">
       {{$ctrl.getCurrentVideoItem().title}}
+    </a>
+
+    <a
+      ng-href="{{$ctrl.getCurrentVideoItem().url}}"
+      ng-if="$ctrl.getCurrentVideoItem().youtubeMeta.title !== $ctrl.getCurrentVideoItem().title"
+      class="video-title__youtube"
+      target="_blank"
+      title="Youtube">
+      {{$ctrl.getCurrentVideoItem().youtubeMeta.title}}
     </a>
   </div>
 </div>
