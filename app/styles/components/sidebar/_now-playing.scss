@@ -10,7 +10,7 @@
     border: 1px solid fade-out(#adadad, .4);
     border-radius: 3px;
     color: fade-out(orange, .4);
-    transition: .2s ease all;
+    transition: .2s $transition all;
 
     &:focus,
     &:hover {
@@ -27,7 +27,7 @@
     text-align: center;
     vertical-align: middle;
     background: transparent;
-    transition: .5s ease-out transform;
+    transition: .5s $transition transform;
 
     &--active {
       color: orange;

@@ -8,7 +8,7 @@
   z-index: $zindex-player-overlay;
   padding: 1em;
   opacity: .4;
-  transition: .2s ease all;
+  transition: .2s $transition all;
 
   &:hover { opacity: .9; }
 
@@ -20,7 +20,7 @@
     font-size: 1.9em;
     font-weight: 700;
     color: rgba(245, 245, 245, .8);
-    transition: .2s ease all;
+    transition: .2s $transition all;
     font-family: $font-muli;
     flex-basis: 150px;
 
@@ -57,7 +57,7 @@
       text-transform: uppercase;
       background: transparent;
       text-shadow: 0 1px 1px #222;
-      transition: .2s ease all;
+      transition: .2s $transition all;
       word-break: break-all;
 
       &:hover { text-decoration: none; }

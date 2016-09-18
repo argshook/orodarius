@@ -24,7 +24,7 @@
     color: #aaa;
     font-size: 15px;
     border-left: 1px solid transparent;
-    transition: .2s ease all;
+    transition: .2s $transition all;
 
     &:hover,
     &--active {
@@ -52,7 +52,7 @@
     padding-right: 30px;
     font-size: 20px;
     color: #bbb;
-    transition: .2s ease color;
+    transition: .2s $transition color;
   }
 }
 

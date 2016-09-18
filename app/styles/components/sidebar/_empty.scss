@@ -22,7 +22,7 @@
     font-size: 1.3em;
     font-weight: bold;
     border: 1px solid rgba(255, 165, 0, 0.27);
-    transition: .2s ease all;
+    transition: .2s $transition all;
     background: transparent;
 
     &:hover {

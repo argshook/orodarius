@@ -11,7 +11,7 @@
     line-height: 50px;
     vertical-align: middle;
     cursor: pointer;
-    transition: .2s ease all;
+    transition: .2s $transition all;
 
     &:hover { background-color: rgba(255, 255, 255, .1); }
 
