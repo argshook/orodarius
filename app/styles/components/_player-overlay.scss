@@ -13,11 +13,14 @@
   &:hover { opacity: .9; }
 
   .video-score {
+    $padding-right: .5em;
+
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 110px;
+    flex: 0 0 80px;
+    padding-right: $padding-right;
     font-size: 1.9em;
     font-weight: 700;
     color: rgba(245, 245, 245, .8);
@@ -27,7 +30,7 @@
     &:before,
     &:after {
       position: absolute;
-      left: 50%;
+      left: calc(50% - #{$padding-right / 2});
       font-weight: 900;
       font-family: monospace;
       transform: scaleY(.5) translateX(-50%);
@@ -47,17 +50,22 @@
   }
 
   .video-title {
-    flex: 1 0 auto;
+    flex: 1 0 100%;
 
     &__reddit,
     &__youtube {
+      $icon-radius: 24px;
+      $icon-gap-right: 15px;
+
+      position: relative;
       display: block;
+      padding: .3em .2em;
+      margin-left: $icon-radius + $icon-gap-right;
       color: #fff;
       font-size: 1.4em;
       font-family: $font-roboto;
       font-weight: 700;
-      line-height: 1.7;
-      padding: .3em .2em;
+      line-height: 2;
       text-transform: uppercase;
       background: transparent;
       text-shadow: 0 1px 1px #222;
@@ -67,9 +75,11 @@
       &:hover { text-decoration: none; }
 
       &:before {
-        width: 24px;
-        height: 24px;
-        margin-right: 10px;
+        position: absolute;
+        left: - $icon-radius - $icon-gap-right / 2;
+        top: 13px;
+        width: $icon-radius;
+        height: $icon-radius;
         display: inline-block;
         text-align: center;
         font-size: .8em;
@@ -112,10 +122,12 @@
 
     &__youtube {
       font-size: 1.2em;
+      min-height: 45px;
 
       &:before {
         content: 'Y';
         background: #e62117;
+        top: 9px;
         color: #333;
         color: #f1f1f1;
       }
