@@ -42,17 +42,16 @@ describe('Directive: video-item', function() {
   });
 
   describe('when parent scope has proper `item` property', function() {
-    it('should display title', () => {
-      compile(parentScopeMock, elementAttrsMock, function(scope, element, driver) {
-        expect(driver.title().text()).toBe(parentScopeMock.videoItem.title)
-      });
-    });
+    it('should display title', () =>
+      compile(parentScopeMock, elementAttrsMock, (s, e, d) => {
+        expect(d.title().text()).toBe(parentScopeMock.videoItem.title)
+      }));
 
-    it('should display reddit score', () => {
-      compile(parentScopeMock, elementAttrsMock, function (scope, element, driver) {
-        expect(driver.score().text()).toBe(parentScopeMock.videoItem.redditScore);
-      });
-    });
+    it('should display reddit score', () =>
+      compile(parentScopeMock, elementAttrsMock, (s, e, d) => {
+        expect(d.score().text()).toBe(parentScopeMock.videoItem.redditScore);
+      })
+    );
   });
 
   describe('when parent scope has proper `index` property', () => {

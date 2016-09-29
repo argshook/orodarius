@@ -8,9 +8,13 @@
   z-index: $zindex-player-overlay;
   padding: 1em;
   opacity: .4;
+  filter: saturate(0);
   transition: .2s $transition all;
 
-  &:hover { opacity: .9; }
+  &:hover {
+    opacity: .9;
+    filter: saturate(1);
+  }
 
   .video-score {
     $padding-right: .5em;
