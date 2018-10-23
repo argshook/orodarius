@@ -3,7 +3,6 @@
 
 module.exports = function(karma) {
   karma.set({
-
     // base path, that will be used to resolve files and exclude
     basePath: 'test',
 
@@ -31,7 +30,7 @@ module.exports = function(karma) {
 
       'mocks/**.js',
       'unit/**/*.spec.js'
-      ],
+    ],
 
     // list of files to exclude
     exclude: [''],
@@ -63,15 +62,15 @@ module.exports = function(karma) {
     },
 
     coverageReporter: {
-      type : 'lcov',
-      dir : '../coverage/'
+      type: 'lcov',
+      dir: '../coverage/'
     },
 
     ngHtml2JsPreprocessor: {
       moduleName: 'orodarius.templates',
       cacheIdFromPath: function(filepath) {
         return filepath.match(/(?:\/)(views\/.*\.html?$)/)[1];
-      },
+      }
     },
 
     babelPreprocessor: {

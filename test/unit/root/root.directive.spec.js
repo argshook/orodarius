@@ -4,11 +4,17 @@ describe('Directive: root', () => {
   var compile;
 
   beforeEach(module('orodarius.templates'));
-  beforeEach(module('orodarius', $provide => {
-    let mockedDirectives = ['sidebar', 'playerOverlay', 'player'];
+  beforeEach(
+    module('orodarius', $provide => {
+      let mockedDirectives = ['sidebar', 'playerOverlay', 'player'];
 
-    mockedDirectives.forEach(directive => $provide.factory(`${directive}Directive`, () => { return {}; }));
-  }));
+      mockedDirectives.forEach(directive =>
+        $provide.factory(`${directive}Directive`, () => {
+          return {};
+        })
+      );
+    })
+  );
 
   beforeEach(inject(($compile, $rootScope) => {
     compile = createCompiler('<root />', $rootScope, $compile);
@@ -23,8 +29,8 @@ describe('Directive: root', () => {
   describe('keyboardEventsOptions', () => {
     it('should have expected properties', () => {
       compile(scope => {
-        expect(scope.$ctrl.keyboardEventsOptions)
-          .toEqual(jasmine.objectContaining({
+        expect(scope.$ctrl.keyboardEventsOptions).toEqual(
+          jasmine.objectContaining({
             37: jasmine.any(Function),
             38: jasmine.any(Function),
             39: jasmine.any(Function),
@@ -33,7 +39,8 @@ describe('Directive: root', () => {
             16: jasmine.any(Function),
             27: jasmine.any(Function),
             83: jasmine.any(Function)
-          }));
+          })
+        );
       });
     });
 
@@ -82,7 +89,6 @@ describe('Directive: root', () => {
       }));
     });
 
-
     describe('s key', () => {
       describe('when SidebarService.state !== `settings`', () => {
         it('should call SidebarService.state.set(`settings`)', inject(SidebarService => {
@@ -92,7 +98,9 @@ describe('Directive: root', () => {
 
             SidebarService.state.set('main');
             scope.$ctrl.keyboardEventsOptions[83]();
-            expect(SidebarService.state.set.calls.argsFor(1)).toEqual(['settings']);
+            expect(SidebarService.state.set.calls.argsFor(1)).toEqual([
+              'settings'
+            ]);
 
             scope.$ctrl.keyboardEventsOptions[83]();
             expect(SidebarService.state.set.calls.count()).toBe(2);
@@ -154,8 +162,11 @@ describe('Directive: root', () => {
     });
 
     describe('when playlist is empty', () => {
-      it('should not do anything on arrow keys', inject((PlaylistService, PlayerService) => {
-        compile(function (scope) {
+      it('should not do anything on arrow keys', inject((
+        PlaylistService,
+        PlayerService
+      ) => {
+        compile(function(scope) {
           PlaylistService.clear();
           spyOn(PlayerService, 'playPrevious');
           spyOn(PlayerService, 'playNext');
@@ -174,7 +185,9 @@ describe('Directive: root', () => {
 
   it('should use ng-bind-keys on root element properly', () => {
     compile((scope, element) => {
-      expect(element.find('.orodarius-root').attr('ng-bind-keys')).toBe('$ctrl.keyboardEventsOptions');
+      expect(element.find('.orodarius-root').attr('ng-bind-keys')).toBe(
+        '$ctrl.keyboardEventsOptions'
+      );
     });
   });
 
@@ -183,10 +196,10 @@ describe('Directive: root', () => {
       compile((scope, element) => {
         let expectedElements = ['player', 'sidebar', 'player-overlay'];
 
-        expectedElements.
-          forEach(selector => expect(element.find(selector).length).toBe(1));
+        expectedElements.forEach(selector =>
+          expect(element.find(selector).length).toBe(1)
+        );
       });
     });
   });
 });
-

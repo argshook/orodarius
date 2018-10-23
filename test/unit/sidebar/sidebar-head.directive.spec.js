@@ -14,14 +14,14 @@ describe('Directive: sidebarHead', () => {
     'current-subreddit': 'currentSubreddit',
     'current-state': 'currentState',
     'is-loading': 'isLoading',
-    'on-search-start': 'onSearchStart(subreddit)',
+    'on-search-start': 'onSearchStart(subreddit)'
   };
 
   const driver = {
     head: e => e.find('.sidebar-head'),
-    nowPlaying: e =>  e.find('.sidebar-now-playing-btn'),
-    nowPlayingInput: e =>  e.find('.sidebar-now-playing-input'),
-    toggler: e =>  e.find('.sidebar-settings-panel-toggle')
+    nowPlaying: e => e.find('.sidebar-now-playing-btn'),
+    nowPlayingInput: e => e.find('.sidebar-now-playing-input'),
+    toggler: e => e.find('.sidebar-settings-panel-toggle')
   };
 
   beforeEach(module('orodarius.templates'));
@@ -41,7 +41,9 @@ describe('Directive: sidebarHead', () => {
       compile(parentScopeMock, elementAttrsMock, (scope, element, driver) => {
         scope.$ctrl.currentSubreddit = 'expected sub';
         driver.nowPlaying().click();
-        expect(parentScopeMock.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
+        expect(parentScopeMock.onSearchStart).toHaveBeenCalledWith(
+          scope.$ctrl.currentSubreddit
+        );
       });
     });
   });
@@ -50,16 +52,18 @@ describe('Directive: sidebarHead', () => {
     it('should call parentScope.onSearchStart with correct subreddit', () => {
       compile(parentScopeMock, elementAttrsMock, (scope, element, driver) => {
         scope.$ctrl.currentSubreddit = 'expected sub';
-        driver.nowPlayingInput().triggerHandler({ type: 'keypress', which: 13 });
+        driver.nowPlayingInput().triggerHandler({type: 'keypress', which: 13});
         scope.$digest();
-        expect(parentScopeMock.onSearchStart).toHaveBeenCalledWith(scope.$ctrl.currentSubreddit);
+        expect(parentScopeMock.onSearchStart).toHaveBeenCalledWith(
+          scope.$ctrl.currentSubreddit
+        );
       });
     });
   });
 
   it('should receive isLoading from attribute', () => {
-    let parentScope = { isLoading: true };
-    compile(parentScope, { 'is-loading': parentScope.isLoading }, scope => {
+    let parentScope = {isLoading: true};
+    compile(parentScope, {'is-loading': parentScope.isLoading}, scope => {
       expect(scope.$ctrl.isLoading).toBe(parentScope.isLoading);
     });
   });
@@ -67,7 +71,9 @@ describe('Directive: sidebarHead', () => {
   describe('$ctrl.currentSubreddit', () => {
     it('should be exposed from parentScope', () => {
       compile(parentScopeMock, elementAttrsMock, scope => {
-        expect(scope.$ctrl.currentSubreddit).toBe(parentScopeMock.currentSubreddit);
+        expect(scope.$ctrl.currentSubreddit).toBe(
+          parentScopeMock.currentSubreddit
+        );
       });
     });
   });
@@ -79,7 +85,7 @@ describe('Directive: sidebarHead', () => {
           spyOn(scope.$ctrl, 'onSettingsClick');
           driver.toggler().click();
           expect(scope.$ctrl.onSettingsClick).toHaveBeenCalled();
-        })
+        });
       });
     });
   });
@@ -90,16 +96,27 @@ describe('Directive: sidebarHead', () => {
         let parentScope = _.cloneDeep(parentScopeMock);
         parentScope.currentState = 'settings';
 
-        compile(parentScope, elementAttrsMock, function (scope, element, driver) {
-          expect(driver.toggler().hasClass('sidebar-now-playing-btn--active')).toBe(true);
+        compile(parentScope, elementAttrsMock, function(
+          scope,
+          element,
+          driver
+        ) {
+          expect(
+            driver.toggler().hasClass('sidebar-now-playing-btn--active')
+          ).toBe(true);
         });
 
         parentScope.currentState = 'shit';
-        compile(parentScope, elementAttrsMock, function (scope, element, driver) {
-          expect(driver.toggler().hasClass('sidebar-now-playing-btn--active')).toBe(false);
+        compile(parentScope, elementAttrsMock, function(
+          scope,
+          element,
+          driver
+        ) {
+          expect(
+            driver.toggler().hasClass('sidebar-now-playing-btn--active')
+          ).toBe(false);
         });
       });
     });
   });
 });
-

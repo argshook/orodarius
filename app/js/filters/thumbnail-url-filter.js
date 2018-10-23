@@ -1,4 +1,4 @@
-;(() => {
+(() => {
   'use strict';
 
   angular
@@ -7,7 +7,7 @@
 
   function filterUrl(url) {
     return [url]
-      .map(s => typeof s === 'string' ? s : '')
+      .map(s => (typeof s === 'string' ? s : ''))
       .map(s => s.replace(/^http:\/\//, 'https://'))
       .map(s => {
         switch (s) {
@@ -22,4 +22,3 @@
       .shift();
   }
 })();
-

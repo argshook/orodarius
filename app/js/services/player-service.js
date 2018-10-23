@@ -1,15 +1,22 @@
-;(function() {
+(function() {
   'use strict';
 
-  angular
-    .module('orodarius')
-    .service('PlayerService', ['$window', '$timeout', 'PlaylistService', 'SettingsService', '$rootScope', function($window, $timeout, PlaylistService, SettingsService, $rootScope) {
+  angular.module('orodarius').service('PlayerService', [
+    '$window',
+    '$timeout',
+    'PlaylistService',
+    'SettingsService',
+    '$rootScope',
+    function($window, $timeout, PlaylistService, SettingsService, $rootScope) {
       this.youtubePlayer = null; // youtube iframe api instance
       this.isPlaying = false;
       this.currentVideoItem = {};
 
       this.markCurrentVideoItemWithError = function(errorCode) {
-        const currentItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this));
+        const currentItemIndex = _.findIndex(
+          PlaylistService.playlist,
+          currentItemMatcher.bind(this)
+        );
 
         PlaylistService.playlist[currentItemIndex].error = {
           code: errorCode,
@@ -18,13 +25,19 @@
       };
 
       this.cleanCurrentVideoItemErrors = function() {
-        const currentItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this));
+        const currentItemIndex = _.findIndex(
+          PlaylistService.playlist,
+          currentItemMatcher.bind(this)
+        );
 
         PlaylistService.playlist[currentItemIndex].error = null;
       };
 
       this.setCurrentVideoItemYoutubeMetadata = function(metadata) {
-        const currentItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this));
+        const currentItemIndex = _.findIndex(
+          PlaylistService.playlist,
+          currentItemMatcher.bind(this)
+        );
 
         PlaylistService.playlist[currentItemIndex].youtubeMeta = metadata;
         $rootScope.$digest(); // hahaha it's like some idiot is writing this
@@ -41,26 +54,38 @@
             controls: 1,
             disablekb: 1,
             enablejsapi: 1,
-            'iv_load_policy': 3
+            iv_load_policy: 3
           }
         };
 
         angular.extend(defaultPlayerOptions, options);
 
         // YT should be available since it comes from iframe_api
-        this.youtubePlayer = new YT.Player(elementId || 'main-video-player', defaultPlayerOptions);
+        this.youtubePlayer = new YT.Player(
+          elementId || 'main-video-player',
+          defaultPlayerOptions
+        );
 
-        this.youtubePlayer.addEventListener('onReady', onPlayerReady.bind(this));
-        this.youtubePlayer.addEventListener('onError', onPlayerError.bind(this));
-        this.youtubePlayer.addEventListener('onStateChange', this.onPlayerStateChange.bind(this));
+        this.youtubePlayer.addEventListener(
+          'onReady',
+          onPlayerReady.bind(this)
+        );
+        this.youtubePlayer.addEventListener(
+          'onError',
+          onPlayerError.bind(this)
+        );
+        this.youtubePlayer.addEventListener(
+          'onStateChange',
+          this.onPlayerStateChange.bind(this)
+        );
 
         return this.youtubePlayer;
       };
 
       this.playVideo = function(item) {
-        if(this.youtubePlayer && this.youtubePlayer.loadVideoById && item) {
+        if (this.youtubePlayer && this.youtubePlayer.loadVideoById && item) {
           // TODO: skip misunderstood urls for now
-          if(item.url === false) {
+          if (item.url === false) {
             this.playNext();
             return;
           }
@@ -73,15 +98,22 @@
 
           this.currentVideoItem = item;
           this.isPlaying = true;
-          SettingsService.set('watchCount', SettingsService.list.watchCount + 1);
+          SettingsService.set(
+            'watchCount',
+            SettingsService.list.watchCount + 1
+          );
         }
       };
 
       this.playNext = function() {
-        var nextVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this)) + 1;
+        var nextVideoItemIndex =
+          _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this)) +
+          1;
 
         // TODO: it'd probably make more sense if PlaylistService take care of itself rather than this PlayerService
-        if(nextVideoItemIndex >= Math.max(PlaylistService.playlist.length - 3, 0)) {
+        if (
+          nextVideoItemIndex >= Math.max(PlaylistService.playlist.length - 3, 0)
+        ) {
           PlaylistService.expandPlaylist().then(data => {
             this.playVideo(PlaylistService.playlist[nextVideoItemIndex]);
             $rootScope.$emit('orodariusScrollIntoView');
@@ -93,13 +125,20 @@
       };
 
       this.playPrevious = function() {
-        var previousVideoItemIndex = _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this)) - 1;
-        this.playVideo(PlaylistService.playlist[previousVideoItemIndex < 0 ? 0 : previousVideoItemIndex], 'previous');
+        var previousVideoItemIndex =
+          _.findIndex(PlaylistService.playlist, currentItemMatcher.bind(this)) -
+          1;
+        this.playVideo(
+          PlaylistService.playlist[
+            previousVideoItemIndex < 0 ? 0 : previousVideoItemIndex
+          ],
+          'previous'
+        );
         $rootScope.$emit('orodariusScrollIntoView');
       };
 
       this.playOrPause = function() {
-        if(this.isPlaying) {
+        if (this.isPlaying) {
           this.youtubePlayer.pauseVideo();
           this.isPlaying = false;
         } else {
@@ -121,24 +160,32 @@
         // 3 (buffering)
         // 5 (video cued).
 
+        const conditionsAndActions = [
+          [
+            SettingsService.list.isFocusForced,
+            () => document.activeElement.blur()
+          ],
+          [
+            SettingsService.list.isFlashModeEnabled && event.data === 1,
+            () =>
+              $timeout(() => {
+                this.playNext();
+              }, 5000)
+          ],
+          [event.data === 0, () => this.playNext()],
+          [
+            event.data === 1,
+            () => {
+              this.cleanCurrentVideoItemErrors();
+              this.setCurrentVideoItemYoutubeMetadata(
+                event.target.getVideoData()
+              );
+            }
+          ]
+        ];
 
-        const conditionsAndActions =
-          [ [ SettingsService.list.isFocusForced
-            , () => document.activeElement.blur() ]
-          , [ SettingsService.list.isFlashModeEnabled && event.data === 1
-            , () => $timeout(() => { this.playNext(); }, 5000) ]
-          , [ event.data === 0
-            , () => this.playNext() ]
-          , [ event.data === 1
-            , () => {
-                this.cleanCurrentVideoItemErrors()
-                this.setCurrentVideoItemYoutubeMetadata(event.target.getVideoData());
-              }
-            ]
-          ];
-
-        conditionsAndActions.map(([ c, a ]) => c ? a(event) : null);
-      }
+        conditionsAndActions.map(([c, a]) => (c ? a(event) : null));
+      };
 
       function onPlayerReady() {
         // player.playVideo();
@@ -146,7 +193,7 @@
 
       function onPlayerError(event) {
         // https://developers.google.com/youtube/iframe_api_reference#onError
-        if([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
+        if ([2, 5, 100, 101, 150].indexOf(event.data) != -1) {
           this.markCurrentVideoItemWithError(event.data);
           // TODO: stop trying after n tries
           this.playNext();
@@ -162,15 +209,14 @@
           case 2:
             return "can't parse video ID";
           case 5:
-            return "problem with HTML5 Youtube player";
+            return 'problem with HTML5 Youtube player';
           case 100:
-            return "video is private or removed";
+            return 'video is private or removed';
           case 101:
           case 150:
-            return "uploader does not allow embedded playback";
+            return 'uploader does not allow embedded playback';
         }
       }
-
-    }]);
+    }
+  ]);
 })();
-

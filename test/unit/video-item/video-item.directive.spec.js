@@ -5,16 +5,16 @@ describe('Directive: video-item', function() {
 
   var parentScopeMock = {
     videoItem: {
-      title: "Batman vs spiderman supermj",
-      url: "youtube.com/v/hdbcccc3123",
+      title: 'Batman vs spiderman supermj',
+      url: 'youtube.com/v/hdbcccc3123',
       videoId: 1,
       starttime: 0,
-      thumbnailUrl: "http://beerhold.it/300/300",
-      created: "someday",
+      thumbnailUrl: 'http://beerhold.it/300/300',
+      created: 'someday',
       redditUrl: `http://reddit.com/asdasdj`,
       redditScore: '42',
-      subreddit: "videos",
-      error: null,
+      subreddit: 'videos',
+      error: null
     },
     currentSubreddit: 'videos'
   };
@@ -22,7 +22,7 @@ describe('Directive: video-item', function() {
   var elementAttrsMock = {
     'video-item': 'videoItem',
     'current-subreddit': 'currentSubreddit',
-    'index': 'index'
+    index: 'index'
   };
 
   var driver = {
@@ -44,14 +44,13 @@ describe('Directive: video-item', function() {
   describe('when parent scope has proper `item` property', function() {
     it('should display title', () =>
       compile(parentScopeMock, elementAttrsMock, (s, e, d) => {
-        expect(d.title().text()).toBe(parentScopeMock.videoItem.title)
+        expect(d.title().text()).toBe(parentScopeMock.videoItem.title);
       }));
 
     it('should display reddit score', () =>
       compile(parentScopeMock, elementAttrsMock, (s, e, d) => {
         expect(d.score().text()).toBe(parentScopeMock.videoItem.redditScore);
-      })
-    );
+      }));
   });
 
   describe('when parent scope has proper `index` property', () => {
@@ -95,9 +94,10 @@ describe('Directive: video-item', function() {
       PlayerService.currentVideoItem.ownId = 10;
 
       compile(parentScope, elementAttrsMock, (scope, element) => {
-        expect(element.find('.video-item').hasClass('video-item--current')).toBe(true);
+        expect(
+          element.find('.video-item').hasClass('video-item--current')
+        ).toBe(true);
       });
     }));
   });
 });
-

@@ -4,11 +4,20 @@ describe('Directive: sidebar', function() {
   var compile;
 
   beforeEach(module('orodarius.templates'));
-  beforeEach(module('orodarius', $provide => {
-    $provide.factory('sidebarFootDirective', () => { return {}; });
-  }));
+  beforeEach(
+    module('orodarius', $provide => {
+      $provide.factory('sidebarFootDirective', () => {
+        return {};
+      });
+    })
+  );
 
-  beforeEach(inject(function($compile, $rootScope, $httpBackend, PlaylistService) {
+  beforeEach(inject(function(
+    $compile,
+    $rootScope,
+    $httpBackend,
+    PlaylistService
+  ) {
     compile = createCompiler('<sidebar />', $rootScope, $compile);
 
     PlaylistService.add(mockVideoItem);
@@ -23,20 +32,23 @@ describe('Directive: sidebar', function() {
 
   describe('isLoading', function() {
     it('should be exposed as controller variable and set to false', function() {
-      compile(function (scope) {
+      compile(function(scope) {
         expect(scope.$ctrl.isLoading).toBe(false);
       });
     });
   });
 
   describe('expandPlaylist()', function() {
-    it('should set isLoading to true and back to false when PlaylistService.expandPlaylist resolves', inject((PlaylistService, $q) => {
+    it('should set isLoading to true and back to false when PlaylistService.expandPlaylist resolves', inject((
+      PlaylistService,
+      $q
+    ) => {
       let promise = $q.defer();
       spyOn(PlaylistService, 'expandPlaylist').and.callFake(() => {
         return promise.promise;
       });
 
-      compile(function (scope) {
+      compile(function(scope) {
         scope.$ctrl.expandPlaylist();
         expect(scope.$ctrl.isLoading).toBe(true);
         promise.resolve();
@@ -58,13 +70,17 @@ describe('Directive: sidebar', function() {
     it('should be used in view correctly', inject(SidebarService => {
       SidebarService.isOpen = false;
       compile((scope, element) => {
-        expect(element.find('.container-sidebar').hasClass('container-sidebar--open')).toBe(false);
+        expect(
+          element.find('.container-sidebar').hasClass('container-sidebar--open')
+        ).toBe(false);
         expect(element.find('.glyphicon-circle-arrow-left').length).toBe(1);
 
         SidebarService.isOpen = true;
         scope.$digest();
 
-        expect(element.find('.container-sidebar').hasClass('container-sidebar--open')).toBe(true);
+        expect(
+          element.find('.container-sidebar').hasClass('container-sidebar--open')
+        ).toBe(true);
         expect(element.find('.glyphicon-circle-arrow-right').length).toBe(1);
       });
     }));
@@ -91,7 +107,7 @@ describe('Directive: sidebar', function() {
   });
 
   it('playlistService should contain items from PlaylistService.playlist', function() {
-    compile(function (scope) {
+    compile(function(scope) {
       expect(scope.$ctrl.playlist).toEqual([mockVideoItem, mockVideoItem]);
     });
   });
@@ -107,7 +123,10 @@ describe('Directive: sidebar', function() {
     }));
 
     describe('when SettingsService.isSidebarSticky is false', () => {
-      it('should call SidebarService.toggle()', inject((SidebarService, SettingsService) => {
+      it('should call SidebarService.toggle()', inject((
+        SidebarService,
+        SettingsService
+      ) => {
         SettingsService.list.isSidebarSticky = false;
         SidebarService.isOpen = true;
 
@@ -135,9 +154,13 @@ describe('Directive: sidebar', function() {
 
     it('should fill sidebar.list with fetched items from reddit', inject(PlaylistService => {
       compile(scope => {
-        spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({then: angular.noop});
+        spyOn(PlaylistService, 'fetchSubreddit').and.returnValue({
+          then: angular.noop
+        });
         scope.$ctrl.fillPlaylistWith('artisanvideos');
-        expect(PlaylistService.fetchSubreddit).toHaveBeenCalledWith('artisanvideos');
+        expect(PlaylistService.fetchSubreddit).toHaveBeenCalledWith(
+          'artisanvideos'
+        );
       });
     }));
 
@@ -194,7 +217,7 @@ describe('Directive: sidebar', function() {
 
     describe('when its `main`', () => {
       it('should show sidebar-empty', () => {
-        compile(function (scope, element) {
+        compile(function(scope, element) {
           scope.$ctrl.currentState = 'main';
           expect(element.find('sidebar-empty').length).toBe(1);
         });
@@ -211,11 +234,16 @@ describe('Directive: sidebar', function() {
     }));
 
     describe('when state changes to `main`', function() {
-      it('should broadcast orodariusScrollIntoView event on $rootScope', inject((SidebarService, $rootScope) => {
+      it('should broadcast orodariusScrollIntoView event on $rootScope', inject((
+        SidebarService,
+        $rootScope
+      ) => {
         spyOn($rootScope, '$broadcast');
         compile(scope => {
           SidebarService.state.set('main');
-          expect($rootScope.$broadcast).toHaveBeenCalledWith('orodariusScrollIntoView');
+          expect($rootScope.$broadcast).toHaveBeenCalledWith(
+            'orodariusScrollIntoView'
+          );
 
           SidebarService.state.set('something else');
           expect($rootScope.$broadcast.calls.count()).toBe(2);
@@ -239,4 +267,3 @@ describe('Directive: sidebar', function() {
     });
   });
 });
-

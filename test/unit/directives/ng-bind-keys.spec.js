@@ -18,7 +18,11 @@ describe('Directive: ngBindKeys', function() {
 
   beforeEach(module('orodarius'));
   beforeEach(inject(function($compile, $rootScope, _$document_) {
-    compile = createCompiler('<div ng-bind-keys="options" />', $rootScope, $compile);
+    compile = createCompiler(
+      '<div ng-bind-keys="options" />',
+      $rootScope,
+      $compile
+    );
     $document = _$document_;
   }));
 

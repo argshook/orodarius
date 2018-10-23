@@ -1,4 +1,4 @@
-;(() => {
+(() => {
   'use strict';
 
   angular
@@ -16,7 +16,14 @@
   const NUM_MAX_FETCH_RETRIES = 3; // do at most 4 consecutive GETs until expected data received
   const API_ROOT_URL = 'https://www.reddit.com/r/';
 
-  function RedditService($http, $q, youtubeUrlParser, $filter, LastSubredditsService, $log) {
+  function RedditService(
+    $http,
+    $q,
+    youtubeUrlParser,
+    $filter,
+    LastSubredditsService,
+    $log
+  ) {
     let NUM_FETCH_RETRIES = 0;
     let AFTER_TAG = '';
     let IS_LOADING = false;
@@ -30,20 +37,24 @@
     };
 
     function fetch(subredditName = '', afterTag = '') {
-      const API_URL = `${API_ROOT_URL}${subredditName}/hot.json?limit=50${afterTag ? `&after=${afterTag}` : ''}`;
+      const API_URL = `${API_ROOT_URL}${subredditName}/hot.json?limit=50${
+        afterTag ? `&after=${afterTag}` : ''
+      }`;
 
       AFTER_TAG = afterTag;
       CURRENT_SUBREDDIT = subredditName;
       IS_LOADING = true;
 
-      return _.isEmpty(subredditName) ? $q.reject() : $http
-        .get(API_URL)
-        .then(onFetchSuccess.bind(this))
-        .catch(() => $q.reject())
-        .finally(() => IS_LOADING = false);
+      return _.isEmpty(subredditName)
+        ? $q.reject()
+        : $http
+            .get(API_URL)
+            .then(onFetchSuccess.bind(this))
+            .catch(() => $q.reject())
+            .finally(() => (IS_LOADING = false));
     }
 
-    function onFetchSuccess({ data: { data } }) {
+    function onFetchSuccess({data: {data}}) {
       NUM_FETCH_RETRIES++;
       AFTER_TAG = data.after;
 
@@ -53,9 +64,9 @@
         return fetch.call(this, CURRENT_SUBREDDIT, AFTER_TAG);
       }
 
-      let uniqueNewItems =
-        postProcess(newItems)
-          .filter(i => !isVideoItemInList(this.items, i));
+      let uniqueNewItems = postProcess(newItems).filter(
+        i => !isVideoItemInList(this.items, i)
+      );
 
       this.items = this.items.concat(uniqueNewItems);
 
@@ -64,7 +75,7 @@
       // TODO: move out of reddit service, this is will not be reddit specific in the
       // future when more sources will be available
       // haha yeah, when more sources haha
-      LastSubredditsService.add({ name: CURRENT_SUBREDDIT });
+      LastSubredditsService.add({name: CURRENT_SUBREDDIT});
 
       return $q.resolve(uniqueNewItems);
     }
@@ -72,8 +83,12 @@
     // TODO: refactor to filter?
     function uniquefyVideoItems(videoItems) {
       // wtf is this
-      var stringifiedArray = _(videoItems).map(item => JSON.stringify(item)).value();
-      return _(_.uniq(stringifiedArray)).map(item => JSON.parse(item)).value();
+      var stringifiedArray = _(videoItems)
+        .map(item => JSON.stringify(item))
+        .value();
+      return _(_.uniq(stringifiedArray))
+        .map(item => JSON.parse(item))
+        .value();
     }
 
     function subredditResultsFilter(data) {
@@ -81,12 +96,12 @@
       // TODO: move this to separate factory which would accept all kinds of sources but output
       // canonical object for the whole app to use
       return data
-        .filter(({ kind }) => kind === 't3') // t3 - link posts
-        .filter(({ data }) => /^(m\.)?youtu\.?be/.test(data.domain))
+        .filter(({kind}) => kind === 't3') // t3 - link posts
+        .filter(({data}) => /^(m\.)?youtu\.?be/.test(data.domain))
         .reduce((items, item) => {
           let videoInfo = youtubeUrlParser(item.data.url);
 
-          if(!videoInfo) {
+          if (!videoInfo) {
             return items;
           }
 
@@ -116,12 +131,14 @@
         '&reg;': '®'
       };
 
-      return newItems
-        .map(item => {
-          item.title = item.title.replace(/(&amp;|&copy;|&reg;)/g, match => sanitizers[match]),
-          item.ownId = _.uniqueId('orodarius_video-item_');
-          return item;
-        });
+      return newItems.map(item => {
+        (item.title = item.title.replace(
+          /(&amp;|&copy;|&reg;)/g,
+          match => sanitizers[match]
+        )),
+          (item.ownId = _.uniqueId('orodarius_video-item_'));
+        return item;
+      });
     }
 
     function isVideoItemInList(list, item) {
@@ -129,11 +146,11 @@
     }
 
     function getNext() {
-      if(IS_LOADING) {
+      if (IS_LOADING) {
         return $q.reject();
       }
 
-      if(AFTER_TAG) {
+      if (AFTER_TAG) {
         return this.fetch(CURRENT_SUBREDDIT, AFTER_TAG);
       } else {
         $log.warn('cant expand playlist, no afterTag found!');
@@ -146,4 +163,3 @@
     }
   }
 })();
-

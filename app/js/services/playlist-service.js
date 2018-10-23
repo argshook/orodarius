@@ -1,8 +1,9 @@
-;(function() {
+(function() {
   'use strict';
 
-  angular.module('orodarius')
-    .service('PlaylistService', ['RedditService', function(RedditService) {
+  angular.module('orodarius').service('PlaylistService', [
+    'RedditService',
+    function(RedditService) {
       let playlistSubscriberFns = [];
 
       // Public values
@@ -25,30 +26,28 @@
       function fetchSubreddit(subredditName = '') {
         this.isLoading = true;
 
-        return RedditService
-          .fetch(subredditName)
+        return RedditService.fetch(subredditName)
           .then(newItems => {
-            if(newItems) {
+            if (newItems) {
               this.playlist = this.playlist.concat(newItems);
               publishSubscribers();
               return newItems;
             }
           }, angular.noop)
-          .finally(() => this.isLoading = false);
+          .finally(() => (this.isLoading = false));
       }
 
       function expandPlaylist() {
         this.isLoading = true;
 
-        return RedditService
-          .getNext()
+        return RedditService.getNext()
           .then(newItems => {
-            if(newItems) {
+            if (newItems) {
               this.playlist = this.playlist.concat(newItems);
               publishSubscribers();
             }
           }, angular.noop)
-          .finally(() => this.isLoading = false);
+          .finally(() => (this.isLoading = false));
       }
 
       function clear() {
@@ -64,6 +63,6 @@
       function publishSubscribers() {
         playlistSubscriberFns.map(fn => fn());
       }
-    }]);
+    }
+  ]);
 })();
-

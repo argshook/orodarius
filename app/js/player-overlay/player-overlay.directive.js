@@ -1,4 +1,4 @@
-;(() => {
+(() => {
   'use strict';
 
   angular
@@ -8,10 +8,12 @@
   function playerOverlayComponent() {
     return {
       templateUrl: 'views/player-overlay.html',
-      controller: ['PlayerService', function(PlayerService) {
-        this.getCurrentVideoItem = () => PlayerService.currentVideoItem;
-      }]
+      controller: [
+        'PlayerService',
+        function(PlayerService) {
+          this.getCurrentVideoItem = () => PlayerService.currentVideoItem;
+        }
+      ]
     };
   }
 })();
-

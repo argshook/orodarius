@@ -3,11 +3,13 @@
 describe('Service: PlayerService', function() {
   var service, player, PlaylistService, $q;
 
-  beforeEach(module($provide => {
-    $provide.decorator('$timeout', $delegate => {
-      return jasmine.createSpy('$timeout');
-    });
-  }));
+  beforeEach(
+    module($provide => {
+      $provide.decorator('$timeout', $delegate => {
+        return jasmine.createSpy('$timeout');
+      });
+    })
+  );
   beforeEach(module('orodarius'));
 
   beforeEach(inject(function(_PlayerService_, _PlaylistService_, _$q_) {
@@ -35,18 +37,17 @@ describe('Service: PlayerService', function() {
   it('playVideo should start playing a new video at certain time if one has been passed', function() {
     service.playVideo(mockVideoItem);
 
-    expect(player.loadVideoById)
-      .toHaveBeenCalledWith({
-        videoId: mockVideoItem.videoId,
-        startSeconds: mockVideoItem.starttime,
-        suggestedQuality: 'default'
-      });
+    expect(player.loadVideoById).toHaveBeenCalledWith({
+      videoId: mockVideoItem.videoId,
+      startSeconds: mockVideoItem.starttime,
+      suggestedQuality: 'default'
+    });
   });
 
-  it('playNext should call playVideo with next videoId in row', inject(($rootScope) => {
+  it('playNext should call playVideo with next videoId in row', inject($rootScope => {
     PlaylistService.playlist = [
-      { videoId: 'currentId', ownId: 0 },
-      { videoId: 'nextId', ownId: 1 }
+      {videoId: 'currentId', ownId: 0},
+      {videoId: 'nextId', ownId: 1}
     ];
 
     service.currentVideoItem = PlaylistService.playlist[0];
@@ -56,22 +57,24 @@ describe('Service: PlayerService', function() {
     expect(service.currentVideoItem.videoId).toBe('nextId');
   }));
 
-  it('playNext method should call PlaylistService.expandPlaylist when any of three items on playlist end ar currently playing', inject(($rootScope) => {
-    PlaylistService.playlist = _.range(4).map(i => { return { videoId: `currentId${i}`, ownId: i }; });
+  it('playNext method should call PlaylistService.expandPlaylist when any of three items on playlist end ar currently playing', inject($rootScope => {
+    PlaylistService.playlist = _.range(4).map(i => {
+      return {videoId: `currentId${i}`, ownId: i};
+    });
 
     _.range(3).map(i => {
-        service.currentVideoItem = PlaylistService.playlist[i];
-        service.playNext();
-        $rootScope.$apply();
+      service.currentVideoItem = PlaylistService.playlist[i];
+      service.playNext();
+      $rootScope.$apply();
     });
 
     expect(PlaylistService.expandPlaylist.calls.count()).toBe(3);
   }));
 
-  it('playNext method should determine next video by videoId, name and created properties', inject(($rootScope) => {
+  it('playNext method should determine next video by videoId, name and created properties', inject($rootScope => {
     PlaylistService.playlist = [
-      { videoId: 'currentId', name: 'WHAAT', created: 1 },
-      { videoId: 'currentId', name: 'WHAAT', created: 2 }
+      {videoId: 'currentId', name: 'WHAAT', created: 1},
+      {videoId: 'currentId', name: 'WHAAT', created: 2}
     ];
 
     service.currentVideoItem = PlaylistService.playlist[0];
@@ -82,8 +85,8 @@ describe('Service: PlayerService', function() {
 
   it('playPrevious should play previous video in row', function() {
     PlaylistService.playlist = [
-      { videoId: 'previousId' },
-      { videoId: 'currentId' }
+      {videoId: 'previousId'},
+      {videoId: 'currentId'}
     ];
 
     service.currentVideoItem.videoId = PlaylistService.playlist[1].videoId;
@@ -107,11 +110,11 @@ describe('Service: PlayerService', function() {
     expect(player.pauseVideo).toHaveBeenCalled();
   });
 
-  it("should expose resetCurrentVideoItem method", function() {
+  it('should expose resetCurrentVideoItem method', function() {
     expect(service.resetCurrentVideoItem).toBeDefined();
   });
 
-  it("resetCurrentVideoItem should reset currentVideoItem to undefined", function() {
+  it('resetCurrentVideoItem should reset currentVideoItem to undefined', function() {
     service.resetCurrentVideoItem();
     expect(service.currentVideoItem).toBeUndefined();
   });
@@ -122,8 +125,8 @@ describe('Service: PlayerService', function() {
 
     beforeEach(function() {
       PlaylistService.playlist = [
-        { videoId: 'currentId', ownId: '1' },
-        { videoId: 'nextId', ownId: '2' }
+        {videoId: 'currentId', ownId: '1'},
+        {videoId: 'nextId', ownId: '2'}
       ];
       service.currentVideoItem = PlaylistService.playlist[0];
     });
@@ -140,7 +143,7 @@ describe('Service: PlayerService', function() {
       service.markCurrentVideoItemWithError(5);
       expect(PlaylistService.playlist[0].error).toEqual({
         code: 5,
-        message: "problem with HTML5 Youtube player"
+        message: 'problem with HTML5 Youtube player'
       });
     });
 
@@ -148,30 +151,38 @@ describe('Service: PlayerService', function() {
       service.markCurrentVideoItemWithError(100);
       expect(PlaylistService.playlist[0].error).toEqual({
         code: 100,
-        message: "video is private or removed"
+        message: 'video is private or removed'
       });
     });
 
     it('should mark html5 player error', function() {
-      var err101and150msg = "uploader does not allow embedded playback";
+      var err101and150msg = 'uploader does not allow embedded playback';
 
       service.markCurrentVideoItemWithError(101);
-      expect(PlaylistService.playlist[0].error).toEqual({ code: 101, message: err101and150msg });
+      expect(PlaylistService.playlist[0].error).toEqual({
+        code: 101,
+        message: err101and150msg
+      });
 
       service.markCurrentVideoItemWithError(150);
-      expect(PlaylistService.playlist[0].error).toEqual({ code: 150, message: err101and150msg });
+      expect(PlaylistService.playlist[0].error).toEqual({
+        code: 150,
+        message: err101and150msg
+      });
     });
   });
 
   describe('setCurrentVideoItemYoutubeMetadata', function() {
-    it('should set given metadata object to currentVideoItem', inject(function(PlaylistService) {
+    it('should set given metadata object to currentVideoItem', inject(function(
+      PlaylistService
+    ) {
       PlaylistService.playlist = [
-        { videoId: 'currentId', ownId: '1', youtubeMeta: null }
+        {videoId: 'currentId', ownId: '1', youtubeMeta: null}
       ];
 
       service.currentVideoItem = PlaylistService.playlist[0];
-      service.setCurrentVideoItemYoutubeMetadata({ data: 'hello' });
-      expect(PlaylistService.playlist[0].youtubeMeta).toEqual({ data: 'hello' });
+      service.setCurrentVideoItemYoutubeMetadata({data: 'hello'});
+      expect(PlaylistService.playlist[0].youtubeMeta).toEqual({data: 'hello'});
     }));
   });
 
@@ -180,16 +191,19 @@ describe('Service: PlayerService', function() {
       it('should call document.activeElement.blur()', inject(SettingsService => {
         SettingsService.list.isFocusForced = true;
         spyOn(document.activeElement, 'blur');
-        service.onPlayerStateChange({ data: 0 });
+        service.onPlayerStateChange({data: 0});
         expect(document.activeElement.blur).toHaveBeenCalled();
       }));
     });
 
     describe('when called with event.data === 0 and isFlashModeEnabled === true', () => {
-      it('should call playNext after 5 seconds', inject((SettingsService, $timeout) => {
+      it('should call playNext after 5 seconds', inject((
+        SettingsService,
+        $timeout
+      ) => {
         SettingsService.list.isFlashModeEnabled = true;
         spyOn(service, 'playNext');
-        service.onPlayerStateChange({ data: 0 });
+        service.onPlayerStateChange({data: 0});
         expect(service.playNext).toHaveBeenCalled();
       }));
     });
@@ -201,14 +215,22 @@ describe('Service: PlayerService', function() {
       });
 
       it('should call PlayerService.cleanCurrentVideoItemErrors()', function() {
-        service.onPlayerStateChange({ data: 1, target: { getVideoData: angular.noop }});
+        service.onPlayerStateChange({
+          data: 1,
+          target: {getVideoData: angular.noop}
+        });
         expect(service.cleanCurrentVideoItemErrors).toHaveBeenCalled();
       });
 
       it('should call setCurrentVideoItemYoutubeMetadata passing event object', function() {
-        const getVideoDataSpy = () => "hello data";
-        service.onPlayerStateChange({ data: 1, target: { getVideoData: getVideoDataSpy }});
-        expect(service.setCurrentVideoItemYoutubeMetadata).toHaveBeenCalledWith(getVideoDataSpy());
+        const getVideoDataSpy = () => 'hello data';
+        service.onPlayerStateChange({
+          data: 1,
+          target: {getVideoData: getVideoDataSpy}
+        });
+        expect(service.setCurrentVideoItemYoutubeMetadata).toHaveBeenCalledWith(
+          getVideoDataSpy()
+        );
       });
     });
   });

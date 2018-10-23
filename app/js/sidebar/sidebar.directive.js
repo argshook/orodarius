@@ -1,12 +1,22 @@
-;(function() {
+(function() {
   'use strict';
 
-  angular
-    .module('orodarius')
-    .component('sidebar', {
-      bindings: {},
-      templateUrl: 'views/sidebar/sidebar.html',
-      controller: ['PlaylistService', 'PlayerService', 'SidebarService', 'SettingsService', '$rootScope', function(PlaylistService, PlayerService, SidebarService, SettingsService, $rootScope) {
+  angular.module('orodarius').component('sidebar', {
+    bindings: {},
+    templateUrl: 'views/sidebar/sidebar.html',
+    controller: [
+      'PlaylistService',
+      'PlayerService',
+      'SidebarService',
+      'SettingsService',
+      '$rootScope',
+      function(
+        PlaylistService,
+        PlayerService,
+        SidebarService,
+        SettingsService,
+        $rootScope
+      ) {
         /* properties */
         this.currentSubreddit = '';
         this.isLoading = false;
@@ -28,7 +38,7 @@
         SidebarService.state.subscribe(state => {
           this.currentState = state;
 
-          if(state === 'main') {
+          if (state === 'main') {
             $rootScope.$broadcast('orodariusScrollIntoView');
           }
         });
@@ -36,40 +46,36 @@
         function playVideo(item) {
           PlayerService.playVideo(item);
 
-          if(!SettingsService.list.isSidebarSticky) {
+          if (!SettingsService.list.isSidebarSticky) {
             SidebarService.toggle();
           }
-        };
+        }
 
         function expandPlaylist() {
           this.isLoading = true;
 
-          PlaylistService
-            .expandPlaylist()
-            .then(() =>  this.isLoading = false);
-        };
+          PlaylistService.expandPlaylist().then(() => (this.isLoading = false));
+        }
 
         function fillPlaylistWith(subreddit) {
           PlaylistService.clear();
 
-          if(!!subreddit && !this.isLoading) {
+          if (!!subreddit && !this.isLoading) {
             this.currentSubreddit = subreddit;
             this.isLoading = true;
 
-            PlaylistService
-              .fetchSubreddit(subreddit)
-              .then(playlist => {
-                this.isLoading = false;
-                this.playlist = playlist;
+            PlaylistService.fetchSubreddit(subreddit).then(playlist => {
+              this.isLoading = false;
+              this.playlist = playlist;
 
-                PlayerService.playVideo(PlaylistService.playlist[0]);
-              });
+              PlayerService.playVideo(PlaylistService.playlist[0]);
+            });
           }
 
-          if(!subreddit) {
+          if (!subreddit) {
             this.isLoading = false;
           }
-        };
+        }
 
         function getIsOpen() {
           return SidebarService.isOpen;
@@ -83,8 +89,7 @@
           let current = SidebarService.state.get();
           SidebarService.state.set(current === 'main' ? 'settings' : 'main');
         }
-      }]
-    }
-  );
+      }
+    ]
+  });
 })();
-

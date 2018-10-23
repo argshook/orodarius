@@ -8,8 +8,8 @@ exports.config = {
   },
 
   paths: {
-    "public": 'public',
-    "watched": ['app', 'vendor', 'mocks']
+    public: 'public',
+    watched: ['app', 'vendor', 'mocks']
   },
 
   files: {
@@ -65,9 +65,9 @@ exports.config = {
     ES6to5: {},
     autoprefixer: {
       browsers: [
-        "last 2 version",
-        "> 1%", // browsers with > 1% usage
-        "ie >= 9"
+        'last 2 version',
+        '> 1%', // browsers with > 1% usage
+        'ie >= 9'
       ],
       cascade: false
     }

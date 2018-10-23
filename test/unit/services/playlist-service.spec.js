@@ -3,19 +3,29 @@
 /* global REDDIT */
 
 describe('Service: PlaylistService', function() {
-  var service, LastSubredditsService, localStorageService, RedditService, $httpBackend, $q;
+  var service,
+    LastSubredditsService,
+    localStorageService,
+    RedditService,
+    $httpBackend,
+    $q;
 
   beforeEach(module('orodarius'));
 
   beforeEach(inject(function(
-      _PlaylistService_, _LastSubredditsService_, _localStorageService_,
-      _$httpBackend_, _$q_, _RedditService_) {
-    $q                    = _$q_;
-    service               = _PlaylistService_;
+    _PlaylistService_,
+    _LastSubredditsService_,
+    _localStorageService_,
+    _$httpBackend_,
+    _$q_,
+    _RedditService_
+  ) {
+    $q = _$q_;
+    service = _PlaylistService_;
     LastSubredditsService = _LastSubredditsService_;
-    localStorageService   = _localStorageService_;
-    $httpBackend          = _$httpBackend_;
-    RedditService         = _RedditService_;
+    localStorageService = _localStorageService_;
+    $httpBackend = _$httpBackend_;
+    RedditService = _RedditService_;
   }));
 
   beforeEach(function() {
@@ -55,7 +65,7 @@ describe('Service: PlaylistService', function() {
 
     it('should return a promise', function() {
       var result,
-          promise = service.fetchSubreddit('videos');
+        promise = service.fetchSubreddit('videos');
 
       expect(promise).toBeDefined();
 
@@ -138,7 +148,7 @@ describe('Service: PlaylistService', function() {
         $httpBackend.flush();
       });
 
-      it("should set isLoading to false", function() {
+      it('should set isLoading to false', function() {
         expect(service.isLoading).toBe(false);
         service.expandPlaylist();
         expect(service.isLoading).toBe(true);
@@ -171,8 +181,8 @@ describe('Service: PlaylistService', function() {
     });
   });
 
-  describe("clear()", function() {
-    it("should reset playlist to empty array", function() {
+  describe('clear()', function() {
+    it('should reset playlist to empty array', function() {
       service.playlist = [1, 2, 3];
       service.clear();
       expect(service.playlist.length).toBe(0);
@@ -194,12 +204,12 @@ describe('Service: PlaylistService', function() {
     });
   });
 
-  describe("isLoading value", function() {
-    it("should be exposed and set to false initially", function() {
+  describe('isLoading value', function() {
+    it('should be exposed and set to false initially', function() {
       expect(service.isLoading).toBe(false);
     });
 
-    it("calling fetchSubreddit should set isLoading to true and then to false on promise resolve", function() {
+    it('calling fetchSubreddit should set isLoading to true and then to false on promise resolve', function() {
       service.fetchSubreddit('videos').then(function() {
         expect(service.isLoading).toBe(false);
       });
@@ -214,5 +224,4 @@ describe('Service: PlaylistService', function() {
       expect(service.subscribePlaylist).toBeDefined();
     });
   });
-
 });

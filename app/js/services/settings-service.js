@@ -1,29 +1,32 @@
-;(function() {
+(function() {
   'use strict';
 
   var DEFAULT_SETTINGS = {
     watchCount: 0,
     isSidebarSticky: false,
     isFocusForced: false,
-    sources: [{
-      name: 'reddit',
-      apiUrl: 'https://www.reddit.com/r/',
-      isEnabled: true
-    }]
+    sources: [
+      {
+        name: 'reddit',
+        apiUrl: 'https://www.reddit.com/r/',
+        isEnabled: true
+      }
+    ]
   };
 
-  angular.module('orodarius')
-    .service('SettingsService', ['localStorageService', function(localStorageService) {
+  angular.module('orodarius').service('SettingsService', [
+    'localStorageService',
+    function(localStorageService) {
       var settingsStorageName = 'settings',
-          settings = localStorageService.get(settingsStorageName);
+        settings = localStorageService.get(settingsStorageName);
 
-      if(settings === null) {
+      if (settings === null) {
         settings = DEFAULT_SETTINGS;
         updateStorage();
       }
 
       _.defaultsDeep(settings, DEFAULT_SETTINGS);
-      updateStorage()
+      updateStorage();
 
       function add(name, setting) {
         settings[name] = setting;
@@ -31,7 +34,7 @@
       }
 
       function toggle(name) {
-        if(typeof settings[name] !== 'undefined') {
+        if (typeof settings[name] !== 'undefined') {
           settings[name] = !settings[name];
           updateStorage();
         } else {
@@ -49,7 +52,7 @@
       }
 
       // TODO: refactor to use get instead of list
-      return { list: settings, add, toggle, set };
-    }]);
-
+      return {list: settings, add, toggle, set};
+    }
+  ]);
 })();

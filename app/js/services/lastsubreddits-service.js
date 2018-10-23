@@ -1,18 +1,21 @@
-;(() => {
+(() => {
   // TODO: this will eventually be lastQueriesService or something
-  angular.module('orodarius')
-    .service('LastSubredditsService', ['localStorageService', function(localStorageService) {
+  angular.module('orodarius').service('LastSubredditsService', [
+    'localStorageService',
+    function(localStorageService) {
       let lastSubredditsStorageName = 'lastSubreddits',
-          lastSubredditsLimit = 10;
+        lastSubredditsLimit = 10;
 
       let lastSubreddits = localStorageService.get(lastSubredditsStorageName);
 
-      if(!angular.isArray(lastSubreddits)) {
+      if (!angular.isArray(lastSubreddits)) {
         lastSubreddits = [];
       }
 
       function addItem(item) {
-        if(isItemDuplicate(item)) { return; }
+        if (isItemDuplicate(item)) {
+          return;
+        }
 
         lastSubreddits.unshift(item);
         lastSubreddits = lastSubreddits.slice(0, lastSubredditsLimit);
@@ -21,7 +24,9 @@
       }
 
       function isItemDuplicate(item) {
-        return _.findIndex(lastSubreddits, obj => item.name === obj.name) !== -1;
+        return (
+          _.findIndex(lastSubreddits, obj => item.name === obj.name) !== -1
+        );
       }
 
       function updateLocalStorage() {
@@ -36,6 +41,6 @@
         getList,
         add: addItem
       };
-    }]);
+    }
+  ]);
 })();
-

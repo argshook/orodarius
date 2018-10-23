@@ -1,8 +1,9 @@
 'use strict';
 
 describe('Service: LastSubredditsService', function() {
-  let service, localStorageService,
-      mockItem = { name: 'item' };
+  let service,
+    localStorageService,
+    mockItem = {name: 'item'};
 
   beforeEach(module('orodarius'));
   beforeEach(inject(function(LastSubredditsService, _localStorageService_) {
@@ -34,7 +35,10 @@ describe('Service: LastSubredditsService', function() {
     it('should call updateStorage', function() {
       spyOn(localStorageService, 'set');
       service.add(mockItem);
-      expect(localStorageService.set).toHaveBeenCalledWith('lastSubreddits', jasmine.any(Object));
+      expect(localStorageService.set).toHaveBeenCalledWith(
+        'lastSubreddits',
+        jasmine.any(Object)
+      );
     });
 
     it('should not save duplicates', function() {
@@ -45,11 +49,10 @@ describe('Service: LastSubredditsService', function() {
 
     it('should not allow more than 10 subreddits', () => {
       _.range(1, 15).map(i => {
-        service.add({ name: `item-${i}` });
+        service.add({name: `item-${i}`});
       });
 
       expect(service.getList().length).toBe(10);
     });
   });
 });
-

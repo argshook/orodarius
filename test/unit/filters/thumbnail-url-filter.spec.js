@@ -20,29 +20,34 @@ describe('Filter: thumbnailUrlFilter', function() {
     });
 
     it('should return correct url for default', function() {
-      expect(thumbnailUrlFilter('default')).toBe('images/default-thumbnail.png');
+      expect(thumbnailUrlFilter('default')).toBe(
+        'images/default-thumbnail.png'
+      );
     });
   });
 
   describe('when invalid input given', function() {
     it('should return empty string', function() {
       [
-        [ '', '' ],
-        [ undefined, '' ],
-        [ NaN, '' ],
-        [ null, '' ],
-        [ [], '' ],
-        [ angular.noop, '' ],
-      ].map(([ a, e ]) => {
-        expect(thumbnailUrlFilter(a)).toBe(e)
+        ['', ''],
+        [undefined, ''],
+        [NaN, ''],
+        [null, ''],
+        [[], ''],
+        [angular.noop, '']
+      ].map(([a, e]) => {
+        expect(thumbnailUrlFilter(a)).toBe(e);
       });
     });
   });
 
   describe('when given url with http schema', function() {
     it('should change it to https', function() {
-      expect(thumbnailUrlFilter('http://best-source.com/jira/is?life=true&love=true#4ever')).toBe('https://best-source.com/jira/is?life=true&love=true#4ever');
+      expect(
+        thumbnailUrlFilter(
+          'http://best-source.com/jira/is?life=true&love=true#4ever'
+        )
+      ).toBe('https://best-source.com/jira/is?life=true&love=true#4ever');
     });
   });
-
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-describe("Module: orodarius", function() {
+describe('Module: orodarius', function() {
   var $window, $rootScope;
 
   beforeEach(inject(function(_$window_, _$rootScope_) {
@@ -10,7 +10,7 @@ describe("Module: orodarius", function() {
 
   describe('run block', function() {
     var orodariusModule = angular.module('orodarius'),
-        runBlock = orodariusModule._runBlocks[0];
+      runBlock = orodariusModule._runBlocks[0];
 
     it('should attach resize event event', function() {
       spyOn($.fn, 'on').and.callThrough();

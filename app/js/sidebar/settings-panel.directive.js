@@ -1,12 +1,14 @@
-;(() => {
+(() => {
   'use strict';
 
-  angular
-    .module('orodarius')
-    .component('settingsPanel', {
-      bindings: {},
-      templateUrl: 'views/sidebar/settings-panel.html',
-      controller: ['SettingsService', '$window', '$timeout', function(SettingsService, $window, $timeout) {
+  angular.module('orodarius').component('settingsPanel', {
+    bindings: {},
+    templateUrl: 'views/sidebar/settings-panel.html',
+    controller: [
+      'SettingsService',
+      '$window',
+      '$timeout',
+      function(SettingsService, $window, $timeout) {
         /* properties */
         this.settings = SettingsService.list;
 
@@ -15,7 +17,7 @@
         this.toggleFlashMode = toggleFlashMode;
         this.toggleFocusForced = toggleFocusForced;
 
-        if(SettingsService.list.isFocusForced) {
+        if (SettingsService.list.isFocusForced) {
           $window.addEventListener('blur', windowBlurHanlder);
         }
 
@@ -29,15 +31,17 @@
 
         function toggleFocusForced() {
           SettingsService.toggle('isFocusForced');
-          $window[(SettingsService.list.isFocusForced ? 'add' : 'remove') + 'EventListener']('blur', windowBlurHanlder);
+          $window[
+            (SettingsService.list.isFocusForced ? 'add' : 'remove') +
+              'EventListener'
+          ]('blur', windowBlurHanlder);
         }
 
         // TODO: need better implementation for firefox. and maybe other browsers
         function windowBlurHanlder() {
           $timeout(() => $window.focus(), 100);
         }
-
-      }]
-    })
+      }
+    ]
+  });
 })();
-

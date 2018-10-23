@@ -5,7 +5,7 @@ describe('Factory: youtubeUrlParser', () => {
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject((_youtubeUrlParser_) => {
+  beforeEach(inject(_youtubeUrlParser_ => {
     youtubeUrlParser = _youtubeUrlParser_;
   }));
 
@@ -52,7 +52,7 @@ describe('Factory: youtubeUrlParser', () => {
     describe('containing timestamp', () => {
       it('should return correct object', () => {
         var videoId = 'l5dvu4feCFk',
-            videoStartTime = 230;
+          videoStartTime = 230;
 
         var youtubeUrls = [
           `https://www.youtube.com/watch?v=${videoId}&amp;feature=youtu.be&t=230`,
@@ -60,7 +60,7 @@ describe('Factory: youtubeUrlParser', () => {
           `https://www.youtube.com/watch?v=${videoId}&amp;feature=youtu.be&t=3m50s`,
           `https://youtu.be/${videoId}&amp;t=230`,
           `m.youtube.com/watch?v=${videoId}&t=0h3m50s`,
-          `https://www.youtube.com/attribution_link?a=LOViDhH-uZE&u=%2Fwatch%3Fv%3D${videoId}%26feature%3Dshare%26t%3D230`,
+          `https://www.youtube.com/attribution_link?a=LOViDhH-uZE&u=%2Fwatch%3Fv%3D${videoId}%26feature%3Dshare%26t%3D230`
         ];
 
         expectUrlsToEqualObject(youtubeUrls, {
@@ -74,10 +74,10 @@ describe('Factory: youtubeUrlParser', () => {
       it('should ignore wrong timestamp', () => {
         var videoId = 'l5dvu4feCFk';
         var youtubeUrls = [
-          'youtube.com/watch?v='+ videoId +'&amp;feature=youtu.be&t=',
-          'youtube.com/watch?v='+ videoId +'&t=0m00s',
-          'youtube.com/watch?v='+ videoId +'&t=00h00m00s',
-          'youtube.com/watch?v='+ videoId +'&t=m00s'
+          'youtube.com/watch?v=' + videoId + '&amp;feature=youtu.be&t=',
+          'youtube.com/watch?v=' + videoId + '&t=0m00s',
+          'youtube.com/watch?v=' + videoId + '&t=00h00m00s',
+          'youtube.com/watch?v=' + videoId + '&t=m00s'
         ];
 
         expectUrlsToEqualObject(youtubeUrls, {
@@ -91,7 +91,10 @@ describe('Factory: youtubeUrlParser', () => {
   function expectUrlsToEqualObject(urls, object) {
     urls.forEach(url => {
       // array with url so i can know which failed
-      expect([ url, youtubeUrlParser(url) ]).toEqual([ jasmine.any(String), object ]);
+      expect([url, youtubeUrlParser(url)]).toEqual([
+        jasmine.any(String),
+        object
+      ]);
     });
   }
 });

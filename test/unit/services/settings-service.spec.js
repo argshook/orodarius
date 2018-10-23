@@ -18,12 +18,14 @@ describe('Service: SettingsService', function() {
   // than nesting them under list? Who knows, maybe
   describe('list', function() {
     it('should contain expected properties', function() {
-      expect(service.list).toEqual(jasmine.objectContaining({
-        watchCount: 0,
-        isSidebarSticky: false,
-        isFocusForced: false,
-        sources: jasmine.any(Array)
-      }));
+      expect(service.list).toEqual(
+        jasmine.objectContaining({
+          watchCount: 0,
+          isSidebarSticky: false,
+          isFocusForced: false,
+          sources: jasmine.any(Array)
+        })
+      );
     });
 
     describe('sources array', function() {
@@ -50,7 +52,10 @@ describe('Service: SettingsService', function() {
     it('should call localStorageService after adding item', function() {
       spyOn(localStorageService, 'set');
       service.add(mockItemName, true);
-      expect(localStorageService.set).toHaveBeenCalledWith('settings', jasmine.any(Object));
+      expect(localStorageService.set).toHaveBeenCalledWith(
+        'settings',
+        jasmine.any(Object)
+      );
     });
   });
 

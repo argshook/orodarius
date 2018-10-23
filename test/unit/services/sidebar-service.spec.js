@@ -1,6 +1,6 @@
 'use strict';
 
-describe("Service: SidebarService", function() {
+describe('Service: SidebarService', function() {
   var SidebarService;
 
   beforeEach(function() {
@@ -34,11 +34,13 @@ describe("Service: SidebarService", function() {
 
   describe('state', () => {
     it('should be an object with expected methods', () => {
-      expect(SidebarService.state).toEqual(jasmine.objectContaining({
-        get: jasmine.any(Function),
-        set: jasmine.any(Function),
-        subscribe: jasmine.any(Function)
-      }));
+      expect(SidebarService.state).toEqual(
+        jasmine.objectContaining({
+          get: jasmine.any(Function),
+          set: jasmine.any(Function),
+          subscribe: jasmine.any(Function)
+        })
+      );
     });
 
     describe('get()', function() {
@@ -75,4 +77,3 @@ describe("Service: SidebarService", function() {
     });
   });
 });
-

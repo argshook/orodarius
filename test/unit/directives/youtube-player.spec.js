@@ -1,16 +1,20 @@
 'use strict';
 
 describe('Directive: youtube-player', function() {
-  var element, scope, $compile,
-      $window, PlayerService;
+  var element, scope, $compile, $window, PlayerService;
 
   var mockScope = {
     isDisabled: true
-  }
+  };
 
   beforeEach(module('orodarius'));
 
-  beforeEach(inject(function(_$compile_, _$rootScope_, _$window_, _PlayerService_) {
+  beforeEach(inject(function(
+    _$compile_,
+    _$rootScope_,
+    _$window_,
+    _PlayerService_
+  ) {
     scope = _$rootScope_.$new();
     $compile = _$compile_;
     $window = _$window_;
@@ -20,7 +24,9 @@ describe('Directive: youtube-player', function() {
   }));
 
   function compileWith(id) {
-    element = $compile('<div youtube-player="'+ (id || 'main-video-player') +'"></div>')(scope);
+    element = $compile(
+      '<div youtube-player="' + (id || 'main-video-player') + '"></div>'
+    )(scope);
 
     // the following is called when iframe_api loads, so we call
     // this manually to test
@@ -34,7 +40,9 @@ describe('Directive: youtube-player', function() {
 
   it('should call PlayerService.createNewPlayer with default selector ID, once directive is compiled', function() {
     compileWith();
-    expect(PlayerService.createNewPlayer).toHaveBeenCalledWith('main-video-player');
+    expect(PlayerService.createNewPlayer).toHaveBeenCalledWith(
+      'main-video-player'
+    );
   });
 
   it('should call PlayerService.createNewPlayer with id selector, if its passed to youtube-player directive', function() {

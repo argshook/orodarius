@@ -4,9 +4,13 @@ describe('Component: player', function() {
   let compile;
 
   beforeEach(module('orodarius.templates'));
-  beforeEach(module('orodarius', $provide => {
-    $provide.factory('youtubePlayerDirective', () => { return {}; });
-  }));
+  beforeEach(
+    module('orodarius', $provide => {
+      $provide.factory('youtubePlayerDirective', () => {
+        return {};
+      });
+    })
+  );
 
   beforeEach(inject(($compile, $rootScope) => {
     compile = createCompiler('<player />', $rootScope, $compile);
@@ -20,8 +24,11 @@ describe('Component: player', function() {
 
   it('should contain element with youtube-player directive nested as expected', () => {
     compile((scope, element) => {
-      expect(element.find('.container-full .video-player-container #main-video-player').attr('youtube-player')).toBe('');
+      expect(
+        element
+          .find('.container-full .video-player-container #main-video-player')
+          .attr('youtube-player')
+      ).toBe('');
     });
   });
 });
-

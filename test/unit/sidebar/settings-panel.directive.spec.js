@@ -15,7 +15,7 @@ describe('Component: settingsPanel', function() {
   }));
 
   it('should compile successfully', () => {
-    compile(function (scope, element) {
+    compile(function(scope, element) {
       expect(element.find('.settings-panel').length).toBe(1);
     });
   });
@@ -35,7 +35,9 @@ describe('Component: settingsPanel', function() {
       spyOn(SettingsService, 'toggle');
       compile(scope => {
         scope.$ctrl.toggleFlashMode();
-        expect(SettingsService.toggle).toHaveBeenCalledWith('isFlashModeEnabled');
+        expect(SettingsService.toggle).toHaveBeenCalledWith(
+          'isFlashModeEnabled'
+        );
       });
     }));
   });
@@ -55,16 +57,24 @@ describe('Component: settingsPanel', function() {
       compile(scope => {
         scope.$ctrl.settings.isFocusForced = false;
         scope.$ctrl.toggleFocusForced();
-        expect($window.addEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
+        expect($window.addEventListener).toHaveBeenCalledWith(
+          'blur',
+          jasmine.any(Function)
+        );
       });
     }));
 
-    it('should remove blur event listener from window when isFocusForced is true', inject(function($window) {
+    it('should remove blur event listener from window when isFocusForced is true', inject(function(
+      $window
+    ) {
       spyOn($window, 'removeEventListener');
-      compile(function (scope) {
+      compile(function(scope) {
         scope.$ctrl.settings.isFocusForced = true;
         scope.$ctrl.toggleFocusForced();
-        expect($window.removeEventListener).toHaveBeenCalledWith('blur', jasmine.any(Function));
+        expect($window.removeEventListener).toHaveBeenCalledWith(
+          'blur',
+          jasmine.any(Function)
+        );
       });
     }));
   });
@@ -79,4 +89,3 @@ describe('Component: settingsPanel', function() {
     }));
   });
 });
-

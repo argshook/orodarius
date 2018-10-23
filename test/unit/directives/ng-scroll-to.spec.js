@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-describe("Directive: ngScrollTo", function() {
+describe('Directive: ngScrollTo', function() {
   let compile;
 
   let parentScopeMock = {
@@ -14,13 +14,20 @@ describe("Directive: ngScrollTo", function() {
 
   beforeEach(module('orodarius'));
   beforeEach(inject(($compile, $rootScope) => {
-    compile = createCompiler('<ul><li class="current"></li></ul>', $rootScope, $compile);
+    compile = createCompiler(
+      '<ul><li class="current"></li></ul>',
+      $rootScope,
+      $compile
+    );
   }));
 
   describe('when orodariusScrollIntoView event occurs', () => {
     // TODO: figure this out later
-    xit('should change element scroll top correctly', inject(($rootScope, $timeout) => {
-      spyOn($.fn, 'position').and.returnValue({ top: 100 });
+    xit('should change element scroll top correctly', inject((
+      $rootScope,
+      $timeout
+    ) => {
+      spyOn($.fn, 'position').and.returnValue({top: 100});
 
       compile(parentScopeMock, elementAttrsMock, (scope, element) => {
         element.height(100);
@@ -30,8 +37,11 @@ describe("Directive: ngScrollTo", function() {
       });
     }));
 
-    it('should not call element.scrollTop if given element does not exist', inject(($rootScope, $timeout) => {
-      spyOn($.fn, 'position').and.returnValue({ top: 100 });
+    it('should not call element.scrollTop if given element does not exist', inject((
+      $rootScope,
+      $timeout
+    ) => {
+      spyOn($.fn, 'position').and.returnValue({top: 100});
 
       let parentScope = _.cloneDeep(parentScopeMock);
       parentScope.ngScrollTo = '.something-not-existing';
@@ -44,4 +54,3 @@ describe("Directive: ngScrollTo", function() {
     }));
   });
 });
-

@@ -3,7 +3,8 @@
 describe('Directive: sidebarList', function() {
   let compile;
 
-  let directiveTemplate = '<sidebar-list list="list" on-item-click="onItemClick(item)" on-expand-click="onExpandClick()" is-loading="isLoading" current-subreddit="currentSubreddit" />';
+  let directiveTemplate =
+    '<sidebar-list list="list" on-item-click="onItemClick(item)" on-expand-click="onExpandClick()" is-loading="isLoading" current-subreddit="currentSubreddit" />';
 
   let parentScopeMock = {
     list: [1, 2, 3, 4, 5],
@@ -18,7 +19,7 @@ describe('Directive: sidebarList', function() {
     videoItem: e => e.find('video-item'),
     validateAttrs: function(attrAndValue) {
       return attrAndValue.reduce((acc, [attr, value]) => {
-        return this.videoItem(this.$).attr(attr) === value
+        return this.videoItem(this.$).attr(attr) === value;
       }, false);
     }
   };
@@ -47,7 +48,9 @@ describe('Directive: sidebarList', function() {
   describe('video items', () => {
     it('should be as many as $ctrl.playlist.length', () => {
       compile(parentScopeMock, (scope, element) => {
-        expect(element.find('video-item').length).toBe(parentScopeMock.list.length);
+        expect(element.find('video-item').length).toBe(
+          parentScopeMock.list.length
+        );
       });
     });
 
@@ -55,9 +58,9 @@ describe('Directive: sidebarList', function() {
       compile(parentScopeMock, (scope, element, driver) => {
         let $videoItem = element.find('video-item').eq(0);
         const attrAndValue = [
-          [ 'currentSubreddit', '$ctrl.currentSubreddit' ],
-          [ 'video-item', 'item' ],
-          [ 'index', '$index + 1' ]
+          ['currentSubreddit', '$ctrl.currentSubreddit'],
+          ['video-item', 'item'],
+          ['index', '$index + 1']
         ];
 
         expect(driver.validateAttrs(attrAndValue)).toBe(true);
@@ -67,8 +70,13 @@ describe('Directive: sidebarList', function() {
     describe('when clicked', () => {
       it('should call $ctrl.onItemClick correctly', () => {
         compile(parentScopeMock, (scope, element) => {
-          element.find('video-item').eq(0).click();
-          expect(parentScopeMock.onItemClick).toHaveBeenCalledWith(parentScopeMock.list[0]);
+          element
+            .find('video-item')
+            .eq(0)
+            .click();
+          expect(parentScopeMock.onItemClick).toHaveBeenCalledWith(
+            parentScopeMock.list[0]
+          );
         });
       });
     });
@@ -91,7 +99,7 @@ describe('Directive: sidebarList', function() {
         let parentScope = _.clone(parentScopeMock);
         parentScope.list = [];
 
-        compile(parentScope, function (scope, element, driver) {
+        compile(parentScope, function(scope, element, driver) {
           expect(driver.more().hasClass('ng-hide')).toBe(true);
         });
       });
@@ -107,4 +115,3 @@ describe('Directive: sidebarList', function() {
     });
   });
 });
-
