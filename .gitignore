@@ -75,3 +75,4 @@ coverage
 test/test-results.xml
 test-results.xml
 *.vim
+/package-lock.json
